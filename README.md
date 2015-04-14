@@ -1,7 +1,7 @@
-Quotes Collection Plugin for WordPress
+Quotes Collection 2.0 beta
 ======================================
 
-Quotes Collection plugin helps you collect, manage and display your favourite quotations in your WordPress website or blog.
+Quotes Collection Plugin for [WordPress](http://wordpress.org/) helps you collect, manage and display your favourite quotations in your WordPress website or blog.
 
 
 Features and Notes
@@ -24,7 +24,7 @@ Features and Notes
 	* `[quotcoll orderby="random" limit=1]` displays a random quote
 * **The template function**: To code the random quote functionality directly into a template file, the template function `quotescollection_quote()` can be used. Please refer the plugin homepage for details.
 * **Import/Export** your collection of quotes in JSON format *(new in 2.0)*.
-* The plugin suppports localization. Refer the plugin page or 'other notes' for the full list of available languages and the respective translators. 
+* The plugin suppports localization. Refer the plugin page or readme.txt for the full list of available languages and the respective translators. 
 
 For more information, visit the [plugin homepage](http://srinig.com/wordpress/plugins/quotes-collection/).
 

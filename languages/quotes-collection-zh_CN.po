@@ -1,0 +1,266 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Quotes Collection\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/quotes-collection\n"
+"POT-Creation-Date: 2009-05-25 10:15+0530\n"
+"PO-Revision-Date: 2010-12-01 09:54+0800\n"
+"Last-Translator: 天毅 <yylzcom@gmail.com>\n"
+"Language-Team: YYLZ <yylzcom@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: CHINA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: quotes-collection.php:16
+msgid "Next quote"
+msgstr "下一条"
+
+#: quotes-collection.php:88
+msgid "Loading..."
+msgstr "正在装载"
+
+#: quotes-collection.php:89
+msgid "Error getting quote"
+msgstr "获取信息错误"
+
+#: quotes-collection.php:239
+#: quotes-collection.php:264
+msgid "Random Quote"
+msgstr "随机显示"
+
+#: quotes-collection.php:291
+msgid "none"
+msgstr "没有"
+
+#: quotes-collection.php:307
+msgid "Title"
+msgstr "标题"
+
+#: quotes-collection.php:308
+msgid "Show author?"
+msgstr "显示作者？"
+
+#: quotes-collection.php:309
+msgid "Show source?"
+msgstr "显示来源？"
+
+#: quotes-collection.php:310
+msgid "Ajax refresh feature"
+msgstr "Ajax 刷新特性"
+
+#: quotes-collection.php:311
+msgid "Advanced options"
+msgstr "高级选项"
+
+#: quotes-collection.php:313
+msgid "Random refresh"
+msgstr "随机刷新"
+
+#: quotes-collection.php:313
+msgid "Unchecking this will rotate quotes in the order added, latest first."
+msgstr "不选中此项会反转quotes的添加顺序，最后添加的排在最前"
+
+#: quotes-collection.php:314
+msgid "Auto refresh"
+msgstr "自动刷新"
+
+#: quotes-collection.php:314
+msgid "every"
+msgstr "每"
+
+#: quotes-collection.php:314
+msgid "sec"
+msgstr "秒"
+
+#: quotes-collection.php:315
+msgid "Tags filter"
+msgstr "标签过滤"
+
+#: quotes-collection.php:315
+msgid "Comma separated"
+msgstr "逗号分割"
+
+#: quotes-collection.php:316
+msgid "Character limit"
+msgstr "字数限制"
+
+#: quotes-collection.php:335
+msgid "Nothing added to the database."
+msgstr "没有任何信息添加到数据库。"
+
+#: quotes-collection.php:339
+#: quotes-collection.php:376
+msgid "Database table not found"
+msgstr "数据表没有找到"
+
+#: quotes-collection.php:363
+#: quotes-collection.php:405
+#: quotes-collection.php:419
+msgid "There was an error in the MySQL query"
+msgstr "出现MySQL错误"
+
+#: quotes-collection.php:365
+msgid "Quote added"
+msgstr "信息已添加"
+
+#: quotes-collection.php:371
+msgid "Quote not updated."
+msgstr "信息没有更新"
+
+#: quotes-collection.php:407
+msgid "Changes saved"
+msgstr "变更成功"
+
+#: quotes-collection.php:421
+msgid "Quote deleted"
+msgstr "信息已删除"
+
+#: quotes-collection.php:423
+msgid "The quote cannot be deleted"
+msgstr "这条信息不能被删除"
+
+#: quotes-collection.php:439
+#: quotes-collection.php:536
+msgid "Add Quote"
+msgstr "添加信息"
+
+#: quotes-collection.php:455
+#: quotes-collection.php:540
+msgid "Save changes"
+msgstr "保存更改"
+
+#: quotes-collection.php:456
+msgid "Back"
+msgstr "返回"
+
+#: quotes-collection.php:460
+#: quotes-collection.php:646
+msgid "The quote"
+msgstr "信息"
+
+#: quotes-collection.php:461
+#: quotes-collection.php:629
+#: quotes-collection.php:648
+msgid "Author"
+msgstr "作者"
+
+#: quotes-collection.php:462
+#: quotes-collection.php:630
+#: quotes-collection.php:648
+msgid "Source"
+msgstr "来源"
+
+#: quotes-collection.php:463
+#: quotes-collection.php:650
+msgid "Tags"
+msgstr "标签"
+
+#: quotes-collection.php:464
+#: quotes-collection.php:651
+msgid "Public?"
+msgstr "公开?"
+
+#: quotes-collection.php:465
+msgid "optional"
+msgstr "可选"
+
+#: quotes-collection.php:466
+msgid "comma separated"
+msgstr "逗号分隔"
+
+#: quotes-collection.php:503
+#: quotes-collection.php:519
+msgid "Nothing done!"
+msgstr "没有任何改变"
+
+#: quotes-collection.php:511
+msgid "Selected quotes made public"
+msgstr "使得选中的项目公开"
+
+#: quotes-collection.php:513
+msgid "Selected quotes made private"
+msgstr "使得选中的项目私有"
+
+#: quotes-collection.php:524
+msgid "Quote(s) deleted"
+msgstr "信息已删除"
+
+#: quotes-collection.php:545
+msgid "Edit quote"
+msgstr "编辑信息"
+
+#: quotes-collection.php:555
+#: quotes-collection.php:606
+#: quotes-collection.php:621
+#: quotes-collection.php:660
+msgid "Delete"
+msgstr "删除"
+
+#: quotes-collection.php:557
+#: quotes-collection.php:622
+#: quotes-collection.php:661
+msgid "Make public"
+msgstr "公开"
+
+#: quotes-collection.php:560
+#: quotes-collection.php:623
+#: quotes-collection.php:662
+msgid "Keep private"
+msgstr "保持私有"
+
+#: quotes-collection.php:605
+msgid "Edit"
+msgstr "编辑"
+
+#: quotes-collection.php:606
+msgid "Are you sure you want to delete this quote?"
+msgstr "您确信要删除这些信息么"
+
+#: quotes-collection.php:613
+#, php-format
+msgid "Currently, you have %d quote."
+msgid_plural "Currently, you have %d quotes."
+msgstr[0] "目前您有%d条信息."
+msgstr[1] "目前您有%d条信息."
+
+#: quotes-collection.php:615
+#: quotes-collection.php:677
+msgid "Add new quote"
+msgstr "添加新信息"
+
+#: quotes-collection.php:625
+msgid "Sort by: "
+msgstr "排序："
+
+#: quotes-collection.php:627
+#: quotes-collection.php:628
+msgid "Quote"
+msgstr "信息"
+
+#: quotes-collection.php:631
+msgid "Date added"
+msgstr "添加日期"
+
+#: quotes-collection.php:632
+msgid "Date updated"
+msgstr "变更日期"
+
+#: quotes-collection.php:633
+msgid "Visibility"
+msgstr "显示状态"
+
+#: quotes-collection.php:636
+msgid "Go"
+msgstr "确定"
+
+#: quotes-collection.php:652
+msgid "Action"
+msgstr "动作"
+
+#: quotes-collection.php:671
+msgid "No quotes in the database"
+msgstr "在数据库中没有信息"
+

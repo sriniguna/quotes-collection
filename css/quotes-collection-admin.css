@@ -1,0 +1,96 @@
+/**
+ * Styles for Quotes Collection admin pages
+ *
+ * @package Quotes Collection
+ * @since 2.0
+ */
+
+header {
+	margin: 0 0 1em;
+}
+
+.list-meta {
+	display: inline-block;
+	float: left;
+	margin: 0;
+	color: #444;
+}
+
+.list-meta a {
+	text-decoration: none;
+}
+
+.list-meta .current {
+	font-weight: bold;
+}
+.list-meta .current a {
+	color: #444;
+}
+
+.list-meta .count {
+	color: #888;
+	font-weight: normal;
+}
+
+.search-box {
+	display: inline-block;
+	float: right;
+	margin: 0;
+}
+
+
+.column-quote_id {
+	width: 4em;
+}
+
+
+.quote_entries.fixed .column-date {
+	width: 8em;
+}
+
+.column-source {
+	width: 25%;
+}
+
+ .quote_entries.fixed .column-tags {
+ 	width: 12%;
+ }
+
+.column-quote {
+	min-width: 20em;
+}
+
+.quotescollection-tags {
+	list-style: none;
+	margin: 0;
+}
+
+.quotescollection-tags li {
+	display: inline-block;
+	margin: 0.1em;
+	padding: 0 0.5em;
+	background: #eee;
+	border: 1px solid #ddd;
+	border-radius: 0.2em;
+	font-size: 0.8em;
+}
+
+.highlight {
+	background: #ff0;
+}
+
+table.translation-credits {
+	border: 1px solid #aaa;
+	padding: 0;
+}
+
+table.translation-credits td,
+table.translation-credits tr,
+table.translation-credits th {
+	margin: 0;
+	padding: 0;
+}
+table.translation-credits td {
+	border: 1px solid #aaa;
+}
+

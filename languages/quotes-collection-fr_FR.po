@@ -1,0 +1,327 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Quotes Collection 1.0 en Français\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-04-22 22:08+0100\n"
+"PO-Revision-Date: 2009-05-27 10:02+0530\n"
+"Last-Translator: psykotik <psykotik@ikiru.ch>\n"
+"Language-Team: www.ikiru.ch/blog <psykotik@ikiru.ch>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: \n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: quotes-collection.php:16
+#@ quotes-collection
+msgid "Next quote"
+msgstr "Citation suivante"
+
+#: quotes-collection.php:88
+#@ quotes-collection
+msgid "Loading..."
+msgstr "Chargement..."
+
+#: quotes-collection.php:89
+#@ quotes-collection
+msgid "Error getting quote"
+msgstr "Erreur d&#39;obtention de la citation"
+
+#: quotes-collection.php:239
+#: quotes-collection.php:264
+#@ quotes-collection
+msgid "Random Quote"
+msgstr "Citation au hasard"
+
+#: quotes-collection.php:307
+#@ quotes-collection
+msgid "Title"
+msgstr "Titre"
+
+#: quotes-collection.php:308
+#@ quotes-collection
+msgid "Show author?"
+msgstr "Montrer l'auteur ?"
+
+#: quotes-collection.php:309
+#@ quotes-collection
+msgid "Show source?"
+msgstr "Montrer la source ?"
+
+#: quotes-collection.php:310
+#@ quotes-collection
+msgid "Ajax refresh feature"
+msgstr "Composant Ajax de mise &agrave; jour"
+
+#: quotes-collection.php:335
+#@ quotes-collection
+msgid "Nothing added to the database."
+msgstr "Rien n'a &eacute;t&eacute; ajout&eacute; &agrave; la base."
+
+#: quotes-collection.php:363
+#: quotes-collection.php:405
+#: quotes-collection.php:419
+#@ quotes-collection
+msgid "There was an error in the MySQL query"
+msgstr "Erreur dans le requ&ecirc;te MySQL"
+
+#: quotes-collection.php:365
+#@ quotes-collection
+msgid "Quote added"
+msgstr "Citation ajout&ecirc;e"
+
+#: quotes-collection.php:371
+#@ quotes-collection
+msgid "Quote not updated."
+msgstr "Citation pas mise &agrave; jour."
+
+#: quotes-collection.php:407
+#@ quotes-collection
+msgid "Changes saved"
+msgstr "Changements sauvegard&eacute;s"
+
+#: quotes-collection.php:421
+#@ quotes-collection
+msgid "Quote deleted"
+msgstr "Citation effac&eacute;e"
+
+#: quotes-collection.php:423
+#@ quotes-collection
+msgid "The quote cannot be deleted"
+msgstr "La citation ne peut &ecirc;tre effac&eacute;e"
+
+#: quotes-collection.php:439
+#: quotes-collection.php:536
+#@ quotes-collection
+msgid "Add Quote"
+msgstr "Ajouter citation"
+
+#: quotes-collection.php:455
+#: quotes-collection.php:540
+#@ quotes-collection
+msgid "Save changes"
+msgstr "Sauvegarder les changements"
+
+#: quotes-collection.php:456
+#@ quotes-collection
+msgid "Back"
+msgstr "Retour"
+
+#: quotes-collection.php:460
+#: quotes-collection.php:646
+#@ quotes-collection
+msgid "The quote"
+msgstr "La citation"
+
+#: quotes-collection.php:461
+#: quotes-collection.php:629
+#: quotes-collection.php:648
+#@ quotes-collection
+msgid "Author"
+msgstr "Auteur"
+
+#: quotes-collection.php:462
+#: quotes-collection.php:630
+#: quotes-collection.php:648
+#@ quotes-collection
+msgid "Source"
+msgstr "Source"
+
+#: quotes-collection.php:463
+#: quotes-collection.php:650
+#@ quotes-collection
+msgid "Tags"
+msgstr "Mots-cl&eacute;"
+
+#: quotes-collection.php:465
+#@ quotes-collection
+msgid "optional"
+msgstr "optionnel"
+
+#: quotes-collection.php:466
+#@ quotes-collection
+msgid "comma separated"
+msgstr "s&eacute;par&eacute; par des virgules"
+
+#: quotes-collection.php:503
+#: quotes-collection.php:519
+#@ quotes-collection
+msgid "Nothing done!"
+msgstr "Rien n'a &eacute;t&eacute; fait !"
+
+#: quotes-collection.php:524
+#@ quotes-collection
+msgid "Quote(s) deleted"
+msgstr "Citation(s) effac&eacute;e(s)"
+
+#: quotes-collection.php:545
+#@ quotes-collection
+msgid "Edit quote"
+msgstr "Editer la citation"
+
+#: quotes-collection.php:555
+#: quotes-collection.php:606
+#: quotes-collection.php:621
+#: quotes-collection.php:660
+#@ quotes-collection
+msgid "Delete"
+msgstr "Effacer"
+
+#: quotes-collection.php:615
+#: quotes-collection.php:677
+#@ quotes-collection
+msgid "Add new quote"
+msgstr "Ajouter une nouvelle citation"
+
+#: quotes-collection.php:605
+#@ quotes-collection
+msgid "Edit"
+msgstr "Editer"
+
+#: quotes-collection.php:606
+#@ quotes-collection
+msgid "Are you sure you want to delete this quote?"
+msgstr "Etes vous s&ucirc;r de vouloir effacer cette citation ?"
+
+#: quotes-collection.php:625
+#@ quotes-collection
+msgid "Sort by: "
+msgstr "Trier par :"
+
+#: quotes-collection.php:627
+#: quotes-collection.php:628
+#@ quotes-collection
+msgid "Quote"
+msgstr "Citation"
+
+#: quotes-collection.php:631
+#@ quotes-collection
+msgid "Date added"
+msgstr "Date d'ajout"
+
+#: quotes-collection.php:632
+#@ quotes-collection
+msgid "Date updated"
+msgstr "Date de mise &agrave; jour"
+
+#: quotes-collection.php:633
+#@ quotes-collection
+msgid "Visibility"
+msgstr "Visibilit&eacute;"
+
+#: quotes-collection.php:636
+#@ quotes-collection
+msgid "Go"
+msgstr "Aller"
+
+#: quotes-collection.php:652
+#@ quotes-collection
+msgid "Action"
+msgstr "Action"
+
+#: quotes-collection.php:671
+#@ quotes-collection
+msgid "No quotes in the database"
+msgstr "Aucune citation dans la base"
+
+#: quotes-collection.php:613
+#, php-format
+#@ quotes-collection
+msgid "Currently, you have %d quote."
+msgid_plural "Currently, you have %d quotes."
+msgstr[0] "Actuellement, vous avez %d citation."
+msgstr[1] "Actuellement, vous avez %d citations."
+
+#: quotes-collection.php:315
+#@ quotes-collection
+msgid "Tags filter"
+msgstr "Filtre de tags"
+
+#: quotes-collection.php:315
+#@ quotes-collection
+msgid "Comma separated"
+msgstr "Séparé par virgule"
+
+#: quotes-collection.php:316
+#@ quotes-collection
+msgid "Character limit"
+msgstr "Limite des charactères"
+
+#: quotes-collection.php:291
+#@ quotes-collection
+msgid "none"
+msgstr "aucun"
+
+#: quotes-collection.php:311
+#@ quotes-collection
+msgid "Advanced options"
+msgstr "Options avancées"
+
+#: quotes-collection.php:313
+#@ quotes-collection
+msgid "Random refresh"
+msgstr "Rafraîchir aléatoirement"
+
+#: quotes-collection.php:313
+#@ quotes-collection
+msgid "Unchecking this will rotate quotes in the order added, latest first."
+msgstr "Décocher cette option va faire tourner les citations dans l'ordre d'ajout, les dernières en premier."
+
+#: quotes-collection.php:314
+#@ quotes-collection
+msgid "Auto refresh"
+msgstr "Rafraîchir automatiquement"
+
+#: quotes-collection.php:314
+#@ quotes-collection
+msgid "every"
+msgstr "toutes les "
+
+#: quotes-collection.php:314
+#@ quotes-collection
+msgid "sec"
+msgstr "sec."
+
+#: quotes-collection.php:339
+#: quotes-collection.php:376
+#@ quotes-collection
+msgid "Database table not found"
+msgstr "Aucune table n'a été trouvée dans la base de données."
+
+#: quotes-collection.php:464
+#: quotes-collection.php:651
+#@ quotes-collection
+msgid "Public?"
+msgstr "Public?"
+
+#: quotes-collection.php:511
+#@ quotes-collection
+msgid "Selected quotes made public"
+msgstr "Les citations sélectionnées sont maintenant visibles par tous."
+
+#: quotes-collection.php:513
+#@ quotes-collection
+msgid "Selected quotes made private"
+msgstr "Les citations sélectionnées ne sont désormais visible que par vous."
+
+#: quotes-collection.php:557
+#: quotes-collection.php:622
+#: quotes-collection.php:661
+#@ quotes-collection
+msgid "Make public"
+msgstr "Rendre public"
+
+#: quotes-collection.php:560
+#: quotes-collection.php:623
+#: quotes-collection.php:662
+#@ quotes-collection
+msgid "Keep private"
+msgstr "Garder privé"
+

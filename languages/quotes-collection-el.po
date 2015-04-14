@@ -1,0 +1,300 @@
+# Quotes Collection plugin for WordPress: Localization template.
+# Copyright (C) 2011 Srini G
+# This file is distributed under the same license as the Quotes Collection package.
+# Srini G <srinig.com@gmail.com>, 2011.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Quotes Collection 1.5\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/quotes-collection\n"
+"POT-Creation-Date: 2011-06-30 13:32+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Spiros Doikas <www.translatum.gr>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+
+
+#: quotes-collection-ajax.php:6
+#: quotes-collection.php:215
+msgid "Next quote"
+msgstr "Επόμενο απόφθεγμα"
+
+#: quotes-collection-ajax.php:7
+msgid "Loading..."
+msgstr "Φόρτωση..."
+
+#: quotes-collection-ajax.php:8
+msgid "Error getting quote"
+msgstr "Σφάλμα κατά τη λήψη αποφθέγματος"
+
+#: quotes-collection.php:163
+msgid "Go to the first page"
+msgstr "Μετάβαση στην πρώτη σελίδα"
+
+#: quotes-collection.php:165
+msgid "Go to the previous page"
+msgstr "Μετάβαση στην πρώτη σελίδα"
+
+#: quotes-collection.php:169
+msgid "Go to the next page"
+msgstr "Μετάβαση στην επόμενη σελίδα"
+
+#: quotes-collection.php:171
+msgid "Go to the last page"
+msgstr "Μετάβαση στην τελευταία σελίδα"
+
+#: quotes-collection.php:175
+msgid "Goto page:"
+msgstr "Μετάβαση στη σελίδα:"
+
+#: quotes-collection-admin.php:14
+msgid "Nothing added to the database."
+msgstr "Δεν προστέθηκε τίποτε στη βάση δεδομένων."
+
+#: quotes-collection-admin.php:18
+#: quotes-collection-admin.php:55
+msgid "Database table not found"
+msgstr "Δεν βρέθηκε ο πίνακας της βάσης δεδομένων"
+
+#: quotes-collection-admin.php:42
+#: quotes-collection-admin.php:84
+#: quotes-collection-admin.php:98
+msgid "There was an error in the MySQL query"
+msgstr "Παρουσιάστηκε σφάλμα στην ερώτηση MySQL"
+
+#: quotes-collection-admin.php:44
+msgid "Quote added"
+msgstr "Το απόφθεγμα προστέθηκε"
+
+#: quotes-collection-admin.php:50
+msgid "Quote not updated."
+msgstr "Το απόφθεγμα δεν ενημερώθηκε"
+
+#: quotes-collection-admin.php:86
+msgid "Changes saved"
+msgstr "Οι αλλαγές αποθηκεύτηκαν"
+
+#: quotes-collection-admin.php:100
+msgid "Quote deleted"
+msgstr "Το απόφθεγμα διαγράφηκε"
+
+#: quotes-collection-admin.php:102
+msgid "The quote cannot be deleted"
+msgstr "Δεν ήταν δυνατή η διαγραφή του αποφθέγματος"
+
+#: quotes-collection-admin.php:118
+#: quotes-collection-admin.php:220
+msgid "Add Quote"
+msgstr "Προσθήκη αποφθέγματος"
+
+#: quotes-collection-admin.php:135
+#: quotes-collection-admin.php:224
+msgid "Save changes"
+msgstr "Αποθήκευση αλλαγών"
+
+#: quotes-collection-admin.php:136
+msgid "Back"
+msgstr "Πίσω"
+
+#: quotes-collection-admin.php:140
+#: quotes-collection-admin.php:386
+msgid "The quote"
+msgstr "Το απόφθεγμα"
+
+#: quotes-collection-admin.php:141
+#: quotes-collection-admin.php:368
+#: quotes-collection-admin.php:388
+msgid "Author"
+msgstr "Συγγραφέας"
+
+#: quotes-collection-admin.php:142
+#: quotes-collection-admin.php:369
+#: quotes-collection-admin.php:388
+msgid "Source"
+msgstr "Πηγή"
+
+#: quotes-collection-admin.php:143
+#: quotes-collection-admin.php:390
+msgid "Tags"
+msgstr "Ετικέτες"
+
+#: quotes-collection-admin.php:144
+#: quotes-collection-admin.php:391
+msgid "Public?"
+msgstr "Δημόσιο;"
+
+#: quotes-collection-admin.php:145
+msgid "optional"
+msgstr "προαιρετικό"
+
+#: quotes-collection-admin.php:146
+msgid "comma separated"
+msgstr "διαχωρισμένα με κόμμα"
+
+#: quotes-collection-admin.php:183
+#: quotes-collection-admin.php:199
+msgid "Nothing done!"
+msgstr "Δεν έγινε τίποτε!"
+
+#: quotes-collection-admin.php:191
+msgid "Selected quotes made public"
+msgstr "Τα επιλεγμένα αποφθέγματα έγιναν δημόσια"
+
+#: quotes-collection-admin.php:193
+msgid "Selected quotes made private"
+msgstr "Τα επιλεγμένα αποφθέγματα έγιναν ιδιωτικά"
+
+#: quotes-collection-admin.php:204
+msgid "Quote(s) deleted"
+msgstr "Τα αποφθέγματα διαγράφηκαν"
+
+#: quotes-collection-admin.php:231
+msgid "Edit quote"
+msgstr "Επεξεργασία αποφθέγματος"
+
+#: quotes-collection-admin.php:258
+#: quotes-collection-admin.php:267
+#: quotes-collection-admin.php:412
+msgid "Add new quote"
+msgstr "Προσθήκη νέου αποφθέγματος"
+
+#: quotes-collection-admin.php:263
+#: quotes-collection-admin.php:406
+msgid "No quotes in the database"
+msgstr "Δεν υπάρχουν αποφθέγματα στη βάση δεδομένων"
+
+#: quotes-collection-admin.php:337
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+#: quotes-collection-admin.php:337
+msgid "Are you sure you want to delete this quote?"
+msgstr "Θέλετε σίγουρα να διαγράψετε αυτό το απόφθεγμα;"
+
+#: quotes-collection-admin.php:337
+#: quotes-collection-admin.php:358
+msgid "Delete"
+msgstr "Διαγραφή"
+
+#: quotes-collection-admin.php:344
+msgid "No"
+msgstr "Όχι"
+
+#: quotes-collection-admin.php:345
+msgid "Yes"
+msgstr "Ναι"
+
+#: quotes-collection-admin.php:357
+msgid "Bulk Actions"
+msgstr "Μαζικές ενέργειες"
+
+#: quotes-collection-admin.php:359
+msgid "Make public"
+msgstr "Να γίνουν δημόσια"
+
+#: quotes-collection-admin.php:360
+msgid "Keep private"
+msgstr "Να μείνουν ιδιωτικά"
+
+#: quotes-collection-admin.php:362
+msgid "Apply"
+msgstr "Εφαρμογή"
+
+#: quotes-collection-admin.php:364
+msgid "Sort by: "
+msgstr "Ταξινόμηση κατά: "
+
+#: quotes-collection-admin.php:366
+#: quotes-collection-admin.php:367
+msgid "Quote"
+msgstr "Απόφθεγμα"
+
+#: quotes-collection-admin.php:370
+msgid "Date added"
+msgstr "Ημερομηνία προσθήκης"
+
+#: quotes-collection-admin.php:371
+msgid "Date updated"
+msgstr "Ημερομηνία ενημέρωσης"
+
+#: quotes-collection-admin.php:372
+msgid "Visibility"
+msgstr "Ορατότητα"
+
+#: quotes-collection-admin.php:375
+msgid "Go"
+msgstr "Μετάβαση"
+
+#: quotes-collection-admin.php:377
+#: quotes-collection-admin.php:397
+#, php-format
+msgid "%d quote"
+msgid_plural "%d quotes"
+msgstr[0] "%d απόφθεγμα"
+msgstr[1] "%d αποφθέγματα"
+
+#: quotes-collection-widget.php:13
+#: quotes-collection-widget.php:38
+msgid "Random Quote"
+msgstr "Τυχαίο απόφθεγμα"
+
+#: quotes-collection-widget.php:65
+msgid "none"
+msgstr "κανένα"
+
+#: quotes-collection-widget.php:84
+msgid "Title"
+msgstr "Τίτλος"
+
+#: quotes-collection-widget.php:85
+msgid "Show author?"
+msgstr "Εμφάνιση συγγραφέα;"
+
+#: quotes-collection-widget.php:86
+msgid "Show source?"
+msgstr "Εμφάνιση πηγής;"
+
+#: quotes-collection-widget.php:87
+msgid "Ajax refresh feature"
+msgstr "Λειτουργεία ανανέωσης Ajax"
+
+#: quotes-collection-widget.php:88
+msgid "Advanced options"
+msgstr "Επιλογές για προχωρημένους"
+
+#: quotes-collection-widget.php:90
+msgid "Random refresh"
+msgstr "Τυχαία ανανέωση"
+
+#: quotes-collection-widget.php:90
+msgid "Unchecking this will rotate quotes in the order added, latest first."
+msgstr "Η αποεπιλογή θα έχει ως αποτέλεσμα να εμφανίζονται τα αποφθέγματα με τη σειρά προσθήκης ξεκινώντας από το τελευταίο."
+
+#: quotes-collection-widget.php:91
+msgid "Auto refresh"
+msgstr "Αυτόματη ανανέωση"
+
+#: quotes-collection-widget.php:91
+msgid "every"
+msgstr "κάθε"
+
+#: quotes-collection-widget.php:91
+msgid "sec"
+msgstr "δευτ."
+
+#: quotes-collection-widget.php:92
+msgid "Tags filter"
+msgstr "Φίλτρο ετικετών"
+
+#: quotes-collection-widget.php:92
+msgid "Comma separated"
+msgstr "Διαχωρισμένα με κόμμα"
+
+#: quotes-collection-widget.php:93
+msgid "Character limit"
+msgstr "Όριο χαρακτήρων"

@@ -1,0 +1,305 @@
+# Quotes Collection plugin for WordPress: Localization template.
+# Copyright (C) 2011 Srini G
+# This file is distributed under the same license as the Quotes Collection package.
+# Srini G <srinig.com@gmail.com>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quotes Collection 1.5\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/quotes-collection\n"
+"POT-Creation-Date: 2011-06-30 13:32+0530\n"
+"PO-Revision-Date: 2011-08-10 17:59+0900\n"
+"Last-Translator: urepko <urepko@gmail.com>\n"
+"Language-Team: JAPANESE <http ://wppluginsj.sourceforge.jp/i18n-ja_jp/> <urepko@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Japanese\n"
+"X-Poedit-Country: JAPAN\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Bookmarks: 17,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
+
+#: quotes-collection-ajax.php:6
+#: quotes-collection.php:215
+msgid "Next quote"
+msgstr "次の引用文"
+
+#: quotes-collection-ajax.php:7
+msgid "Loading..."
+msgstr "ローディング中・・・"
+
+#: quotes-collection-ajax.php:8
+msgid "Error getting quote"
+msgstr "引用に失敗しました"
+
+#: quotes-collection.php:163
+msgid "Go to the first page"
+msgstr "最初のページへ"
+
+#: quotes-collection.php:165
+msgid "Go to the previous page"
+msgstr "前のページへ"
+
+#: quotes-collection.php:169
+msgid "Go to the next page"
+msgstr "次のページへ"
+
+#: quotes-collection.php:171
+msgid "Go to the last page"
+msgstr "最後のページへ"
+
+#: quotes-collection.php:175
+msgid "Goto page:"
+msgstr "指定ページへ"
+
+#: quotes-collection-admin.php:14
+msgid "Nothing added to the database."
+msgstr "データベースに追加する物はありません。"
+
+#: quotes-collection-admin.php:18
+#: quotes-collection-admin.php:55
+msgid "Database table not found"
+msgstr "データベースのテーブルがありません。"
+
+#: quotes-collection-admin.php:42
+#: quotes-collection-admin.php:84
+#: quotes-collection-admin.php:98
+msgid "There was an error in the MySQL query"
+msgstr "MySQLのクエリに間違いが有りました。"
+
+#: quotes-collection-admin.php:44
+msgid "Quote added"
+msgstr "引用文の追加"
+
+#: quotes-collection-admin.php:50
+msgid "Quote not updated."
+msgstr "引用文を更新しない"
+
+#: quotes-collection-admin.php:86
+msgid "Changes saved"
+msgstr "変更し保存しました"
+
+#: quotes-collection-admin.php:100
+msgid "Quote deleted"
+msgstr "引用文を削除"
+
+#: quotes-collection-admin.php:102
+msgid "The quote cannot be deleted"
+msgstr "引用文を削除できません。"
+
+#: quotes-collection-admin.php:118
+#: quotes-collection-admin.php:220
+msgid "Add Quote"
+msgstr "引用文を追加"
+
+#: quotes-collection-admin.php:135
+#: quotes-collection-admin.php:224
+msgid "Save changes"
+msgstr "保存して変更"
+
+#: quotes-collection-admin.php:136
+msgid "Back"
+msgstr "戻る"
+
+#: quotes-collection-admin.php:140
+#: quotes-collection-admin.php:386
+msgid "The quote"
+msgstr "引用文"
+
+#: quotes-collection-admin.php:141
+#: quotes-collection-admin.php:368
+#: quotes-collection-admin.php:388
+msgid "Author"
+msgstr "作者"
+
+#: quotes-collection-admin.php:142
+#: quotes-collection-admin.php:369
+#: quotes-collection-admin.php:388
+msgid "Source"
+msgstr "引用元（ソース）"
+
+#: quotes-collection-admin.php:143
+#: quotes-collection-admin.php:390
+msgid "Tags"
+msgstr "タグ"
+
+#: quotes-collection-admin.php:144
+#: quotes-collection-admin.php:391
+msgid "Public?"
+msgstr "公開します？"
+
+#: quotes-collection-admin.php:145
+msgid "optional"
+msgstr "オプション"
+
+#: quotes-collection-admin.php:146
+msgid "comma separated"
+msgstr "カンマで区切る"
+
+#: quotes-collection-admin.php:183
+#: quotes-collection-admin.php:199
+msgid "Nothing done!"
+msgstr "何もしませんでした。"
+
+#: quotes-collection-admin.php:191
+msgid "Selected quotes made public"
+msgstr "選択した引用文　'%s'　を公開にしました。"
+
+#: quotes-collection-admin.php:193
+msgid "Selected quotes made private"
+msgstr "選択した引用文　'%s'　を非公開にしました。"
+
+#: quotes-collection-admin.php:204
+msgid "Quote(s) deleted"
+msgstr "引用文の削除"
+
+#: quotes-collection-admin.php:231
+msgid "Edit quote"
+msgstr "引用文の編集"
+
+#: quotes-collection-admin.php:258
+#: quotes-collection-admin.php:267
+#: quotes-collection-admin.php:412
+msgid "Add new quote"
+msgstr "引用文の追加"
+
+#: quotes-collection-admin.php:263
+#: quotes-collection-admin.php:406
+msgid "No quotes in the database"
+msgstr "データベースに引用文はありません。"
+
+#: quotes-collection-admin.php:337
+msgid "Edit"
+msgstr "編集"
+
+#: quotes-collection-admin.php:337
+msgid "Are you sure you want to delete this quote?"
+msgstr "本当にこの引用文を削除しますか？"
+
+#: quotes-collection-admin.php:337
+#: quotes-collection-admin.php:358
+msgid "Delete"
+msgstr "削除"
+
+#: quotes-collection-admin.php:344
+msgid "No"
+msgstr "いいえ"
+
+#: quotes-collection-admin.php:345
+msgid "Yes"
+msgstr "はい"
+
+#: quotes-collection-admin.php:357
+msgid "Bulk Actions"
+msgstr "一括操作"
+
+#: quotes-collection-admin.php:359
+msgid "Make public"
+msgstr "公開"
+
+#: quotes-collection-admin.php:360
+msgid "Keep private"
+msgstr "非公開"
+
+#: quotes-collection-admin.php:362
+msgid "Apply"
+msgstr "適用する"
+
+#: quotes-collection-admin.php:364
+msgid "Sort by: "
+msgstr "並べ替え: "
+
+#: quotes-collection-admin.php:366
+#: quotes-collection-admin.php:367
+msgid "Quote"
+msgstr "引用文"
+
+#: quotes-collection-admin.php:370
+msgid "Date added"
+msgstr "追加日"
+
+#: quotes-collection-admin.php:371
+msgid "Date updated"
+msgstr "更新日"
+
+#: quotes-collection-admin.php:372
+msgid "Visibility"
+msgstr "可視化"
+
+#: quotes-collection-admin.php:375
+msgid "Go"
+msgstr "実行"
+
+#: quotes-collection-admin.php:377
+#: quotes-collection-admin.php:397
+#, php-format
+msgid "%d quote"
+msgstr "%d 個の引用文があります"
+
+#: quotes-collection-widget.php:13
+#: quotes-collection-widget.php:38
+msgid "Random Quote"
+msgstr "Random Quote"
+
+#: quotes-collection-widget.php:65
+msgid "none"
+msgstr "なし"
+
+#: quotes-collection-widget.php:84
+msgid "Title"
+msgstr "タイトル"
+
+#: quotes-collection-widget.php:85
+msgid "Show author?"
+msgstr "作者を見る？"
+
+#: quotes-collection-widget.php:86
+msgid "Show source?"
+msgstr "ソースを見る？"
+
+#: quotes-collection-widget.php:87
+msgid "Ajax refresh feature"
+msgstr "Ajaxで更新する"
+
+#: quotes-collection-widget.php:88
+msgid "Advanced options"
+msgstr "高度なオプション"
+
+#: quotes-collection-widget.php:90
+msgid "Random refresh"
+msgstr "ランダムに表示"
+
+#: quotes-collection-widget.php:90
+msgid "Unchecking this will rotate quotes in the order added, latest first."
+msgstr "このチェックをはずすと、新しいものから、追加した順番に引用分を順次表示します。"
+
+#: quotes-collection-widget.php:91
+msgid "Auto refresh"
+msgstr "Ajaxで更新する"
+
+#: quotes-collection-widget.php:91
+msgid "every"
+msgstr "毎"
+
+#: quotes-collection-widget.php:91
+msgid "sec"
+msgstr "秒"
+
+#: quotes-collection-widget.php:92
+msgid "Tags filter"
+msgstr "タグフィルター"
+
+#: quotes-collection-widget.php:92
+msgid "Comma separated"
+msgstr "カンマで区切る"
+
+#: quotes-collection-widget.php:93
+msgid "Character limit"
+msgstr "文字数制限"
+
+msgid "ASC"
+msgstr "昇順"
+
+msgid "DESC"
+msgstr "降順"
+

@@ -1,0 +1,301 @@
+# Quotes Collection plugin for WordPress: Localization template.
+# Copyright (C) 2011 Srini G
+# This file is distributed under the same license as the Quotes Collection package.
+# Srini G <srinig.com@gmail.com>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quotes Collection 1.5\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/quotes-collection\n"
+"POT-Creation-Date: 2011-06-30 13:32+0530\n"
+"PO-Revision-Date: 2011-08-03 13:05+0200\n"
+"Last-Translator: Tailor Vijay <tailor.vj@gmail.com>\n"
+"Language-Team: Tailor Vijay <tailor.vj@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Language: Hebrew\n"
+"X-Poedit-Country: ISRAEL\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: quotes-collection-ajax.php:6
+#: quotes-collection.php:215
+msgid "Next quote"
+msgstr "ציטוט הבא"
+
+#: quotes-collection-ajax.php:7
+msgid "Loading..."
+msgstr "טוען..."
+
+#: quotes-collection-ajax.php:8
+msgid "Error getting quote"
+msgstr "שגיאה בטעינת הציטוט"
+
+#: quotes-collection.php:163
+msgid "Go to the first page"
+msgstr "עבור לעמוד הראשון"
+
+#: quotes-collection.php:165
+msgid "Go to the previous page"
+msgstr "עבור לעמוד הקודם"
+
+#: quotes-collection.php:169
+msgid "Go to the next page"
+msgstr "עבור לעמוד הבא"
+
+#: quotes-collection.php:171
+msgid "Go to the last page"
+msgstr "עבור לעמוד האחרון"
+
+#: quotes-collection.php:175
+msgid "Goto page:"
+msgstr "עבור לעמוד מספר:"
+
+#: quotes-collection-admin.php:14
+msgid "Nothing added to the database."
+msgstr "לא נוספו ערכים למסד הנתונים."
+
+#: quotes-collection-admin.php:18
+#: quotes-collection-admin.php:55
+msgid "Database table not found"
+msgstr "לא ניתן לאתר את הטבלה במסד הנתונים"
+
+#: quotes-collection-admin.php:42
+#: quotes-collection-admin.php:84
+#: quotes-collection-admin.php:98
+msgid "There was an error in the MySQL query"
+msgstr "שגיאה בחיפוש במסד הנתונים"
+
+#: quotes-collection-admin.php:44
+msgid "Quote added"
+msgstr "הציטוט נוסף"
+
+#: quotes-collection-admin.php:50
+msgid "Quote not updated."
+msgstr "הציטוט לא עודכן."
+
+#: quotes-collection-admin.php:86
+msgid "Changes saved"
+msgstr "השינויים נשמרו"
+
+#: quotes-collection-admin.php:100
+msgid "Quote deleted"
+msgstr "הציטוט נמחק"
+
+#: quotes-collection-admin.php:102
+msgid "The quote cannot be deleted"
+msgstr "לא ניתן למחוק את הציטוט"
+
+#: quotes-collection-admin.php:118
+#: quotes-collection-admin.php:220
+msgid "Add Quote"
+msgstr "הוסף ציטוט"
+
+#: quotes-collection-admin.php:135
+#: quotes-collection-admin.php:224
+msgid "Save changes"
+msgstr "שמור שינויים"
+
+#: quotes-collection-admin.php:136
+msgid "Back"
+msgstr "חזרה"
+
+#: quotes-collection-admin.php:140
+#: quotes-collection-admin.php:386
+msgid "The quote"
+msgstr "הציטוט"
+
+#: quotes-collection-admin.php:141
+#: quotes-collection-admin.php:368
+#: quotes-collection-admin.php:388
+msgid "Author"
+msgstr "כותב"
+
+#: quotes-collection-admin.php:142
+#: quotes-collection-admin.php:369
+#: quotes-collection-admin.php:388
+msgid "Source"
+msgstr "מקור"
+
+#: quotes-collection-admin.php:143
+#: quotes-collection-admin.php:390
+msgid "Tags"
+msgstr "תגיות"
+
+#: quotes-collection-admin.php:144
+#: quotes-collection-admin.php:391
+msgid "Public?"
+msgstr "ציבורי?"
+
+#: quotes-collection-admin.php:145
+msgid "optional"
+msgstr "אופציונלי"
+
+#: quotes-collection-admin.php:146
+msgid "comma separated"
+msgstr "מופרד בפסיקים"
+
+#: quotes-collection-admin.php:183
+#: quotes-collection-admin.php:199
+msgid "Nothing done!"
+msgstr "לא בוצע דבר!"
+
+#: quotes-collection-admin.php:191
+msgid "Selected quotes made public"
+msgstr "הציטוטים שנבחרו פורסמו"
+
+#: quotes-collection-admin.php:193
+msgid "Selected quotes made private"
+msgstr "הציטוטים שנבחרו הוגדרו כפרטיים"
+
+#: quotes-collection-admin.php:204
+msgid "Quote(s) deleted"
+msgstr "ציטוטים נמחקו"
+
+#: quotes-collection-admin.php:231
+msgid "Edit quote"
+msgstr "ערוץ ציטוט"
+
+#: quotes-collection-admin.php:258
+#: quotes-collection-admin.php:267
+#: quotes-collection-admin.php:412
+msgid "Add new quote"
+msgstr "הוסף ציטוט חדש"
+
+#: quotes-collection-admin.php:263
+#: quotes-collection-admin.php:406
+msgid "No quotes in the database"
+msgstr "אין ציטוטים במסד הנתונים"
+
+#: quotes-collection-admin.php:337
+msgid "Edit"
+msgstr "ערוך"
+
+#: quotes-collection-admin.php:337
+msgid "Are you sure you want to delete this quote?"
+msgstr "האם אתה בטוח שברצונך למחוק את הציטוט?"
+
+#: quotes-collection-admin.php:337
+#: quotes-collection-admin.php:358
+msgid "Delete"
+msgstr "מחק"
+
+#: quotes-collection-admin.php:344
+msgid "No"
+msgstr "לא"
+
+#: quotes-collection-admin.php:345
+msgid "Yes"
+msgstr "כן"
+
+#: quotes-collection-admin.php:357
+msgid "Bulk Actions"
+msgstr "בחירה מרובה"
+
+#: quotes-collection-admin.php:359
+msgid "Make public"
+msgstr "הפוך לציבורי"
+
+#: quotes-collection-admin.php:360
+msgid "Keep private"
+msgstr "השאר כפרטי"
+
+#: quotes-collection-admin.php:362
+msgid "Apply"
+msgstr "בצע"
+
+#: quotes-collection-admin.php:364
+msgid "Sort by: "
+msgstr "מיין לפי:"
+
+#: quotes-collection-admin.php:366
+#: quotes-collection-admin.php:367
+msgid "Quote"
+msgstr "ציטוט"
+
+#: quotes-collection-admin.php:370
+msgid "Date added"
+msgstr "תאריך הוספה"
+
+#: quotes-collection-admin.php:371
+msgid "Date updated"
+msgstr "תאריך עדכון"
+
+#: quotes-collection-admin.php:372
+msgid "Visibility"
+msgstr "ניראות"
+
+#: quotes-collection-admin.php:375
+msgid "Go"
+msgstr "קדימה"
+
+#: quotes-collection-admin.php:377
+#: quotes-collection-admin.php:397
+#, php-format
+msgid "%d quote"
+msgid_plural "%d quotes"
+msgstr[0] "%d ציטוט"
+msgstr[1] "%d ציטוטים"
+
+#: quotes-collection-widget.php:13
+#: quotes-collection-widget.php:38
+msgid "Random Quote"
+msgstr "ציטוט אקראי"
+
+#: quotes-collection-widget.php:65
+msgid "none"
+msgstr "ריק"
+
+#: quotes-collection-widget.php:84
+msgid "Title"
+msgstr "כותרת"
+
+#: quotes-collection-widget.php:85
+msgid "Show author?"
+msgstr "הצג כותב"
+
+#: quotes-collection-widget.php:86
+msgid "Show source?"
+msgstr "הצג מקור"
+
+#: quotes-collection-widget.php:87
+msgid "Ajax refresh feature"
+msgstr "תכונת עדכון תצוגה דינאמי"
+
+#: quotes-collection-widget.php:88
+msgid "Advanced options"
+msgstr "אפשרויות מתקדמות"
+
+#: quotes-collection-widget.php:90
+msgid "Random refresh"
+msgstr "עדכון רנדומלי"
+
+#: quotes-collection-widget.php:90
+msgid "Unchecking this will rotate quotes in the order added, latest first."
+msgstr "סימון אפשרות זו יגרום לציטוטים להופיע לפי סדר ההוספה מהאחרון לראשון."
+
+#: quotes-collection-widget.php:91
+msgid "Auto refresh"
+msgstr "עדכון תצוגה אוטומטי"
+
+#: quotes-collection-widget.php:91
+msgid "every"
+msgstr "כל"
+
+#: quotes-collection-widget.php:91
+msgid "sec"
+msgstr "שניות"
+
+#: quotes-collection-widget.php:92
+msgid "Tags filter"
+msgstr "מסנן תגיות"
+
+#: quotes-collection-widget.php:92
+msgid "Comma separated"
+msgstr "מופרד בפסיקים"
+
+#: quotes-collection-widget.php:93
+msgid "Character limit"
+msgstr "מספר תווים מקסימלי"
+

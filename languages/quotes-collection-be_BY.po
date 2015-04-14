@@ -1,0 +1,256 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Quotes Collection 1.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-05-29 05:24+0300\n"
+"PO-Revision-Date: 2012-01-30 15:33+0200\n"
+"Language-Team: Web Geeks\n"
+"Last-Translator: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Belarusian\n"
+"X-Poedit-Country: BELARUS\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_c;__ngettext_noop:1,2\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../quotes-collection.php:62
+#: ../quotes-collection.php:175
+#: ../quotes-collection.php:179
+msgid "Next quote"
+msgstr "Наступная цытата"
+
+#: ../quotes-collection.php:63
+msgid "Loading..."
+msgstr "секундочку..."
+
+#: ../quotes-collection.php:64
+msgid "Error getting quote"
+msgstr "Памылка стварэння цытаты"
+
+#: ../quotes-collection.php:200
+#: ../quotes-collection.php:221
+msgid "Random Quote"
+msgstr "Выпадковая цытата"
+
+#: ../quotes-collection.php:242
+msgid "none"
+msgstr "none"
+
+#: ../quotes-collection.php:253
+msgid "Title"
+msgstr "Загаловак"
+
+#: ../quotes-collection.php:254
+msgid "Show author?"
+msgstr "Паказваць аўтара?"
+
+#: ../quotes-collection.php:255
+msgid "Show source?"
+msgstr "Паказваць крыніцу?"
+
+#: ../quotes-collection.php:256
+msgid "Ajax refresh feature"
+msgstr "Уключыць абнаўленне Ajax "
+
+#: ../quotes-collection.php:257
+msgid "Tags filter"
+msgstr "Фільтр па пазнаках"
+
+#: ../quotes-collection.php:257
+msgid "Comma separated"
+msgstr "праз коску"
+
+#: ../quotes-collection.php:258
+msgid "Character limit"
+msgstr "Абмежаваць кол-у знакаў да"
+
+#: ../quotes-collection.php:260
+msgid "Click here"
+msgstr "Перайсці"
+
+#: ../quotes-collection.php:260
+msgid "to manage your collection of quotes"
+msgstr " да кіравання цытатамі"
+
+#: ../quotes-collection.php:277
+msgid "Nothing added to the database."
+msgstr "Нічога не дададзена"
+
+#: ../quotes-collection.php:281
+#: ../quotes-collection.php:319
+msgid "Database table not found"
+msgstr "Табліца не знойдзена"
+
+#: ../quotes-collection.php:306
+#: ../quotes-collection.php:349
+#: ../quotes-collection.php:363
+msgid "There was an error in the MySQL query"
+msgstr "Памылка ў запыце MySQL"
+
+#: ../quotes-collection.php:308
+msgid "Quote added"
+msgstr "Цытата дададзена"
+
+#: ../quotes-collection.php:314
+msgid "Quote not updated."
+msgstr "Цытата не абноўлена"
+
+#: ../quotes-collection.php:351
+msgid "Changes saved"
+msgstr "Змены захаваны"
+
+#: ../quotes-collection.php:365
+msgid "Quote deleted"
+msgstr "Цытата выдалена"
+
+#: ../quotes-collection.php:367
+msgid "The quote cannot be deleted"
+msgstr "Цытату не выдаліць"
+
+#: ../quotes-collection.php:383
+#: ../quotes-collection.php:477
+msgid "Add Quote"
+msgstr "Дадаць цытату"
+
+#: ../quotes-collection.php:399
+#: ../quotes-collection.php:481
+msgid "Save changes"
+msgstr "Захаваць"
+
+#: ../quotes-collection.php:400
+msgid "Back"
+msgstr "Назад"
+
+#: ../quotes-collection.php:404
+#: ../quotes-collection.php:587
+msgid "The quote"
+msgstr "Цытата"
+
+#: ../quotes-collection.php:405
+#: ../quotes-collection.php:570
+#: ../quotes-collection.php:589
+msgid "Author"
+msgstr "Аўтар"
+
+#: ../quotes-collection.php:406
+#: ../quotes-collection.php:571
+#: ../quotes-collection.php:589
+msgid "Source"
+msgstr "Крыніца"
+
+#: ../quotes-collection.php:407
+#: ../quotes-collection.php:591
+msgid "Tags"
+msgstr "Пазнакі"
+
+#: ../quotes-collection.php:408
+#: ../quotes-collection.php:592
+msgid "Visible?"
+msgstr "Бачная?"
+
+#: ../quotes-collection.php:409
+msgid "optional"
+msgstr "допольнительно"
+
+#: ../quotes-collection.php:410
+msgid "comma separated"
+msgstr "праз коску"
+
+#: ../quotes-collection.php:447
+#: ../quotes-collection.php:460
+msgid "Nothing done!"
+msgstr "Нічога не зроблена"
+
+#: ../quotes-collection.php:454
+#, php-format
+msgid "Visibility status of selected quotes set to '%s'"
+msgstr "Бачнасць абраных цытат зменена на '%s'"
+
+#: ../quotes-collection.php:465
+msgid "Quote(s) deleted"
+msgstr "Цытата(-ы) выдалена"
+
+#: ../quotes-collection.php:486
+msgid "Edit quote"
+msgstr "Кіраваць"
+
+#: ../quotes-collection.php:496
+#: ../quotes-collection.php:547
+#: ../quotes-collection.php:562
+#: ../quotes-collection.php:601
+msgid "Delete"
+msgstr "Выдаліць"
+
+#: ../quotes-collection.php:498
+#: ../quotes-collection.php:563
+#: ../quotes-collection.php:602
+msgid "Make visible"
+msgstr "Паказаць"
+
+#: ../quotes-collection.php:501
+#: ../quotes-collection.php:564
+#: ../quotes-collection.php:603
+msgid "Make invisible"
+msgstr "Схаваць"
+
+#: ../quotes-collection.php:546
+msgid "Edit"
+msgstr "Кіраваць"
+
+#: ../quotes-collection.php:547
+msgid "Are you sure you want to delete this quote?"
+msgstr "Вы ўпэўнены, што жадаеце выдаліць гэту цытату?"
+
+#: ../quotes-collection.php:554
+#, php-format
+msgid "Currently, you have %d quote."
+msgid_plural "Currently, you have %d quotes."
+msgstr[0] "У вас %d цытата."
+msgstr[1] "У вас %d цытат."
+
+#: ../quotes-collection.php:556
+#: ../quotes-collection.php:618
+msgid "Add new quote"
+msgstr "Дадаць новую цытату"
+
+#: ../quotes-collection.php:566
+msgid "Sort by: "
+msgstr "Сартаваць:"
+
+#: ../quotes-collection.php:568
+#: ../quotes-collection.php:569
+msgid "Quote"
+msgstr "Цытата"
+
+#: ../quotes-collection.php:572
+msgid "Date added"
+msgstr "Дата дададзена"
+
+#: ../quotes-collection.php:573
+msgid "Date updated"
+msgstr "Дата зменена"
+
+#: ../quotes-collection.php:574
+msgid "Visibility"
+msgstr "Бачнасць"
+
+#: ../quotes-collection.php:577
+msgid "Go"
+msgstr "Так"
+
+#: ../quotes-collection.php:593
+msgid "Action"
+msgstr "Дзеянні"
+
+#: ../quotes-collection.php:612
+msgid "No quotes in the database"
+msgstr "Няма цытат у базе"
+
+#~ msgid "Manage"
+#~ msgstr "Кіраванне"
+
+#~ msgid "from"
+#~ msgstr "aus"

@@ -1,0 +1,239 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Quotes Collection 1.1.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-05-28 16:38+0300\n"
+"PO-Revision-Date: 2009-05-28 19:45+0200\n"
+"Last-Translator: \n"
+"Language-Team:  <admin@go-by.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-Country: RUSSIAN FEDERATION\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_c;__ngettext_noop:1,2\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../quotes-collection.php:60
+#: ../quotes-collection.php:96
+#: ../quotes-collection.php:100
+msgid "Next quote"
+msgstr "Kita citata"
+
+#: ../quotes-collection.php:61
+msgid "Loading..."
+msgstr "kraunasi..."
+
+#: ../quotes-collection.php:62
+msgid "Error getting quote"
+msgstr "Įvyko klaida užkarunant citatą"
+
+#: ../quotes-collection.php:120
+#: ../quotes-collection.php:137
+msgid "Random Quote"
+msgstr "Atsitiktinė citata"
+
+#: ../quotes-collection.php:164
+msgid "Title"
+msgstr "Pavadinimas"
+
+#: ../quotes-collection.php:165
+msgid "Show author?"
+msgstr "Rodyti autorių?"
+
+#: ../quotes-collection.php:166
+msgid "Show source?"
+msgstr "Rodyti šaltinį?"
+
+#: ../quotes-collection.php:167
+msgid "Ajax refresh feature"
+msgstr "Ajax atnaujinimo funkcija"
+
+#: ../quotes-collection.php:169
+msgid "Manage your collection of quotes at"
+msgstr "Tvarkyti savo citatų kolekciją"
+
+#: ../quotes-collection.php:169
+msgid "Manage"
+msgstr "Tvarkyti"
+
+#: ../quotes-collection.php:186
+msgid "Nothing added to the database."
+msgstr "Nieko nėra patalpinta duomenų bazėje."
+
+#: ../quotes-collection.php:190
+#: ../quotes-collection.php:228
+msgid "Database table not found"
+msgstr "Duomenų lentelė nerasta"
+
+#: ../quotes-collection.php:215
+#: ../quotes-collection.php:258
+#: ../quotes-collection.php:272
+msgid "There was an error in the MySQL query"
+msgstr "Įvyko klaida užklausiant MySQL"
+
+#: ../quotes-collection.php:217
+msgid "Quote added"
+msgstr "Citata patalpinta"
+
+#: ../quotes-collection.php:223
+msgid "Quote not updated."
+msgstr "Citata neatnaujinta."
+
+#: ../quotes-collection.php:260
+msgid "Changes saved"
+msgstr "Pakeitimai išsaugoti"
+
+#: ../quotes-collection.php:274
+msgid "Quote deleted"
+msgstr "Citata pašalinta"
+
+#: ../quotes-collection.php:276
+msgid "The quote cannot be deleted"
+msgstr "Citata negali būti ištrinta"
+
+#: ../quotes-collection.php:292
+#: ../quotes-collection.php:385
+msgid "Add Quote"
+msgstr "Pridėti citatą"
+
+#: ../quotes-collection.php:308
+#: ../quotes-collection.php:389
+msgid "Save changes"
+msgstr "Išsaugoti pakeitimus"
+
+#: ../quotes-collection.php:309
+msgid "Back"
+msgstr "Grįžti"
+
+#: ../quotes-collection.php:313
+#: ../quotes-collection.php:491
+msgid "The quote"
+msgstr "Citata"
+
+#: ../quotes-collection.php:314
+#: ../quotes-collection.php:477
+#: ../quotes-collection.php:493
+msgid "Author"
+msgstr "Autorius"
+
+#: ../quotes-collection.php:315
+#: ../quotes-collection.php:478
+#: ../quotes-collection.php:493
+msgid "Source"
+msgstr "Šaltinis"
+
+#: ../quotes-collection.php:316
+#: ../quotes-collection.php:495
+msgid "Tags"
+msgstr "Žymos"
+
+#: ../quotes-collection.php:317
+#: ../quotes-collection.php:496
+msgid "Visible?"
+msgstr "Matomas?"
+
+#: ../quotes-collection.php:318
+msgid "optional"
+msgstr "papildomai"
+
+#: ../quotes-collection.php:319
+msgid "comma separated"
+msgstr "atskirti kableliais"
+
+#: ../quotes-collection.php:355
+#: ../quotes-collection.php:368
+msgid "Nothing done!"
+msgstr "Nieko nedaryti!"
+
+#: ../quotes-collection.php:362
+#, php-format
+msgid "Visibility status of selected quotes set to '%s'"
+msgstr "Matomos atrinktos citatos pakeistos į '%s'"
+
+#: ../quotes-collection.php:373
+msgid "Quote(s) deleted"
+msgstr "Citata(os) ištrinta(os)"
+
+#: ../quotes-collection.php:394
+msgid "Edit quote"
+msgstr "Taisyti citatą"
+
+#: ../quotes-collection.php:404
+#: ../quotes-collection.php:455
+#: ../quotes-collection.php:469
+#: ../quotes-collection.php:505
+msgid "Delete"
+msgstr "Ištrinti"
+
+#: ../quotes-collection.php:406
+#: ../quotes-collection.php:470
+#: ../quotes-collection.php:506
+msgid "Make visible"
+msgstr "Padaryti matomą"
+
+#: ../quotes-collection.php:409
+#: ../quotes-collection.php:471
+#: ../quotes-collection.php:507
+msgid "Make invisible"
+msgstr "Padaryti nematomą"
+
+#: ../quotes-collection.php:454
+msgid "Edit"
+msgstr "Taisyti"
+
+#: ../quotes-collection.php:455
+msgid "Are you sure you want to delete this quote?"
+msgstr "Ar jūs tikrai norite ištrinti šią citatą?"
+
+#: ../quotes-collection.php:462
+#, php-format
+msgid "Currently, you have %d quote."
+msgid_plural "Currently, you have %d quotes."
+msgstr[0] "Dabar jūs turite %d citatą."
+msgstr[1] "Dabar jūs turite %d citatas."
+
+#: ../quotes-collection.php:464
+#: ../quotes-collection.php:521
+msgid "Add new quote"
+msgstr "Pridėti naują citatą"
+
+#: ../quotes-collection.php:473
+msgid "Sort by: "
+msgstr "Rūšiuoti pagal:"
+
+#: ../quotes-collection.php:475
+#: ../quotes-collection.php:476
+msgid "Quote"
+msgstr "Citata"
+
+#: ../quotes-collection.php:479
+msgid "Date added"
+msgstr "Papildymo data"
+
+#: ../quotes-collection.php:480
+msgid "Date updated"
+msgstr "Data atnaujinta"
+
+#: ../quotes-collection.php:481
+msgid "Visibility"
+msgstr "Matomumas"
+
+#: ../quotes-collection.php:484
+msgid "Go"
+msgstr "Taip"
+
+#: ../quotes-collection.php:497
+msgid "Action"
+msgstr "Veiksmas"
+
+#: ../quotes-collection.php:515
+msgid "No quotes in the database"
+msgstr "Citatų duomenų bazėje nėra"
+
+#~ msgid "from"
+#~ msgstr "aus"
+

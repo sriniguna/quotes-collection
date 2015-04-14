@@ -1,0 +1,253 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Quotes Collection 1.0 en Español\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/quotes-collection\n"
+"POT-Creation-Date: 2009-05-25 10:15+0530\n"
+"PO-Revision-Date: 2009-05-28 19:07-0300\n"
+"Last-Translator: Gershu <gershu@msn.com>\n"
+"Language-Team: gershu.com.ar <gershu@msn.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-Country: ARGENTINA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_c;__ngettext_noop:1,2\n"
+
+#: quotes-collection.php:62
+#: quotes-collection.php:175
+#: quotes-collection.php:179
+msgid "Next quote"
+msgstr "Próxima cita"
+
+#: quotes-collection.php:63
+msgid "Loading..."
+msgstr "Leyendo..."
+
+#: quotes-collection.php:64
+msgid "Error getting quote"
+msgstr "Error leyendo cita"
+
+#: quotes-collection.php:200
+#: quotes-collection.php:221
+msgid "Random Quote"
+msgstr "Cita al azar"
+
+#: quotes-collection.php:242
+msgid "none"
+msgstr "ninguna"
+
+#: quotes-collection.php:253
+msgid "Title"
+msgstr "Título"
+
+#: quotes-collection.php:254
+msgid "Show author?"
+msgstr "¿Mostrar autor?"
+
+#: quotes-collection.php:255
+msgid "Show source?"
+msgstr "¿Mostrar fuente?"
+
+#: quotes-collection.php:256
+msgid "Ajax refresh feature"
+msgstr "Activar actualización Ajax"
+
+#: quotes-collection.php:257
+msgid "Tags filter"
+msgstr "Filtro de etiquetas"
+
+#: quotes-collection.php:257
+#, fuzzy
+msgid "Comma separated"
+msgstr "separado por comas"
+
+#: quotes-collection.php:258
+msgid "Character limit"
+msgstr "Límite de caracteres"
+
+#: quotes-collection.php:260
+msgid "Click here"
+msgstr "Click aquí"
+
+#: quotes-collection.php:260
+#, fuzzy
+msgid "to manage your collection of quotes"
+msgstr "Administrar tu colección de vistas en"
+
+#: quotes-collection.php:277
+msgid "Nothing added to the database."
+msgstr "Nada fue agregado a la base de datos."
+
+#: quotes-collection.php:281
+#: quotes-collection.php:319
+#, fuzzy
+msgid "Database table not found"
+msgstr "¡La tabla de la base de datos no se encontró!"
+
+#: quotes-collection.php:306
+#: quotes-collection.php:349
+#: quotes-collection.php:363
+msgid "There was an error in the MySQL query"
+msgstr "Hubo un error en la consulta de MySQL"
+
+#: quotes-collection.php:308
+msgid "Quote added"
+msgstr "Cita agregada"
+
+#: quotes-collection.php:314
+msgid "Quote not updated."
+msgstr "Cita no eliminada."
+
+#: quotes-collection.php:351
+msgid "Changes saved"
+msgstr "Cambios guardados"
+
+#: quotes-collection.php:365
+msgid "Quote deleted"
+msgstr "Cita eliminada"
+
+#: quotes-collection.php:367
+msgid "The quote cannot be deleted"
+msgstr "La cita no puede ser eliminada"
+
+#: quotes-collection.php:383
+#: quotes-collection.php:477
+msgid "Add Quote"
+msgstr "Agregar Cita"
+
+#: quotes-collection.php:399
+#: quotes-collection.php:481
+msgid "Save changes"
+msgstr "Guardar cambios"
+
+#: quotes-collection.php:400
+msgid "Back"
+msgstr "Regresar"
+
+#: quotes-collection.php:404
+#: quotes-collection.php:587
+msgid "The quote"
+msgstr "La cita"
+
+#: quotes-collection.php:405
+#: quotes-collection.php:570
+#: quotes-collection.php:589
+msgid "Author"
+msgstr "Autor"
+
+#: quotes-collection.php:406
+#: quotes-collection.php:571
+#: quotes-collection.php:589
+msgid "Source"
+msgstr "Fuente"
+
+#: quotes-collection.php:407
+#: quotes-collection.php:591
+msgid "Tags"
+msgstr "Etiquetas"
+
+#: quotes-collection.php:408
+#: quotes-collection.php:592
+msgid "Visible?"
+msgstr "¿Es visible?"
+
+#: quotes-collection.php:409
+msgid "optional"
+msgstr "opcional"
+
+#: quotes-collection.php:410
+msgid "comma separated"
+msgstr "separado por comas"
+
+#: quotes-collection.php:447
+#: quotes-collection.php:460
+msgid "Nothing done!"
+msgstr "¡Nada se ha hecho!"
+
+#: quotes-collection.php:454
+#, php-format
+msgid "Visibility status of selected quotes set to '%s'"
+msgstr "Estado de visibilidad para las citas seleccionadas cambiado a '%s'"
+
+#: quotes-collection.php:465
+msgid "Quote(s) deleted"
+msgstr "Cita(s) eliminada(s)"
+
+#: quotes-collection.php:486
+msgid "Edit quote"
+msgstr "Editar cita"
+
+#: quotes-collection.php:496
+#: quotes-collection.php:547
+#: quotes-collection.php:562
+#: quotes-collection.php:601
+msgid "Delete"
+msgstr "Eliminar"
+
+#: quotes-collection.php:498
+#: quotes-collection.php:563
+#: quotes-collection.php:602
+msgid "Make visible"
+msgstr "Hacer visible"
+
+#: quotes-collection.php:501
+#: quotes-collection.php:564
+#: quotes-collection.php:603
+msgid "Make invisible"
+msgstr "Hacer invisible"
+
+#: quotes-collection.php:546
+msgid "Edit"
+msgstr "Modificar"
+
+#: quotes-collection.php:547
+msgid "Are you sure you want to delete this quote?"
+msgstr "¿Estás seguro de querer borrar esta cita?"
+
+#: quotes-collection.php:554
+#, php-format
+msgid "Currently, you have %d quote."
+msgid_plural "Currently, you have %d quotes."
+msgstr[0] "Actualmente, tienes %d cita."
+msgstr[1] "Actualmente, tienes %d citas."
+
+#: quotes-collection.php:556
+#: quotes-collection.php:618
+msgid "Add new quote"
+msgstr "Agregar nueva cita"
+
+#: quotes-collection.php:566
+msgid "Sort by: "
+msgstr "Ordenar por:"
+
+#: quotes-collection.php:568
+#: quotes-collection.php:569
+msgid "Quote"
+msgstr "Cita"
+
+#: quotes-collection.php:572
+msgid "Date added"
+msgstr "Fecha de adición"
+
+#: quotes-collection.php:573
+msgid "Date updated"
+msgstr "Fecha actualizada"
+
+#: quotes-collection.php:574
+msgid "Visibility"
+msgstr "Visibilidad"
+
+#: quotes-collection.php:577
+msgid "Go"
+msgstr "Ir"
+
+#: quotes-collection.php:593
+msgid "Action"
+msgstr "Acción"
+
+#: quotes-collection.php:612
+msgid "No quotes in the database"
+msgstr "No hay citas en la base de datos"
+

@@ -1,0 +1,255 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Quotes Collection 1.1.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-05-25 12:47+0100\n"
+"PO-Revision-Date: 2009-05-25 12:48+0100\n"
+"Last-Translator: Julian Kommunikation <info@julian.se>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_c;__ngettext_noop:1,2\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../quotes-collection.php:62
+#: ../quotes-collection.php:175
+#: ../quotes-collection.php:179
+msgid "Next quote"
+msgstr "Nästa citat"
+
+#: ../quotes-collection.php:63
+msgid "Loading..."
+msgstr "Laddar..."
+
+#: ../quotes-collection.php:64
+msgid "Error getting quote"
+msgstr "Fel vid citathämtning"
+
+#: ../quotes-collection.php:200
+#: ../quotes-collection.php:221
+msgid "Random Quote"
+msgstr "Slumpat citat"
+
+#: ../quotes-collection.php:242
+msgid "none"
+msgstr "inga"
+
+#: ../quotes-collection.php:253
+msgid "Title"
+msgstr "Titel"
+
+#: ../quotes-collection.php:254
+msgid "Show author?"
+msgstr "Visa författare?"
+
+#: ../quotes-collection.php:255
+msgid "Show source?"
+msgstr "Visa källa?"
+
+#: ../quotes-collection.php:256
+msgid "Ajax refresh feature"
+msgstr "Ajax omladdningsfunktion"
+
+#: ../quotes-collection.php:257
+msgid "Tags filter"
+msgstr "Etikett-filter"
+
+#: ../quotes-collection.php:257
+msgid "Comma separated"
+msgstr "Kommaseparerad"
+
+#: ../quotes-collection.php:258
+msgid "Character limit"
+msgstr "Tecken-begränsning"
+
+#: ../quotes-collection.php:260
+msgid "Click here"
+msgstr "Klicka här"
+
+#: ../quotes-collection.php:260
+msgid "to manage your collection of quotes"
+msgstr "för att hantera din citatsamling"
+
+#: ../quotes-collection.php:277
+msgid "Nothing added to the database."
+msgstr "Inget lagt till databasen."
+
+#: ../quotes-collection.php:281
+#: ../quotes-collection.php:319
+msgid "Database table not found"
+msgstr "Databastabeller hittades inte"
+
+#: ../quotes-collection.php:306
+#: ../quotes-collection.php:349
+#: ../quotes-collection.php:363
+msgid "There was an error in the MySQL query"
+msgstr "Det var ett fel i MySQL frågan"
+
+#: ../quotes-collection.php:308
+msgid "Quote added"
+msgstr "Citat tillagt"
+
+#: ../quotes-collection.php:314
+msgid "Quote not updated."
+msgstr "Citat inte uppdaterat."
+
+#: ../quotes-collection.php:351
+msgid "Changes saved"
+msgstr "Uppdateringar sparade"
+
+#: ../quotes-collection.php:365
+msgid "Quote deleted"
+msgstr "Citat borttaget"
+
+#: ../quotes-collection.php:367
+msgid "The quote cannot be deleted"
+msgstr "Citatet kan inte tas bort"
+
+#: ../quotes-collection.php:383
+#: ../quotes-collection.php:477
+msgid "Add Quote"
+msgstr "Lägg till citat"
+
+#: ../quotes-collection.php:399
+#: ../quotes-collection.php:481
+msgid "Save changes"
+msgstr "Spara ändringar"
+
+#: ../quotes-collection.php:400
+msgid "Back"
+msgstr "Tillbaks"
+
+#: ../quotes-collection.php:404
+#: ../quotes-collection.php:587
+msgid "The quote"
+msgstr "Citatet"
+
+#: ../quotes-collection.php:405
+#: ../quotes-collection.php:570
+#: ../quotes-collection.php:589
+msgid "Author"
+msgstr "Författare"
+
+#: ../quotes-collection.php:406
+#: ../quotes-collection.php:571
+#: ../quotes-collection.php:589
+msgid "Source"
+msgstr "Källa"
+
+#: ../quotes-collection.php:407
+#: ../quotes-collection.php:591
+msgid "Tags"
+msgstr "Etiketter"
+
+#: ../quotes-collection.php:408
+#: ../quotes-collection.php:592
+msgid "Visible?"
+msgstr "Visas?"
+
+#: ../quotes-collection.php:409
+msgid "optional"
+msgstr "valfritt"
+
+#: ../quotes-collection.php:410
+msgid "comma separated"
+msgstr "kommaseparerad"
+
+#: ../quotes-collection.php:447
+#: ../quotes-collection.php:460
+msgid "Nothing done!"
+msgstr "Inget gjort!"
+
+#: ../quotes-collection.php:454
+#, php-format
+msgid "Visibility status of selected quotes set to '%s'"
+msgstr "Visningsstatus för valda citat är '%s'"
+
+#: ../quotes-collection.php:465
+msgid "Quote(s) deleted"
+msgstr "Citat borttagna"
+
+#: ../quotes-collection.php:486
+msgid "Edit quote"
+msgstr "Ändra citat"
+
+#: ../quotes-collection.php:496
+#: ../quotes-collection.php:547
+#: ../quotes-collection.php:562
+#: ../quotes-collection.php:601
+msgid "Delete"
+msgstr "Ta bort"
+
+#: ../quotes-collection.php:498
+#: ../quotes-collection.php:563
+#: ../quotes-collection.php:602
+msgid "Make visible"
+msgstr "Gör visningsbar"
+
+#: ../quotes-collection.php:501
+#: ../quotes-collection.php:564
+#: ../quotes-collection.php:603
+msgid "Make invisible"
+msgstr "Gör icke visningsbar"
+
+#: ../quotes-collection.php:546
+msgid "Edit"
+msgstr "Ändra"
+
+#: ../quotes-collection.php:547
+msgid "Are you sure you want to delete this quote?"
+msgstr "Är du säker på att du vill ta bort detta citat?"
+
+#: ../quotes-collection.php:554
+#, php-format
+msgid "Currently, you have %d quote."
+msgid_plural "Currently, you have %d quotes."
+msgstr[0] "För tillfället har du %d citat."
+msgstr[1] "För tillfället har du %d citat."
+
+#: ../quotes-collection.php:556
+#: ../quotes-collection.php:618
+msgid "Add new quote"
+msgstr "Lägg till citat"
+
+#: ../quotes-collection.php:566
+msgid "Sort by: "
+msgstr "Sortera efter:"
+
+#: ../quotes-collection.php:568
+#: ../quotes-collection.php:569
+msgid "Quote"
+msgstr "Citat"
+
+#: ../quotes-collection.php:572
+msgid "Date added"
+msgstr "Datum tillagt"
+
+#: ../quotes-collection.php:573
+msgid "Date updated"
+msgstr "Datum uppdaterat"
+
+#: ../quotes-collection.php:574
+msgid "Visibility"
+msgstr "Visningsläge"
+
+#: ../quotes-collection.php:577
+msgid "Go"
+msgstr "Utför"
+
+#: ../quotes-collection.php:593
+msgid "Action"
+msgstr "Handling"
+
+#: ../quotes-collection.php:612
+msgid "No quotes in the database"
+msgstr "Inga citat i databasen"
+
+#~ msgid "Manage"
+#~ msgstr "Hantera"
+#~ msgid "from"
+#~ msgstr "aus"
+

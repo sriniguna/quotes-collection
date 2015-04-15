@@ -560,7 +560,7 @@ EDITFORM;
 				$_REQUEST['submit'] == _x('Add Quote', 'submit button text', 'quotes-collection')
 				&& check_admin_referer( 'add_quote', 'quotescollection_nonce' ) // Check nonce
 				) {
-				if( !isset( $_REQUEST['quote'] ) || empty( trim( $_REQUEST['quote'] ) ) ) {
+				if( !isset( $_REQUEST['quote'] ) || false == trim( $_REQUEST['quote'] ) ) {
 					$this->notices = '<div class="error"><p>'.__("The quote field cannot be blank. Fill up the quote field and try again.", 'quotes-collection').'</p></div>';
 				}
 				else if( $result = $quotescollection_db->put_quote($_REQUEST) ) {
@@ -575,7 +575,7 @@ EDITFORM;
 				$_REQUEST['submit'] == _x('Save Changes', 'submit button text', 'quotes-collection')
 				&& check_admin_referer( 'save_changes_'.$_REQUEST['quote_id'], 'quotescollection_nonce' )
 				) {
-				if( !isset( $_REQUEST['quote'] ) || empty( trim( $_REQUEST['quote'] ) ) ) {
+				if( !isset( $_REQUEST['quote'] ) || false == trim( $_REQUEST['quote'] ) ) {
 					$this->notices = '<div class="error"><p>'.__("The quote field cannot be blank. Fill up the quote field and try again.", 'quotes-collection').'</p></div>';
 				}
 				else if($result = $quotescollection_db->update_quote($_REQUEST))

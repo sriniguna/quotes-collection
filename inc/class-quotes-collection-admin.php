@@ -32,6 +32,10 @@ class Quotes_Collection_Admin {
 	private $notices;
 	private $quotes_list_table;
 
+	/** Flags **/
+	private $quote_added = false;
+	private $quote_updated = false;
+
 
 	/** Constructor **/
 	public function __construct() {
@@ -448,12 +452,21 @@ class Quotes_Collection_Admin {
 	private function editform( $quote_id = 0 )
 	{
 		$form_name = "quotescollection_addquote";
-		$action_url = $this->admin_add_new_url; //admin_url( 'admin.php?page=quotes-collection-add-new' );
-		$quote = ( isset($_REQUEST['quote']) && trim($_REQUEST['quote']) )? stripslashes(htmlspecialchars(trim($_REQUEST['quote']))): "";
-		$author = ( isset($_REQUEST['author']) && trim($_REQUEST['author']) )? stripslashes(htmlspecialchars(trim($_REQUEST['author']))): "";
-		$source = ( isset($_REQUEST['source']) && trim($_REQUEST['source']) )? stripslashes(htmlspecialchars(trim($_REQUEST['source']))): "";
-		$tags = ( isset($_REQUEST['tags']) && trim($_REQUEST['tags']) )? stripslashes(htmlspecialchars(trim($_REQUEST['tags']))): "";
-		$public_selected =( !isset($_REQUEST['public']) && ($quote || $author || $source || $tags) )? "": " checked=\"checked\"";
+		$action_url = $this->admin_add_new_url;
+
+		// If the new quote submitted is added to the database, leave the fields blank
+		if( !$quote_id && $this->quote_added ) {
+			$quote = $author = $source = $tags = "";
+			$public_selected = ' checked="checked"';
+		}
+		// Else check if there are any submitted values, and fill the fields with those 
+		else {
+			$quote = ( isset($_REQUEST['quote']) && trim($_REQUEST['quote']) )? stripslashes(htmlspecialchars(trim($_REQUEST['quote']))): "";
+			$author = ( isset($_REQUEST['author']) && trim($_REQUEST['author']) )? stripslashes(htmlspecialchars(trim($_REQUEST['author']))): "";
+			$source = ( isset($_REQUEST['source']) && trim($_REQUEST['source']) )? stripslashes(htmlspecialchars(trim($_REQUEST['source']))): "";
+			$tags = ( isset($_REQUEST['tags']) && trim($_REQUEST['tags']) )? stripslashes(htmlspecialchars(trim($_REQUEST['tags']))): "";
+			$public_selected =( !isset($_REQUEST['public']) && ($quote || $author || $source || $tags) )? "": " checked=\"checked\"";
+		}
 		$submit_button = get_submit_button( _x('Add Quote', 'submit button text', 'quotes-collection'), 'primary large', 'submit', false);
 		$nonce_action_name = 'add_quote';
 		$hidden_input = "";
@@ -565,6 +578,7 @@ EDITFORM;
 				}
 				else if( $result = $quotescollection_db->put_quote($_REQUEST) ) {
 					$this->notices = '<div class="updated"><p>'.__('Quote added', 'quotes-collection').'</p></div>';
+					$this->quote_added = true; // set the flag
 				}
 				else {
 					$this->notices = '<div class="error"><p>'.__('Error adding quote', 'quotes-collection').'</p></div>';
@@ -578,8 +592,10 @@ EDITFORM;
 				if( !isset( $_REQUEST['quote'] ) || false == trim( $_REQUEST['quote'] ) ) {
 					$this->notices = '<div class="error"><p>'.__("The quote field cannot be blank. Fill up the quote field and try again.", 'quotes-collection').'</p></div>';
 				}
-				else if($result = $quotescollection_db->update_quote($_REQUEST))
+				else if($result = $quotescollection_db->update_quote($_REQUEST)) {
 					$this->notices = '<div class="updated"><p>'.__('Changes saved', 'quotes-collection').'</p></div>';
+					$this->quote_updated = true; // set the flag
+				}
 				else 
 					$this->notices = '<div class="error"><p>'.__('Error updating quote', 'quotes-collection').'</p></div>';
 					

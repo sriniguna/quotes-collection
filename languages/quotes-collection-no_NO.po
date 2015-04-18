@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: Quotes Collection 2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-04-14 17:24+0100\n"
-"PO-Revision-Date: 2015-04-17 21:38+0100\n"
+"PO-Revision-Date: 2015-04-17 21:45+0100\n"
 "Last-Translator: Christian Nordtomme\n"
 "Language-Team: Skriftlig.no\n"
-"Language: Bokmål\n"
+"Language: Norwegian\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -14,29 +14,29 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Loco https://localise.biz\n"
 "X-Loco-Source-Locale: en_GB\n"
-"X-Loco-Target-Locale: nb_NO\n"
+"X-Loco-Target-Locale: no_NO\n"
 "X-Loco-Project-Id: 6869\n"
 "X-Loco-Api-Version: 1.0.9"
 
 #: inc/class-quotes-collection-admin.php:487
-#: inc/class-quotes-collection-admin-list-table.php:127 loco:#: 552d3f2c14d72594268b459f
+#: inc/class-quotes-collection-admin-list-table.php:127 59f loco:#: 552d3f2c14d72594268b459f
 msgid "Author"
 msgstr "Opphavsperson"
 
-#: inc/class-quotes-collection-admin-list-table.php:129 loco:#: 552d3f2c14d72594268b45cc
+#: inc/class-quotes-collection-admin-list-table.php:129 5cc loco:#: 552d3f2c14d72594268b45cc
 msgid "Date"
 msgstr "Dato"
 
 #: inc/class-quotes-collection-admin-list-table.php:65
-#: inc/class-quotes-collection-admin-list-table.php:145 loco:#: 552d3f2c14d72594268b45c6
+#: inc/class-quotes-collection-admin-list-table.php:145 5c6 loco:#: 552d3f2c14d72594268b45c6
 msgid "Delete"
 msgstr "Slett"
 
-#: inc/class-quotes-collection-admin-list-table.php:64 loco:#: 552d3f2c14d72594268b45c5
+#: inc/class-quotes-collection-admin-list-table.php:64 5c5 loco:#: 552d3f2c14d72594268b45c5
 msgid "Edit"
 msgstr "Endre"
 
-#: inc/class-quotes-collection-admin-list-table.php:125 loco:#: 552d3f2c14d72594268b45cb
+#: inc/class-quotes-collection-admin-list-table.php:125 5cb loco:#: 552d3f2c14d72594268b45cb
 msgid "ID"
 msgstr "ID"
 
@@ -44,16 +44,16 @@ msgstr "ID"
 msgid "Loading..."
 msgstr "Laster…"
 
-#: inc/class-quotes-collection-admin-list-table.php:110 loco:#: 552d3f2c14d72594268b45c9
+#: inc/class-quotes-collection-admin-list-table.php:110 5c9 loco:#: 552d3f2c14d72594268b45c9
 msgid "Private"
 msgstr "Privat"
 
-#: inc/class-quotes-collection-admin-list-table.php:110 loco:#: 552d3f2c14d72594268b45ca
+#: inc/class-quotes-collection-admin-list-table.php:110 5ca loco:#: 552d3f2c14d72594268b45ca
 msgid "Public"
 msgstr "Offentlig"
 
 #: inc/class-quotes-collection-admin.php:486
-#: inc/class-quotes-collection-admin-list-table.php:126 loco:#: 552d3f2c14d72594268b459e
+#: inc/class-quotes-collection-admin-list-table.php:126 59e loco:#: 552d3f2c14d72594268b459e
 msgid "Quote"
 msgstr "Sitat"
 
@@ -62,12 +62,12 @@ msgid "Search"
 msgstr "Søk"
 
 #: inc/class-quotes-collection-admin.php:488
-#: inc/class-quotes-collection-admin-list-table.php:127 loco:#: 552d3f2c14d72594268b45a0
+#: inc/class-quotes-collection-admin-list-table.php:127 5a0 loco:#: 552d3f2c14d72594268b45a0
 msgid "Source"
 msgstr "Kilde"
 
 #: inc/class-quotes-collection-admin.php:489
-#: inc/class-quotes-collection-admin-list-table.php:128 loco:#: 552d3f2c14d72594268b45a1
+#: inc/class-quotes-collection-admin-list-table.php:128 5a1 loco:#: 552d3f2c14d72594268b45a1
 msgid "Tags"
 msgstr "Nøkkelord"
 
@@ -148,12 +148,12 @@ msgctxt "confirmation dialog title"
 msgid "Delete?"
 msgstr "Slette?"
 
-#: inc/class-quotes-collection-admin-list-table.php:107 loco:#: 552d3f2c14d72594268b45c7
+#: inc/class-quotes-collection-admin-list-table.php:107 5c7 loco:#: 552d3f2c14d72594268b45c7
 msgctxt "date and time format"
 msgid "Y/m/d h:i:s A"
 msgstr "j. M. Y, G:i"
 
-#: inc/class-quotes-collection-admin-list-table.php:108 loco:#: 552d3f2c14d72594268b45c8
+#: inc/class-quotes-collection-admin-list-table.php:108 5c8 loco:#: 552d3f2c14d72594268b45c8
 msgctxt "date format"
 msgid "Y/m/d"
 msgstr "j. M. Y"
@@ -248,7 +248,7 @@ msgstr "Importen mislyktes. Vennligst prøv igjen."
 msgid "Invalid file format"
 msgstr "Ugyldig filformat"
 
-#: inc/class-quotes-collection-admin-list-table.php:147 loco:#: 552d3f2c14d72594268b45ce
+#: inc/class-quotes-collection-admin-list-table.php:147 5ce loco:#: 552d3f2c14d72594268b45ce
 msgid "Keep private"
 msgstr "Gjør privat"
 
@@ -272,7 +272,7 @@ msgctxt "list meta, above the quotes list table in the main admin page"
 msgid "Search results for \"%s\""
 msgstr "Søkeresultater for \"%s\""
 
-#: inc/class-quotes-collection-admin-list-table.php:146 loco:#: 552d3f2c14d72594268b45cd
+#: inc/class-quotes-collection-admin-list-table.php:146 5cd loco:#: 552d3f2c14d72594268b45cd
 msgid "Make public"
 msgstr "Gjør offentlig"
 

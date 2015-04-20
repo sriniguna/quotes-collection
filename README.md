@@ -1,7 +1,7 @@
 Quotes Collection 2.0
 ======================================
 
-Quotes Collection Plugin for [WordPress](http://wordpress.org/) helps you collect, manage and display your favourite quotes in your WordPress website or blog.
+Quotes Collection Plugin for [WordPress](https://wordpress.org/) helps you collect, manage and display your favourite quotes in your WordPress website or blog.
 
 
 Features and Notes
@@ -32,7 +32,7 @@ For more information, visit the [plugin homepage](http://srinig.com/wordpress/pl
 Installation
 ------------
 
-*Note:* The stable version of the plugin can be downloaded from the [WordPress plugin directory](https//wordpress.org/plugins/quotes-collection/). The latest development version can be downloaded from GitHub, but it may not be stable. 
+*Note:* The stable version of the plugin can be downloaded from the [WordPress plugin directory](https://wordpress.org/plugins/quotes-collection/). The latest development version can be downloaded from GitHub, but it may not be stable. 
 
 ### Method 1 ###
 

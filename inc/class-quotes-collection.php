@@ -9,7 +9,7 @@
 class Quotes_Collection {
 	
 	/** Plugin version **/
-	const PLUGIN_VERSION = '2.0';
+	const PLUGIN_VERSION = '2.0.1';
 
 	public $refresh_link_text;
 	public $auto_refresh_max;
@@ -165,6 +165,7 @@ class Quotes_Collection {
 		}
 
 		if($quote_data) {
+			$quote_data->prepare_data(); // Format the data for output before sending
 			$response = json_encode($quote_data);
 			@header("Content-type: text/json; charset=utf-8");
 			die( $response ); 

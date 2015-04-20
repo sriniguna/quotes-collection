@@ -312,7 +312,7 @@ class Quotes_Collection_DB {
 		else {
 			//Creating the table ... fresh!
 			$sql = "CREATE TABLE " . $table_name . " (
-				quote_id mediumint(9) NOT NULL AUTO_INCREMENT,
+				quote_id MEDIUMINT NOT NULL AUTO_INCREMENT,
 				quote TEXT NOT NULL,
 				author VARCHAR(255),
 				source VARCHAR(255),

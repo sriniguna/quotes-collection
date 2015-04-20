@@ -264,7 +264,7 @@ You can translate the plugin in your language if it's not done already. The loca
 		* Option to import/export quotes in `JSON` format
 		* An options page with options to customize the 'Next Quote' text, specify the maximum number of iterations for the auto-refresh feature, and enable dynamic fetching of the first random quote in cached websites.
 	* Multi-widget support added. Now as many instances of the widget can be added.
-	* Not-so-noticable, but importantant improvements to the markup generated for the front-end.
+	* Not-so-noticable, but important improvements to the markup generated for the front-end.
 	* `uninstall.php` added. Now, when the plugin is deleted, the plugin's database table, plugin options, all will be removed... no trace left behind.
 	* The translation template file `quotes-collection.pot` updated. Many of the translation strings have changed. Many new strings added, many old strings given up.
 	* Updated localization in Tamil, Hebrew, Slovak, French, Ukrainian, German and Norwegian (Bokmål) languages

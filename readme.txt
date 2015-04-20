@@ -3,7 +3,7 @@ Contributors: SriniG
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HDWT2K8TXXHUN
 Tags: quotes collection, quotes, quotations, random quote, sidebar, widget, ajax, shortcode
 Requires at least: 3.1
-Tested up to: 4.2-beta4
+Tested up to: 4.2-RC1
 Stable tag: trunk
 License: GNU General Public License
 
@@ -20,6 +20,8 @@ Quotes Collection plugin helps you collect, manage and display your favourite qu
 * Multi-widget support
 * Cleaner uninstall
 * Many other improvements
+
+*Note: If you are upgrading to 2.0 from an older version, you will have to re-add the widget and set the widget options once again after upgradation.*
 
 
 **Features and notes**
@@ -253,7 +255,7 @@ You can translate the plugin in your language if it's not done already. The loca
 
 ==Changelog==
 
-* **Version 2.0**
+* **2015-04-20: Version 2.0**
 	* Complete overhaul of the plugin. File organization modified, code refactored, the code is more class based.
 	* New and improved admin interface with
 		* Improved quotes list table using the `WP_List_Table` class
@@ -265,7 +267,7 @@ You can translate the plugin in your language if it's not done already. The loca
 	* Not-so-noticable, but importantant improvements to the markup generated for the front-end.
 	* `uninstall.php` added. Now, when the plugin is deleted, the plugin's database table, plugin options, all will be removed... no trace left behind.
 	* The translation template file `quotes-collection.pot` updated. Many of the translation strings have changed. Many new strings added, many old strings given up.
-	* Updated the Tamil localization
+	* Updated localization in Tamil, Hebrew, Slovak, French, Ukrainian, German and Norwegian (Bokmål) languages
 
 * **2012-12-16: Version 1.5.9**
 	* Fix for cases where random refresh always fetches only two quotes
@@ -468,4 +470,4 @@ You can translate the plugin in your language if it's not done already. The loca
 == Upgrade Notice ==
 
 = 2.0 =
-Please note that you will have to re-add the widget and once again set the widget options after upgrading to this version. Nothing much otherwise will be affected. This is a major update with new features and plenty of improvements, upgrade highly recommended if you use WP 3.1 and above.
+Please note that you will have to re-add the widget and set the widget options once again after upgrading to this version. Nothing much otherwise will be affected. This is a major update with new features and plenty of improvements, upgrade highly recommended if you use WP 3.1 and above.

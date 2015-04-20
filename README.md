@@ -1,7 +1,7 @@
-Quotes Collection 2.0 beta
+Quotes Collection 2.0
 ======================================
 
-Quotes Collection Plugin for [WordPress](http://wordpress.org/) helps you collect, manage and display your favourite quotations in your WordPress website or blog.
+Quotes Collection Plugin for [WordPress](http://wordpress.org/) helps you collect, manage and display your favourite quotes in your WordPress website or blog.
 
 
 Features and Notes

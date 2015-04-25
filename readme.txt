@@ -3,7 +3,7 @@ Contributors: SriniG
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HDWT2K8TXXHUN
 Tags: quotes collection, quotes, quotations, random quote, sidebar, widget, ajax, shortcode
 Requires at least: 3.1
-Tested up to: 4.2-RC1
+Tested up to: 4.2
 Stable tag: trunk
 License: GNU General Public License
 
@@ -255,6 +255,9 @@ You can translate the plugin in your language if it's not done already. The loca
 
 ==Changelog==
 
+* **2015-04-25: Version 2.0.2**
+	* Update to Turkish localization by Gürkan Gür
+
 * **2015-04-20: Version 2.0.1**
 	* Fix for unformatted output on refresh.
 
@@ -472,9 +475,11 @@ You can translate the plugin in your language if it's not done already. The loca
 
 == Upgrade Notice ==
 
+= 2.0.2 =
+If you upgrade from a version prior to 2.0, you will have to re-add the widget and set the widget options once again after upgrading. Version 2.0 is a major update with new features and plenty of improvements. v2.0.1 fixes unformatted output on refresh. v2.0.2 updates Turkish localization.
+
 = 2.0.1 =
 If you upgrade from a version prior to 2.0, you will have to re-add the widget and set the widget options once again after upgrading. Version 2.0 is a major update with new features and plenty of improvements. v2.0.1 fixes unformatted output on refresh.
-
 
 = 2.0 =
 Please note that you will have to re-add the widget and set the widget options once again after upgrading to this version. Nothing much otherwise will be affected. This is a major update with new features and plenty of improvements, upgrade highly recommended if you use WP 3.1 and above.

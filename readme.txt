@@ -3,7 +3,7 @@ Contributors: SriniG
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HDWT2K8TXXHUN
 Tags: quotes collection, quotes, quotations, random quote, sidebar, widget, ajax, shortcode
 Requires at least: 3.1
-Tested up to: 4.2
+Tested up to: 4.2.1
 Stable tag: trunk
 License: GNU General Public License
 
@@ -237,7 +237,7 @@ Versions 1.1 and greater support localization. As of the current version, locali
 * `lv_LV` / Latvian / [Maris Svirksts](http://www.moskjis.com/)
 * `mk_MK` / Macedonian / [Diana](http://wpcouponshop.com/)
 * `nb_NO` / Norwegian (Bokmål) / [Christian K. Nordtømme](http://nextpage.no/)
-* `nl_NL` / Dutch / [Kristof Vercruyssen](http://www.simplit.be/)
+* `nl_NL` / Dutch / Guido van der Leest, [Kristof Vercruyssen](http://www.simplit.be/)
 * `pl_PL` / Polish / Marcin Gucia
 * `pt_BR` / Brazilian Portugese / Tzor More
 * `pt_PT` / Portugese / [Djamilo Jacinto](http://www.maxibim.net/)
@@ -254,6 +254,9 @@ Versions 1.1 and greater support localization. As of the current version, locali
 You can translate the plugin in your language if it's not done already. The localization template file (quotes-collection.pot) can be found in the 'languages' folder of the plugin. After translating send the localized files to the [plugin author](http://srinig.com/wordpress/contact/) so that it's included in the next update. If you are not sure how to go about translating, contact the plugin author.
 
 ==Changelog==
+
+* **2015-04-29: Version 2.0.3**
+	* Dutch localization updates by Guido
 
 * **2015-04-25: Version 2.0.2**
 	* Update to Turkish localization by Gürkan Gür
@@ -474,6 +477,9 @@ You can translate the plugin in your language if it's not done already. The loca
 
 
 == Upgrade Notice ==
+
+= 2.0.3 =
+If you upgrade from a version prior to 2.0, you will have to re-add the widget and set the widget options once again after upgrading. Version 2.0 is a major update. v2.0.1 fixes unformatted output on refresh. v2.0.2 and v2.0.3 updates Turkish and Dutch localizations respectively.
 
 = 2.0.2 =
 If you upgrade from a version prior to 2.0, you will have to re-add the widget and set the widget options once again after upgrading. Version 2.0 is a major update with new features and plenty of improvements. v2.0.1 fixes unformatted output on refresh. v2.0.2 updates Turkish localization.

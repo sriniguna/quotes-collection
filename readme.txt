@@ -3,7 +3,7 @@ Contributors: SriniG
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HDWT2K8TXXHUN
 Tags: quotes collection, quotes, quotations, random quote, sidebar, widget, ajax, shortcode
 Requires at least: 3.1
-Tested up to: 4.2.1
+Tested up to: 4.2.2
 Stable tag: trunk
 License: GNU General Public License
 
@@ -255,6 +255,9 @@ You can translate the plugin in your language if it's not done already. The loca
 
 ==Changelog==
 
+* **2015-05-25: Version 2.0.4**
+	* Updates to localization in Hungarian and Swedish languages
+
 * **2015-04-29: Version 2.0.3**
 	* Dutch localization updates by Guido
 
@@ -477,6 +480,9 @@ You can translate the plugin in your language if it's not done already. The loca
 
 
 == Upgrade Notice ==
+
+= 2.0.4 =
+If you upgrade from a version prior to 2.0, you will have to re-add the widget and set the widget options once again after upgrading. Version 2.0 is a major update. v2.0.1 fixes unformatted output on refresh. v2.0.2, 2.0.3 and 2.0.4 are localization updates.
 
 = 2.0.3 =
 If you upgrade from a version prior to 2.0, you will have to re-add the widget and set the widget options once again after upgrading. Version 2.0 is a major update. v2.0.1 fixes unformatted output on refresh. v2.0.2 and v2.0.3 updates Turkish and Dutch localizations respectively.

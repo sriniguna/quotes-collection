@@ -51,10 +51,10 @@ function quotescollectionDisplayFormat(quoteData, args) {
 		attribution += '<cite class=\"source title\">' + quoteData.source + '</cite>';
 	}
 	if(attribution) {
-		display += '<footer class=\"attribution\">&mdash;&nbsp;' + attribution + '</footer>';
+		display += '<div class=\"attribution\">&mdash;&nbsp;' + attribution + '</div>';
 	}
 	if(args.ajaxRefresh && !args.autoRefresh)
-		display += '<footer class=\"navigation\"><div class=\"nav-next\"><a class=\"next-quote-link\" style=\"cursor:pointer;\" onclick=\"quotescollectionRefreshInstance(\''+args.instanceID+'\')\">'+quotescollectionAjax.nextQuote+'</a></div></footer>';
+		display += '<div class=\"navigation\"><div class=\"nav-next\"><a class=\"next-quote-link\" style=\"cursor:pointer;\" onclick=\"quotescollectionRefreshInstance(\''+args.instanceID+'\')\">'+quotescollectionAjax.nextQuote+'</a></div></div>';
 	return display;
 }
 

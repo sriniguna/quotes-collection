@@ -262,6 +262,8 @@ class Quotes_Collection {
 						'show_source' => $show_source,
 						'before' => '',
 						'after' => '',
+						'before_attribution' => '<div class="attribution">&mdash;&nbsp;',
+						'after_attribution' => '</div>',
 					)
 				);
 				if( !$display ) {
@@ -302,13 +304,13 @@ class Quotes_Collection {
 				else if ( $ajax_refresh && !$auto_refresh ) {
 					$display .= 
 						"\n<!--\ndocument.write(\""
-							.'<footer class=\"navigation\">'
+							.'<div class=\"navigation\">'
 								.'<div class=\"nav-next\">'
 									.'<a class=\"next-quote-link\" style=\"cursor:pointer;\" onclick=\"quotescollectionRefresh(args_'.$instance.')\">'
 										. html_entity_decode( $this->refresh_link_text )
 									.'</a>'
 								.'</div>'
-							.'</footer>'
+							.'</div>'
 						."\")\n//-->\n";
 				}
 

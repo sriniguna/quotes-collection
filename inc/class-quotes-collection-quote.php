@@ -103,6 +103,8 @@ class Quotes_Collection_Quote {
 			'show_source' => 1,
 			'before' => '<blockquote id="quote-' . $this->quote_id . '" class="quotescollection-quote">',
 			'after' => '</blockquote>',
+			'before_attribution' => '<footer class="attribution">&mdash;&nbsp;',
+			'after_attribution' => '</footer>',
 		);
 
 		$options = array_merge( $default_options, $options );
@@ -123,7 +125,14 @@ class Quotes_Collection_Quote {
 		}
 
 		if($attribution) {
-			$display .= "\n".'<footer class="attribution">&mdash;&nbsp;'.$attribution.'</footer>';
+			if( $options['before_attribution'] ) {
+				$attribution = $options['before_attribution'] . $attribution;
+			}
+
+			if( $options['after_attribution'] ) {
+				$attribution .= $options['after_attribution'];
+			}
+			$display .= "\n".$attribution;
 		}
 
 		if( $options['before'] ) {

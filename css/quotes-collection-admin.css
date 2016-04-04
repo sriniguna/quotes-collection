@@ -9,6 +9,14 @@ header {
 	margin: 0 0 1em;
 }
 
+#quotescollection-title {
+	font-size: 23px;
+    font-weight: 400;
+    margin: 0;
+    padding: 9px 15px 4px 0;
+    line-height: 29px;
+}
+
 .list-meta {
 	display: inline-block;
 	float: left;

@@ -377,8 +377,8 @@ class Quotes_Collection_Admin {
 		?>
 		<div id="quotescollection-admin-page" class="wrap">
 		<header>
+		<h1 id="quotescollection-title">Quotes Collection</h1>
 		<h2 id="quotescollection-nav" class="nav-tab-wrapper">
-			Quotes Collection
 			
 			<?php if( current_user_can( self::USER_LEVEL_MANAGE_QUOTES ) ): ?>
 				<a href="<?php echo $this->admin_url; ?>" class="nav-tab<?php echo ( 'quotes-list' == $active_page )? ' nav-tab-active' : '';?>">

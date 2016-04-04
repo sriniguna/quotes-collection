@@ -3,7 +3,7 @@ Contributors: SriniG
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HDWT2K8TXXHUN
 Tags: quotes collection, quotes, quotations, random quote, sidebar, widget, ajax, shortcode
 Requires at least: 3.1
-Tested up to: 4.2.2
+Tested up to: 4.5-RC1
 Stable tag: trunk
 License: GNU General Public License
 
@@ -36,7 +36,7 @@ Quotes Collection plugin helps you collect, manage and display your favourite qu
 	* Option to refresh the quote automatically
 	* Show only quotes with certain tags
 	* Specify a character limit and filter out bigger quotes
-* **Shortcode**: Quotes can be displayed in a WordPress page by placing a `[quotcoll]`shortcode. Few examples are provided below. For more examples and the full list of arguments, please refer the [plugin homepage](http://srinig.com/wordpress/plugins/quotes-collection/) or 'other notes'.
+* **Shortcode**: Quotes can be displayed in a WordPress page by placing a `[quotcoll]`shortcode. Few examples are provided below. For more examples and the full list of arguments, please refer 'other notes'.
 	* Placing `[quotcoll]` in the page displays all quotes.
 	* `[quotcoll author="Somebody"]` displays quotes authored by Somebody.
 	* `[quotcoll tags="tag1,tag2,tag3"]` displays quotes tagged tag1 or tag2 or tag3, one or more or all of these
@@ -45,7 +45,6 @@ Quotes Collection plugin helps you collect, manage and display your favourite qu
 * **Import/Export** your collection of quotes in JSON format *(new in 2.0)*.
 * The plugin suppports localization. Refer the plugin page or 'other notes' for the full list of available languages and the respective translators. 
 
-For more information, visit the [plugin homepage](http://srinig.com/wordpress/plugins/quotes-collection/).
 
 == Installation ==
 
@@ -254,6 +253,10 @@ Versions 1.1 and greater support localization. As of the current version, locali
 You can translate the plugin in your language if it's not done already. The localization template file (quotes-collection.pot) can be found in the 'languages' folder of the plugin. After translating send the localized files to the [plugin author](http://srinig.com/wordpress/contact/) so that it's included in the next update. If you are not sure how to go about translating, contact the plugin author.
 
 ==Changelog==
+
+* **2016-04-04: Version 2.0.5**
+	* Changed footer elements in widget back to div to prevent HTML validation errors
+	* Minor modifications in admin page header markup and styling
 
 * **2015-05-25: Version 2.0.4**
 	* Updates to localization in Hungarian and Swedish languages
@@ -480,6 +483,9 @@ You can translate the plugin in your language if it's not done already. The loca
 
 
 == Upgrade Notice ==
+
+= 2.0.5 =
+If you upgrade from a version prior to 2.0, you will have to re-add the widget and set the widget options once again after upgrading. Version 2.0 is a major update.
 
 = 2.0.4 =
 If you upgrade from a version prior to 2.0, you will have to re-add the widget and set the widget options once again after upgrading. Version 2.0 is a major update. v2.0.1 fixes unformatted output on refresh. v2.0.2, 2.0.3 and 2.0.4 are localization updates.

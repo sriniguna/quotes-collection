@@ -3,7 +3,7 @@ Contributors: SriniG
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HDWT2K8TXXHUN
 Tags: quotes collection, quotes, quotations, random quote, sidebar, widget, ajax, shortcode
 Requires at least: 3.1
-Tested up to: 4.5-RC1
+Tested up to: 4.7-beta4
 Stable tag: trunk
 License: GNU General Public License
 
@@ -254,6 +254,9 @@ You can translate the plugin in your language if it's not done already. The loca
 
 ==Changelog==
 
+* **2016-11-23: Version 2.0.6**
+	* Security fixes
+
 * **2016-04-04: Version 2.0.5**
 	* Changed footer elements in widget back to div to prevent HTML validation errors
 	* Minor modifications in admin page header markup and styling
@@ -483,6 +486,9 @@ You can translate the plugin in your language if it's not done already. The loca
 
 
 == Upgrade Notice ==
+
+= 2.0.6 =
+Important security fixes. Upgrade highly recommended. If you upgrade from a version prior to 2.0, you will have to re-add the widget and set the widget options once again after upgrading.
 
 = 2.0.5 =
 If you upgrade from a version prior to 2.0, you will have to re-add the widget and set the widget options once again after upgrading. Version 2.0 is a major update.

@@ -9,7 +9,7 @@
 class Quotes_Collection {
 	
 	/** Plugin version **/
-	const PLUGIN_VERSION = '2.0.5';
+	const PLUGIN_VERSION = '2.0.6';
 
 	public $refresh_link_text;
 	public $auto_refresh_max;
@@ -128,8 +128,8 @@ class Quotes_Collection {
 		check_ajax_referer('quotescollection'); 
 		
 		$char_limit = (isset($_POST['char_limit']) && is_numeric($_POST['char_limit']))?$_POST['char_limit']:'';
-		$tags = $_POST['tags'];
-		$orderby = $_POST['orderby'];
+		$tags = esc_attr( $_POST['tags'] );
+		$orderby = esc_attr( $_POST['orderby'] );
 		$order = '';
 		$exclude = '';
 		$splice = '';

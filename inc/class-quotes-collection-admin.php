@@ -218,7 +218,7 @@ class Quotes_Collection_Admin {
 		// Display the quotes list table
 		?>
 		<form id="quotescollection" method="get">
-		<input type="hidden" name="page" value="<?php echo $_REQUEST['page']; ?>" />
+		<input type="hidden" name="page" value="<?php echo esc_attr( $_REQUEST['page'] ); ?>" />
 			<div class="list-header">
 				<?php echo $list_meta; ?>
 				<?php $quotes_list_table->search_box( __('Search', 'quotes-collection'), 'quotescollection'); ?>

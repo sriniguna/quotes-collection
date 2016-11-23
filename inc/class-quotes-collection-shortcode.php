@@ -189,15 +189,15 @@ class Quotes_Collection_Shortcode {
 			if($current == $total)
 				$next_disabled = $last_disabled = ' disabled';
 
-			$pagenav .= "<a class=\"first-page{$first_disabled}\" title=\"".__('Go to the first page', 'quotes-collection')."\" href=\"{$url}\">&laquo;</a>&nbsp;&nbsp;";
+			$pagenav .= '<a class="first-page' . $first_disabled .'" title="' . __('Go to the first page', 'quotes-collection') . '" href="' . esc_url( $url ) . '">&laquo;</a>&nbsp;&nbsp;';
 
-			$pagenav .= "<a class=\"prev-page{$prev_disabled}\" title=\"".__('Go to the previous page', 'quotes-collection')."\" href=\"{$url}{$a}{$paged}=".($current - 1)."\">&#139;</a>&nbsp;&nbsp;";
+			$pagenav .= '<a class="prev-page' . $prev_disabled . '" title="' . __('Go to the previous page', 'quotes-collection') . '" href="' . esc_url( $url.$a.$paged.'='.($current - 1) ).'">&#139;</a>&nbsp;&nbsp;';
 
 			$pagenav .= '<span class="paging-input">'.$current.' of <span class="total-pages">'.$total.'</span></span>';
 
-			$pagenav .= "&nbsp;&nbsp;<a class=\"next-page{$next_disabled}\" title=\"".__('Go to the next page', 'quotes-collection')."\" href=\"{$url}{$a}{$paged}=".($current + 1)."\">&#155;</a>";
+			$pagenav .= '&nbsp;&nbsp;<a class="next-page' . $next_disabled . '" title="' .__('Go to the next page', 'quotes-collection'). '" href="' . esc_url( $url.$a.$paged.'='.($current + 1) ) . '">&#155;</a>';
 
-			$pagenav .= "&nbsp;&nbsp;<a class=\"last-page{$last_disabled}\" title=\"".__('Go to the last page', 'quotes-collection')."\" href=\"{$url}{$a}{$paged}={$total}\">&raquo;</a>";
+			$pagenav .= '&nbsp;&nbsp;<a class="last-page' . $last_disabled . '" title="' . __('Go to the last page', 'quotes-collection') .'" href="' . esc_url( $url.$a.$paged.'='.$total ) . '">&raquo;</a>';
 		
 		}
 		else {
@@ -206,9 +206,9 @@ class Quotes_Collection_Shortcode {
 				if($i == $current)
 					$pagenav .= "&nbsp;<strong>{$i}</strong>";
 				else if($i == 1)
-					$pagenav .= "&nbsp;<a href=\"{$url}\">{$i}</a>";
+					$pagenav .= "&nbsp;<a href=\"" . esc_url($url) . "\">{$i}</a>";
 				else 
-					$pagenav .= "&nbsp;<a href=\"{$url}{$a}{$paged}={$i}\">{$i}</a>";
+					$pagenav .= "&nbsp;<a href=\"" . esc_url($url.$a.$paged.'='.$i) . "\">{$i}</a>";
 			}
 		}
 		return $pagenav;

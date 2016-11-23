@@ -219,17 +219,17 @@ class Quotes_Collection_Admin_List_Table extends WP_List_Table {
 		
 		// Frame the parameters to be passed to fetch the data from the database
 		$db_args = array();
-		$db_args['orderby'] = (!empty($_REQUEST['orderby'])) ? esc_attr( $_REQUEST['orderby'] ) : 'quote_id';
+		$db_args['orderby'] = (!empty($_REQUEST['orderby'])) ? $_REQUEST['orderby'] : 'quote_id';
 		if( empty($_REQUEST['order']) ) {
 			if( 'quote_id' == $db_args['orderby'] )
 				$db_args['order'] = 'DESC';
 			else $db_args['order'] = 'ASC';
 		}
 		else 
-			$db_args['order'] = esc_attr( $_REQUEST['order'] );
+			$db_args['order'] = $_REQUEST['order'];
 
 		if( isset( $_REQUEST['s'] ) && !empty( $_REQUEST['s'] ) ) {
-			$db_args['search'] = (string) esc_attr( $_REQUEST['s'] );
+			$db_args['search'] = (string) $_REQUEST['s'];
 		}
 		else $db_args['search'] = '';
 

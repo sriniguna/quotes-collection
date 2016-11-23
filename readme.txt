@@ -254,7 +254,7 @@ You can translate the plugin in your language if it's not done already. The loca
 
 ==Changelog==
 
-* **2016-11-23: Version 2.0.6**
+* **2016-11-23: Version 2.0.7**
 	* Security fixes
 
 * **2016-04-04: Version 2.0.5**
@@ -487,7 +487,7 @@ You can translate the plugin in your language if it's not done already. The loca
 
 == Upgrade Notice ==
 
-= 2.0.6 =
+= 2.0.7 =
 Important security fixes. Upgrade highly recommended. If you upgrade from a version prior to 2.0, you will have to re-add the widget and set the widget options once again after upgrading.
 
 = 2.0.5 =

@@ -100,24 +100,20 @@ class Quotes_Collection_DB {
 	private function validate_data($data = array()) {
 		if(!$data) return array();
 	    global $allowedposttags;
-		// extract($data);
+
 		$quote = wp_kses( stripslashes($data['quote']), $allowedposttags );
 		$author = wp_kses( stripslashes($data['author']), array( 'a' => array( 'href' => array(),'title' => array() ) ) ) ;	
 		$source = wp_kses( stripslashes($data['source']), array( 'a' => array( 'href' => array(),'title' => array() ) ) ) ;	
 		$tags = strip_tags( stripslashes($data['tags']) );
 		
-		$quote = "'".esc_sql($quote)."'";
-		$author = $author?"'".esc_sql($author)."'":"NULL";
-		$source = $source?"'".esc_sql($source)."'":"NULL";
 		$tags = explode(',', $tags);
 		foreach ($tags as $key => $tag)
 			$tags[$key] = trim($tag);
 		$tags = implode(',', $tags);
-		$tags = $tags?"'".esc_sql($tags)."'":"NULL";
 		if( !isset( $data['public'] ) || ( isset( $data['public'] ) && $data['public'] == 'no' ) )
-			$public = "'no'";
+			$public = "no";
 		else
-			$public = "'yes'";
+			$public = "yes";
 		$data = compact("quote", "author", "source", "tags", "public");
 		return $data;
 	}
@@ -138,9 +134,10 @@ class Quotes_Collection_DB {
 		$quote_data = $this->validate_data($quote_data);
 
 		extract($quote_data);
-	    $insert = "INSERT INTO " . $this->table_name .
+		
+	    $insert = $this->db->prepare( "INSERT INTO " . $this->table_name .
 			"(`quote`, `author`, `source`, `tags`, `public`, `time_added`)" .
-			"VALUES ({$quote}, {$author}, {$source}, {$tags}, {$public}, NOW())";
+			"VALUES (%s, %s, %s, %s, %s, NOW())" , $quote, $author, $source, $tags, $public);	
 		
 		$result = $this->db->query($insert);
 
@@ -159,21 +156,30 @@ class Quotes_Collection_DB {
 	public function put_quotes($quotes_data = array()) {
 		if(!$quotes_data) return 0;
 
+		$values = array();
+		$placeholders = array();
+
 		$insert = "INSERT INTO " . $this->table_name .
 			" (`quote`, `author`, `source`, `tags`, `public`, `time_added`)" .
 			" VALUES ";
-		$values = "";
 
 		foreach($quotes_data as $quote_data) {
 			if( is_object($quote_data) ) {
 				$quote_data = (array) $quote_data;
 			}
 			$quote_data = $this->validate_data($quote_data);
+
 			extract($quote_data);
-			if($values) $values .= ", ";
-			$values .= "({$quote}, {$author}, {$source}, {$tags}, {$public}, NOW())";
+
+			array_push($values, $quote, $author, $source, $tags, $public);
+
+			$placeholders[] = "(%s, %s, %s, %s, %s, NOW())";
 		}
-		$insert .= $values;
+
+		$insert .= implode(', ', $placeholders);
+
+		$insert = $this->db->prepare($insert, $values);
+
 		return $this->db->query($insert);
 	}
 
@@ -196,13 +202,14 @@ class Quotes_Collection_DB {
 		$quote_data = $this->validate_data($quote_data);
 		extract($quote_data);
 		$update = "UPDATE " . $this->table_name . "
-			SET `quote` = {$quote},
-				`author` = {$author},
-				`source` = {$source}, 
-				`tags` = {$tags},
-				`public` = {$public}, 
+			SET `quote` = %s,
+				`author` = %s,
+				`source` = %s, 
+				`tags` = %s,
+				`public` = %s, 
 				`time_updated` = NOW()
-			WHERE `quote_id` = $quote_id";
+			WHERE `quote_id` = %d";
+		$update = $this->db->prepare( $update, $quote, $author, $source, $tags, $public, $quote_id);
 		return $this->db->query( $update );
 	}
 
@@ -230,6 +237,12 @@ class Quotes_Collection_DB {
 	public function delete_quotes($quote_ids) {
 		if(!$quote_ids)
 			return 0;
+
+		foreach( $quote_ids as $quote_id ) {
+			if(! is_numeric($quote_id) )
+				return 0;
+		}
+
 		$sql = "DELETE FROM ".$this->table_name
 			."WHERE quote_id IN (".implode(', ', $quote_ids).")";
 		return $this->db->query($sql);

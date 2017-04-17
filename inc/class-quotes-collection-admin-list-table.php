@@ -220,7 +220,7 @@ class Quotes_Collection_Admin_List_Table extends WP_List_Table {
 		// Frame the parameters to be passed to fetch the data from the database
 		$db_args = array();
 		$db_args['orderby'] = (!empty($_REQUEST['orderby'])) ? $_REQUEST['orderby'] : 'quote_id';
-		if( empty($_REQUEST['order']) ) {
+		if( empty($_REQUEST['order']) || !in_array( $_REQUEST['order'], array( 'ASC', 'DESC', 'asc', 'desc' ), true ) ) {
 			if( 'quote_id' == $db_args['orderby'] )
 				$db_args['order'] = 'DESC';
 			else $db_args['order'] = 'ASC';

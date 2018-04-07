@@ -62,7 +62,7 @@ class Quotes_Collection_Widget extends WP_Widget {
 		if($quote = $quotescollection->quote($options)) {
 			extract( $args );
 			echo $before_widget;
-			if($options['title']) echo $before_title . apply_filters('the_title', $options['title']) . $after_title . "\n";
+			if($options['title']) echo $before_title . $options['title'] . $after_title . "\n";
 			echo $quote;
 			echo $after_widget;
 		}

@@ -3,7 +3,7 @@ Contributors: SriniG
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HDWT2K8TXXHUN
 Tags: quotes collection, quotes, quotations, random quote, sidebar, widget, ajax, shortcode
 Requires at least: 3.1
-Tested up to: 4.8
+Tested up to: 4.9.5
 Stable tag: trunk
 License: GNU General Public License
 
@@ -254,6 +254,9 @@ You can translate the plugin in your language if it's not done already. The loca
 
 ==Changelog==
 
+* **2018-04-07: Version 2.0.10**
+	* Removing apply_filters('the_title') for the widget title as it's out of place here, also could be problematic without argument 2.
+
 * **2017-04-17: Version 2.0.9**
 	* CSS fix.
 
@@ -492,6 +495,9 @@ You can translate the plugin in your language if it's not done already. The loca
 
 
 == Upgrade Notice ==
+
+= 2.0.10 =
+Do upgrade if you get a "Warning: Missing argument 2 for WC_Template_Loader::unsupported_theme_title_filter() in ..." message.
 
 = 2.0.9 =
 CSS fix. If you are running a version < 2.0.8, please upgrade as the lower versions may run into security issues. If you upgrade from a version prior to 2.0, you will have to re-add the widget and set the widget options once again after upgrading.

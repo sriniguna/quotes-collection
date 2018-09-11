@@ -1,9 +1,9 @@
 <?php
-/** 
+/**
  * Plugin Name: Quotes Collection
  * Plugin URI: http://srinig.com/wordpress/plugins/quotes-collection/
  * Description: Quotes Collection plugin with Ajax powered Random Quote sidebar widget helps you collect and display your favourite quotes in your WordPress blog/website.
- * Version: 2.0.10
+ * Version: 2.1 alpha-1
  * Author: Srini G
  * Author URI: http://srinig.com/
  * Text Domain: quotes-collection
@@ -36,10 +36,13 @@ require_once( 'inc/class-quotes-collection.php' );
 require_once( 'inc/class-quotes-collection-db.php' );
 require_once( 'inc/class-quotes-collection-quote.php' );
 include_once( 'inc/class-quotes-collection-widget.php' );
-require_once( 'inc/class-quotes-collection-shortcode.php');
+require_once( 'inc/class-quotes-collection-shortcode.php' );
 if( is_admin() ) {
 	require_once( 'inc/class-quotes-collection-admin-list-table.php' );
 	require_once( 'inc/class-quotes-collection-admin.php' );
+}
+if ( function_exists( 'register_block_type' ) ) {
+	include_once( 'blocks/random-quote.php' );
 }
 
 register_activation_hook( __FILE__, array( 'Quotes_Collection', 'activate' ) );
@@ -89,7 +92,7 @@ function quotescollection_quote( $args = NULL ) {
 	if( NULL === $quotescollection_instances ) {
 		$quotescollection_instances = 0;
 	}
-	
+
 	$quotescollection_instances++;
 	$args['instance'] = "tf_quotescollection_".$quotescollection_instances;
 

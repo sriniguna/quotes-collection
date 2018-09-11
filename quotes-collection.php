@@ -43,6 +43,7 @@ if( is_admin() ) {
 }
 if ( function_exists( 'register_block_type' ) ) {
 	include_once( 'blocks/random-quote.php' );
+	include_once( 'blocks/quotes.php' );
 }
 
 register_activation_hook( __FILE__, array( 'Quotes_Collection', 'activate' ) );

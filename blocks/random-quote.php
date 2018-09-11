@@ -51,6 +51,12 @@ function random_quote_block_init() {
 		'editor_script' => 'random-quote-block-editor',
 		'editor_style'  => 'random-quote-block-editor',
 		'style'         => 'random-quote-block',
+		'render_callback' => 'quotescollection_block_random_quote_render',
 	) );
 }
 add_action( 'init', 'random_quote_block_init' );
+
+
+function quotescollection_block_random_quote_render($atts) {
+	return do_shortcode('[quotcoll orderby="random" limit=1]');
+}

@@ -15,6 +15,8 @@
 	 */
 	var __ = wp.i18n.__;
 
+	var ServerSideRender = wp.components.ServerSideRender;
+
 	/**
 	 * Every block starts by registering a new block type definition.
 	 * @see https://wordpress.org/gutenberg/handbook/block-api/
@@ -52,9 +54,10 @@
 		 */
 		edit: function( props ) {
 			return el(
-				'p',
-				{ className: props.className },
-				__( 'Hello from the editor!' )
+				ServerSideRender, {
+					block: 'quotes-collection/random-quote',
+					attributes: props.attributes,
+				}
 			);
 		},
 
@@ -66,11 +69,7 @@
 		 * @return {Element}       Element to render.
 		 */
 		save: function() {
-			return el(
-				'p',
-				{},
-				__( 'Hello from the saved content!' )
-			);
+			return null;
 		}
 	} );
 } )(

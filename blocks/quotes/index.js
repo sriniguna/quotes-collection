@@ -16,6 +16,8 @@
 	var __ = wp.i18n.__;
 
 	var ServerSideRender = wp.components.ServerSideRender;
+	var TextControl = wp.components.TextControl;
+	var InspectorControls = wp.editor.InspectorControls;
 
 
 	/**
@@ -54,12 +56,21 @@
 		 * @return {Element}       Element to render.
 		 */
 		edit: function( props ) {
-			return el(
-				ServerSideRender, {
-					block: 'quotes-collection/quotes',
-					attributes: props.attributes,
-				}
-			);
+			return [
+				el(
+					ServerSideRender, {
+						block: 'quotes-collection/quotes',
+						attributes: props.attributes,
+					}
+				),
+				el( InspectorControls, {},
+					el( TextControl, {
+						label: 'Author',
+						value: props.attributes.author,
+						onChange: ( value ) => { props.setAttributes( { author: value } ); },
+					} )
+				),
+			];
 		},
 
 		/**

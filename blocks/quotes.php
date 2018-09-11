@@ -52,10 +52,17 @@ function quotes_block_init() {
 		'editor_style'  => 'quotes-block-editor',
 		'style'         => 'quotes-block',
 		'render_callback' => 'quotescollection_block_quotes_render',
+		'attributes'		=> array(
+													'author' => array( 'type' => 'string' ),
+													'source' => array( 'type' => 'string' ),
+													'tags' => array( 'type' => 'string' ),
+													'orderby' => array( 'type' => 'string' ),
+													'order' => array( 'type' => 'string' ),
+												),
 	) );
 }
 add_action( 'init', 'quotes_block_init' );
 
 function quotescollection_block_quotes_render($atts) {
-	return do_shortcode('[quotcoll]');
+	return do_shortcode('[quotcoll author="'.$atts["author"].'"]');
 }

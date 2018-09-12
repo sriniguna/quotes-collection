@@ -21,6 +21,7 @@
 	var TextControl = wp.components.TextControl;
 	var SelectControl = wp.components.SelectControl;
 	var RadioControl = wp.components.RadioControl;
+	var ToggleControl = wp.components.ToggleControl;
 
 
 	/**
@@ -85,6 +86,13 @@
 							value: props.attributes.tags,
 							onChange: ( value ) => { props.setAttributes( { tags: value } ); },
 						} ),
+						el( TextControl, {
+							label: __('Limit'),
+							help: __('The maximum number of quotes to be displayed on a single page, i.e., when paging is off.'),
+							type: 'number',
+							value: props.attributes.limit,
+							onChange: ( value ) => { props.setAttributes( { limit: value } ); },
+						}),
 					),
 					el( PanelBody, { title: __('Sorting'), },
 						el( SelectControl, {
@@ -108,6 +116,20 @@
 								{ label: __('Descending'), value: 'DESC' },
 							],
 						} ),
+					),
+					el( PanelBody, { title: __('Paging'), },
+						el( ToggleControl, {
+							label: __('Paging'),
+							checked: props.attributes.paging,
+							onChange: ( state ) => { props.setAttributes( { paging: state } ); },
+						} ),
+						el( TextControl, {
+							label: __('Limit per page'),
+							help: __('The maximum number of quotes to be displayed per page.'),
+							type: 'number',
+							value: props.attributes.limit_per_page,
+							onChange: ( value ) => { props.setAttributes( { limit_per_page: value } ); },
+						}),
 					),
 				),
 			];

@@ -58,6 +58,9 @@ function quotes_block_init() {
 													'tags' => array( 'type' => 'string' ),
 													'orderby' => array( 'type' => 'string' ),
 													'order' => array( 'type' => 'string' ),
+													'paging' => array( 'type' => 'boolean', 'default' => false ),
+													'limit_per_page' => array( 'type' => 'number', 'default' => 10 ),
+													'limit'=> array( 'type' => 'number' ),
 												),
 	) );
 }
@@ -72,6 +75,9 @@ function quotescollection_block_quotes_render($atts) {
 		$shortcode .= $atts["tags"] ? ' tags="'.$atts["tags"].'"' : '';
 		$shortcode .= $atts["orderby"] ? ' orderby="'.$atts["orderby"].'"' : '';
 		$shortcode .= $atts["order"] ? ' order="'.$atts["order"].'"' : '';
+		$shortcode .= $atts["paging"] ? ' paging="'.$atts["paging"].'"' : '';
+		$shortcode .= $atts["limit_per_page"] ? ' limit_per_page="'.$atts["limit_per_page"].'"' : '';
+		$shortcode .= $atts["limit"] ? ' limit="'.$atts["limit"].'"' : '';
 	}
 	$shortcode .=']';
 

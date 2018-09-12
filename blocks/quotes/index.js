@@ -69,7 +69,7 @@
 					}
 				),
 				el( InspectorControls, {},
-					el( PanelBody, { title: __('Filters'), },
+					el( PanelBody, { title: __('Filters'), initialOpen: false },
 						el( TextControl, {
 							label: __('Author'),
 							value: props.attributes.author,
@@ -96,7 +96,7 @@
 							onChange: ( value ) => { props.setAttributes( { limit: value } ); },
 						}),
 					),
-					el( PanelBody, { title: __('Sorting'), },
+					el( PanelBody, { title: __('Sorting'), initialOpen: false },
 						el( SelectControl, {
 							label: __('Order by'),
 							value: props.attributes.orderby,
@@ -119,7 +119,7 @@
 							],
 						} ),
 					),
-					el( PanelBody, { title: __('Paging'), },
+					el( PanelBody, { title: __('Paging'), initialOpen: false },
 						el( ToggleControl, {
 							label: __('Paging'),
 							checked: props.attributes.paging,

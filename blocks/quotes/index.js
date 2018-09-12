@@ -81,6 +81,7 @@
 						} ),
 						el( TextControl, {
 							label: __('Tags'),
+							help: __('Comma separated'),
 							value: props.attributes.tags,
 							onChange: ( value ) => { props.setAttributes( { tags: value } ); },
 						} ),

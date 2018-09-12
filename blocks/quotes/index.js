@@ -19,6 +19,8 @@
 	var InspectorControls = wp.editor.InspectorControls;
 	var PanelBody = wp.components.PanelBody;
 	var TextControl = wp.components.TextControl;
+	var SelectControl = wp.components.SelectControl;
+	var RadioControl = wp.components.RadioControl;
 
 
 	/**
@@ -84,16 +86,26 @@
 						} ),
 					),
 					el( PanelBody, { title: __('Sorting'), },
-					el( TextControl, {
-						label: 'Order by',
-						value: props.attributes.orderby,
-						onChange: ( value ) => { props.setAttributes( { orderby: value } ); },
-					} ),
-
-						el( TextControl, {
+						el( SelectControl, {
+							label: 'Order by',
+							value: props.attributes.orderby,
+							onChange: ( value ) => { props.setAttributes( { orderby: value } ); },
+							options: [
+								{ value: 'quote_id', label: 'Quote ID'},
+								{ value: 'author', label: 'Author'},
+								{ value: 'source', label: 'Source'},
+								{ value: 'time_added', label: 'Time Added'},
+								{ value: 'random', label: 'Random'},
+							]
+						} ),
+						el( RadioControl, {
 							label: 'Order',
-							value: props.attributes.order,
-							onChange: ( value ) => { props.setAttributes( { order: value } ); },
+							selected: props.attributes.order,
+							onChange: ( option ) => { props.setAttributes( { order: option } ); },
+							options: [
+								{ label: 'Ascending', value: 'ASC' },
+								{ label: 'Descending', value: 'DESC' },
+							],
 						} ),
 					),
 				),

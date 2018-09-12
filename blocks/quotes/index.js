@@ -16,8 +16,9 @@
 	var __ = wp.i18n.__;
 
 	var ServerSideRender = wp.components.ServerSideRender;
-	var TextControl = wp.components.TextControl;
 	var InspectorControls = wp.editor.InspectorControls;
+	var PanelBody = wp.components.PanelBody;
+	var TextControl = wp.components.TextControl;
 
 
 	/**
@@ -38,6 +39,7 @@
 		 * The categories provided by core are `common`, `embed`, `formatting`, `layout` and `widgets`.
 		 */
 		category: 'widgets',
+
 
 		/**
 		 * Optional block extended support features.
@@ -64,11 +66,36 @@
 					}
 				),
 				el( InspectorControls, {},
+					el( PanelBody, { title: __('Filters'), },
+						el( TextControl, {
+							label: 'Author',
+							value: props.attributes.author,
+							onChange: ( value ) => { props.setAttributes( { author: value } ); },
+						} ),
+						el( TextControl, {
+							label: 'Source',
+							value: props.attributes.source,
+							onChange: ( value ) => { props.setAttributes( { source: value } ); },
+						} ),
+						el( TextControl, {
+							label: 'Tags',
+							value: props.attributes.tags,
+							onChange: ( value ) => { props.setAttributes( { tags: value } ); },
+						} ),
+					),
+					el( PanelBody, { title: __('Sorting'), },
 					el( TextControl, {
-						label: 'Author',
-						value: props.attributes.author,
-						onChange: ( value ) => { props.setAttributes( { author: value } ); },
-					} )
+						label: 'Order by',
+						value: props.attributes.orderby,
+						onChange: ( value ) => { props.setAttributes( { orderby: value } ); },
+					} ),
+
+						el( TextControl, {
+							label: 'Order',
+							value: props.attributes.order,
+							onChange: ( value ) => { props.setAttributes( { order: value } ); },
+						} ),
+					),
 				),
 			];
 		},

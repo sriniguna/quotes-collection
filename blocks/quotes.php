@@ -64,5 +64,16 @@ function quotes_block_init() {
 add_action( 'init', 'quotes_block_init' );
 
 function quotescollection_block_quotes_render($atts) {
-	return do_shortcode('[quotcoll author="'.$atts["author"].'"]');
+
+	$shortcode = '[quotcoll';
+	if($atts) {
+		$shortcode .= $atts["author"] ? ' author="'.$atts["author"].'"' : '';
+		$shortcode .= $atts["source"] ? ' source="'.$atts["source"].'"' : '';
+		$shortcode .= $atts["tags"] ? ' tags="'.$atts["tags"].'"' : '';
+		$shortcode .= $atts["orderby"] ? ' orderby="'.$atts["orderby"].'"' : '';
+		$shortcode .= $atts["order"] ? ' order="'.$atts["order"].'"' : '';
+	}
+	$shortcode .=']';
+
+	return do_shortcode( $shortcode	);
 }

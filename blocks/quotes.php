@@ -61,12 +61,13 @@ function quotes_block_init() {
 													'paging' => array( 'type' => 'boolean', 'default' => false ),
 													'limit_per_page' => array( 'type' => 'number', 'default' => 10 ),
 													'limit'=> array( 'type' => 'number' ),
-													'backgroundColor' => array( 'type' => 'string' ),
-													'textColor' => array( 'type' => 'string' ),
+													'backgroundColor' => array( 'type' => 'string', 'default' => '#f4f4f4' ),
+													'textColor' => array( 'type' => 'string', 'default' => '#444' ),
 													'quoteAlign' => array( 'type' => 'string', 'default' => 'left' ),
 													'attrAlign' => array( 'type' => 'string', 'default' => 'right' ),
 													'showAuthor' => array( 'type' => 'boolean', 'default' => true ),
 													'showSource' => array( 'type' => 'boolean', 'default' => true ),
+													'className' => array( 'type' => 'string' ),
 												),
 	) );
 }
@@ -84,8 +85,17 @@ function quotescollection_block_quotes_render($atts) {
 		$shortcode .= $atts["paging"] ? ' paging="'.$atts["paging"].'"' : '';
 		$shortcode .= $atts["limit_per_page"] ? ' limit_per_page="'.$atts["limit_per_page"].'"' : '';
 		$shortcode .= $atts["limit"] ? ' limit="'.$atts["limit"].'"' : '';
+		$shortcode .= $atts["backgroundColor"] ? ' blockquote_bg_color="'.$atts["backgroundColor"].'"' : '';
+		$shortcode .= $atts["textColor"] ? ' blockquote_text_color="'.$atts["textColor"].'"' : '';
+		$shortcode .= $atts["quoteAlign"] ? ' quote_align="'.$atts["quoteAlign"].'"' : '';
+		$shortcode .= $atts["attrAlign"] ? ' attribution_align="'.$atts["attrAlign"].'"' : '';
+		$shortcode .= ($atts["showAuthor"] == false) ? ' show_author=0' : '';
+		$shortcode .= ($atts["showSource"] == false) ? ' show_source=0' : '';
 	}
 	$shortcode .=']';
 
-	return do_shortcode( $shortcode	);
+	$classes = 'wp-block-quotes-collection-quotes';
+	$classes .= $atts['className'] ? ' '.$atts['className'] : '';
+
+	return '<div class="'.$classes.'">' . do_shortcode( $shortcode	) . '</div>';
 }

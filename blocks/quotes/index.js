@@ -145,13 +145,13 @@
 							colorSettings: [
 								{
 									value: props.attributes.backgroundColor,
-									onChange: (color) => { props.setAttributes( { backgroundColor: color } ); },
+									onChange: (color) => { props.setAttributes( { backgroundColor: (color) ? color: '' } ); },
 									label: __('Background Color'),
 								},
 								{
 									value: props.attributes.textColor,
-									onChange: (color) => { props.setAttributes( { textColor: color } ); },
-									label: __('Background Color'),
+									onChange: (color) => { props.setAttributes( { textColor: (color) ? color: '' } ); },
+									label: __('Text Color'),
 								},
 							],
 						},
@@ -180,7 +180,6 @@
 								{ value: 'left', label: __('Left') },
 								{ value: 'right', label: __('Right') },
 								{ value: 'center', label: __('Center') },
-								{ value: 'justify', label: __('Justify') },
 							],
 						} ),
 						el( CheckboxControl, {

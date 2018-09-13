@@ -25,8 +25,30 @@ class Quotes_Collection_Shortcode {
 			'orderby' => 'quote_id',
 			'order' => 'ASC',
 			'paging' => false,
-			'limit_per_page' => 10
+			'limit_per_page' => 10,
+			'show_author' => true,
+			'show_source' => true,
+			'blockquote_bg_color' => '',
+			'blockquote_text_color' => '',
+			'quote_align' => '',
+			'attribution_align' => '',
 		), $atts ) );
+
+		$format_options = array();
+		$format_options['show_author'] = $show_author;
+		$format_options['show_source'] = $show_source;
+
+		$blockquote_style = $blockquote_bg_color ? "background-color:".$blockquote_bg_color.';' : '';
+		$blockquote_style .= $blockquote_text_color ? "color:".$blockquote_text_color.';' : '';
+		$blockquote_style .= ($quote_align && in_array($quote_align, array('left', 'right', 'center', 'justify'))) ? "text-align:".$quote_align.';' : '';
+
+		if( $blockquote_style ) {
+			$format_options['before'] = '<blockquote class="quotescollection-quote" style="'.$blockquote_style.'">';
+		}
+
+		if($attribution_align && in_array($attribution_align, array('left', 'right', 'center'))) {
+			$format_options['before_attribution'] = '<footer class="attribution" style="text-align:'.$attribution_align.';">&mdash;&nbsp;';
+		}
 
 		// Initialize the variable that holds args to be passed to the DB function to get the quotes
 		// And set 'public' argument to 'yes', because we don't want to display private quotes in public
@@ -39,7 +61,7 @@ class Quotes_Collection_Shortcode {
 		if($id && is_numeric($id)) {
 			$db_args['quote_id'] = $id;
 			if( $quote = Quotes_Collection_Quote::with_condition($db_args) ) {
-				return $quote->output_format();
+				return $quote->output_format($format_options);
 			}
 			else
 				return "";
@@ -49,10 +71,10 @@ class Quotes_Collection_Shortcode {
 			$db_args['author'] = $author;
 		if($source)
 			$db_args['source'] = $source;
-		
-		if($tags) 
+
+		if($tags)
 			$db_args['tags'] = $tags;
-		
+
 		switch($orderby) {
 			case 'quote_id':
 			case 'author':
@@ -79,47 +101,47 @@ class Quotes_Collection_Shortcode {
 		$page_nav = "";
 
 		if($paging == true || $paging == 1) {
-	
+
 			$num_quotes = $db->count($db_args);
-		
+
 			$total_pages = ceil($num_quotes / $limit_per_page);
-		
-		
+
+
 			if(!isset($_GET['quotes_page']) || !$_GET['quotes_page'] || !is_numeric($_GET['quotes_page']))
 				$page = 1;
 			else
 				$page = $_GET['quotes_page'];
-		
+
 			if($page > $total_pages) $page = $total_pages;
-		
+
 			if($page_nav = $this->pagenav($total_pages, $page, 0, 'quotes_page'))
 				$page_nav = '<div class="quotescollection_pagenav">'.$page_nav.'</div>';
-			
+
 			$start = ($page - 1) * $limit_per_page;
 
 			$db_args['num_quotes'] = $limit_per_page;
 			$db_args['start'] = $start;
-		
+
 		}
-	
+
 		else if($limit && is_numeric($limit))
 			$db_args['num_quotes'] = $limit;
 
-				
+
 		if( $quotes_data = $db->get_quotes($db_args) ) {
-			return $page_nav.$this->output_format($quotes_data).$page_nav;
+			return $page_nav.$this->output_format($quotes_data, $format_options).$page_nav;
 		}
 		else
 			return "";
 
 	}
 
-	private function output_format($quotes = array()) {
-		
+	private function output_format($quotes = array(), $options = array()) {
+
 		$display = "";
 
 		foreach($quotes as $quote) {
-			$display .= $quote->output_format();
+			$display .= $quote->output_format($options);
 		}
 
 		return apply_filters( 'quotescollection_shortcode_output_format', $display );
@@ -128,7 +150,7 @@ class Quotes_Collection_Shortcode {
 
 	private function pagenav($total, $current = 1, $format = 0, $paged = 'paged', $url = "") {
 		if($total == 1 && $current == 1) return "";
-	
+
 		if(!$url) {
 			$url = 'http';
 			if (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on") {$url .= "s";}
@@ -149,7 +171,7 @@ class Quotes_Collection_Shortcode {
 			else {
 				$url .= $_SERVER["PHP_SELF"];
 			}
-			
+
 			if($query_string = $_SERVER['QUERY_STRING']) {
 				$parms = explode('&', $query_string);
 				$y = '';
@@ -164,21 +186,21 @@ class Quotes_Collection_Shortcode {
 					$url .= '?'.$query_string;
 					$a = '&';
 				}
-				else $a = '?';	
+				else $a = '?';
 			}
 			else $a = '?';
 		}
 		else {
 			$a = '?';
-			if(strpos($url, '?')) $a = '&';	
+			if(strpos($url, '?')) $a = '&';
 		}
-		
-		if(!$format || $format > 2 || $format < 0 || !is_numeric($format)) {	
+
+		if(!$format || $format > 2 || $format < 0 || !is_numeric($format)) {
 			if($total <= 8) $format = 1;
 			else $format = 2;
 		}
-		
-		
+
+
 		if($current > $total) $current = $total;
 			$pagenav = "";
 
@@ -198,7 +220,7 @@ class Quotes_Collection_Shortcode {
 			$pagenav .= '&nbsp;&nbsp;<a class="next-page' . $next_disabled . '" title="' .__('Go to the next page', 'quotes-collection'). '" href="' . esc_url( $url.$a.$paged.'='.($current + 1) ) . '">&#155;</a>';
 
 			$pagenav .= '&nbsp;&nbsp;<a class="last-page' . $last_disabled . '" title="' . __('Go to the last page', 'quotes-collection') .'" href="' . esc_url( $url.$a.$paged.'='.$total ) . '">&raquo;</a>';
-		
+
 		}
 		else {
 			$pagenav = __("Goto page:", 'quotes-collection');
@@ -207,7 +229,7 @@ class Quotes_Collection_Shortcode {
 					$pagenav .= "&nbsp;<strong>{$i}</strong>";
 				else if($i == 1)
 					$pagenav .= "&nbsp;<a href=\"" . esc_url($url) . "\">{$i}</a>";
-				else 
+				else
 					$pagenav .= "&nbsp;<a href=\"" . esc_url($url.$a.$paged.'='.$i) . "\">{$i}</a>";
 			}
 		}
@@ -251,7 +273,7 @@ class Quotes_Collection_Shortcode {
 			$atts = array( 'orderby' => 'random', 'limit' => 1 );
 		else
 			$atts = array (	'id' => $matches[1] );
-		
+
 		return $this->do_shortcode($atts);
 	}
 

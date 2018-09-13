@@ -5,7 +5,22 @@
  */
 
 .wp-block-quotes-collection-quotes {
-	background-color: #000;
-	color: #fff;
-	padding: 2px;
+}
+
+.wp-block-quotes-collection-quotes blockquote.quotescollection-quote {
+	margin: 3em 2em;
+	padding: 1.6em;
+	border-radius: 3px;
+}
+.wp-block-quotes-collection-quotes blockquote.quotescollection-quote p {
+	margin: 0 0 1.4em 0;
+}
+
+.wp-block-quotes-collection-quotes blockquote.quotescollection-quote p:last-child {
+	margin: 0;
+}
+
+.wp-block-quotes-collection-quotes blockquote.quotescollection-quote .attribution {
+	margin: 1.4em 0 0 0;
+	padding: 0;
 }

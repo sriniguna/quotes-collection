@@ -61,6 +61,8 @@ function quotes_block_init() {
 													'paging' => array( 'type' => 'boolean', 'default' => false ),
 													'limit_per_page' => array( 'type' => 'number', 'default' => 10 ),
 													'limit'=> array( 'type' => 'number' ),
+													'backgroundColor' => array( 'type' => 'string' ),
+													'textColor' => array( 'type' => 'string' ),
 												),
 	) );
 }

@@ -17,6 +17,8 @@
 
 	var ServerSideRender = wp.components.ServerSideRender;
 	var InspectorControls = wp.editor.InspectorControls;
+	var PanelColorSettings = wp.editor.PanelColorSettings;
+	var ContrastChecker = wp.editor.ContrastChecker;
 	var PanelBody = wp.components.PanelBody;
 	var TextControl = wp.components.TextControl;
 	var SelectControl = wp.components.SelectControl;
@@ -133,6 +135,27 @@
 							max: 100,
 							value: props.attributes.limit_per_page,
 							onChange: ( value ) => { props.setAttributes( { limit_per_page: value } ); },
+						}),
+					),
+					el( PanelColorSettings, {
+							title: __('Color Settings'),
+							initialOpen: false,
+							colorSettings: [
+								{
+									value: props.attributes.backgroundColor,
+									onChange: (color) => { props.setAttributes( { backgroundColor: color } ); },
+									label: __('Background Color'),
+								},
+								{
+									value: props.attributes.textColor,
+									onChange: (color) => { props.setAttributes( { textColor: color } ); },
+									label: __('Background Color'),
+								},
+							],
+						},
+						el( ContrastChecker, {
+							textColor: props.attributes.textColor,
+							backgroundColor: props.attributes.backgroundColor,
 						}),
 					),
 				),

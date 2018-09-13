@@ -63,6 +63,10 @@ function quotes_block_init() {
 													'limit'=> array( 'type' => 'number' ),
 													'backgroundColor' => array( 'type' => 'string' ),
 													'textColor' => array( 'type' => 'string' ),
+													'quoteAlign' => array( 'type' => 'string', 'default' => 'left' ),
+													'attrAlign' => array( 'type' => 'string', 'default' => 'right' ),
+													'showAuthor' => array( 'type' => 'boolean', 'default' => true ),
+													'showSource' => array( 'type' => 'boolean', 'default' => true ),
 												),
 	) );
 }

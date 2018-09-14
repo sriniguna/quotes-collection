@@ -76,8 +76,8 @@
 				),
 				el( BlockControls, {},
 					el( AlignmentToolbar, {
-						value: props.attributes.quoteAlign,
-						onChange: ( value ) => { props.setAttributes( { quoteAlign: value } ); },
+						value: props.attributes.textAlign,
+						onChange: ( value ) => { props.setAttributes( { textAlign: value } ); },
 					}),
 				),
 				el( InspectorControls, {},
@@ -181,8 +181,8 @@
 						} ),
 						el( SelectControl, {
 							label: __('Attribution Alignment'),
-							value: props.attributes.attrAlign,
-							onChange: (alignment) => { props.setAttributes( { attrAlign: alignment } ); },
+							value: props.attributes.attributionAlign,
+							onChange: (alignment) => { props.setAttributes( { attributionAlign: alignment } ); },
 							options: [
 								{ value: 'left', label: __('Left') },
 								{ value: 'right', label: __('Right') },

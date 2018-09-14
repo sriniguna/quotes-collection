@@ -63,8 +63,8 @@ function quotes_block_init() {
 													'limit'=> array( 'type' => 'number' ),
 													'backgroundColor' => array( 'type' => 'string', 'default' => '#f4f4f4' ),
 													'textColor' => array( 'type' => 'string', 'default' => '#444' ),
-													'quoteAlign' => array( 'type' => 'string', 'default' => 'left' ),
-													'attrAlign' => array( 'type' => 'string', 'default' => 'right' ),
+													'textAlign' => array( 'type' => 'string', 'default' => 'left' ),
+													'attributionAlign' => array( 'type' => 'string', 'default' => 'right' ),
 													'showAuthor' => array( 'type' => 'boolean', 'default' => true ),
 													'showSource' => array( 'type' => 'boolean', 'default' => true ),
 													'className' => array( 'type' => 'string' ),
@@ -73,29 +73,63 @@ function quotes_block_init() {
 }
 add_action( 'init', 'quotes_block_init' );
 
-function quotescollection_block_quotes_render($atts) {
+function quotescollection_block_quotes_render( $atts = array() ) {
 
-	$shortcode = '[quotcoll';
-	if($atts) {
-		$shortcode .= $atts["author"] ? ' author="'.$atts["author"].'"' : '';
-		$shortcode .= $atts["source"] ? ' source="'.$atts["source"].'"' : '';
-		$shortcode .= $atts["tags"] ? ' tags="'.$atts["tags"].'"' : '';
-		$shortcode .= $atts["orderby"] ? ' orderby="'.$atts["orderby"].'"' : '';
-		$shortcode .= $atts["order"] ? ' order="'.$atts["order"].'"' : '';
-		$shortcode .= $atts["paging"] ? ' paging="'.$atts["paging"].'"' : '';
-		$shortcode .= $atts["limit_per_page"] ? ' limit_per_page="'.$atts["limit_per_page"].'"' : '';
-		$shortcode .= $atts["limit"] ? ' limit="'.$atts["limit"].'"' : '';
-		$shortcode .= $atts["backgroundColor"] ? ' blockquote_bg_color="'.$atts["backgroundColor"].'"' : '';
-		$shortcode .= $atts["textColor"] ? ' blockquote_text_color="'.$atts["textColor"].'"' : '';
-		$shortcode .= $atts["quoteAlign"] ? ' quote_align="'.$atts["quoteAlign"].'"' : '';
-		$shortcode .= $atts["attrAlign"] ? ' attribution_align="'.$atts["attrAlign"].'"' : '';
-		$shortcode .= ($atts["showAuthor"] == false) ? ' show_author=0' : '';
-		$shortcode .= ($atts["showSource"] == false) ? ' show_source=0' : '';
+	$quotcoll_shortcode = new Quotes_Collection_Shortcode();
+	$block_class = 'wp-block-quotes-collection-quotes';
+	$block_class .= $atts['className'] ? ' '.$atts['className'] : '';
+	$block_style = "";
+	$blockquote_style = "";
+
+
+	if( $atts['backgroundColor']
+		&& ( $background_color = sanitize_hex_color( $atts['backgroundColor'] ) )
+	) {
+		$blockquote_style .= "background-color:".$background_color.';';
+		unset($atts['backgroundColor']);
 	}
-	$shortcode .=']';
 
-	$classes = 'wp-block-quotes-collection-quotes';
-	$classes .= $atts['className'] ? ' '.$atts['className'] : '';
+	if( $atts['textColor']
+		&& ( $text_color = sanitize_hex_color( $atts['textColor'] ) )
+	) {
+		$blockquote_style .= "color:".$text_color.';';
+		unset($atts['textColor']);
+	}
 
-	return '<div class="'.$classes.'">' . do_shortcode( $shortcode	) . '</div>';
+	if( $atts['textAlign']
+		&& ( in_array ( $atts['textAlign'], array( 'left', 'right', 'center' ) ) )
+	)
+	{
+		$block_style .= "text-align:" . $atts['textAlign'] . ';';
+		unset($atts['textAlign']);
+	}
+
+	if( $atts['attributionAlign']
+		&& ( in_array ( $atts['attributionAlign'], array( 'left', 'right', 'center' ) ) )
+	)
+	{
+		$atts['before_attribution'] = '<footer class="attribution" style="text-align:'.$atts['attributionAlign'].';">&mdash;&nbsp;';
+		unset($atts['attributionAlign']);
+	}
+
+	if( $atts['showAuthor'] == false ) {
+		$atts['show_author'] = 0;
+		unset( $atts['showAuthor'] );
+	}
+
+	if( $atts['showSource'] == false ) {
+		$atts['show_source'] = 0;
+		unset( $atts['showSource'] );
+	}
+
+	if( $blockquote_style ) {
+		$atts['before'] = '<blockquote class="quotescollection-quote" style="'.$blockquote_style.'">';
+	}
+
+
+	if( $block_style ) {
+		$block_style = ' style="'.$block_style.'"';
+	}
+
+	return '<div class="' . $block_class . '"' . $block_style.'">' . $quotcoll_shortcode->do_shortcode( $atts ) . '</div>';
 }

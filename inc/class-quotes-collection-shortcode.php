@@ -28,27 +28,9 @@ class Quotes_Collection_Shortcode {
 			'limit_per_page' => 10,
 			'show_author' => true,
 			'show_source' => true,
-			'blockquote_bg_color' => '',
-			'blockquote_text_color' => '',
-			'quote_align' => '',
-			'attribution_align' => '',
+			'before' => null,
+			'before_attribution' => null,
 		), $atts ) );
-
-		$format_options = array();
-		$format_options['show_author'] = $show_author;
-		$format_options['show_source'] = $show_source;
-
-		$blockquote_style = $blockquote_bg_color ? "background-color:".$blockquote_bg_color.';' : '';
-		$blockquote_style .= $blockquote_text_color ? "color:".$blockquote_text_color.';' : '';
-		$blockquote_style .= ($quote_align && in_array($quote_align, array('left', 'right', 'center', 'justify'))) ? "text-align:".$quote_align.';' : '';
-
-		if( $blockquote_style ) {
-			$format_options['before'] = '<blockquote class="quotescollection-quote" style="'.$blockquote_style.'">';
-		}
-
-		if($attribution_align && in_array($attribution_align, array('left', 'right', 'center'))) {
-			$format_options['before_attribution'] = '<footer class="attribution" style="text-align:'.$attribution_align.';">&mdash;&nbsp;';
-		}
 
 		// Initialize the variable that holds args to be passed to the DB function to get the quotes
 		// And set 'public' argument to 'yes', because we don't want to display private quotes in public
@@ -61,7 +43,7 @@ class Quotes_Collection_Shortcode {
 		if($id && is_numeric($id)) {
 			$db_args['quote_id'] = $id;
 			if( $quote = Quotes_Collection_Quote::with_condition($db_args) ) {
-				return $quote->output_format($format_options);
+				return $quote->output_format($atts);
 			}
 			else
 				return "";
@@ -129,7 +111,7 @@ class Quotes_Collection_Shortcode {
 
 
 		if( $quotes_data = $db->get_quotes($db_args) ) {
-			return $page_nav.$this->output_format($quotes_data, $format_options).$page_nav;
+			return $page_nav.$this->output_format($quotes_data, $atts).$page_nav;
 		}
 		else
 			return "";

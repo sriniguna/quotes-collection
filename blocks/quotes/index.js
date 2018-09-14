@@ -107,7 +107,7 @@
 							value: props.attributes.limit,
 							onChange: ( value ) => { props.setAttributes( { limit: value } ); },
 						}),
-					),
+					), // </PanelBody>
 					el( PanelBody, { title: __('Sorting'), initialOpen: false },
 						el( SelectControl, {
 							label: __('Order by'),
@@ -130,7 +130,7 @@
 								{ label: __('Descending'), value: 'DESC' },
 							],
 						} ),
-					),
+					), // </PanelBody>
 					el( PanelBody, { title: __('Paging'), initialOpen: false },
 						el( ToggleControl, {
 							label: __('Paging'),
@@ -146,7 +146,7 @@
 							value: props.attributes.limit_per_page,
 							onChange: ( value ) => { props.setAttributes( { limit_per_page: value } ); },
 						}),
-					),
+					), // </PanelBody>
 					el( PanelColorSettings, {
 							title: __('Color Settings'),
 							initialOpen: false,
@@ -167,7 +167,7 @@
 							textColor: props.attributes.textColor,
 							backgroundColor: props.attributes.backgroundColor,
 						}),
-					),
+					), // </PanelColorSettings>
 					el( PanelBody, { title: __('Attribution Settings'), initialOpen: false, },
 						el( CheckboxControl, {
 							label: __('Show author'),
@@ -179,19 +179,17 @@
 							checked: props.attributes.showSource,
 							onChange: (state) => { props.setAttributes( { showSource: state } ); },
 						} ),
-						el( SelectControl, {
-							label: __('Attribution Alignment'),
-							value: props.attributes.attributionAlign,
-							onChange: (alignment) => { props.setAttributes( { attributionAlign: alignment } ); },
-							options: [
-								{ value: 'left', label: __('Left') },
-								{ value: 'right', label: __('Right') },
-								{ value: 'center', label: __('Center') },
-							],
-						} ),
-					),
-				),
-			];
+						el( 'div', {},
+						 	el( 'label', {}, __('Attribution Alignment') ),
+							el( AlignmentToolbar, {
+								title: __('Attribution Alignment'),
+								value: props.attributes.attributionAlign,
+								onChange: (alignment) => { props.setAttributes( { attributionAlign: alignment } ); },
+							}),
+						), // </div>
+					), // </PanelBody>
+				), // </InspectorControls>
+			]; // return
 		},
 
 		/**

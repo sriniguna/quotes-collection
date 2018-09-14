@@ -15,6 +15,8 @@
 	 */
 	var __ = wp.i18n.__;
 
+	var AlignmentToolbar = wp.editor.AlignmentToolbar;
+	var BlockControls = wp.editor.BlockControls;
 	var ContrastChecker = wp.editor.ContrastChecker;
 	var InspectorControls = wp.editor.InspectorControls;
 	var PanelColorSettings = wp.editor.PanelColorSettings;
@@ -71,6 +73,12 @@
 						block: 'quotes-collection/quotes',
 						attributes: props.attributes,
 					}
+				),
+				el( BlockControls, {},
+					el( AlignmentToolbar, {
+						value: props.attributes.quoteAlign,
+						onChange: ( value ) => { props.setAttributes( { quoteAlign: value } ); },
+					}),
 				),
 				el( InspectorControls, {},
 					el( PanelBody, { title: __('Filters'), initialOpen: false },
@@ -160,17 +168,16 @@
 							backgroundColor: props.attributes.backgroundColor,
 						}),
 					),
-					el( PanelBody, { title: __('Text Settings'), initialOpen: false, },
-						el( SelectControl, {
-							label: __('Quote Alignment'),
-							value: props.attributes.quoteAlign,
-							onChange: (alignment) => { props.setAttributes( { quoteAlign: alignment } ); },
-							options: [
-								{ value: 'left', label: __('Left') },
-								{ value: 'right', label: __('Right') },
-								{ value: 'center', label: __('Center') },
-								{ value: 'justify', label: __('Justify') },
-							],
+					el( PanelBody, { title: __('Attribution Settings'), initialOpen: false, },
+						el( CheckboxControl, {
+							label: __('Show author'),
+							checked: props.attributes.showAuthor,
+							onChange: (state) => { props.setAttributes( { showAuthor: state } ); },
+						} ),
+						el( CheckboxControl, {
+							label: __('Show source'),
+							checked: props.attributes.showSource,
+							onChange: (state) => { props.setAttributes( { showSource: state } ); },
 						} ),
 						el( SelectControl, {
 							label: __('Attribution Alignment'),
@@ -181,16 +188,6 @@
 								{ value: 'right', label: __('Right') },
 								{ value: 'center', label: __('Center') },
 							],
-						} ),
-						el( CheckboxControl, {
-							label: __('Show author'),
-							checked: props.attributes.showAuthor,
-							onChange: (state) => { props.setAttributes( { showAuthor: state } ); },
-						} ),
-						el( CheckboxControl, {
-							label: __('Show source'),
-							checked: props.attributes.showSource,
-							onChange: (state) => { props.setAttributes( { showSource: state } ); },
 						} ),
 					),
 				),

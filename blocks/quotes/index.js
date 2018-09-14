@@ -100,12 +100,18 @@
 						} ),
 						el( TextControl, {
 							label: __('Limit'),
-							help: __('The maximum number of quotes to be displayed on a single page, i.e., when paging is off.'),
+							help: __('The maximum number of quotes to be displayed on a single page. Ignored when paging is on. A value of "0" implies no limits.'),
 							type: 'number',
-							min: 1,
+							min: 0,
 							max: 100,
 							value: props.attributes.limit,
-							onChange: ( value ) => { props.setAttributes( { limit: value } ); },
+							onChange: ( value ) => {
+								if( isNaN( parseInt(value) ) || value < 0 ) {
+									props.setAttributes( { limit: 0 } );
+								} else {
+									props.setAttributes( { limit: value } );
+								}
+							},
 						}),
 					), // </PanelBody>
 					el( PanelBody, { title: __('Sorting'), initialOpen: false },
@@ -139,12 +145,18 @@
 						} ),
 						el( TextControl, {
 							label: __('Limit per page'),
-							help: __('The maximum number of quotes to be displayed per page.'),
+							help: __('The maximum number of quotes to be displayed per page. Ignored when paging is off.'),
 							type: 'number',
 							min: 1,
 							max: 100,
 							value: props.attributes.limit_per_page,
-							onChange: ( value ) => { props.setAttributes( { limit_per_page: value } ); },
+							onChange: ( value ) => {
+								if( isNaN( parseInt(value) ) || value < 1 ) {
+									props.setAttributes( { limit_per_page: 10 } );
+								} else {
+									props.setAttributes( { limit_per_page: value } );
+								}
+							},
 						}),
 					), // </PanelBody>
 					el( PanelColorSettings, {

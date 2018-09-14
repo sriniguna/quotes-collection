@@ -57,7 +57,7 @@ function quotes_block_init() {
 													'source' => array( 'type' => 'string' ),
 													'tags' => array( 'type' => 'string' ),
 													'orderby' => array( 'type' => 'string' ),
-													'order' => array( 'type' => 'string' ),
+													'order' => array( 'type' => 'string', 'default' => 'ASC' ),
 													'paging' => array( 'type' => 'boolean', 'default' => false ),
 													'limit_per_page' => array( 'type' => 'number', 'default' => 10 ),
 													'limit'=> array( 'type' => 'number' ),

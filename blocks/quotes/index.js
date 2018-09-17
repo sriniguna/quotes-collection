@@ -50,6 +50,130 @@
 		category: 'widgets',
 
 
+		transforms: {
+		    from: [
+		        {
+		            type: 'shortcode',
+		            // Shortcode tag can also be an array of shortcode aliases
+		            tag: 'quotcoll',
+		            attributes: {
+		                author: {
+		                    type: 'string',
+		                    shortcode: function( _ref ) {
+														if( _ref.named.author === undefined)
+															return;
+														return _ref.named.author;
+		                    },
+		                },
+										source: {
+											type: 'string',
+											shortcode: function( _ref ) {
+												if( _ref.named.source === undefined)
+													return;
+												return _ref.named.source;
+											}
+										},
+										tags: {
+											type: 'string',
+											shortcode: function( _ref ) {
+												if( _ref.named.source === undefined)
+													return;
+												return _ref.named.source;
+											}
+										},
+										orderby: {
+											type: 'string',
+											shortcode: function( _ref ) {
+												if( _ref.named.orderby === undefined)
+													return;
+												return _ref.named.orderby;
+											}
+										},
+										order: {
+											type: 'string',
+											shortcode: function( _ref ) {
+												if( _ref.named.order === undefined)
+													return;
+												return _ref.named.order;
+											}
+										},
+										paging: {
+											type: 'boolean',
+											shortcode: function( _ref ) {
+												if( _ref.named.paging === undefined)
+													return;
+												return _ref.named.paging;
+											}
+										},
+										limit_per_page: {
+											type: 'number',
+											shortcode: function( _ref ) {
+												if( _ref.named.limit_per_page === undefined )
+													return;
+												return parseInt( _ref.named.limit_per_page, 10 );
+											}
+										},
+										limit: {
+											type: 'number',
+											shortcode: function( _ref ) {
+												if( _ref.named.limit === undefined )
+													return;
+												return parseInt( _ref.named.limit, 10 );
+											}
+										},
+										show_author: {
+											type: 'boolean',
+											shortcode: function( _ref ) {
+												if( _ref.named.show_author === undefined )
+													return;
+												return _ref.named.show_author;
+											}
+										},
+										show_source: {
+											type: 'boolean',
+											shortcode: function( _ref ) {
+												if( _ref.named.show_source === undefined )
+													return;
+												return _ref.named.show_source;
+											}
+										},
+										before: {
+											type: 'string',
+											shortcode: function( _ref ) {
+												if( _ref.named.before === undefined )
+													return;
+												return _ref.named.before;
+											}
+										},
+										after: {
+											type: 'string',
+											shortcode: function( _ref ) {
+												if( _ref.named.after === undefined )
+													return;
+												return _ref.named.after;
+											}
+										},
+										before_attribution: {
+											type: 'string',
+											shortcode: function( _ref ) {
+												if( _ref.named.before_attribution === undefined )
+													return;
+												return _ref.named.before_attribution;
+											}
+										},
+										after_attribution: {
+											type: 'string',
+											shortcode: function( _ref ) {
+												if( _ref.named.after_attribution === undefined )
+													return;
+												return _ref.named.after_attribution;
+											}
+										},
+		            },
+		        },
+		    ]
+		},
+
 		/**
 		 * Optional block extended support features.
 		 */

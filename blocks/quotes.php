@@ -86,14 +86,12 @@ function quotescollection_block_quotes_render( $atts = array() ) {
 		&& ( $background_color = sanitize_hex_color( $atts['backgroundColor'] ) )
 	) {
 		$blockquote_style .= "background-color:".$background_color.';';
-		unset($atts['backgroundColor']);
 	}
 
 	if( $atts['textColor']
 		&& ( $text_color = sanitize_hex_color( $atts['textColor'] ) )
 	) {
 		$blockquote_style .= "color:".$text_color.';';
-		unset($atts['textColor']);
 	}
 
 	if( $atts['textAlign']
@@ -101,7 +99,6 @@ function quotescollection_block_quotes_render( $atts = array() ) {
 	)
 	{
 		$block_style .= "text-align:" . $atts['textAlign'] . ';';
-		unset($atts['textAlign']);
 	}
 
 	if( $atts['attributionAlign']
@@ -109,22 +106,22 @@ function quotescollection_block_quotes_render( $atts = array() ) {
 	)
 	{
 		$atts['before_attribution'] = '<footer class="attribution" style="text-align:'.$atts['attributionAlign'].';">&mdash;&nbsp;';
-		unset($atts['attributionAlign']);
 	}
 
 	if( $atts['showAuthor'] == false ) {
 		$atts['show_author'] = 0;
-		unset( $atts['showAuthor'] );
 	}
 
 	if( $atts['showSource'] == false ) {
 		$atts['show_source'] = 0;
-		unset( $atts['showSource'] );
 	}
 
 	if( $blockquote_style ) {
 		$atts['before'] = '<blockquote class="quotescollection-quote" style="'.$blockquote_style.'">';
 	}
+
+	unset( $atts['showAuthor'], $atts['showSource'], $atts['backgroundColor'], $atts['textColor'], $atts['textAlign'], $atts['attributionAlign'], $atts['className'] );
+
 
 
 	if( $block_style ) {

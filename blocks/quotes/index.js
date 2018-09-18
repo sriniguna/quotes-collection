@@ -51,127 +51,100 @@
 
 
 		transforms: {
-		    from: [
-		        {
-		            type: 'shortcode',
-		            // Shortcode tag can also be an array of shortcode aliases
-		            tag: 'quotcoll',
-		            attributes: {
-		                author: {
-		                    type: 'string',
-		                    shortcode: function( _ref ) {
-														if( _ref.named.author === undefined)
-															return;
-														return _ref.named.author;
-		                    },
-		                },
-										source: {
-											type: 'string',
-											shortcode: function( _ref ) {
-												if( _ref.named.source === undefined)
-													return;
-												return _ref.named.source;
-											}
-										},
-										tags: {
-											type: 'string',
-											shortcode: function( _ref ) {
-												if( _ref.named.source === undefined)
-													return;
-												return _ref.named.source;
-											}
-										},
-										orderby: {
-											type: 'string',
-											shortcode: function( _ref ) {
-												if( _ref.named.orderby === undefined)
-													return;
-												return _ref.named.orderby;
-											}
-										},
-										order: {
-											type: 'string',
-											shortcode: function( _ref ) {
-												if( _ref.named.order === undefined)
-													return;
-												return _ref.named.order;
-											}
-										},
-										paging: {
-											type: 'boolean',
-											shortcode: function( _ref ) {
-												if( _ref.named.paging === undefined)
-													return;
-												return _ref.named.paging;
-											}
-										},
-										limit_per_page: {
-											type: 'number',
-											shortcode: function( _ref ) {
-												if( _ref.named.limit_per_page === undefined )
-													return;
-												return parseInt( _ref.named.limit_per_page, 10 );
-											}
-										},
-										limit: {
-											type: 'number',
-											shortcode: function( _ref ) {
-												if( _ref.named.limit === undefined )
-													return;
-												return parseInt( _ref.named.limit, 10 );
-											}
-										},
-										show_author: {
-											type: 'boolean',
-											shortcode: function( _ref ) {
-												if( _ref.named.show_author === undefined )
-													return;
-												return _ref.named.show_author;
-											}
-										},
-										show_source: {
-											type: 'boolean',
-											shortcode: function( _ref ) {
-												if( _ref.named.show_source === undefined )
-													return;
-												return _ref.named.show_source;
-											}
-										},
-										before: {
-											type: 'string',
-											shortcode: function( _ref ) {
-												if( _ref.named.before === undefined )
-													return;
-												return _ref.named.before;
-											}
-										},
-										after: {
-											type: 'string',
-											shortcode: function( _ref ) {
-												if( _ref.named.after === undefined )
-													return;
-												return _ref.named.after;
-											}
-										},
-										before_attribution: {
-											type: 'string',
-											shortcode: function( _ref ) {
-												if( _ref.named.before_attribution === undefined )
-													return;
-												return _ref.named.before_attribution;
-											}
-										},
-										after_attribution: {
-											type: 'string',
-											shortcode: function( _ref ) {
-												if( _ref.named.after_attribution === undefined )
-													return;
-												return _ref.named.after_attribution;
-											}
-										},
-		            },
-		        },
-		    ]
+			from: [
+				{
+					type: 'shortcode',
+					tag: 'quotcoll',
+					attributes: {
+						author: {
+							type: 'string',
+							shortcode: function( _ref ) {
+								if( _ref.named.author === undefined )
+									return;
+								return _ref.named.author;
+							},
+						},
+						source: {
+							type: 'string',
+							shortcode: function( _ref ) {
+								if( _ref.named.source === undefined )
+									return;
+								return _ref.named.source;
+							}
+						},
+						tags: {
+							type: 'string',
+							shortcode: function( _ref ) {
+								if( _ref.named.source === undefined )
+									return;
+								return _ref.named.source;
+							}
+						},
+						orderby: {
+							type: 'string',
+							shortcode: function( _ref ) {
+								if( _ref.named.orderby === undefined )
+									return;
+								return _ref.named.orderby;
+							}
+						},
+						order: {
+							type: 'string',
+							shortcode: function( _ref ) {
+								if( _ref.named.order === undefined )
+									return;
+								return _ref.named.order;
+							}
+						},
+						paging: {
+							type: 'boolean',
+							shortcode: function( _ref ) {
+								if( (paging = _ref.named.paging) === undefined )
+									return;
+								else if( !paging || paging == "0" || paging == "false" )
+									return false;
+								return true;
+							}
+						},
+						limit_per_page: {
+							type: 'number',
+							shortcode: function( _ref ) {
+								if( _ref.named.limit_per_page === undefined )
+									return;
+								return parseInt( _ref.named.limit_per_page, 10 );
+							}
+						},
+						limit: {
+							type: 'number',
+							shortcode: function( _ref ) {
+								if( _ref.named.limit === undefined )
+									return;
+								return parseInt( _ref.named.limit, 10 );
+							}
+						},
+						showAuthor: {
+							type: 'boolean',
+							shortcode: function( _ref ) {
+								if( (show_author = _ref.named.show_author) === undefined )
+									return;
+								else if( !show_author || show_author == "0" || show_author == "false" )
+									return false;
+								return true;
+							}
+						},
+						showSource: {
+							type: 'boolean',
+							shortcode: function( _ref ) {
+								if( (show_source = _ref.named.show_source) === undefined )
+									return;
+								else if( !show_source || show_source == "0" || show_source == "false" )
+									return false;
+								return true;
+							}
+						},
+					},
+				},
+			]
 		},
 
 		/**

@@ -165,11 +165,14 @@
 		 */
 		edit: function( props ) {
 			return [
-				el(
-					ServerSideRender, {
-						block: 'quotes-collection/quotes',
-						attributes: props.attributes,
-					}
+				// onClick listener to ensure the links inside block don't misbehave
+				el("div", { onClick: (e) => { e.preventDefault(); } },
+					el(
+						ServerSideRender, {
+							block: 'quotes-collection/quotes',
+							attributes: props.attributes,
+						}
+					),
 				),
 				el( BlockControls, {},
 					el( AlignmentToolbar, {
@@ -312,17 +315,6 @@
 			return null;
 		}
 	} );
-
-	window.onload = linkCapture;
-	function linkCapture(){
-	  document.querySelector('.wp-block-quotes-collection-quotes').addEventListener('click', function(event) {
-			if (event.target.tagName.toLowerCase() === 'a') {
-	      alert(__("The links would work correctly at the front end."));
-	      event.preventDefault();
-			}
-	  });
-	}
-
 } )(
 	window.wp
 );

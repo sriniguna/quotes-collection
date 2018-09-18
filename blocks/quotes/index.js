@@ -313,10 +313,13 @@
 		}
 	} );
 
-	window.onload=function(){
-	  document.querySelector('.wp-block-quotes-collection-quotes a').addEventListener('click', function(event) {
+	window.onload = linkCapture;
+	function linkCapture(){
+	  document.querySelector('.wp-block-quotes-collection-quotes').addEventListener('click', function(event) {
+			if (event.target.tagName.toLowerCase() === 'a') {
 	      alert(__("The links would work correctly at the front end."));
 	      event.preventDefault();
+			}
 	  });
 	}
 

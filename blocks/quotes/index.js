@@ -312,6 +312,14 @@
 			return null;
 		}
 	} );
+
+	window.onload=function(){
+	  document.querySelector('.wp-block-quotes-collection-quotes a').addEventListener('click', function(event) {
+	      alert(__("The links would work correctly at the front end."));
+	      event.preventDefault();
+	  });
+	}
+
 } )(
 	window.wp
 );

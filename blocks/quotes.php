@@ -12,7 +12,7 @@
  *
  * @see https://wordpress.org/gutenberg/handbook/blocks/writing-your-first-block-type/#enqueuing-block-scripts
  */
-function quotes_block_init() {
+function quotescollection_block_quotes_init() {
 	// Skip block registration if Gutenberg is not enabled/merged.
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
@@ -21,7 +21,7 @@ function quotes_block_init() {
 
 	$index_js = 'quotes/index.js';
 	wp_register_script(
-		'quotes-block-editor',
+		'quotescollection-block-quotes-editor',
 		plugins_url( $index_js, __FILE__ ),
 		array(
 			'wp-blocks',
@@ -33,7 +33,7 @@ function quotes_block_init() {
 
 	$editor_css = 'quotes/editor.css';
 	wp_register_style(
-		'quotes-block-editor',
+		'quotescollection-block-quotes-editor',
 		plugins_url( $editor_css, __FILE__ ),
 		array(),
 		filemtime( "$dir/$editor_css" )
@@ -41,16 +41,16 @@ function quotes_block_init() {
 
 	$style_css = 'quotes/style.css';
 	wp_register_style(
-		'quotes-block',
+		'quotescollection-block-quotes',
 		plugins_url( $style_css, __FILE__ ),
 		array(),
 		filemtime( "$dir/$style_css" )
 	);
 
 	register_block_type( 'quotes-collection/quotes', array(
-		'editor_script' => 'quotes-block-editor',
-		'editor_style'  => 'quotes-block-editor',
-		'style'         => 'quotes-block',
+		'editor_script' => 'quotescollection-block-quotes-editor',
+		'editor_style'  => 'quotescollection-block-quotes-editor',
+		'style'         => 'quotescollection-block-quotes',
 		'render_callback' => 'quotescollection_block_quotes_render',
 		'attributes'		=> array(
 													'author' => array( 'type' => 'string' ),
@@ -71,7 +71,7 @@ function quotes_block_init() {
 												),
 	) );
 }
-add_action( 'init', 'quotes_block_init' );
+add_action( 'init', 'quotescollection_block_quotes_init' );
 
 function quotescollection_block_quotes_render( $atts = array() ) {
 

@@ -1,9 +1,10 @@
 <?php
 /**
  * Functions to register client-side assets (scripts and stylesheets) for the
- * Gutenberg block.
+ * Gutenberg block, and to render the block in editor as well as the front end.
  *
  * @package quotes-collection
+ * @since 2.5
  */
 
 /**
@@ -64,6 +65,12 @@ function quotescollection_block_quotes_init() {
 }
 add_action( 'init', 'quotescollection_block_quotes_init' );
 
+
+/**
+ * Function to render the block in the editor as well as the front end.
+ *
+ * @param array $atts The attributes that were set on the block or shortcode.
+ */
 function quotescollection_block_quotes_render( $atts = array() ) {
 
 	$quotcoll_shortcode = new Quotes_Collection_Shortcode();
@@ -113,11 +120,10 @@ function quotescollection_block_quotes_render( $atts = array() ) {
 
 	unset( $atts['showAuthor'], $atts['showSource'], $atts['backgroundColor'], $atts['textColor'], $atts['textAlign'], $atts['attributionAlign'], $atts['className'] );
 
-
-
 	if( $block_style ) {
 		$block_style = ' style="'.$block_style.'"';
 	}
 
 	return '<div class="' . $block_class . '"' . $block_style.'">' . $quotcoll_shortcode->do_shortcode( $atts ) . '</div>';
 }
+?>

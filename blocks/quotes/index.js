@@ -35,20 +35,9 @@
 	 * @see https://wordpress.org/gutenberg/handbook/block-api/
 	 */
 	registerBlockType( 'quotes-collection/quotes', {
-		/**
-		 * This is the display title for your block, which can be translated with `i18n` functions.
-		 * The block inserter will show this name.
-		 */
 		title: __( 'Quotes Collection' ),
-
 		icon: 'testimonial',
-
-		/**
-		 * Blocks are grouped into categories to help users browse and discover them.
-		 * The categories provided by core are `common`, `embed`, `formatting`, `layout` and `widgets`.
-		 */
 		category: 'widgets',
-
 
 		transforms: {
 			from: [
@@ -147,16 +136,9 @@
 			]
 		},
 
-		/**
-		 * Optional block extended support features.
-		 */
-		supports: {
-			// Removes support for an HTML mode.
-			html: false,
-		},
 
 		/**
-		 * The edit function describes the structure of your block in the context of the editor.
+		 * The edit function describes the structure of the block in the context of the editor.
 		 * This represents what the editor will render when the block is used.
 		 * @see https://wordpress.org/gutenberg/handbook/block-edit-save/#edit
 		 *
@@ -166,7 +148,12 @@
 		edit: function( props ) {
 			return [
 				// onClick listener to ensure the links inside block don't misbehave
-				el("div", { onClick: (e) => { e.preventDefault(); } },
+				el('div', { onClick: (e) => { e.preventDefault(); } },
+					/**
+					 * The ServerSideRender element uses the REST API to automatically
+					 * call the render function in the PHP code whenever it needs to get
+					 * an updated view of the block.
+					 */
 					el(
 						ServerSideRender, {
 							block: 'quotes-collection/quotes',
@@ -174,7 +161,10 @@
 						}
 					),
 				),
+
+				// InspectorControls lets you add controls to the Block sidebar
 				el( InspectorControls, {},
+
 					el( PanelColorSettings, {
 							title: __('Colors & Alignment'),
 							initialOpen: false,
@@ -208,8 +198,9 @@
 								value: props.attributes.attributionAlign,
 								onChange: (alignment) => { props.setAttributes( { attributionAlign: alignment } ); },
 							}),
-						), // </div>
+						), // </PanelRow>
 					), // </PanelColorSettings>
+
 					el( PanelBody, { title: __('Content Settings'), initialOpen: false },
 						el( CheckboxControl, {
 							label: __('Show Author'),
@@ -253,6 +244,7 @@
 							},
 						}),
 					), // </PanelBody>
+
 					el( PanelBody, { title: __('Sorting'), initialOpen: false },
 						el( SelectControl, {
 							label: __('Order by'),
@@ -276,6 +268,7 @@
 							],
 						} ),
 					), // </PanelBody>
+
 					el( PanelBody, { title: __('Paging'), initialOpen: false },
 						el( ToggleControl, {
 							label: __('Paging'),
@@ -298,6 +291,7 @@
 							},
 						}),
 					), // </PanelBody>
+
 				), // </InspectorControls>
 			]; // return
 		},
@@ -310,6 +304,7 @@
 		 * @return {Element}       Element to render.
 		 */
 		save: function() {
+			// We're going to be rendering in PHP, so save() can just return null.
 			return null;
 		}
 	} );

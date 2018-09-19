@@ -16,13 +16,13 @@
 	var __ = wp.i18n.__;
 
 	var AlignmentToolbar = wp.editor.AlignmentToolbar;
-	var BlockControls = wp.editor.BlockControls;
 	var ContrastChecker = wp.editor.ContrastChecker;
 	var InspectorControls = wp.editor.InspectorControls;
 	var PanelColorSettings = wp.editor.PanelColorSettings;
 
 	var CheckboxControl = wp.components.CheckboxControl;
 	var PanelBody = wp.components.PanelBody;
+	var PanelRow = wp.components.PanelRow;
 	var RadioControl = wp.components.RadioControl;
 	var SelectControl = wp.components.SelectControl;
 	var ServerSideRender = wp.components.ServerSideRender;
@@ -174,26 +174,65 @@
 						}
 					),
 				),
-				el( BlockControls, {},
-					el( AlignmentToolbar, {
-						value: props.attributes.textAlign,
-						onChange: ( value ) => { props.setAttributes( { textAlign: value } ); },
-					}),
-				),
 				el( InspectorControls, {},
-					el( PanelBody, { title: __('Filters'), initialOpen: false },
+					el( PanelColorSettings, {
+							title: __('Colors & Alignment'),
+							initialOpen: false,
+							colorSettings: [
+								{
+									value: props.attributes.backgroundColor,
+									onChange: (color) => { props.setAttributes( { backgroundColor: (color) ? color: '' } ); },
+									label: __('Background Color'),
+								},
+								{
+									value: props.attributes.textColor,
+									onChange: (color) => { props.setAttributes( { textColor: (color) ? color: '' } ); },
+									label: __('Text Color'),
+								},
+							],
+						},
+						el( ContrastChecker, {
+							textColor: props.attributes.textColor,
+							backgroundColor: props.attributes.backgroundColor,
+						}),
+						el( PanelRow, {},
+							el( 'label', {}, __('Text Align') ),
+							el( AlignmentToolbar, {
+								value: props.attributes.textAlign,
+								onChange: (alignment) => { props.setAttributes( { textAlign: alignment } ); },
+							}),
+						), // </PanelRow>
+						el( PanelRow, {},
+							el( 'label', {}, __('Attribution Align') ),
+							el( AlignmentToolbar, {
+								value: props.attributes.attributionAlign,
+								onChange: (alignment) => { props.setAttributes( { attributionAlign: alignment } ); },
+							}),
+						), // </div>
+					), // </PanelColorSettings>
+					el( PanelBody, { title: __('Content Settings'), initialOpen: false },
+						el( CheckboxControl, {
+							label: __('Show Author'),
+							checked: props.attributes.showAuthor,
+							onChange: (state) => { props.setAttributes( { showAuthor: state } ); },
+						} ),
+						el( CheckboxControl, {
+							label: __('Show Source'),
+							checked: props.attributes.showSource,
+							onChange: (state) => { props.setAttributes( { showSource: state } ); },
+						} ),
 						el( TextControl, {
-							label: __('Author'),
+							label: __('Filter by Author'),
 							value: props.attributes.author,
 							onChange: ( value ) => { props.setAttributes( { author: value } ); },
 						} ),
 						el( TextControl, {
-							label: __('Source'),
+							label: __('Filter by Source'),
 							value: props.attributes.source,
 							onChange: ( value ) => { props.setAttributes( { source: value } ); },
 						} ),
 						el( TextControl, {
-							label: __('Tags'),
+							label: __('Filter by Tags'),
 							help: __('Comma separated'),
 							value: props.attributes.tags,
 							onChange: ( value ) => { props.setAttributes( { tags: value } ); },
@@ -258,47 +297,6 @@
 								}
 							},
 						}),
-					), // </PanelBody>
-					el( PanelColorSettings, {
-							title: __('Color Settings'),
-							initialOpen: false,
-							colorSettings: [
-								{
-									value: props.attributes.backgroundColor,
-									onChange: (color) => { props.setAttributes( { backgroundColor: (color) ? color: '' } ); },
-									label: __('Background Color'),
-								},
-								{
-									value: props.attributes.textColor,
-									onChange: (color) => { props.setAttributes( { textColor: (color) ? color: '' } ); },
-									label: __('Text Color'),
-								},
-							],
-						},
-						el( ContrastChecker, {
-							textColor: props.attributes.textColor,
-							backgroundColor: props.attributes.backgroundColor,
-						}),
-					), // </PanelColorSettings>
-					el( PanelBody, { title: __('Attribution Settings'), initialOpen: false, },
-						el( CheckboxControl, {
-							label: __('Show author'),
-							checked: props.attributes.showAuthor,
-							onChange: (state) => { props.setAttributes( { showAuthor: state } ); },
-						} ),
-						el( CheckboxControl, {
-							label: __('Show source'),
-							checked: props.attributes.showSource,
-							onChange: (state) => { props.setAttributes( { showSource: state } ); },
-						} ),
-						el( 'div', {},
-						 	el( 'label', {}, __('Attribution Alignment') ),
-							el( AlignmentToolbar, {
-								title: __('Attribution Alignment'),
-								value: props.attributes.attributionAlign,
-								onChange: (alignment) => { props.setAttributes( { attributionAlign: alignment } ); },
-							}),
-						), // </div>
 					), // </PanelBody>
 				), // </InspectorControls>
 			]; // return

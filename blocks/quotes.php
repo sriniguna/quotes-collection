@@ -31,14 +31,6 @@ function quotescollection_block_quotes_init() {
 		filemtime( "$dir/$index_js" )
 	);
 
-	$editor_css = 'quotes/editor.css';
-	wp_register_style(
-		'quotescollection-block-quotes-editor',
-		plugins_url( $editor_css, __FILE__ ),
-		array(),
-		filemtime( "$dir/$editor_css" )
-	);
-
 	$style_css = 'quotes/style.css';
 	wp_register_style(
 		'quotescollection-block-quotes',
@@ -49,7 +41,6 @@ function quotescollection_block_quotes_init() {
 
 	register_block_type( 'quotes-collection/quotes', array(
 		'editor_script' => 'quotescollection-block-quotes-editor',
-		'editor_style'  => 'quotescollection-block-quotes-editor',
 		'style'         => 'quotescollection-block-quotes',
 		'render_callback' => 'quotescollection_block_quotes_render',
 		'attributes'		=> array(

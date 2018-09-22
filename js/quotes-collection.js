@@ -33,7 +33,7 @@ function quotescollectionRefresh(args) {
 			if(args.ajaxRefresh && !args.autoRefresh) {
 				jQuery("#"+args.instanceID+" .nav-next").html('<a class=\"next-quote-link\" style=\"cursor:pointer;\" onclick=\"quotescollectionRefreshInstance(\''+args.instanceID+'\')\">'+quotescollectionAjax.nextQuote+';</a>');
 			}
-		}	
+		}
 	});
 
 }
@@ -51,8 +51,9 @@ function quotescollectionDisplayFormat(quoteData, args) {
 		attribution += '<cite class=\"source title\">' + quoteData.source + '</cite>';
 	}
 	if(attribution) {
-		display += '<div class=\"attribution\">&mdash;&nbsp;' + attribution + '</div>';
+		display += args.beforeAttribution + attribution + args.afterAttribution;
 	}
+	display = args.before + display + args.after;
 	if(args.ajaxRefresh && !args.autoRefresh)
 		display += '<div class=\"navigation\"><div class=\"nav-next\"><a class=\"next-quote-link\" style=\"cursor:pointer;\" onclick=\"quotescollectionRefreshInstance(\''+args.instanceID+'\')\">'+quotescollectionAjax.nextQuote+'</a></div></div>';
 	return display;

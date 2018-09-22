@@ -1,13 +1,13 @@
 <?php
 /**
  * The main plugin class
- * 
+ *
  * @package Quotes Collection
  * @since 2.0
  */
 
 class Quotes_Collection {
-	
+
 	/** Plugin version **/
 	const PLUGIN_VERSION = '2.0.10';
 
@@ -27,21 +27,21 @@ class Quotes_Collection {
 		if ( ! current_user_can( 'activate_plugins' ) ) {
 			return;
 		}
-		
+
 		$plugin = isset( $_REQUEST['plugin'] ) ? $_REQUEST['plugin'] : '';
 		check_admin_referer( 'activate-plugin_'.$plugin );
 
 		Quotes_Collection_DB::install_db();
 	}
 
-	
+
 	/** Instantiate the plugin classes. Hooked to 'plugins_loaded' action **/
 	public static function load() {
 		global $quotescollection;
 		global $quotescollection_db;
 		global $quotescollection_admin;
 		global $quotescollection_shortcode;
-		
+
 		if( NULL === $quotescollection ) {
 			$quotescollection = new self();
 		}
@@ -63,7 +63,7 @@ class Quotes_Collection {
 	public function load_scripts_and_styles() {
 
 		// Enqueue scripts required for the ajax refresh functionality
-		wp_enqueue_script( 
+		wp_enqueue_script(
 			'quotescollection', // handle
 			quotescollection_url( 'js/quotes-collection.js' ), // source
 			array('jquery'), // dependencies
@@ -73,7 +73,7 @@ class Quotes_Collection {
 		wp_localize_script( 'quotescollection', 'quotescollectionAjax', array(
 			// URL to wp-admin/admin-ajax.php to process the request
 			'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-	 
+
 			// generate a nonce with a unique ID "myajax-post-comment-nonce"
 			// so that you can check it later when an AJAX request is sent
 			'nonce' => wp_create_nonce( 'quotescollection' ),
@@ -88,11 +88,11 @@ class Quotes_Collection {
 
 		// Enqueue styles for the front end
 		if ( !is_admin() ) {
-			wp_register_style( 
-				'quotescollection', 
-				quotescollection_url( 'css/quotes-collection.css' ), 
-				false, 
-				self::PLUGIN_VERSION 
+			wp_register_style(
+				'quotescollection',
+				quotescollection_url( 'css/quotes-collection.css' ),
+				false,
+				self::PLUGIN_VERSION
 				);
 			wp_enqueue_style( 'quotescollection' );
 		}
@@ -118,15 +118,15 @@ class Quotes_Collection {
 				);
 
 			add_option( 'quotescollection', $options );
-		}       
+		}
 	}
 
 
 	/** Ajax response **/
 	public function ajax_response()
 	{
-		check_ajax_referer('quotescollection'); 
-		
+		check_ajax_referer('quotescollection');
+
 		$char_limit = (isset($_POST['char_limit']) && is_numeric($_POST['char_limit']))?$_POST['char_limit']:'';
 		$tags = $_POST['tags'];
 		$orderby = $_POST['orderby'];
@@ -145,7 +145,7 @@ class Quotes_Collection {
 			$exclude = '';
 			$order = 'DESC';
 		}
-		
+
 		$args = array(
 			'char_limit' => $char_limit,
 			'tags' => $tags,
@@ -168,7 +168,7 @@ class Quotes_Collection {
 			$quote_data->prepare_data(); // Format the data for output before sending
 			$response = json_encode($quote_data);
 			@header("Content-type: text/json; charset=utf-8");
-			die( $response ); 
+			die( $response );
 		}
 		else
 			die();
@@ -193,6 +193,10 @@ class Quotes_Collection {
 			'auto_refresh'   => 0,
 			'tags'           => '',
 			'char_limit'     => 500,
+			'before' => '',
+			'after' => '',
+			'before_attribution' => '<div class="attribution">&mdash;&nbsp;',
+			'after_attribution' => '</div>',
 			'echo'           => 1,
 		);
 
@@ -213,7 +217,7 @@ class Quotes_Collection {
 			}
 		}
 
-		$random = ( false == $args['random'] )? 0 : 1; 
+		$random = ( false == $args['random'] )? 0 : 1;
 
 		// Tags can only be passed as a string, comma separated
 		$tags = ( is_string( $args['tags'] ) )? $args['tags'] : '';
@@ -250,20 +254,24 @@ class Quotes_Collection {
 			$dynamic_fetch = 1;
 		}
 
+		$before = ( is_string( $args['before'] ) )? stripslashes($args['before']) : '';
+		$after = ( is_string( $args['after'] ) )? stripslashes($args['after']) : '';
+		$before_attribution = ( is_string( $args['before_attribution'] ) )? stripslashes($args['before_attribution']) : '';
+		$after_attribution = ( is_string( $args['after_attribution'] ) )? stripslashes($args['after_attribution']) : '';
 		$display = "";
 
 		// And fetch the quote, only if dynamic fetch is off
 		if( !$dynamic_fetch ) {
 			if ( $quote = Quotes_Collection_Quote::with_condition( $condition ) ) {
 				$curr_quote_id = $quote->quote_id;
-				$display = $quote->output_format( 
-					array( 
+				$display = $quote->output_format(
+					array(
 						'show_author' => $show_author,
 						'show_source' => $show_source,
-						'before' => '',
-						'after' => '',
-						'before_attribution' => '<div class="attribution">&mdash;&nbsp;',
-						'after_attribution' => '</div>',
+						'before' => $before,
+						'after' => $after,
+						'before_attribution' => $before_attribution,
+						'after_attribution' => $after_attribution,
 					)
 				);
 				if( !$display ) {
@@ -292,7 +300,11 @@ class Quotes_Collection {
 					.'"orderBy":"'.$orderby.'", '
 					.'"ajaxRefresh":'.$ajax_refresh.', '
 					.'"autoRefresh":'.$auto_refresh.', '
-					.'"dynamicFetch":'.$dynamic_fetch
+					.'"dynamicFetch":'.$dynamic_fetch.', '
+					.'"before":"'.addslashes($before).'", '
+					.'"after":"'.addslashes($after).'", '
+					.'"beforeAttribution":"'.addslashes($before_attribution).'", '
+					.'"afterAttribution":"'.addslashes($after_attribution).'", '
 				.'};';
 
 				if( $dynamic_fetch ) {
@@ -302,7 +314,7 @@ class Quotes_Collection {
 					$display .= 'quotescollectionTimer(args_'.$instance.');';
 				}
 				else if ( $ajax_refresh && !$auto_refresh ) {
-					$display .= 
+					$display .=
 						"\n<!--\ndocument.write(\""
 							.'<div class=\"navigation\">'
 								.'<div class=\"nav-next\">'
@@ -319,7 +331,7 @@ class Quotes_Collection {
 		}
 
 		$instance_id = ' id="'.$args['instance'].'"';
-		$display = '<div class="quotescollection-quote"'.$instance_id.'>'.$display.'</div>';
+		$display = '<div class="quotescollection-quote-wrapper"'.$instance_id.'>'.$display.'</div>';
 
 		// If 'echo' argument is false, we return the display.
 		if( isset($args['echo']) && !$args['echo'] ) {

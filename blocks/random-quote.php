@@ -120,15 +120,18 @@ function quotescollection_block_random_quote_render( $atts = array() ) {
 	if( $blockquote_style ) {
 		$blockquote_style = ' style="'.$blockquote_style.'"';
 	}
+	$atts['before'] = '<blockquote class="quotescollection-quote"' . $blockquote_style.'">';
+	$atts['after'] = '</blockquote>';
+	$atts['before_attribution'] = '<footer class="attribution">&mdash;&nbsp;';
+	$atts['after_attribution'] = '</footer>';
+
 	if( $block_style ) {
 		$block_style = ' style="'.$block_style.'"';
 	}
 
 	return
 		'<div class="' . $block_class . '"' . $block_style.'">'.
-		'<blockquote class="quotescollection-quote"' . $blockquote_style.'">'.
 		quotescollection_quote( $atts ).
-		'</blockquote>'.
 		'</div>';
 
 }

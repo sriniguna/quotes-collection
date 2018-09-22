@@ -15,6 +15,9 @@
 	 */
 	var __ = wp.i18n.__;
 
+	var ServerSideRender = wp.components.ServerSideRender;
+
+
 	/**
 	 * Every block starts by registering a new block type definition.
 	 * @see https://wordpress.org/gutenberg/handbook/block-api/
@@ -49,11 +52,22 @@
 		 * @return {Element}       Element to render.
 		 */
 		edit: function( props ) {
-			return el(
-				'p',
-				{ className: props.className },
-				__( 'Hello from the editor!' )
-			);
+			return [
+				// onClick listener to ensure the links inside block don't misbehave
+				el('div', { onClick: (e) => { e.preventDefault(); } },
+					/**
+					 * The ServerSideRender element uses the REST API to automatically
+					 * call the render function in the PHP code whenever it needs to get
+					 * an updated view of the block.
+					 */
+					el(
+						ServerSideRender, {
+							block: 'quotes-collection/random-quote',
+							attributes: props.attributes,
+						}
+					),
+				),
+			];
 		},
 
 		/**
@@ -64,11 +78,8 @@
 		 * @return {Element}       Element to render.
 		 */
 		save: function() {
-			return el(
-				'p',
-				{},
-				__( 'Hello from the saved content!' )
-			);
+			// We're going to be rendering in PHP, so save() can just return null.
+			return null;
 		}
 	} );
 } )(

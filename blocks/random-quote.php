@@ -51,6 +51,84 @@ function quotescollection_block_random_quote_init() {
 		'editor_script' => 'quotescollection-block-random-quote-editor',
 		'editor_style'  => 'quotescollection-block-random-quote-editor',
 		'style'         => 'quotescollection-block-random-quote',
+		'render_callback' => 'quotescollection_block_random_quote_render',
+		'attributes' =>
+			array(
+				'showAuthor' => array( 'type' => 'boolean', 'default' => true ),
+				'showSource' => array( 'type' => 'boolean', 'default' => true ),
+				'randomRefresh' => array( 'type' => 'boolean', 'default' => true ),
+				'refreshInterval' => array( 'type' => 'number', 'default' => 5 ),
+				'char_limit' => array( 'type' => 'number', 'default' => 500 ),
+				'tags' => array( 'type' => 'string' ),
+				'backgroundColor' => array( 'type' => 'string', 'default' => '#f4f4f4' ),
+				'textColor' => array( 'type' => 'string', 'default' => '#444' ),
+				'className' => array( 'type' => 'string' ),
+			),
 	) );
 }
 add_action( 'init', 'quotescollection_block_random_quote_init' );
+
+/**
+ * Function to render the block in the editor as well as the front end.
+ *
+ * @param array $atts The attributes that were set on the block or shortcode.
+ */
+function quotescollection_block_random_quote_render( $atts = array() ) {
+	$block_class = 'wp-block-quotes-collection-random-quote';
+	$block_class .= $atts['className'] ? ' '.$atts['className'] : '';
+	$block_style = "";
+	$blockquote_style = "";
+
+
+	if( $atts['backgroundColor']
+		&& ( $background_color = sanitize_hex_color( $atts['backgroundColor'] ) )
+	) {
+		$blockquote_style .= "background-color:".$background_color.';';
+	}
+
+	if( $atts['textColor']
+		&& ( $text_color = sanitize_hex_color( $atts['textColor'] ) )
+	) {
+		$blockquote_style .= "color:".$text_color.';';
+	}
+
+	if( $atts['showAuthor'] == false ) {
+		$atts['show_author'] = 0;
+	}
+
+	if( $atts['showSource'] == false ) {
+		$atts['show_source'] = 0;
+	}
+
+	if( $atts['randomRefresh'] == false ) {
+		$atts['random'] = 0;
+	}
+
+	if( !isset($atts['refreshInterval'])
+		|| !is_numeric($atts['refreshInterval'])
+		|| !$atts['refreshInterval']
+	) {
+		$atts['auto_refresh'] = 5;
+	} else {
+		$atts['auto_refresh'] = $atts['refreshInterval'];
+	}
+
+	$atts['echo'] = 0;
+
+	unset( $atts['showAuthor'], $atts['showSource'], $atts['randomRefresh'], $atts['refreshInterval'], $atts['backgroundColor'], $atts['textColor'], $atts['className'] );
+
+	if( $blockquote_style ) {
+		$blockquote_style = ' style="'.$blockquote_style.'"';
+	}
+	if( $block_style ) {
+		$block_style = ' style="'.$block_style.'"';
+	}
+
+	return
+		'<div class="' . $block_class . '"' . $block_style.'">'.
+		'<blockquote class="quotescollection-quote"' . $blockquote_style.'">'.
+		quotescollection_quote( $atts ).
+		'</blockquote>'.
+		'</div>';
+
+}

@@ -120,6 +120,7 @@ function quotescollection_block_random_quote_render( $atts = array() ) {
 	if( $atts['textColor']
 		&& ( $text_color = sanitize_hex_color( $atts['textColor'] ) )
 	) {
+		$block_style .= 'color:'.$text_color.';';
 		$blockquote_style .= 'color:'.$text_color.';';
 	}
 
@@ -161,7 +162,7 @@ function quotescollection_block_random_quote_render( $atts = array() ) {
 	if( $attribution_style ) {
 		$attribution_style = ' style="'.$attribution_style.'"';
 	}
-	$atts['before'] = '<blockquote class="quotescollection-quote"' . $blockquote_style.'">';
+	$atts['before'] = '<blockquote class="quotescollection-quote"' . $blockquote_style.'>';
 	$atts['after'] = '</blockquote>';
 	$atts['before_attribution'] = '<footer class="attribution"' . $attribution_style . '>&mdash;&nbsp;';
 	$atts['after_attribution'] = '</footer>';

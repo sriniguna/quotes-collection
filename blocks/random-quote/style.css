@@ -3,6 +3,7 @@
  */
 
 .wp-block-quotes-collection-random-quote {
+	position: relative;
 }
 
 .wp-block-quotes-collection-random-quote blockquote.quotescollection-quote {
@@ -38,4 +39,29 @@
 
 .wp-block-quotes-collection-random-quote blockquote.quotescollection-quote .attribution cite::before {
 	content: none;
+}
+
+.wp-block-quotes-collection-random-quote .navigation {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+.wp-block-quotes-collection-random-quote .navigation .nav-next {
+	margin: 0;
+}
+
+.wp-block-quotes-collection-random-quote .navigation a,
+.wp-block-quotes-collection-random-quote .navigation a:hover,
+.wp-block-quotes-collection-random-quote .navigation a:visited,
+.wp-block-quotes-collection-random-quote .navigation a:active {
+	border: 0;
+	margin: 0.4em 0;
+	padding: 0.4em 0.6em;
+	background-color: rgba(128, 128, 128, 0.2);
+	color: inherit;
+	font-size: 0.6em;
+	text-transform: uppercase;
+	text-decoration: none;
+	box-shadow: none;
 }

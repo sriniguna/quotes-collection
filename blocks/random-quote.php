@@ -57,11 +57,14 @@ function quotescollection_block_random_quote_init() {
 				'showAuthor' => array( 'type' => 'boolean', 'default' => true ),
 				'showSource' => array( 'type' => 'boolean', 'default' => true ),
 				'randomRefresh' => array( 'type' => 'boolean', 'default' => true ),
+				'autoRefresh' => array( 'type' => 'boolean', 'default' => true ),
 				'refreshInterval' => array( 'type' => 'number', 'default' => 5 ),
-				'char_limit' => array( 'type' => 'number', 'default' => 500 ),
+				'charLimit' => array( 'type' => 'number', 'default' => 500 ),
 				'tags' => array( 'type' => 'string' ),
 				'backgroundColor' => array( 'type' => 'string', 'default' => '#f4f4f4' ),
 				'textColor' => array( 'type' => 'string', 'default' => '#444' ),
+				'textAlign' => array( 'type' => 'string', 'default' => 'left' ),
+				'attributionAlign' => array( 'type' => 'string', 'default' => 'right' ),
 				'className' => array( 'type' => 'string' ),
 			),
 	) );
@@ -78,19 +81,7 @@ function quotescollection_block_random_quote_render( $atts = array() ) {
 	$block_class .= $atts['className'] ? ' '.$atts['className'] : '';
 	$block_style = "";
 	$blockquote_style = "";
-
-
-	if( $atts['backgroundColor']
-		&& ( $background_color = sanitize_hex_color( $atts['backgroundColor'] ) )
-	) {
-		$blockquote_style .= "background-color:".$background_color.';';
-	}
-
-	if( $atts['textColor']
-		&& ( $text_color = sanitize_hex_color( $atts['textColor'] ) )
-	) {
-		$blockquote_style .= "color:".$text_color.';';
-	}
+	$attribution_style = "";
 
 	if( $atts['showAuthor'] == false ) {
 		$atts['show_author'] = 0;
@@ -104,25 +95,75 @@ function quotescollection_block_random_quote_render( $atts = array() ) {
 		$atts['random'] = 0;
 	}
 
-	if( !isset($atts['refreshInterval'])
-		|| !is_numeric($atts['refreshInterval'])
-		|| !$atts['refreshInterval']
-	) {
-		$atts['auto_refresh'] = 5;
-	} else {
-		$atts['auto_refresh'] = $atts['refreshInterval'];
+	if( isset($atts['autoRefresh']) && $atts['autoRefresh'] ){
+		if( !isset($atts['refreshInterval'] )
+			|| !is_numeric($atts['refreshInterval'])
+			|| !$atts['refreshInterval']
+		) {
+			$atts['auto_refresh'] = 5;
+		} else {
+			$atts['auto_refresh'] = $atts['refreshInterval'];
+		}
 	}
+
+	if( is_numeric( $atts['charLimit'] ) && $atts['charLimit'] > 0 ) {
+		$atts['char_limit'] = $atts['charLimit'];
+	}
+
+
+	if( $atts['backgroundColor']
+		&& ( $background_color = sanitize_hex_color( $atts['backgroundColor'] ) )
+	) {
+		$blockquote_style .= 'background-color:'.$background_color.';';
+	}
+
+	if( $atts['textColor']
+		&& ( $text_color = sanitize_hex_color( $atts['textColor'] ) )
+	) {
+		$blockquote_style .= 'color:'.$text_color.';';
+	}
+
+	if( $atts['textAlign']
+		&& ( in_array ( $atts['textAlign'], array( 'left', 'right', 'center' ) ) )
+	)
+	{
+		$block_style .= 'text-align:' . $atts['textAlign'] . ';';
+	}
+
+	if( $atts['attributionAlign']
+		&& ( in_array ( $atts['attributionAlign'], array( 'left', 'right', 'center' ) ) )
+	)
+	{
+		$attribution_style .= 'text-align:' . $atts['attributionAlign'] . ';';
+	}
+
+
 
 	$atts['echo'] = 0;
 
-	unset( $atts['showAuthor'], $atts['showSource'], $atts['randomRefresh'], $atts['refreshInterval'], $atts['backgroundColor'], $atts['textColor'], $atts['className'] );
+	unset(
+		$atts['showAuthor'],
+		$atts['showSource'],
+		$atts['randomRefresh'],
+		$atts['autoRefresh'],
+		$atts['refreshInterval'],
+		$atts['charLimit'],
+		$atts['backgroundColor'],
+		$atts['textColor'],
+		$atts['textAlign'],
+		$atts['attributionAlign'],
+		$atts['className']
+	);
 
 	if( $blockquote_style ) {
 		$blockquote_style = ' style="'.$blockquote_style.'"';
 	}
+	if( $attribution_style ) {
+		$attribution_style = ' style="'.$attribution_style.'"';
+	}
 	$atts['before'] = '<blockquote class="quotescollection-quote"' . $blockquote_style.'">';
 	$atts['after'] = '</blockquote>';
-	$atts['before_attribution'] = '<footer class="attribution">&mdash;&nbsp;';
+	$atts['before_attribution'] = '<footer class="attribution"' . $attribution_style . '>&mdash;&nbsp;';
 	$atts['after_attribution'] = '</footer>';
 
 	if( $block_style ) {

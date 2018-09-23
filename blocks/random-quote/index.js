@@ -15,33 +15,28 @@
 	 */
 	var __ = wp.i18n.__;
 
-	var ServerSideRender = wp.components.ServerSideRender;
+	var AlignmentToolbar = wp.editor.AlignmentToolbar;
+	var ContrastChecker = wp.editor.ContrastChecker;
+	var InspectorControls = wp.editor.InspectorControls;
+	var PanelColorSettings = wp.editor.PanelColorSettings;
 
+	var CheckboxControl = wp.components.CheckboxControl;
+	var PanelBody = wp.components.PanelBody;
+	var PanelRow = wp.components.PanelRow;
+	var RadioControl = wp.components.RadioControl;
+	var SelectControl = wp.components.SelectControl;
+	var ServerSideRender = wp.components.ServerSideRender;
+	var TextControl = wp.components.TextControl;
+	var ToggleControl = wp.components.ToggleControl;
 
 	/**
 	 * Every block starts by registering a new block type definition.
 	 * @see https://wordpress.org/gutenberg/handbook/block-api/
 	 */
 	registerBlockType( 'quotes-collection/random-quote', {
-		/**
-		 * This is the display title for your block, which can be translated with `i18n` functions.
-		 * The block inserter will show this name.
-		 */
 		title: __( 'Quotes Collection :: Random Quote' ),
-
-		/**
-		 * Blocks are grouped into categories to help users browse and discover them.
-		 * The categories provided by core are `common`, `embed`, `formatting`, `layout` and `widgets`.
-		 */
+		icon: 'testimonial',
 		category: 'widgets',
-
-		/**
-		 * Optional block extended support features.
-		 */
-		supports: {
-			// Removes support for an HTML mode.
-			html: false,
-		},
 
 		/**
 		 * The edit function describes the structure of your block in the context of the editor.
@@ -67,6 +62,115 @@
 						}
 					),
 				),
+
+				// InspectorControls lets you add controls to the Block sidebar
+				el( InspectorControls, {},
+
+					el( PanelColorSettings, {
+							title: __('Colors & Alignment'),
+							initialOpen: false,
+							colorSettings: [
+								{
+									value: props.attributes.backgroundColor,
+									onChange: (color) => { props.setAttributes( { backgroundColor: (color) ? color: '' } ); },
+									label: __('Background Color'),
+								},
+								{
+									value: props.attributes.textColor,
+									onChange: (color) => { props.setAttributes( { textColor: (color) ? color: '' } ); },
+									label: __('Text Color'),
+								},
+							],
+						},
+						el( ContrastChecker, {
+							textColor: props.attributes.textColor,
+							backgroundColor: props.attributes.backgroundColor,
+						}),
+						el( PanelRow, {},
+							el( 'label', {}, __('Text Align') ),
+							el( AlignmentToolbar, {
+								value: props.attributes.textAlign,
+								onChange: (alignment) => { props.setAttributes( { textAlign: alignment } ); },
+							}),
+						), // </PanelRow>
+						el( PanelRow, {},
+							el( 'label', {}, __('Attribution Align') ),
+							el( AlignmentToolbar, {
+								value: props.attributes.attributionAlign,
+								onChange: (alignment) => { props.setAttributes( { attributionAlign: alignment } ); },
+							}),
+						), // </PanelRow>
+					), // </PanelColorSettings>
+
+					el( PanelBody, { title: __('Content Settings'), initialOpen: false },
+						el( CheckboxControl, {
+							label: __('Show Author'),
+							checked: props.attributes.showAuthor,
+							onChange: (state) => { props.setAttributes( { showAuthor: state } ); },
+						} ),
+						el( CheckboxControl, {
+							label: __('Show Source'),
+							checked: props.attributes.showSource,
+							onChange: (state) => { props.setAttributes( { showSource: state } ); },
+						} ),
+						el( TextControl, {
+							label: __('Filter by Tags'),
+							help: __('Comma separated'),
+							value: props.attributes.tags,
+							onChange: ( value ) => { props.setAttributes( { tags: value } ); },
+						} ),
+						el( TextControl, {
+							label: __('Character Limit'),
+							help: __('Only quotes with total number of characters less than this value are fetched.'),
+							type: 'number',
+							min: 100,
+							max: 10000,
+							step: 100,
+							value: props.attributes.charLimit,
+							onChange: ( value ) => {
+								if( isNaN( parseInt(value) ) || value < 0 ) {
+									props.setAttributes( { charLimit: 500 } );
+								} else {
+									props.setAttributes( { charLimit: value } );
+								}
+							},
+						}),
+					), // </PanelBody>
+
+					el( PanelBody, { title: __('Refresh Settings'), initialOpen: false },
+						el( ToggleControl, {
+							label: __('Random Refresh'),
+							help: __('Fetch quotes randomly when on. Fetch quotes sequentially, latest added first, when off.'),
+							checked: props.attributes.randomRefresh,
+							onChange: ( state ) => { props.setAttributes( { randomRefresh: state } ); },
+						} ),
+						el( ToggleControl, {
+							label: __('Auto Refresh'),
+							help: __('Automatically fetch quote after the refresh interval. If this is off, the user can refresh by clicking on the quote.'),
+							checked: props.attributes.autoRefresh,
+							onChange: ( state ) => { props.setAttributes( { autoRefresh: state } ); },
+						} ),
+						el( TextControl, {
+							label: __('Refresh Interval'),
+							help: __('Duration each quote is shown before refreshing to next quote. In seconds.'),
+							type: 'number',
+							min: 3,
+							max: 60,
+							value: props.attributes.refreshInterval,
+							onChange: ( value ) => {
+								if( isNaN( parseInt(value) ) || value < 0 ) {
+									props.setAttributes( { refreshInterval: 5 } );
+								} else {
+									props.setAttributes( { refreshInterval: value } );
+								}
+							},
+						}),
+
+					),
+
+				), // </InspectorControls>
+
+
 			];
 		},
 

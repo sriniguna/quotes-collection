@@ -65,6 +65,7 @@ function quotescollection_block_random_quote_init() {
 				'textColor' => array( 'type' => 'string', 'default' => '#444' ),
 				'textAlign' => array( 'type' => 'string', 'default' => 'left' ),
 				'attributionAlign' => array( 'type' => 'string', 'default' => 'right' ),
+				'fixedHeight' => array( 'type' => 'boolean', 'default' => false),
 				'height' => array( 'type' => 'number', 'default' => 50 ),
 				'className' => array( 'type' => 'string' ),
 			),
@@ -139,6 +140,9 @@ function quotescollection_block_random_quote_render( $atts = array() ) {
 		$attribution_style .= 'text-align:' . $atts['attributionAlign'] . ';';
 	}
 
+	if( $atts['fixedHeight'] && is_numeric( $atts['height'] ) ) {
+		$blockquote_style .= 'height:' . $atts['height'] . 'px; overflow: hidden;';
+	}
 
 
 	$atts['echo'] = 0;

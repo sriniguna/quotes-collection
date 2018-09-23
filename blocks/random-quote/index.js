@@ -101,6 +101,27 @@
 								onChange: (alignment) => { props.setAttributes( { attributionAlign: alignment } ); },
 							}),
 						), // </PanelRow>
+						el( PanelBody, {},
+							el( CheckboxControl, {
+								label: __('Fixed Height'),
+								checked: props.attributes.fixedHeight,
+								onChange: (state) => { props.setAttributes( { fixedHeight: state } ); },
+							}),
+							el( RangeControl, {
+								label: __('Height'),
+								min: 50,
+								max: 500,
+								step: 10,
+								value: props.attributes.height,
+								onChange: ( value ) => {
+									if( isNaN( parseInt(value) ) || value < 0 ) {
+										props.setAttributes( { height: 50 } );
+									} else {
+										props.setAttributes( { height: value } );
+									}
+								},
+							}),
+						),
 					), // </PanelColorSettings>
 
 					el( PanelBody, { title: __('Content Settings'), initialOpen: false },

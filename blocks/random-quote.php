@@ -65,6 +65,7 @@ function quotescollection_block_random_quote_init() {
 				'textColor' => array( 'type' => 'string', 'default' => '#444' ),
 				'textAlign' => array( 'type' => 'string', 'default' => 'left' ),
 				'attributionAlign' => array( 'type' => 'string', 'default' => 'right' ),
+				'height' => array( 'type' => 'number', 'default' => 50 ),
 				'className' => array( 'type' => 'string' ),
 			),
 	) );

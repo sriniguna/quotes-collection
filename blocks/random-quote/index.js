@@ -24,6 +24,7 @@
 	var PanelBody = wp.components.PanelBody;
 	var PanelRow = wp.components.PanelRow;
 	var RadioControl = wp.components.RadioControl;
+	var RangeControl = wp.components.RangeControl;
 	var SelectControl = wp.components.SelectControl;
 	var ServerSideRender = wp.components.ServerSideRender;
 	var TextControl = wp.components.TextControl;
@@ -119,12 +120,11 @@
 							value: props.attributes.tags,
 							onChange: ( value ) => { props.setAttributes( { tags: value } ); },
 						} ),
-						el( TextControl, {
+						el( RangeControl, {
 							label: __('Character Limit'),
 							help: __('Only quotes with total number of characters less than this value are fetched.'),
-							type: 'number',
 							min: 100,
-							max: 10000,
+							max: 2500,
 							step: 100,
 							value: props.attributes.charLimit,
 							onChange: ( value ) => {
@@ -150,10 +150,9 @@
 							checked: props.attributes.autoRefresh,
 							onChange: ( state ) => { props.setAttributes( { autoRefresh: state } ); },
 						} ),
-						el( TextControl, {
+						el( RangeControl, {
 							label: __('Refresh Interval'),
 							help: __('Duration each quote is shown before refreshing to next quote. In seconds.'),
-							type: 'number',
 							min: 3,
 							max: 60,
 							value: props.attributes.refreshInterval,

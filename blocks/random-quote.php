@@ -68,6 +68,7 @@ function quotescollection_block_random_quote_init() {
 				'fixedHeight' => array( 'type' => 'boolean', 'default' => false),
 				'height' => array( 'type' => 'number', 'default' => 200 ),
 				'className' => array( 'type' => 'string' ),
+				'editor_render' => array( 'type' => 'boolean', 'default' => is_admin())
 			),
 	) );
 }
@@ -84,6 +85,7 @@ function quotescollection_block_random_quote_render( $atts = array() ) {
 	$block_style = "";
 	$blockquote_style = "";
 	$attribution_style = "";
+	$nav_next = "";
 
 	if( $atts['showAuthor'] == false ) {
 		$atts['show_author'] = 0;
@@ -106,6 +108,9 @@ function quotescollection_block_random_quote_render( $atts = array() ) {
 		} else {
 			$atts['auto_refresh'] = $atts['refreshInterval'];
 		}
+	} else {
+		if( $atts['editor_render'] )
+			$nav_next = '<div class="navigation"><div class="nav-next"><a class="next-quote-link" style="cursor:pointer;">Next quote »</a></div></div>';
 	}
 
 	if( is_numeric( $atts['charLimit'] ) && $atts['charLimit'] > 0 ) {
@@ -177,9 +182,10 @@ function quotescollection_block_random_quote_render( $atts = array() ) {
 		$block_style = ' style="'.$block_style.'"';
 	}
 
+
 	return
 		'<div class="' . $block_class . '"' . $block_style.'">'.
-		quotescollection_quote( $atts ).
+		quotescollection_quote( $atts ).$nav_next.
 		'</div>';
 
 }

@@ -66,7 +66,7 @@ function quotescollection_block_random_quote_init() {
 				'textAlign' => array( 'type' => 'string', 'default' => 'left' ),
 				'attributionAlign' => array( 'type' => 'string', 'default' => 'right' ),
 				'fixedHeight' => array( 'type' => 'boolean', 'default' => false),
-				'height' => array( 'type' => 'number', 'default' => 50 ),
+				'height' => array( 'type' => 'number', 'default' => 200 ),
 				'className' => array( 'type' => 'string' ),
 			),
 	) );
@@ -116,14 +116,15 @@ function quotescollection_block_random_quote_render( $atts = array() ) {
 	if( $atts['backgroundColor']
 		&& ( $background_color = sanitize_hex_color( $atts['backgroundColor'] ) )
 	) {
-		$blockquote_style .= 'background-color:'.$background_color.';';
+		$block_style .= 'background-color:'.$background_color.';';
+		// $blockquote_style .= 'background-color:'.$background_color.';';
 	}
 
 	if( $atts['textColor']
 		&& ( $text_color = sanitize_hex_color( $atts['textColor'] ) )
 	) {
 		$block_style .= 'color:'.$text_color.';';
-		$blockquote_style .= 'color:'.$text_color.';';
+		// $blockquote_style .= 'color:'.$text_color.';';
 	}
 
 	if( $atts['textAlign']
@@ -141,7 +142,7 @@ function quotescollection_block_random_quote_render( $atts = array() ) {
 	}
 
 	if( $atts['fixedHeight'] && is_numeric( $atts['height'] ) ) {
-		$blockquote_style .= 'height:' . $atts['height'] . 'px; overflow: hidden;';
+		$block_style .= 'height:' . $atts['height'] . 'px; overflow: hidden;';
 	}
 
 

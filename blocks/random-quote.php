@@ -4,6 +4,7 @@
  * Gutenberg block.
  *
  * @package quotes-collection
+ * @since 2.5
  */
 
 /**
@@ -31,14 +32,6 @@ function quotescollection_block_random_quote_init() {
 		filemtime( "$dir/$index_js" )
 	);
 
-	$editor_css = 'random-quote/editor.css';
-	wp_register_style(
-		'quotescollection-block-random-quote-editor',
-		plugins_url( $editor_css, __FILE__ ),
-		array(),
-		filemtime( "$dir/$editor_css" )
-	);
-
 	$style_css = 'random-quote/style.css';
 	wp_register_style(
 		'quotescollection-block-random-quote',
@@ -49,7 +42,6 @@ function quotescollection_block_random_quote_init() {
 
 	register_block_type( 'quotes-collection/random-quote', array(
 		'editor_script' => 'quotescollection-block-random-quote-editor',
-		'editor_style'  => 'quotescollection-block-random-quote-editor',
 		'style'         => 'quotescollection-block-random-quote',
 		'render_callback' => 'quotescollection_block_random_quote_render',
 		'attributes' =>
@@ -77,7 +69,7 @@ add_action( 'init', 'quotescollection_block_random_quote_init' );
 /**
  * Function to render the block in the editor as well as the front end.
  *
- * @param array $atts The attributes that were set on the block or shortcode.
+ * @param array $atts The attributes that were set on the block.
  */
 function quotescollection_block_random_quote_render( $atts = array() ) {
 	$block_class = 'wp-block-quotes-collection-random-quote';
@@ -124,7 +116,7 @@ function quotescollection_block_random_quote_render( $atts = array() ) {
 		$block_style .= 'background-color:'.$background_color.';';
 		$blockquote_style .= 'background-color:'.$background_color.';';
 	}
-	
+
 	if( $atts['textColor']
 		&& ( $text_color = sanitize_hex_color( $atts['textColor'] ) )
 	) {

@@ -122,14 +122,14 @@ function quotescollection_block_random_quote_render( $atts = array() ) {
 		&& ( $background_color = sanitize_hex_color( $atts['backgroundColor'] ) )
 	) {
 		$block_style .= 'background-color:'.$background_color.';';
-		// $blockquote_style .= 'background-color:'.$background_color.';';
+		$blockquote_style .= 'background-color:'.$background_color.';';
 	}
-
+	
 	if( $atts['textColor']
 		&& ( $text_color = sanitize_hex_color( $atts['textColor'] ) )
 	) {
 		$block_style .= 'color:'.$text_color.';';
-		// $blockquote_style .= 'color:'.$text_color.';';
+		$blockquote_style .= 'color:'.$text_color.';';
 	}
 
 	if( $atts['textAlign']

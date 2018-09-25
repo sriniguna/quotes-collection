@@ -68,7 +68,7 @@
 				el( InspectorControls, {},
 
 					el( PanelColorSettings, {
-							title: __('Colors & Alignment'),
+							title: __('Presentation'),
 							initialOpen: false,
 							colorSettings: [
 								{
@@ -101,17 +101,19 @@
 								onChange: (alignment) => { props.setAttributes( { attributionAlign: alignment } ); },
 							}),
 						), // </PanelRow>
-						el( PanelBody, {},
+						el( 'div', {
+							style: { marginTop: '20px' }
+						},
 							el( CheckboxControl, {
 								label: __('Fixed Height'),
 								checked: props.attributes.fixedHeight,
 								onChange: (state) => { props.setAttributes( { fixedHeight: state } ); },
 							}),
 							el( RangeControl, {
-								label: __('Height'),
-								min: 50,
+								// label: __('Height'),
+								min: 75,
 								max: 500,
-								step: 10,
+								step: 5,
 								value: props.attributes.height,
 								onChange: ( value ) => {
 									if( isNaN( parseInt(value) ) || value < 0 ) {
@@ -121,7 +123,7 @@
 									}
 								},
 							}),
-						),
+						), // </div>
 					), // </PanelColorSettings>
 
 					el( PanelBody, { title: __('Content Settings'), initialOpen: false },

@@ -145,7 +145,7 @@
 						} ),
 						el( RangeControl, {
 							label: __('Character Limit'),
-							help: __('Only quotes with total number of characters less than this value are fetched.'),
+							help: __('Total number of characters including white spaces. Larger quotes are ignored.'),
 							min: 100,
 							max: 2500,
 							step: 100,
@@ -163,19 +163,17 @@
 					el( PanelBody, { title: __('Refresh Settings'), initialOpen: false },
 						el( ToggleControl, {
 							label: __('Random Refresh'),
-							help: __('Fetch quotes randomly when on. Fetch quotes sequentially, latest added first, when off.'),
 							checked: props.attributes.randomRefresh,
 							onChange: ( state ) => { props.setAttributes( { randomRefresh: state } ); },
 						} ),
 						el( ToggleControl, {
 							label: __('Auto Refresh'),
-							help: __('Automatically fetch quote after the refresh interval. If this is off, the user can refresh by clicking on the quote.'),
 							checked: props.attributes.autoRefresh,
 							onChange: ( state ) => { props.setAttributes( { autoRefresh: state } ); },
 						} ),
 						el( RangeControl, {
 							label: __('Refresh Interval'),
-							help: __('Duration each quote is shown before refreshing to next quote. In seconds.'),
+							help: __('In seconds.'),
 							min: 3,
 							max: 60,
 							value: props.attributes.refreshInterval,

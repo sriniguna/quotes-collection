@@ -166,7 +166,7 @@
 				el( InspectorControls, {},
 
 					el( PanelColorSettings, {
-							title: __('Colors & Alignment'),
+							title: __('Presentation'),
 							initialOpen: false,
 							colorSettings: [
 								{

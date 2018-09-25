@@ -23,9 +23,7 @@
 	var CheckboxControl = wp.components.CheckboxControl;
 	var PanelBody = wp.components.PanelBody;
 	var PanelRow = wp.components.PanelRow;
-	var RadioControl = wp.components.RadioControl;
 	var RangeControl = wp.components.RangeControl;
-	var SelectControl = wp.components.SelectControl;
 	var ServerSideRender = wp.components.ServerSideRender;
 	var TextControl = wp.components.TextControl;
 	var ToggleControl = wp.components.ToggleControl;

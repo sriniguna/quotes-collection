@@ -15,7 +15,6 @@ class Quotes_Collection_Shortcode {
 	}
 
 	public function do_shortcode($atts = array()) {
-		$db = new Quotes_Collection_DB();
 		$atts = shortcode_atts( array(
 			'limit' => 0,
 			'id' => 0,
@@ -28,12 +27,24 @@ class Quotes_Collection_Shortcode {
 			'limit_per_page' => 10,
 			'show_author' => true,
 			'show_source' => true,
+			'ajax_refresh' => false,
+			'random' => true,
+			'auto_refresh' => true,
+			'refresh_interval' => 5,
+			'char_limit' => 500,
 			'before' => '<blockquote class="quotescollection-quote">',
 			'after' => '</blockquote>',
 			'before_attribution' => '<footer class="attribution">&mdash;&nbsp;',
 			'after_attribution' => '</footer>',
 		), $atts );
 		extract($atts);
+
+		if( $ajax_refresh ) {
+				$atts['echo'] = 0;
+				return quotescollection_quote($atts);
+		}
+
+		$db = new Quotes_Collection_DB();
 
 		// Initialize the variable that holds args to be passed to the DB function to get the quotes
 		// And set 'public' argument to 'yes', because we don't want to display private quotes in public

@@ -171,7 +171,7 @@
 						} ),
 						el( RangeControl, {
 							label: __('Refresh Interval'),
-							help: __('In seconds.'),
+							help: __('For auto refresh. In seconds.'),
 							min: 3,
 							max: 60,
 							value: props.attributes.refreshInterval,

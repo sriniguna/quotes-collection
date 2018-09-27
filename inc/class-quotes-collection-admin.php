@@ -218,7 +218,15 @@ class Quotes_Collection_Admin {
 		if( isset( $_REQUEST['s'] ) && !empty( $_REQUEST['s'] ) ) {
 			$search_query = stripslashes( strip_tags( $_REQUEST['s'] ) );
 			$list_meta .= ' | <span class="current">'
-				. sprintf( _x( 'Search results for "%s"', 'list meta, above the quotes list table in the main admin page', 'quotes-collection' ), $search_query )
+				. sprintf(
+					_x(
+						/* translators: %s: search text */
+						'Search results for "%s"',
+						'list meta, above the quotes list table in the main admin page',
+						'quotes-collection'
+					),
+					$search_query
+				)
 				. ' <span class="count">(' . $quotes_list_table->total_list_items . ')</span>'
 				. '</span>';
 		}
@@ -387,10 +395,10 @@ class Quotes_Collection_Admin {
 					. '<div class="form-field">'
 						. '<label for="user_level_manage_quotes">' . __('Minimum user role required to add and manage quotes', 'quotes-collection') . '</label>'
 						. '<select name="user_level_manage_quotes" id="user_level_manage_quotes">'
-							. '<option value="edit_posts"' . $role_select['edit_posts'] . '>' . __('Contributor') . '</option>'
-							. '<option value="publish_posts"' . $role_select['publish_posts'] . '>' . __('Author') . '</option>'
-							. '<option value="edit_others_posts"' . $role_select['edit_others_posts'] . '>' . __('Editor') . '</option>'
-							. '<option value="manage_options"' . $role_select['manage_options'] . '>' . __('Administrator') . '</option>'
+							. '<option value="edit_posts"' . $role_select['edit_posts'] . '>' . __('Contributor', 'quotes-colletion') . '</option>'
+							. '<option value="publish_posts"' . $role_select['publish_posts'] . '>' . __('Author', 'quotes-colletion') . '</option>'
+							. '<option value="edit_others_posts"' . $role_select['edit_others_posts'] . '>' . __('Editor', 'quotes-colletion') . '</option>'
+							. '<option value="manage_options"' . $role_select['manage_options'] . '>' . __('Administrator', 'quotes-colletion') . '</option>'
 						. '</select>'
 					. '</div>'
 
@@ -678,7 +686,14 @@ EDITFORM;
 				}
 				else if( $result = $quotescollection_db->delete_quotes( $_REQUEST['bulkcheck'] ) ) {
 					$this->notices = '<div class="updated"><p>'
-						. sprintf( _n( 'One quote deleted', '%d quotes deleted', $result, 'quotes-collection' ), $result )
+						. sprintf(
+							_n(
+								'%s quote deleted',
+								'%s quotes deleted',
+								$result,
+								'quotes-collection'
+							),
+							number_format_i18n($result) )
 						.'</p></div>';
 				}
 				else {
@@ -692,7 +707,13 @@ EDITFORM;
 				}
 				else if( $result = $quotescollection_db->change_visibility($_REQUEST['bulkcheck'], 'yes') ) {
 					$this->notices = '<div class="updated"><p>'
-						. sprintf( _n( 'Quote made public', '%d quotes made public', $result, 'quotes-collection' ), $result )
+						. sprintf(
+							_n(
+								'%s quote made public',
+								'%s quotes made public',
+								$result,
+								'quotes-collection'
+							), number_format_i18n($result) )
 						.'</p></div>';
 				}
 				else
@@ -705,7 +726,13 @@ EDITFORM;
 				}
 				else if( $result = $quotescollection_db->change_visibility($_REQUEST['bulkcheck'], 'no') ) {
 					$this->notices = '<div class="updated"><p>'
-						. sprintf( _n( 'Quote kept private', '%d quotes kept private', $result, 'quotes-collection' ), $result )
+						. sprintf(
+							_n(
+								'%s quote kept private',
+								'%s quotes kept private',
+								$result,
+								'quotes-collection'
+							), number_format_i18n($result) )
 						.'</p></div>';
 				}
 				else
@@ -761,7 +788,11 @@ EDITFORM;
 			}
 			else {
 				$this->notices = '<div class="updated"><p>'
-					. sprintf( _n( 'One quote imported', '%d quotes imported', $result, 'quotes-collection' ), $result )
+					. sprintf( _n(
+						'%s quote imported',
+						'%s quotes imported',
+						$result,
+						'quotes-collection' ), number_format_i18n($result) )
 					. '</p></div>';
 			}
 

@@ -88,7 +88,7 @@ class Quotes_Collection_Widget extends WP_Widget {
 			$options['random_refresh'] = isset($instance['random_refresh'])?$instance['random_refresh']:1;
 			$options['refresh_interval'] = isset($instance['refresh_interval'])?$instance['refresh_interval']:5;
 			if( isset( $instance['char_limit'] ) && is_numeric( $instance['char_limit'] ) ) {
-				$options['char_limit'] = $instance['char_limit'];	
+				$options['char_limit'] = $instance['char_limit'];
 			} else {
 				$options['char_limit'] = __('none', 'quotes-collection');
 			}
@@ -147,10 +147,14 @@ class Quotes_Collection_Widget extends WP_Widget {
 		echo '<input type="checkbox" id="'.$this->get_field_id( 'auto_refresh' ).'" name="'.$this->get_field_name('auto_refresh').'"'.$auto_refresh_checked.' />';
 		echo '<label for="'.$this->get_field_id( 'auto_refresh' ).'">'.__( 'Auto refresh', 'quotes-collection' ).'</label>';
 		echo ' <label for="'.$this->get_field_id( 'refresh_interval' ).'"">';
-		printf( __('every %s sec', 'quotes-collection'), '<input type="number" id="'.$this->get_field_id( 'refresh_interval' ).'" name="'.$this->get_field_name('refresh_interval').'" value="'. esc_attr( $options['refresh_interval'] ).'" min="3" max="60" step="1" style="width:3em;" />' );
+		printf(
+			/* translators: %s: Input field that accepts the refresh interval time in seconds, in numeric form */
+			__('every %s sec', 'quotes-collection'),
+			'<input type="number" id="'.$this->get_field_id( 'refresh_interval' ).'" name="'.$this->get_field_name('refresh_interval').'" value="'. esc_attr( $options['refresh_interval'] ).'" min="3" max="60" step="1" style="width:3em;" />'
+		);
 		echo '</label>';
 		echo '</p>';
-		
+
 		echo '<p>';
 		echo '<label for="'.$this->get_field_id( 'tags' ).'">'.__( 'Tags filter', 'quotes-collection' ).'</label>';
 		echo '<input class="widefat" id="'.$this->get_field_id( 'tags' ).'" name="'.$this->get_field_name( 'tags' ).'" type="text" value="'.esc_attr( $options['tags'] ).'">';
@@ -179,14 +183,14 @@ class Quotes_Collection_Widget extends WP_Widget {
 	 */
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
-		
+
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( stripslashes( $new_instance['title'] ) ) : '';
 		$instance['show_author'] = (isset($new_instance['show_author']) && $new_instance['show_author'])?1:0;
 		$instance['show_source'] = (isset($new_instance['show_source']) && $new_instance['show_source'])?1:0;
 		$instance['ajax_refresh'] = (isset($new_instance['ajax_refresh']) && $new_instance['ajax_refresh'])?1:0;
 		$instance['auto_refresh'] = (isset($new_instance['auto_refresh']) && $new_instance['auto_refresh'])?1:0;
 		if( is_numeric( $new_instance['refresh_interval'] ) ) {
-			$instance['refresh_interval'] = $new_instance['refresh_interval'];	
+			$instance['refresh_interval'] = $new_instance['refresh_interval'];
 		} else {
 			$instance['refresh_interval'] = $old_instance['refresh_interval'];
 		}
@@ -206,9 +210,9 @@ class Quotes_Collection_Widget extends WP_Widget {
 	 */
 	private function default_options() {
 		return array(
-			'title'               => __('Random Quote', 'quotes-collection'), 
+			'title'               => __('Random Quote', 'quotes-collection'),
 			'show_author'         => 1,
-			'show_source'         => 0, 
+			'show_source'         => 0,
 			'ajax_refresh'        => 1,
 			'auto_refresh'        => 0,
 			'random_refresh'      => 1,

@@ -1,0 +1,651 @@
+# Copyright (C) 2018 Srini G
+# This file is distributed under the same license as the Quotes Collection plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Quotes Collection 2.5-alpha\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/quotes-collection\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2018-09-27T17:12:31+05:30\n"
+"PO-Revision-Date: 2018-09-27T17:12:31+05:30\n"
+"X-Generator: WP-CLI 2.0.1\n"
+"X-Domain: quotes-collection\n"
+
+#. Plugin Name of the plugin
+#: blocks/quotes/index.js:38
+msgid "Quotes Collection"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "http://srinig.com/wordpress/plugins/quotes-collection/"
+msgstr ""
+
+#. Description of the plugin
+msgid "Quotes Collection plugin with Ajax powered Random Quote sidebar widget helps you collect and display your favourite quotes in your WordPress blog/website."
+msgstr ""
+
+#. Author of the plugin
+msgid "Srini G"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "http://srinig.com/"
+msgstr ""
+
+#: inc/class-quotes-collection-widget.php:17
+msgctxt "widget name"
+msgid "Random Quote"
+msgstr ""
+
+#: inc/class-quotes-collection-widget.php:18
+msgctxt "widget description"
+msgid "Random quote from your quotes collection"
+msgstr ""
+
+#: inc/class-quotes-collection-widget.php:41
+#: inc/class-quotes-collection-widget.php:83
+#: inc/class-quotes-collection-widget.php:213
+msgid "Random Quote"
+msgstr ""
+
+#: inc/class-quotes-collection-widget.php:93
+#: inc/class-quotes-collection-widget.php:201
+msgid "none"
+msgstr ""
+
+#: inc/class-quotes-collection-widget.php:118
+msgid "Title"
+msgstr ""
+
+#: inc/class-quotes-collection-widget.php:124
+msgid "Show author?"
+msgstr ""
+
+#: inc/class-quotes-collection-widget.php:129
+msgid "Show source?"
+msgstr ""
+
+#: inc/class-quotes-collection-widget.php:134
+msgid "Refresh feature"
+msgstr ""
+
+#: inc/class-quotes-collection-widget.php:137
+msgid "Advanced options"
+msgstr ""
+
+#: inc/class-quotes-collection-widget.php:142
+msgid "Random refresh"
+msgstr ""
+
+#: inc/class-quotes-collection-widget.php:143
+msgid "Unchecking this will rotate quotes in the order added, latest first."
+msgstr ""
+
+#: inc/class-quotes-collection-widget.php:148
+msgid "Auto refresh"
+msgstr ""
+
+#. translators: %s: Input field that accepts the refresh interval time in seconds, in numeric form
+#: inc/class-quotes-collection-widget.php:152
+msgid "every %s sec"
+msgstr ""
+
+#: inc/class-quotes-collection-widget.php:159
+msgid "Tags filter"
+msgstr ""
+
+#: inc/class-quotes-collection-widget.php:161
+#: blocks/quotes/index.js:227
+#: blocks/random-quote/index.js:140
+msgid "Comma separated"
+msgstr ""
+
+#: inc/class-quotes-collection-widget.php:165
+msgid "Character limit"
+msgstr ""
+
+#: inc/class-quotes-collection.php:81
+msgid "Loading..."
+msgstr ""
+
+#: inc/class-quotes-collection.php:82
+msgid "Error getting quote"
+msgstr ""
+
+#: inc/class-quotes-collection.php:103
+#: blocks/random-quote.php:105
+msgid "Next quote &raquo;"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:89
+#: inc/class-quotes-collection-admin.php:266
+msgctxt "heading"
+msgid "Add New Quote"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:90
+#: inc/class-quotes-collection-admin.php:441
+msgctxt "submenu item text"
+msgid "Add New"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:100
+#: inc/class-quotes-collection-admin.php:299
+msgctxt "heading"
+msgid "Import Quotes"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:101
+#: inc/class-quotes-collection-admin.php:447
+msgctxt "submenu item text"
+msgid "Import"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:111
+#: inc/class-quotes-collection-admin.php:327
+msgctxt "heading"
+msgid "Export Quotes"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:112
+#: inc/class-quotes-collection-admin.php:450
+msgctxt "submenu item text"
+msgid "Export"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:122
+#: inc/class-quotes-collection-admin.php:414
+msgctxt "heading"
+msgid "Quotes Collection Options"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:123
+#: inc/class-quotes-collection-admin.php:456
+msgctxt "submenu item text"
+msgid "Options"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:133
+msgctxt "submenu item text"
+msgid "All Quotes"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:167
+#: inc/class-quotes-collection-admin.php:535
+#: inc/class-quotes-collection-admin.php:637
+msgctxt "submit button text"
+msgid "Save Changes"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:174
+#: inc/class-quotes-collection-admin.php:437
+msgctxt "submenu item text"
+msgid "Edit Quote"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:205
+msgctxt "list meta, above the quotes list table in the main admin page"
+msgid "All Quotes"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:210
+msgctxt "list meta, above the quotes list table in the main admin page"
+msgid "Public"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:215
+msgctxt "list meta, above the quotes list table in the main admin page"
+msgid "Private"
+msgstr ""
+
+#. translators: %s: search text
+#: inc/class-quotes-collection-admin.php:222
+msgctxt "list meta, above the quotes list table in the main admin page"
+msgid "Search results for \"%s\""
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:245
+msgid "Search"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:280
+msgid "Browse and choose a <abbr title=\"JavaScript Object Notation\">JSON</abbr> (.json) file to upload, then click the 'Import' button."
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:285
+msgid "Choose a file to upload:"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:290
+#: inc/class-quotes-collection-admin.php:652
+msgctxt "submit button text"
+msgid "Import"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:312
+msgid "When you click the button below, a <abbr title=\"JavaScript Object Notation\">JSON</abbr> file with the entire collection of quotes will be created, that you can save to your computer."
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:317
+#: inc/class-quotes-collection-admin.php:658
+msgctxt "submit button text"
+msgid "Export"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:382
+msgid "Refresh link text"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:386
+msgid "Maximum number of iterations for auto-refresh"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:390
+msgid "Dynamically fetch the first random quote in widget?"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:393
+msgid "Check this if your site is cached and the 'random quote' widget always shows a particular quote as the initial quote."
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:396
+msgid "Minimum user role required to add and manage quotes"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:405
+#: inc/class-quotes-collection-admin.php:664
+msgctxt "submit button text"
+msgid "Update Options"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:433
+msgid "All Quotes"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:518
+#: inc/class-quotes-collection-admin.php:621
+msgctxt "submit button text"
+msgid "Add Quote"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:547
+#: inc/class-quotes-collection-admin-list-table.php:126
+msgid "Quote"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:548
+#: inc/class-quotes-collection-admin-list-table.php:127
+#: blocks/quotes/index.js:255
+msgid "Author"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:549
+#: inc/class-quotes-collection-admin-list-table.php:127
+#: blocks/quotes/index.js:256
+msgid "Source"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:550
+#: inc/class-quotes-collection-admin-list-table.php:128
+msgid "Tags"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:551
+msgid "Public?"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:552
+msgid "optional"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:553
+msgid "comma separated"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:625
+#: inc/class-quotes-collection-admin.php:641
+msgid "The quote field cannot be blank. Fill up the quote field and try again."
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:628
+msgid "Quote added"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:632
+msgid "Error adding quote"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:644
+msgid "Changes saved"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:648
+msgid "Error updating quote"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:678
+msgid "Quote deleted"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:680
+msgid "Error deleting quote"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:685
+#: inc/class-quotes-collection-admin.php:707
+#: inc/class-quotes-collection-admin.php:727
+msgid "No item selected"
+msgstr ""
+
+#. translators: $s: The number of quotes deleted
+#: inc/class-quotes-collection-admin.php:690
+msgid "%s quote deleted"
+msgid_plural "%s quotes deleted"
+msgstr[0] ""
+
+#: inc/class-quotes-collection-admin.php:701
+msgid "Error deleting quotes"
+msgstr ""
+
+#. translators: $s: The number of quotes made public
+#: inc/class-quotes-collection-admin.php:712
+msgid "%s quote made public"
+msgid_plural "%s quotes made public"
+msgstr[0] ""
+
+#: inc/class-quotes-collection-admin.php:722
+#: inc/class-quotes-collection-admin.php:742
+msgid "Error. Privacy status not changed."
+msgstr ""
+
+#. translators: $s: The number of quotes kept private
+#: inc/class-quotes-collection-admin.php:732
+msgid "%s quote kept private"
+msgid_plural "%s quotes kept private"
+msgstr[0] ""
+
+#: inc/class-quotes-collection-admin.php:754
+msgid "Please choose a file to upload before you hit the 'Import' button"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:760
+msgid "Invalid file format"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:766
+msgid "The file you uploaded is too big. Import failed."
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:774
+msgid "The file uploaded was empty"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:779
+msgid "Error in JSON file"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:787
+#: inc/class-quotes-collection-admin.php:806
+msgid "Import failed. Please try again."
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:790
+msgid "No quotes imported"
+msgstr ""
+
+#. translators: $s: The number of quotes imported
+#: inc/class-quotes-collection-admin.php:794
+msgid "%s quote imported"
+msgid_plural "%s quotes imported"
+msgstr[0] ""
+
+#: inc/class-quotes-collection-admin.php:819
+msgid "Nothing to export"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:867
+msgid "No change in values. Options not updated."
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:872
+msgid "Options updated"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:875
+msgid "Options not updated"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:891
+msgid "Maximum items"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:921
+msgctxt "confirmation dialog title"
+msgid "Delete?"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:922
+msgctxt "confirmation dialog text for deleting a single quote"
+msgid "Are you sure you want to delete this quote?"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:923
+msgctxt "confirmation dialog text for deleting multiple quotes"
+msgid "Are you sure you want to delete these quotes?"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:924
+msgctxt "confirmation dialog button text"
+msgid "Yes"
+msgstr ""
+
+#: inc/class-quotes-collection-admin.php:925
+msgctxt "confirmation dialog button text"
+msgid "No"
+msgstr ""
+
+#: inc/class-quotes-collection-shortcode.php:210
+msgid "Go to the first page"
+msgstr ""
+
+#: inc/class-quotes-collection-shortcode.php:212
+msgid "Go to the previous page"
+msgstr ""
+
+#: inc/class-quotes-collection-shortcode.php:216
+msgid "Go to the next page"
+msgstr ""
+
+#: inc/class-quotes-collection-shortcode.php:218
+msgid "Go to the last page"
+msgstr ""
+
+#: inc/class-quotes-collection-shortcode.php:222
+msgid "Goto page:"
+msgstr ""
+
+#: inc/class-quotes-collection-admin-list-table.php:64
+msgid "Edit"
+msgstr ""
+
+#: inc/class-quotes-collection-admin-list-table.php:65
+#: inc/class-quotes-collection-admin-list-table.php:145
+msgid "Delete"
+msgstr ""
+
+#: inc/class-quotes-collection-admin-list-table.php:107
+msgctxt "date and time format"
+msgid "Y/m/d h:i:s A"
+msgstr ""
+
+#: inc/class-quotes-collection-admin-list-table.php:108
+msgctxt "date format"
+msgid "Y/m/d"
+msgstr ""
+
+#: inc/class-quotes-collection-admin-list-table.php:110
+msgid "Private"
+msgstr ""
+
+#: inc/class-quotes-collection-admin-list-table.php:110
+msgid "Public"
+msgstr ""
+
+#: inc/class-quotes-collection-admin-list-table.php:125
+msgid "ID"
+msgstr ""
+
+#: inc/class-quotes-collection-admin-list-table.php:129
+msgid "Date"
+msgstr ""
+
+#: inc/class-quotes-collection-admin-list-table.php:146
+msgid "Make public"
+msgstr ""
+
+#: inc/class-quotes-collection-admin-list-table.php:147
+msgid "Keep private"
+msgstr ""
+
+#: blocks/quotes/index.js:169
+#: blocks/random-quote/index.js:69
+msgid "Presentation"
+msgstr ""
+
+#: blocks/quotes/index.js:175
+#: blocks/random-quote/index.js:75
+msgid "Background Color"
+msgstr ""
+
+#: blocks/quotes/index.js:180
+#: blocks/random-quote/index.js:80
+msgid "Text Color"
+msgstr ""
+
+#: blocks/quotes/index.js:189
+#: blocks/random-quote/index.js:89
+msgid "Text Align"
+msgstr ""
+
+#: blocks/quotes/index.js:196
+#: blocks/random-quote/index.js:96
+msgid "Attribution Align"
+msgstr ""
+
+#: blocks/quotes/index.js:204
+#: blocks/random-quote/index.js:127
+msgid "Content Settings"
+msgstr ""
+
+#: blocks/quotes/index.js:206
+msgid "Show Author"
+msgstr ""
+
+#: blocks/quotes/index.js:211
+msgid "Show Source"
+msgstr ""
+
+#: blocks/quotes/index.js:216
+msgid "Filter by Author"
+msgstr ""
+
+#: blocks/quotes/index.js:221
+msgid "Filter by Source"
+msgstr ""
+
+#: blocks/quotes/index.js:226
+#: blocks/random-quote/index.js:139
+msgid "Filter by Tags"
+msgstr ""
+
+#: blocks/quotes/index.js:232
+msgid "Limit"
+msgstr ""
+
+#: blocks/quotes/index.js:233
+msgid "The maximum number of quotes to be displayed on a single page. Ignored when paging is on. A value of \"0\" implies no limits."
+msgstr ""
+
+#: blocks/quotes/index.js:248
+msgid "Sorting"
+msgstr ""
+
+#: blocks/quotes/index.js:250
+msgid "Order by"
+msgstr ""
+
+#: blocks/quotes/index.js:254
+msgid "Quote ID"
+msgstr ""
+
+#: blocks/quotes/index.js:257
+msgid "Time Added"
+msgstr ""
+
+#: blocks/quotes/index.js:258
+msgid "Random"
+msgstr ""
+
+#: blocks/quotes/index.js:262
+msgid "Order"
+msgstr ""
+
+#: blocks/quotes/index.js:266
+msgid "Ascending"
+msgstr ""
+
+#: blocks/quotes/index.js:267
+msgid "Descending"
+msgstr ""
+
+#: blocks/quotes/index.js:272
+#: blocks/quotes/index.js:274
+msgid "Paging"
+msgstr ""
+
+#: blocks/quotes/index.js:279
+msgid "Limit per page"
+msgstr ""
+
+#: blocks/quotes/index.js:280
+msgid "The maximum number of quotes to be displayed per page. Ignored when paging is off."
+msgstr ""
+
+#: blocks/random-quote/index.js:36
+msgid "Quotes Collection :: Random Quote"
+msgstr ""
+
+#: blocks/random-quote/index.js:106
+msgid "Fixed Height"
+msgstr ""
+
+#: blocks/random-quote/index.js:145
+msgid "Character Limit"
+msgstr ""
+
+#: blocks/random-quote/index.js:146
+msgid "Total number of characters including white spaces. Larger quotes are ignored."
+msgstr ""
+
+#: blocks/random-quote/index.js:161
+msgid "Refresh Settings"
+msgstr ""
+
+#: blocks/random-quote/index.js:163
+msgid "Random Refresh"
+msgstr ""
+
+#: blocks/random-quote/index.js:168
+msgid "Auto Refresh"
+msgstr ""
+
+#: blocks/random-quote/index.js:173
+msgid "Refresh Interval"
+msgstr ""
+
+#: blocks/random-quote/index.js:174
+msgid "For auto refresh. In seconds."
+msgstr ""

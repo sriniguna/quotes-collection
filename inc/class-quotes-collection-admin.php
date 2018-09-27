@@ -688,6 +688,7 @@ EDITFORM;
 					$this->notices = '<div class="updated"><p>'
 						. sprintf(
 							_n(
+								/* translators: $s: The number of quotes deleted */
 								'%s quote deleted',
 								'%s quotes deleted',
 								$result,
@@ -709,6 +710,7 @@ EDITFORM;
 					$this->notices = '<div class="updated"><p>'
 						. sprintf(
 							_n(
+								/* translators: $s: The number of quotes made public */
 								'%s quote made public',
 								'%s quotes made public',
 								$result,
@@ -728,6 +730,7 @@ EDITFORM;
 					$this->notices = '<div class="updated"><p>'
 						. sprintf(
 							_n(
+								/* translators: $s: The number of quotes kept private */
 								'%s quote kept private',
 								'%s quotes kept private',
 								$result,
@@ -789,6 +792,7 @@ EDITFORM;
 			else {
 				$this->notices = '<div class="updated"><p>'
 					. sprintf( _n(
+						/* translators: $s: The number of quotes imported */
 						'%s quote imported',
 						'%s quotes imported',
 						$result,

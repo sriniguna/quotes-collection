@@ -15,7 +15,6 @@ class Quotes_Collection {
 	public $auto_refresh_max;
 
 	function __construct() {
-		load_plugin_textdomain( 'quotes-collection', false, quotescollection_rel_path( 'languages' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts_and_styles' ) );
 		add_action( 'wp_ajax_quotescollection', array( $this, 'ajax_response' ) );
 		add_action( 'wp_ajax_nopriv_quotescollection', array( $this, 'ajax_response' ) );

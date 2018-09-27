@@ -2,7 +2,7 @@
 Contributors: SriniG
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HDWT2K8TXXHUN
 Tags: quotes collection, quotes, quotations, random quote, sidebar, widget, ajax, shortcode
-Requires at least: 3.1
+Requires at least: 4.6
 Tested up to: 4.9.5
 Stable tag: trunk
 License: GNU General Public License
@@ -26,7 +26,7 @@ Quotes Collection plugin helps you collect, manage and display your favourite qu
 
 **Features and notes**
 
-* **Admin interface**: An admin interface to add, edit, import, export and generally manage the collection of quotes. 
+* **Admin interface**: An admin interface to add, edit, import, export and generally manage the collection of quotes.
 * **Sidebar widget**: The Random Quote sidebar widget that will display a random quote from your collection and a refresh link at the bottom. As many number of instances of the widget can be added. Following is the list of options in the widget control panel:
 	* Widget title
 	* Option to show/hide quote author
@@ -43,7 +43,7 @@ Quotes Collection plugin helps you collect, manage and display your favourite qu
 	* `[quotcoll orderby="random" limit=1]` displays a random quote
 * **The template function**: To code the random quote functionality directly into a template file, the template function `quotescollection_quote()` can be used. Please refer the plugin homepage or 'other notes' for details.
 * **Import/Export** your collection of quotes in JSON format *(new in 2.0)*.
-* The plugin suppports localization. Refer the plugin page or 'other notes' for the full list of available languages and the respective translators. 
+* The plugin suppports localization. Refer the plugin page or 'other notes' for the full list of available languages and the respective translators.
 
 
 == Installation ==
@@ -73,7 +73,7 @@ After installation, the plugin can be activated from *Plugins -> Installed Plugi
 == Frequently Asked Questions ==
 
 
-= How to hide the 'Next quote »' link? = 
+= How to hide the 'Next quote »' link? =
 
 You can do this by turning off the 'Ajax Refresh' feature in widget options.
 
@@ -109,14 +109,14 @@ Different attributes can be specified to customize the way the quotes are displa
 * **id** *(integer)*
 	* For example, `[quotcoll id=3]` displays a single quote, the id of which is 3. If there is no quote with the id 3, nothing is displayed.
 	* This overrides all other attributes. That is, if id attribute is specified, any other attribute specified is ignored.
-	
+
 * **author** *(string)*
 	* `[quotcoll author="Somebody"]` displays all quotes authored by 'Somebody'.
 
-* **source** *(string)*	
+* **source** *(string)*
 	* `[quotcoll source="Something"]` displays all quotes from the source 'Something'.
 
-* **tags** *(string, comma separated)*	
+* **tags** *(string, comma separated)*
 	* `[quotcoll tags="tag1"]` displays all quotes tagged 'tag1'.
 	* `[quotcoll tags="tag1, tag2, tag3"]` displays quotes tagged 'tag1' or 'tag2' or 'tag3', one or more or all of these.
 	* `[quotcoll author="Somebody" tags="tag1"]` displays quotes authored by 'Somebody' AND tagged 'tag1'.
@@ -128,11 +128,11 @@ Different attributes can be specified to customize the way the quotes are displa
 		* 'source'
 		* 'time_added'
 		* 'random'
-	
-* **order** *(string)* 
+
+* **order** *(string)*
 	* The value can be either 'ASC' (default) or 'DESC', for ascending and descending order respectively.
 	* For example, `[quotcoll orderby="time_added" order="DESC"]` will display all the quotes in the order of date added, latest first and the earliest last.
-	
+
 * **paging** *(boolean)*
 	* The values can be:
 		* false (or 0) (default)
@@ -147,7 +147,7 @@ Different attributes can be specified to customize the way the quotes are displa
 * **limit** *(integer)*
 	* The maximum number of quotes to be displayed in a single page ie., when paging is 'false'.
 	* This can be used, for example, to display just a random quote. `[quotcoll orderby="random" limit=1]`
-	
+
 == The quotescollection_quote() template function ==
 
 The quotescollection_quote() template function can be used to display a random quote in places other than sidebar.
@@ -163,29 +163,29 @@ The list of parameters (arguments) that can be passed on to this function:
 
 * **show_source** *(boolean)*
 	* To show/hide the source field
-		* `true` - shows the source 
+		* `true` - shows the source
 		* `false` - hides the source (default)
 
 * **ajax_refresh** *(boolean)*
 	* To show/hide the 'Next quote' refresh link
 		* `true` - shows the refresh link (default)
 		* `false` - hides the hides the refresh link
-		
+
 * **random** *(boolean)*
 	* Refresh the quote in random or sequential order
 		* `true` - random refresh (default)
 		* `false` - sequential, with the latest quote first
-		
+
 * **auto_refresh** *(boolean/integer)*
 	* To refresh the quote automatically
 		* `true` - auto refresh every 5 seconds
 		* `false` - auto refresh is off (default)
 		* `integer` - auto refresh is on, and the number provided will be the refresh interval, in seconds.
 			* For example, `<?php quotescollection_quote( array( 'auto_refresh' => 3 ) ); ?>` will refresh the quote every 3 seconds.
-	
+
 * **tags** *(string)*
 	* Comma separated list of tags. Only quotes with one or more of these tags will be shown.
- 
+
 * **char_limit** *(integer)*
 	* Quotes with number of characters more than this value will be filtered out. This is useful if you don't want to display long quotes using this function. The default value is 500.
 
@@ -207,7 +207,7 @@ The list of parameters (arguments) that can be passed on to this function:
 * `<?php quotescollection_quote( array( 'ajax_refresh' => false, 'char_limit' => 300 ) ); ?>`
 
 	* The 'Next quote' link is not shown, quotes with number of characters greater that 300 are left out.
-	
+
 == Localization ==
 
 Versions 1.1 and greater support localization. As of the current version, localization is available in the following languages (code / language / author):
@@ -315,13 +315,13 @@ You can translate the plugin in your language if it's not done already. The loca
 
 * **2012-03-28: Version 1.5.5.1**
 	* Minor fix (the missing semicolon in <code>&amp;nbsp;</code>)
-	
+
 * **2012-03-27: Version 1.5.5**
 	* Security fixes
 	* Shortcode output pagination issue fixed
 	* Shortcode: 'time_added' value for 'orderby' parameter fixed.
 	* Localization in Estonian, Greek, Belarusian and Romanian languages added.
-	
+
 * **2011-08-31: Version 1.5.4**
 	* 30 and 60 seconds added to widget auto refresh time option.
 	* Updates for Italian and Japanese localizations.
@@ -333,10 +333,10 @@ You can translate the plugin in your language if it's not done already. The loca
 * **2011-07-18: Version 1.5.2**
 	* Slovak localization added
 	* Fixes
-	
+
 * **2011-07-01: Version 1.5.1**
 	* Bahasa Indonesia localization updated
-	
+
 * **2011-06-30: Version 1.5**
 	* Shortcodes revamp. The new shortcode `[quotcoll]` uses the WordPress shortcode API and comes with various options. The old `[quote]` is deprecated, but will still work as a measure of backwards compatibility.
 	* Ajax calls are now made to `wp-admin/admin-ajax.php`. This could potentially fix problems some websites had with the older system.
@@ -347,38 +347,38 @@ You can translate the plugin in your language if it's not done already. The loca
 
 * **2010-12-03: Version 1.4.4**
 	* Updated Simplified Chinese localization
-	
+
 * **2010-11-26: Version 1.4.3**
 	* Norwegian translation added
 	* French and Simplified Chinese localizations updated
-	
+
 * **2010-06-24: Version 1.4.2**
 	* Italian localization updated
-	
+
 * **2010-06-19: Version 1.4.1**
 	* Compatibility with WP 3.0 multi-site functionality
 	* Tamil localization updated
-	
+
 * **2010-06-17: Version 1.4**
 	* Added ability to refresh quotes sequentially in the order added instead of random refresh.
 	* Added ability to refresh quotes automatically in a specified time interval
 	* The widget has two additional options (random refresh and auto refresh (+ time interval))
-	* 'Quotes Collection' admin panel is now listed as a first-level menu from being a sub-menu under 'Tools' 
+	* 'Quotes Collection' admin panel is now listed as a first-level menu from being a sub-menu under 'Tools'
 	* Other minor fixes, changes and improvements
-	
+
 * **2010-06-06: Version 1.3.8**
 	* Fix for the backslashes issue.
 
 * **2010-03-02: Version 1.3.7**
 	* Localization in Hindi added.
-	
+
 * **2009-11-10: Version 1.3.6**
 	* Localization in Bulgarian and Czech languages added.
 
 * **2009-09-22: Version 1.3.5**
 	* Brazilian Portugese localization added.
 	* Modifications in quotes-collection.js (for better debugging in case of error)
-	
+
 * **2009-08-24: Version 1.3.4**
 	* Finnish localization added.
 	* FAQ updated.
@@ -402,7 +402,7 @@ You can translate the plugin in your language if it's not done already. The loca
 	* Hungarian, Belarusian translations added. Swedish, Italian, Croatian, Turkish, Japanese, Persian, French and Tamil updated.
 	* If you insert a url in quote, author, source, it becomes clickable in the random quote and  in quotes pages.
 	* Other minor improvements
-	
+
 * **2009-04-20: Version 1.2.8**
     * Correcting a mistake in the previous update.
 

@@ -7,7 +7,6 @@
  * Author: Srini G
  * Author URI: http://srinig.com/
  * Text Domain: quotes-collection
- * Domain Path: /languages/
  * License: GPL2
  */
 

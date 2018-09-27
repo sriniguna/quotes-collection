@@ -35,7 +35,7 @@
 	 * @see https://wordpress.org/gutenberg/handbook/block-api/
 	 */
 	registerBlockType( 'quotes-collection/quotes', {
-		title: __( 'Quotes Collection' ),
+		title: __( 'Quotes Collection', 'quotes-collection' ),
 		icon: 'testimonial',
 		category: 'widgets',
 
@@ -166,18 +166,18 @@
 				el( InspectorControls, {},
 
 					el( PanelColorSettings, {
-							title: __('Presentation'),
+							title: __('Presentation', 'quotes-collection'),
 							initialOpen: false,
 							colorSettings: [
 								{
 									value: props.attributes.backgroundColor,
 									onChange: (color) => { props.setAttributes( { backgroundColor: (color) ? color: '' } ); },
-									label: __('Background Color'),
+									label: __('Background Color', 'quotes-collection'),
 								},
 								{
 									value: props.attributes.textColor,
 									onChange: (color) => { props.setAttributes( { textColor: (color) ? color: '' } ); },
-									label: __('Text Color'),
+									label: __('Text Color', 'quotes-collection'),
 								},
 							],
 						},
@@ -186,14 +186,14 @@
 							backgroundColor: props.attributes.backgroundColor,
 						}),
 						el( PanelRow, {},
-							el( 'label', {}, __('Text Align') ),
+							el( 'label', {}, __('Text Align', 'quotes-collection') ),
 							el( AlignmentToolbar, {
 								value: props.attributes.textAlign,
 								onChange: (alignment) => { props.setAttributes( { textAlign: alignment } ); },
 							}),
 						), // </PanelRow>
 						el( PanelRow, {},
-							el( 'label', {}, __('Attribution Align') ),
+							el( 'label', {}, __('Attribution Align', 'quotes-collection') ),
 							el( AlignmentToolbar, {
 								value: props.attributes.attributionAlign,
 								onChange: (alignment) => { props.setAttributes( { attributionAlign: alignment } ); },
@@ -201,36 +201,36 @@
 						), // </PanelRow>
 					), // </PanelColorSettings>
 
-					el( PanelBody, { title: __('Content Settings'), initialOpen: false },
+					el( PanelBody, { title: __('Content Settings', 'quotes-collection'), initialOpen: false },
 						el( CheckboxControl, {
-							label: __('Show Author'),
+							label: __('Show Author', 'quotes-collection'),
 							checked: props.attributes.showAuthor,
 							onChange: (state) => { props.setAttributes( { showAuthor: state } ); },
 						} ),
 						el( CheckboxControl, {
-							label: __('Show Source'),
+							label: __('Show Source', 'quotes-collection'),
 							checked: props.attributes.showSource,
 							onChange: (state) => { props.setAttributes( { showSource: state } ); },
 						} ),
 						el( TextControl, {
-							label: __('Filter by Author'),
+							label: __('Filter by Author', 'quotes-collection'),
 							value: props.attributes.author,
 							onChange: ( value ) => { props.setAttributes( { author: value } ); },
 						} ),
 						el( TextControl, {
-							label: __('Filter by Source'),
+							label: __('Filter by Source', 'quotes-collection'),
 							value: props.attributes.source,
 							onChange: ( value ) => { props.setAttributes( { source: value } ); },
 						} ),
 						el( TextControl, {
-							label: __('Filter by Tags'),
-							help: __('Comma separated'),
+							label: __('Filter by Tags', 'quotes-collection'),
+							help: __('Comma separated', 'quotes-collection'),
 							value: props.attributes.tags,
 							onChange: ( value ) => { props.setAttributes( { tags: value } ); },
 						} ),
 						el( TextControl, {
-							label: __('Limit'),
-							help: __('The maximum number of quotes to be displayed on a single page. Ignored when paging is on. A value of "0" implies no limits.'),
+							label: __('Limit', 'quotes-collection'),
+							help: __('The maximum number of quotes to be displayed on a single page. Ignored when paging is on. A value of \"0\" implies no limits.', 'quotes-collection'),
 							type: 'number',
 							min: 0,
 							max: 100,
@@ -245,39 +245,39 @@
 						}),
 					), // </PanelBody>
 
-					el( PanelBody, { title: __('Sorting'), initialOpen: false },
+					el( PanelBody, { title: __('Sorting', 'quotes-collection'), initialOpen: false },
 						el( SelectControl, {
-							label: __('Order by'),
+							label: __('Order by', 'quotes-collection'),
 							value: props.attributes.orderby,
 							onChange: ( value ) => { props.setAttributes( { orderby: value } ); },
 							options: [
-								{ value: 'quote_id', label: __('Quote ID')},
-								{ value: 'author', label: __('Author')},
-								{ value: 'source', label: __('Source')},
-								{ value: 'time_added', label: __('Time Added')},
-								{ value: 'random', label: __('Random')},
+								{ value: 'quote_id', label: __('Quote ID', 'quotes-collection')},
+								{ value: 'author', label: __('Author', 'quotes-collection')},
+								{ value: 'source', label: __('Source', 'quotes-collection')},
+								{ value: 'time_added', label: __('Time Added', 'quotes-collection')},
+								{ value: 'random', label: __('Random', 'quotes-collection')},
 							]
 						} ),
 						el( RadioControl, {
-							label: __('Order'),
+							label: __('Order', 'quotes-collection'),
 							selected: props.attributes.order,
 							onChange: ( option ) => { props.setAttributes( { order: option } ); },
 							options: [
-								{ label: __('Ascending'), value: 'ASC' },
-								{ label: __('Descending'), value: 'DESC' },
+								{ label: __('Ascending', 'quotes-collection'), value: 'ASC' },
+								{ label: __('Descending', 'quotes-collection'), value: 'DESC' },
 							],
 						} ),
 					), // </PanelBody>
 
-					el( PanelBody, { title: __('Paging'), initialOpen: false },
+					el( PanelBody, { title: __('Paging', 'quotes-collection'), initialOpen: false },
 						el( ToggleControl, {
-							label: __('Paging'),
+							label: __('Paging', 'quotes-collection'),
 							checked: props.attributes.paging,
 							onChange: ( state ) => { props.setAttributes( { paging: state } ); },
 						} ),
 						el( TextControl, {
-							label: __('Limit per page'),
-							help: __('The maximum number of quotes to be displayed per page. Ignored when paging is off.'),
+							label: __('Limit per page', 'quotes-collection'),
+							help: __('The maximum number of quotes to be displayed per page. Ignored when paging is off.', 'quotes-collection'),
 							type: 'number',
 							min: 1,
 							max: 100,

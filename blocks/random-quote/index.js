@@ -33,7 +33,7 @@
 	 * @see https://wordpress.org/gutenberg/handbook/block-api/
 	 */
 	registerBlockType( 'quotes-collection/random-quote', {
-		title: __( 'Quotes Collection :: Random Quote' ),
+		title: __( 'Quotes Collection :: Random Quote', 'quotes-collection' ),
 		icon: 'testimonial',
 		category: 'widgets',
 
@@ -66,18 +66,18 @@
 				el( InspectorControls, {},
 
 					el( PanelColorSettings, {
-							title: __('Presentation'),
+							title: __('Presentation', 'quotes-collection'),
 							initialOpen: false,
 							colorSettings: [
 								{
 									value: props.attributes.backgroundColor,
 									onChange: (color) => { props.setAttributes( { backgroundColor: (color) ? color: '' } ); },
-									label: __('Background Color'),
+									label: __('Background Color', 'quotes-collection'),
 								},
 								{
 									value: props.attributes.textColor,
 									onChange: (color) => { props.setAttributes( { textColor: (color) ? color: '' } ); },
-									label: __('Text Color'),
+									label: __('Text Color', 'quotes-collection'),
 								},
 							],
 						},
@@ -86,14 +86,14 @@
 							backgroundColor: props.attributes.backgroundColor,
 						}),
 						el( PanelRow, {},
-							el( 'label', {}, __('Text Align') ),
+							el( 'label', {}, __('Text Align', 'quotes-collection') ),
 							el( AlignmentToolbar, {
 								value: props.attributes.textAlign,
 								onChange: (alignment) => { props.setAttributes( { textAlign: alignment } ); },
 							}),
 						), // </PanelRow>
 						el( PanelRow, {},
-							el( 'label', {}, __('Attribution Align') ),
+							el( 'label', {}, __('Attribution Align', 'quotes-collection') ),
 							el( AlignmentToolbar, {
 								value: props.attributes.attributionAlign,
 								onChange: (alignment) => { props.setAttributes( { attributionAlign: alignment } ); },
@@ -103,7 +103,7 @@
 							style: { marginTop: '20px' }
 						},
 							el( CheckboxControl, {
-								label: __('Fixed Height'),
+								label: __('Fixed Height', 'quotes-collection'),
 								checked: props.attributes.fixedHeight,
 								onChange: (state) => { props.setAttributes( { fixedHeight: state } ); },
 							}),
@@ -124,7 +124,7 @@
 						), // </div>
 					), // </PanelColorSettings>
 
-					el( PanelBody, { title: __('Content Settings'), initialOpen: false },
+					el( PanelBody, { title: __('Content Settings', 'quotes-collection'), initialOpen: false },
 						el( CheckboxControl, {
 							label: __('Show Author'),
 							checked: props.attributes.showAuthor,
@@ -136,14 +136,14 @@
 							onChange: (state) => { props.setAttributes( { showSource: state } ); },
 						} ),
 						el( TextControl, {
-							label: __('Filter by Tags'),
-							help: __('Comma separated'),
+							label: __('Filter by Tags', 'quotes-collection'),
+							help: __('Comma separated', 'quotes-collection'),
 							value: props.attributes.tags,
 							onChange: ( value ) => { props.setAttributes( { tags: value } ); },
 						} ),
 						el( RangeControl, {
-							label: __('Character Limit'),
-							help: __('Total number of characters including white spaces. Larger quotes are ignored.'),
+							label: __('Character Limit', 'quotes-collection'),
+							help: __('Total number of characters including white spaces. Larger quotes are ignored.', 'quotes-collection'),
 							min: 100,
 							max: 2500,
 							step: 100,
@@ -158,20 +158,20 @@
 						}),
 					), // </PanelBody>
 
-					el( PanelBody, { title: __('Refresh Settings'), initialOpen: false },
+					el( PanelBody, { title: __('Refresh Settings', 'quotes-collection'), initialOpen: false },
 						el( ToggleControl, {
-							label: __('Random Refresh'),
+							label: __('Random Refresh', 'quotes-collection'),
 							checked: props.attributes.randomRefresh,
 							onChange: ( state ) => { props.setAttributes( { randomRefresh: state } ); },
 						} ),
 						el( ToggleControl, {
-							label: __('Auto Refresh'),
+							label: __('Auto Refresh', 'quotes-collection'),
 							checked: props.attributes.autoRefresh,
 							onChange: ( state ) => { props.setAttributes( { autoRefresh: state } ); },
 						} ),
 						el( RangeControl, {
-							label: __('Refresh Interval'),
-							help: __('For auto refresh. In seconds.'),
+							label: __('Refresh Interval', 'quotes-collection'),
+							help: __('For auto refresh. In seconds.', 'quotes-collection'),
 							min: 3,
 							max: 60,
 							value: props.attributes.refreshInterval,

@@ -1,49 +1,32 @@
 === Quotes Collection ===
 Contributors: SriniG
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HDWT2K8TXXHUN
-Tags: quotes collection, quotes, quotations, random quote, sidebar, widget, ajax, shortcode
+Donate link: https://www.paypal.me/srinigcom/20
+Tags: quotes, quotations, random quote, widget, gutenberg blocks, quote rotator
 Requires at least: 4.6
-Tested up to: 4.9.5
+Tested up to: 5.0-alpha-43661
 Stable tag: trunk
 License: GNU General Public License
 
-Quotes Collection plugin with Ajax powered Random Quote sidebar widget helps you collect and display your favourite quotes in your WordPress website.
+Quotes Collection plugin helps you collect, manage and display your favourite quotes in your WordPress website.
 
 == Description ==
 
-Quotes Collection plugin helps you collect, manage and display your favourite quotations in your WordPress website or blog.
-
-**New in 2.0**
-
-* New and improved admin interface
-* Import/Export your collection of quotes in JSON format
-* Multi-widget support
-* Cleaner uninstall
-* Many other improvements
-
-*Note: If you are upgrading to 2.0 from an older version, you will have to re-add the widget and set the widget options once again after upgradation.*
+Quotes Collection plugin helps you collect, manage and display your favourite quotes in your WordPress website or blog.
 
 
-**Features and notes**
+**Features**
 
-* **Admin interface**: An admin interface to add, edit, import, export and generally manage the collection of quotes.
-* **Sidebar widget**: The Random Quote sidebar widget that will display a random quote from your collection and a refresh link at the bottom. As many number of instances of the widget can be added. Following is the list of options in the widget control panel:
-	* Widget title
-	* Option to show/hide quote author
-	* Option to show/hide quote source
-	* Turn on/off the refresh feature
-	* Choose random or sequential order for refresh
-	* Option to refresh the quote automatically
-	* Show only quotes with certain tags
-	* Specify a character limit and filter out bigger quotes
-* **Shortcode**: Quotes can be displayed in a WordPress page by placing a `[quotcoll]`shortcode. Few examples are provided below. For more examples and the full list of arguments, please refer 'other notes'.
+* **Sidebar widget**: The Random Quote widget displays a random quote from your collection, with a 'Next Quote' link to refresh the widget with another quote. Includes options to refresh the quote manually or automatically, randomly or sequentially.
+* **Gutenberg blocks**: The plugin includes two blocks that can be added in pages and posts. ***(NEW in v2.5)***
+	* 'Random Quote' block that functions similarly to the Random Quote widget, with additional presentation options.
+	* 'Quotes' block to display all the quotes or a set of quotes, with presentation, filtering, paging and other options.
+* **Shortcode**: All quotes or a set of quotes can be displayed on a WordPress page by placing a `[quotcoll]`shortcode. Few examples are provided below. For more examples and the full list of arguments, scroll down and check out the 'The [quotcoll] shortcode' section.
 	* Placing `[quotcoll]` in the page displays all quotes.
 	* `[quotcoll author="Somebody"]` displays quotes authored by Somebody.
 	* `[quotcoll tags="tag1,tag2,tag3"]` displays quotes tagged tag1 or tag2 or tag3, one or more or all of these
 	* `[quotcoll orderby="random" limit=1]` displays a random quote
 * **The template function**: To code the random quote functionality directly into a template file, the template function `quotescollection_quote()` can be used. Please refer the plugin homepage or 'other notes' for details.
-* **Import/Export** your collection of quotes in JSON format *(new in 2.0)*.
-* The plugin suppports localization. Refer the plugin page or 'other notes' for the full list of available languages and the respective translators.
+* **Admin interface**: A robust admin interface to add, edit, import, export and generally manage the collection of quotes.
 
 
 == Installation ==
@@ -56,14 +39,14 @@ Quotes Collection plugin helps you collect, manage and display your favourite qu
 
 **Method 2**
 
-1. Dowload the latest version of the plugin from WordPress plugin directory
+1. Download the latest version of the plugin from WordPress plugin directory
 1. Go to *Plugins -> Add New* in your WordPress admin area
 1. Click on the 'Upload Plugin' button at the top, near 'Add Plugins'
 1. Browse and select the zip file you just downloaded, and click 'Install Now'
 
 **Method 3**
 
-1. Dowload the latest version of the plugin from WordPress plugin directory
+1. Download the latest version of the plugin from WordPress plugin directory
 1. Extract the zip file
 1. Using a FTP client or something similar, upload the `quotes-collection` directory to the `~/wp-content/plugins/` directory of your WordPress installation.
 
@@ -142,7 +125,7 @@ Different attributes can be specified to customize the way the quotes are displa
 
 * **limit_per_page** *(integer)*
 	* The maximum number of quotes to be displayed in a page when paging is introduced, as described above.
-	* The defualt value is 10. For example, `[quotcoll paging=true]` will introduce paging with maximum of 10 quotes per page.
+	* The default value is 10. For example, `[quotcoll paging=true]` will introduce paging with maximum of 10 quotes per page.
 
 * **limit** *(integer)*
 	* The maximum number of quotes to be displayed in a single page ie., when paging is 'false'.
@@ -210,49 +193,19 @@ The list of parameters (arguments) that can be passed on to this function:
 
 == Localization ==
 
-Versions 1.1 and greater support localization. As of the current version, localization is available in the following languages (code / language / author):
-
-* `ar` / Arabic / [Ahmed Alharfi](http://www.alharfi.com/)
-* `be_BY` / Belarusian / [Alexander Ovsov](http://webhostinggeeks.com/)
-* `bg_BG` / Bulgarian / [Martin Petrov](http://mpetrov.net/)
-* `bs_BA` / Bosnian / Vukasin Stojkov
-* `cs_CZ` / Czech / Josef Ondruch
-* `da_DK` / Danish / [Rune Clausen](http://www.runemester.dk/)
-* `de_DE` / German / [Tobias Koch](http://tobias.kochs-online.net/2008/05/multilingual-blogging-using-wordpress/)
-* `el` / Greek / [Spiros Doikas](http://www.translatum.gr/)
-* `es_ES` / Spanish / [Germán L. Martínez (Gershu)](http://www.gershu.com.ar/)
-* `et_EE` / Estonian / [Iflexion](http://iflexion.com/)
-* `fa_IR` / Persian / [Ehsan SH](http://mastaneh.ir/)
-* `fi_FI` / Finnish / [Jussi Ruokomäki](http://jussi.ruokomaki.fi/)
-* `fr_FR` / French / [psykotik](http://www.ikiru.ch/blog), Laurent Naudier
-* `he_IL` / Hebrew / Tailor Vijay
-* `hi_IN` / Hindi / [Ashish J.](http://outshinesolutions.com/)
-* `hr_HR` / Croatian / [1984da](http://faks.us/)
-* `hu_HU` / Hungarian / [KOOS, Tamas](http://www.koosfoto.hu/)
-* `id_ID` / Bahasa Indonesia / [Kelayang](http://kelayang.com/)
-* `it_IT` / Italian / [Gianni Diurno  (aka gidibao)](http://gidibao.net/index.php/2008/05/26/quotes-collection-in-italiano/)
-* `ja` / Japanese / [Urepko Asaba](http://www.urepko.net/)
-* `lt_LT` / Lithuanian / Lulilo
-* `lv_LV` / Latvian / [Maris Svirksts](http://www.moskjis.com/)
-* `mk_MK` / Macedonian / [Diana](http://wpcouponshop.com/)
-* `nb_NO` / Norwegian (Bokmål) / [Christian K. Nordtømme](http://nextpage.no/)
-* `nl_NL` / Dutch / Guido van der Leest, [Kristof Vercruyssen](http://www.simplit.be/)
-* `pl_PL` / Polish / Marcin Gucia
-* `pt_BR` / Brazilian Portugese / Tzor More
-* `pt_PT` / Portugese / [Djamilo Jacinto](http://www.maxibim.net/)
-* `ro_RO` / Romanian / Alexander Ovsov
-* `ru_RU` / Russian / Andrew Malarchuk
-* `sk_SK` / Slovak / [Stefan Stieranka](http://www.itec.sk/)
-* `sr_RS` / Serbian / Vukasin Stojkov
-* `sv_SE` / Swedish / [Julian Kommunikation](http://julian.se/)
-* `ta_IN` / Tamil / [Srini](http://srinig.com/)
-* `tr_TR` / Turkish / [Gürkan Gür](http://seqizz.net/)
-* `uk_UA` / Ukrainian / Stas
-* `zh_CN` / Simplified Chinese / [天毅许](http://www.freewarecn.com/)
-
-You can translate the plugin in your language if it's not done already. The localization template file (quotes-collection.pot) can be found in the 'languages' folder of the plugin. After translating send the localized files to the [plugin author](http://srinig.com/wordpress/contact/) so that it's included in the next update. If you are not sure how to go about translating, contact the plugin author.
+You can translate the plugin in your language at [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/quotes-collection).
 
 ==Changelog==
+
+* **2018-XX-XX: Version 2.5**
+	* Gutenberg blocks included. *Note: to make use of these blocks, you should have WP 5.0 or above, or have the [Gutenberg plugin](https://wordpress.org/plugins/gutenberg/) installed and activated.*
+		* 'Random Quote' block that functions similarly to the widget, with additional presentation options.
+		* 'Quotes' block to display all the quotes or a set of quotes. With presentation, filtering, paging and other options.
+		* Existing shortcodes can be transformed into the 'Quotes' block, with all the attributes intact.
+	* The shortcode now includes refresh options.
+	* Option to specify the minimum user level required to add and manage quotes. Previously, anyone with 'Editor' or greater credentials could add and manage quotes.
+	* Fixed the bug that included a dummy 'Quotes Collection' menu in admin menus for unauthorized users.
+	* Localization is now entirely handled at [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/quotes-collection).
 
 * **2018-04-07: Version 2.0.10**
 	* Removing apply_filters('the_title') for the widget title as it's out of place here, also could be problematic without argument 2.

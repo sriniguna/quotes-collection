@@ -9,7 +9,7 @@
 class Quotes_Collection {
 
 	/** Plugin version **/
-	const PLUGIN_VERSION = '2.0.10';
+	const PLUGIN_VERSION = '3.0-alpha-1';
 
 	public $refresh_link_text;
 	public $auto_refresh_max;
@@ -37,12 +37,17 @@ class Quotes_Collection {
 	/** Instantiate the plugin classes. Hooked to 'plugins_loaded' action **/
 	public static function load() {
 		global $quotescollection;
+		global $quotescollection_post_type_quote;
 		global $quotescollection_db;
 		global $quotescollection_admin;
 		global $quotescollection_shortcode;
 
 		if( NULL === $quotescollection ) {
 			$quotescollection = new self();
+		}
+
+		if( NULL === $quotescollection_post_type_quote ) {
+			$quotescollection_post_type_quote = new Quotes_Collection_Post_Type_Quote();
 		}
 
 		if( NULL === $quotescollection_db ) {

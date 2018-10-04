@@ -128,6 +128,73 @@ class Quotes_Collection_DB {
 
 	}
 
+	public function put_quotes($quotes_data = array()) {
+		if(!$quotes_data) return 0;
+
+		$num_quotes_input = 0;
+
+		foreach($quotes_data as $quote_data) {
+			if( is_object($quote_data) ) {
+				$quote_data = (array) $quote_data;
+			}
+			$postarr = $this->postarr_for_insert($quote_data);
+			if( wp_insert_post($postarr) ) {
+				$num_quotes_input++;
+			}
+		}
+		return $num_quotes_input;
+	}
+
+
+	private function postarr_for_insert( $quote_data = array() ) {
+		$postarr = array(
+			'post_type' => 'quotcoll_quote',
+			'post_status' => 'publish',
+			'comment_status' => 'closed',
+			'ping_status' => 'closed',
+		);
+		$meta_input = array();
+
+		if( isset( $quote_data['quote_id'] ) ) {
+			$meta_input['quotcoll_quote_old_id'] = $quote_data['quote_id'];
+		}
+
+		if( isset( $quote_data['quote'] ) && $quote_data['quote'] ) {
+			$postarr['post_content'] = $quote_data['quote'];
+		} else return;
+
+
+		if( isset( $quote_data['author'] ) ) {
+			$meta_input['quotcoll_quote_author'] = $quote_data['author'];
+		}
+
+		if( isset( $quote_data['source'] ) ) {
+			$meta_input['quotcoll_quote_source'] = $quote_data['source'];
+		}
+
+		if( isset( $quote_data['tags'] ) ) {
+			$tags = explode(',', $quote_data['tags']);
+			$postarr['tax_input'] = array(	'quotcoll_quote_tag' => $tags );
+		}
+
+		if( isset( $quote_data['public'] ) && $quote_data['public'] == 'no' ) {
+				$postarr['post_status'] = 'private';
+		}
+
+		if( isset( $quote_data['time_added'] ) ) {
+			$postarr['post_date'] = $quote_data['time_added'];
+		}
+
+		if( isset( $quote_data['time_updated'] ) ) {
+			$postarr['post_modified'] = $quote_data['time_updated'];
+		}
+
+		$postarr['meta_input'] = $meta_input;
+
+		return $postarr;
+
+	}
+
 
 
 

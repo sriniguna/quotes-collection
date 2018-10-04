@@ -19,7 +19,7 @@ class Quotes_Collection_Post_Type_Quote {
 		register_post_type( 'quotcoll_quote',
 			array(
 				'labels' => array(
-					'name' 					=> __('Quotes', 'quotes-collection'),
+					'name' 					=> __('Quotes Collection', 'quotes-collection'),
 					'singular_name' 		=> __('Quote', 'quotes-collection'),
 					'menu_name' 			=> __('QC CPT', 'quotes-collection'),
 					'all_items'				=> __('All Quotes', 'quotes-collection'),

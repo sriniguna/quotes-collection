@@ -31,7 +31,7 @@ class Quotes_Collection_Post_Type_Quote {
 					'not_found'				=> __('No quotes found', 'quotes-collection'),
 					'not_found_in_trash'	=> __('No quotes found in Trash', 'quotes-collection'),
 				),
-				'public' => true,
+				'public' => false,
 				'has_archive' => false,
 				'menu_icon' => 'dashicons-testimonial',
 				'supports' => array( 'editor' ),

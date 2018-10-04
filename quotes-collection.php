@@ -38,7 +38,6 @@ require_once( 'inc/class-quotes-collection-quote.php' );
 include_once( 'inc/class-quotes-collection-widget.php' );
 require_once( 'inc/class-quotes-collection-shortcode.php' );
 if( is_admin() ) {
-	require_once( 'inc/class-quotes-collection-admin-list-table.php' );
 	require_once( 'inc/class-quotes-collection-admin.php' );
 }
 if ( function_exists( 'register_block_type' ) ) {

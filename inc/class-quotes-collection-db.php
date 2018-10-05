@@ -288,11 +288,11 @@ class Quotes_Collection_DB {
 					$args_validated['orderby'] = 'ID';
 					break;
 				case 'author':
-					$args_validated['meta_key'] = 'author';
+					$args_validated['meta_key'] = 'quotcoll_quote_author';
 					$args_validated['orderby'] = 'meta_value';
 					break;
 				case 'source':
-					$args_validated['meta_key'] = 'source';
+					$args_validated['meta_key'] = 'quotcoll_quote_source';
 					$args_validated['orderby'] = 'meta_value';
 					break;
 				case 'time_added':

@@ -41,12 +41,15 @@ class Quotes_Collection_Post_Type_Quote {
 			)
 		);
 
-		register_taxonomy( 'quotcoll_quote_tag', 'quotcoll_quote', array(
-			'hierarchical' => false,
-			'labels' => array(
-				'name' => 'Tags',
-				'singular_name' => 'Tag',
-				)
+		register_taxonomy( 'quotcoll_quote_tag', 'quotcoll_quote',
+			array(
+				'hierarchical' => false,
+				'labels' => array(
+					'name' => __('Quote Tags', 'quotes-collection'),
+					'singular_name' => __('Tag', 'quotes-collection'),
+				),
+				'public' => false,
+				'show_ui' => true,
 			)
 		);
 	}

@@ -9,7 +9,7 @@
 class Quotes_Collection {
 
 	/** Plugin version **/
-	const PLUGIN_VERSION = '3.0-alpha-1';
+	const PLUGIN_VERSION = '3.0-alpha-2';
 
 	public $refresh_link_text;
 	public $auto_refresh_max;

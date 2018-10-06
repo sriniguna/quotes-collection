@@ -102,3 +102,17 @@ table.translation-credits td {
 	border: 1px solid #aaa;
 }
 
+
+
+/* Add/edit quote page author/source metabox */
+div.quotcoll-source-metabox {
+	display: table;
+}
+div.quotcoll-source-metabox div {
+	display: table-row;
+}
+
+.quotcoll-source-metabox label, .quotcoll-source-metabox input {
+  display: table-cell;
+	margin: 0.5em 2em;
+}

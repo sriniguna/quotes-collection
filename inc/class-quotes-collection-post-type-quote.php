@@ -11,7 +11,9 @@ class Quotes_Collection_Post_Type_Quote {
 	const POST_TYPE = 'quotcoll_quote';
 	const TAXONOMY_TAG = 'quotcoll_quote_tag';
 	const POST_META_AUTHOR = 'quotcoll_quote_author';
-	const POST_META_SOURCE = 'quotcoll_quote_author';
+	const POST_META_AUTHOR_URL = 'quotcoll_quote_author_url';
+	const POST_META_SOURCE = 'quotcoll_quote_source';
+	const POST_META_SOURCE_URL = 'quotcoll_quote_source_url';
 	const POST_META_QUOTE_ID_OLD = 'quotcoll_quote_old_id';
 
 
@@ -62,25 +64,48 @@ class Quotes_Collection_Post_Type_Quote {
 	}
 
 	public function register_meta_boxes() {
-		add_meta_box('quotcoll_quote_author', __('Author', 'quotes-collection'), array( $this, 'render_author_metabox' ), 'quotcoll_quote');
-		add_meta_box('quotcoll_quote_source', __('Source', 'quotes-collection'), array( $this, 'render_source_metabox' ), 'quotcoll_quote');
+		add_meta_box('metabox_quotcoll_quote_author', __('Author', 'quotes-collection'), array( $this, 'render_author_metabox' ), 'quotcoll_quote');
+		add_meta_box('metabox_quotcoll_quote_source', __('Source', 'quotes-collection'), array( $this, 'render_source_metabox' ), 'quotcoll_quote');
 	}
 
 	public function render_author_metabox($post) {
 		wp_nonce_field( 'quotcoll_author_metabox', 'quotcoll_author_metabox_nonce' );
 
-		$value = get_post_meta($post->ID, self::POST_META_AUTHOR, true);
+		$author = get_post_meta($post->ID, self::POST_META_AUTHOR, true);
+		$author_url = get_post_meta($post->ID, self::POST_META_AUTHOR_URL, true);
 
-		echo '<input type="text" id="quotcoll-quote-author" name="quotcoll-quote-author" value="' . esc_attr( $value ) . '" size="25" />';
+		$display = '<div class="quotcoll-source-metabox">';
+		$display .= '<div>';
+		$display .= '<label for="input-quotcoll-quote-author">'.__('Author', 'quotes-collection').'</label>';
+		$display .= '<input type="text" id="input-quotcoll-quote-author" name="quotcoll-quote-author" value="' . esc_attr( $author ) . '" />';
+		$display .= '</div>';
+		$display .= '<div>';
+		$display .= '<label for="input-quotcoll-quote-author-url">'.__('Author URL', 'quotes-collection').'</label>';
+		$display .= '<input type="text" id="input-quotcoll-quote-author-url" name="quotcoll-quote-author-url" value="' . esc_url( $author_url ) . '" />';
+		$display .= '</div>';
+		$display .= '</div>';
 
+		echo $display;
 	}
 
 	public function render_source_metabox($post) {
 		wp_nonce_field( 'quotcoll_source_metabox', 'quotcoll_source_metabox_nonce' );
 
-		$value = get_post_meta($post->ID, self::POST_META_SOURCE, true);
+		$source = get_post_meta($post->ID, self::POST_META_SOURCE, true);
+		$source_url = get_post_meta($post->ID, self::POST_META_SOURCE_URL, true);
 
-		echo '<input type="text" id="quotcoll-quote-source" name="quotcoll-quote-source" value="' . esc_attr( $value ) . '" size="25" />';
+		$display = '<div class="quotcoll-source-metabox">';
+		$display .= '<div>';
+		$display .= '<label for="input-quotcoll-quote-source">'.__('Source', 'quotes-collection').'</label>';
+		$display .= '<input type="text" id="input-quotcoll-quote-source" name="quotcoll-quote-source" value="' . esc_attr( $source ) . '" />';
+		$display .= '</div>';
+		$display .= '<div>';
+		$display .= '<label for="input-quotcoll-quote-source-url">'.__('Source URL', 'quotes-collection').'</label>';
+		$display .= '<input type="text" id="input-quotcoll-quote-source-url" name="quotcoll-quote-source-url" value="' . esc_url( $source_url ) . '" />';
+		$display .= '</div>';
+		$display .= '</div>';
+
+		echo $display;
 
 	}
 
@@ -121,16 +146,23 @@ class Quotes_Collection_Post_Type_Quote {
 
 		/* OK, it's safe for us to save the data now. */
 
-		// Make sure that it is set.
-		if ( ! isset( $_POST['quotcoll-quote-author'] ) ) {
-			return;
+		if ( isset( $_POST['quotcoll-quote-author'] ) ) {
+			// Sanitize user input.
+			$author = sanitize_text_field( $_POST['quotcoll-quote-author'] );
+
+			// Update the meta field in the database.
+			update_post_meta( $post->ID, self::POST_META_AUTHOR, $author );
 		}
 
-		// Sanitize user input.
-		$author = sanitize_text_field( $_POST['quotcoll-quote-author'] );
+		if ( isset( $_POST['quotcoll-quote-author-url'] ) ) {
+			// Sanitize user input.
+			$author_url = esc_url_raw( $_POST['quotcoll-quote-author-url'] );
 
-		// Update the meta field in the database.
-		update_post_meta( $post->ID, self::POST_META_AUTHOR, $author );
+			// Update the meta field in the database.
+			update_post_meta( $post->ID, self::POST_META_AUTHOR_URL, $author_url );
+		}
+
+
 	}
 
 	public function save_source_metabox($post_id, $post) {
@@ -157,19 +189,23 @@ class Quotes_Collection_Post_Type_Quote {
 
 		/* OK, it's safe for us to save the data now. */
 
-		// Make sure that it is set.
-		if ( ! isset( $_POST['quotcoll-quote-source'] ) ) {
-			return;
+		if ( isset( $_POST['quotcoll-quote-source'] ) ) {
+			// Sanitize user input.
+			$source = sanitize_text_field( $_POST['quotcoll-quote-source'] );
+
+			// Update the meta field in the database.
+			update_post_meta( $post->ID, self::POST_META_SOURCE, $source );
 		}
 
-		// Sanitize user input.
-		$source = sanitize_text_field( $_POST['quotcoll-quote-source'] );
+		if ( isset( $_POST['quotcoll-quote-source-url'] ) ) {
+			// Sanitize user input.
+			$source_url = esc_url_raw( $_POST['quotcoll-quote-source-url'] );
 
-		// Update the meta field in the database.
-		update_post_meta( $post->ID, self::POST_META_SOURCE, $source );
+			// Update the meta field in the database.
+			update_post_meta( $post->ID, self::POST_META_SOURCE_URL, $source_url );
+		}
+
 	}
-
-
 
 }
 

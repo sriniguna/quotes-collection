@@ -123,8 +123,8 @@ public function quotes_table_sorting($columns) {
 		$options_slug = 'quotes-collection-options';
 
 		$this->main_page_id = 'edit-'.Quotes_Collection_Post_Type_Quote::POST_TYPE;
-		$this->add_new_quote_page_id = 'edit-'.Quotes_Collection_Post_Type_Quote::POST_TYPE;
-		// $this->$quote_tags_page_id = 
+		$this->add_new_quote_page_id = Quotes_Collection_Post_Type_Quote::POST_TYPE;
+		// $this->$quote_tags_page_id =
 
 		// Sub-menu item for 'Import Quotes' page
 		$this->import_page_id =

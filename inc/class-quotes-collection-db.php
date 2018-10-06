@@ -281,6 +281,12 @@ class Quotes_Collection_DB {
 			$args_validated['splice'] = $args['splice'];
 		}
 
+		if( isset($args['order']) ) {
+			if( strtoupper($args['order']) == 'DESC' )
+				$args_validated['order'] = 	'DESC';
+			else if ( strtoupper($args['order']) == 'ASC' )
+				$args_validated['order'] = 	'ASC';
+		}
 
 		if( isset($args['orderby']) ) {
 			switch($args['orderby']) {
@@ -288,12 +294,36 @@ class Quotes_Collection_DB {
 					$args_validated['orderby'] = 'ID';
 					break;
 				case 'author':
-					$args_validated['meta_key'] = 'quotcoll_quote_author';
+					$args_validated['meta_query'] = array(
+						'relation' => 'OR',
+						array(
+							'key' => 'quotcoll_quote_author',
+							'compare' => 'EXISTS',
+						),
+						array(
+							'key' => 'quotcoll_quote_author',
+							'compare' => 'NOT EXISTS',
+						),
+					);
 					$args_validated['orderby'] = 'meta_value';
 					break;
 				case 'source':
-					$args_validated['meta_key'] = 'quotcoll_quote_source';
-					$args_validated['orderby'] = 'meta_value';
+					// $args_validated['meta_key'] = 'quotcoll_quote_source';
+					$args_validated['meta_query'] = array(
+						'relation' => 'OR',
+						'source_exists' => array(
+							'key' => 'quotcoll_quote_source',
+							'compare' => 'EXISTS',
+						),
+						'source_not_exists' => array(
+							'key' => 'quotcoll_quote_source',
+							'compare' => 'NOT EXISTS',
+						),
+					);
+					$args_validated['orderby'] = array(
+						'source_not_exists'	=> $args_validated['order'],
+						'source_exists' => $args_validated['order']
+					);
 					break;
 				case 'time_added':
 					$args_validated['orderby'] = 'date';
@@ -304,12 +334,6 @@ class Quotes_Collection_DB {
 			}
 		}
 
-		if( isset($args['order']) ) {
-			if( strtoupper($args['order']) == 'DESC' )
-				$args_validated['order'] = 	'DESC';
-			else if ( strtoupper($args['order']) == 'ASC' )
-				$args_validated['order'] = 	'ASC';
-		}
 
 		if( isset($args['num_quotes']) && $args['num_quotes'] && is_numeric($args['num_quotes']) ) {
 			$args_validated['nopaging'] = false;

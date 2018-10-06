@@ -308,7 +308,6 @@ class Quotes_Collection_DB {
 					$args_validated['orderby'] = 'meta_value';
 					break;
 				case 'source':
-					// $args_validated['meta_key'] = 'quotcoll_quote_source';
 					$args_validated['meta_query'] = array(
 						'relation' => 'OR',
 						'source_exists' => array(

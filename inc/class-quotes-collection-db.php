@@ -56,8 +56,8 @@ class Quotes_Collection_DB {
 				$quotes_array[] = array(
 					'quote_id' => get_the_ID(),
 					'quote' => get_the_content(),
-					'author' => get_post_meta( get_the_ID(), 'quotcoll_quote_author', true ),
-					'source' => get_post_meta( get_the_ID(), 'quotcoll_quote_source', true ),
+					'author' => get_post_meta( get_the_ID(), Quotes_Collection_Post_Type_Quote::POST_META_AUTHOR, true ),
+					'source' => get_post_meta( get_the_ID(), Quotes_Collection_Post_Type_Quote::POST_META_SOURCE, true ),
 					);
 
 				if( isset($args['splice']) && !empty($quotes_array) )
@@ -148,7 +148,7 @@ class Quotes_Collection_DB {
 
 	private function postarr_for_insert( $quote_data = array() ) {
 		$postarr = array(
-			'post_type' => 'quotcoll_quote',
+			'post_type' => Quotes_Collection_Post_Type_Quote::POST_TYPE,
 			'post_status' => 'publish',
 			'comment_status' => 'closed',
 			'ping_status' => 'closed',
@@ -156,7 +156,7 @@ class Quotes_Collection_DB {
 		$meta_input = array();
 
 		if( isset( $quote_data['quote_id'] ) ) {
-			$meta_input['quotcoll_quote_old_id'] = $quote_data['quote_id'];
+			$meta_input[Quotes_Collection_Post_Type_Quote::POST_META_QUOTE_ID_OLD] = $quote_data['quote_id'];
 		}
 
 		if( isset( $quote_data['quote'] ) && $quote_data['quote'] ) {
@@ -165,11 +165,11 @@ class Quotes_Collection_DB {
 
 
 		if( isset( $quote_data['author'] ) ) {
-			$meta_input['quotcoll_quote_author'] = $quote_data['author'];
+			$meta_input[Quotes_Collection_Post_Type_Quote::POST_META_AUTHOR] = $quote_data['author'];
 		}
 
 		if( isset( $quote_data['source'] ) ) {
-			$meta_input['quotcoll_quote_source'] = $quote_data['source'];
+			$meta_input[Quotes_Collection_Post_Type_Quote::POST_META_SOURCE] = $quote_data['source'];
 		}
 
 		if( isset( $quote_data['tags'] ) ) {
@@ -221,7 +221,7 @@ class Quotes_Collection_DB {
 
 	private function validate_args( $args = array() ) {
 		$args_validated = array(
-			'post_type' => 'quotcoll_quote',
+			'post_type' => Quotes_Collection_Post_Type_Quote::POST_TYPE,
 			'order' => 'ASC',
 			'orderby' => 'ID',
 			'nopaging' => true,
@@ -229,16 +229,17 @@ class Quotes_Collection_DB {
 		);
 
 		if( isset($args['quote_id']) && is_numeric($args['quote_id']) ) {
-			$args_validated['p'] = $args['quote_id'];
+			$args_validated['meta_key'] = Quotes_Collection_Post_Type_Quote::POST_META_QUOTE_ID_OLD;
+			$args_validated['meta_value'] = $args['quote_id'];
 		}
 
 		if( isset($args['author']) && !empty($args['author']) ) {
-			$args_validated['meta_key'] = 'quotcoll_quote_author';
+			$args_validated['meta_key'] = Quotes_Collection_Post_Type_Quote::POST_META_AUTHOR;
 			$args_validated['meta_value'] = trim($args['author']);
 		}
 
 		if( isset($args['source']) && !empty($args['source']) ) {
-			$args_validated['meta_key'] = 'quotcoll_quote_source';
+			$args_validated['meta_key'] = Quotes_Collection_Post_Type_Quote::POST_META_SOURCE;
 			$args_validated['meta_value'] = trim($args['source']);
 		}
 
@@ -250,7 +251,7 @@ class Quotes_Collection_DB {
 			}
 			$args_validated['tax_query'] = array(
 				array(
-					'taxonomy' => 'quotcoll_quote_tag',
+					'taxonomy' => Quotes_Collection_Post_Type_Quote::TAXONOMY_TAG,
 					'field' => 'slug',
 					'terms' => $tags,
 					),
@@ -297,11 +298,11 @@ class Quotes_Collection_DB {
 					$args_validated['meta_query'] = array(
 						'relation' => 'OR',
 						array(
-							'key' => 'quotcoll_quote_author',
+							'key' => Quotes_Collection_Post_Type_Quote::POST_META_AUTHOR,
 							'compare' => 'EXISTS',
 						),
 						array(
-							'key' => 'quotcoll_quote_author',
+							'key' => Quotes_Collection_Post_Type_Quote::POST_META_AUTHOR,
 							'compare' => 'NOT EXISTS',
 						),
 					);
@@ -311,11 +312,11 @@ class Quotes_Collection_DB {
 					$args_validated['meta_query'] = array(
 						'relation' => 'OR',
 						'source_exists' => array(
-							'key' => 'quotcoll_quote_source',
+							'key' => Quotes_Collection_Post_Type_Quote::POST_META_SOURCE,
 							'compare' => 'EXISTS',
 						),
 						'source_not_exists' => array(
-							'key' => 'quotcoll_quote_source',
+							'key' => Quotes_Collection_Post_Type_Quote::POST_META_SOURCE,
 							'compare' => 'NOT EXISTS',
 						),
 					);

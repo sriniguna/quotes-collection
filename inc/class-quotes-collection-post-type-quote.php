@@ -8,6 +8,13 @@
 
 class Quotes_Collection_Post_Type_Quote {
 
+	const POST_TYPE = 'quotcoll_quote';
+	const TAXONOMY_TAG = 'quotcoll_quote_tag';
+	const POST_META_AUTHOR = 'quotcoll_quote_author';
+	const POST_META_SOURCE = 'quotcoll_quote_author';
+	const POST_META_QUOTE_ID_OLD = 'quotcoll_quote_old_id';
+
+
 	function __construct() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_action( 'save_post', array( $this, 'save_author_metabox' ), 1, 2);
@@ -16,7 +23,7 @@ class Quotes_Collection_Post_Type_Quote {
 
 	/** Register the post types **/
 	public function register_post_type() {
-		register_post_type( 'quotcoll_quote',
+		register_post_type( self::POST_TYPE,
 			array(
 				'labels' => array(
 					'name' 					=> __('Quotes Collection', 'quotes-collection'),
@@ -41,7 +48,7 @@ class Quotes_Collection_Post_Type_Quote {
 			)
 		);
 
-		register_taxonomy( 'quotcoll_quote_tag', 'quotcoll_quote',
+		register_taxonomy( self::TAXONOMY_TAG, self::POST_TYPE,
 			array(
 				'hierarchical' => false,
 				'labels' => array(
@@ -62,7 +69,7 @@ class Quotes_Collection_Post_Type_Quote {
 	public function render_author_metabox($post) {
 		wp_nonce_field( 'quotcoll_author_metabox', 'quotcoll_author_metabox_nonce' );
 
-		$value = get_post_meta($post->ID, 'quotcoll_quote_author', true);
+		$value = get_post_meta($post->ID, self::POST_META_AUTHOR, true);
 
 		echo '<input type="text" id="quotcoll-quote-author" name="quotcoll-quote-author" value="' . esc_attr( $value ) . '" size="25" />';
 
@@ -71,7 +78,7 @@ class Quotes_Collection_Post_Type_Quote {
 	public function render_source_metabox($post) {
 		wp_nonce_field( 'quotcoll_source_metabox', 'quotcoll_source_metabox_nonce' );
 
-		$value = get_post_meta($post->ID, 'quotcoll_quote_source', true);
+		$value = get_post_meta($post->ID, self::POST_META_SOURCE, true);
 
 		echo '<input type="text" id="quotcoll-quote-source" name="quotcoll-quote-source" value="' . esc_attr( $value ) . '" size="25" />';
 
@@ -123,7 +130,7 @@ class Quotes_Collection_Post_Type_Quote {
 		$author = sanitize_text_field( $_POST['quotcoll-quote-author'] );
 
 		// Update the meta field in the database.
-		update_post_meta( $post->ID, 'quotcoll_quote_author', $author );
+		update_post_meta( $post->ID, self::POST_META_AUTHOR, $author );
 	}
 
 	public function save_source_metabox($post_id, $post) {
@@ -159,7 +166,7 @@ class Quotes_Collection_Post_Type_Quote {
 		$source = sanitize_text_field( $_POST['quotcoll-quote-source'] );
 
 		// Update the meta field in the database.
-		update_post_meta( $post->ID, 'quotcoll_quote_source', $source );
+		update_post_meta( $post->ID, self::POST_META_SOURCE, $source );
 	}
 
 

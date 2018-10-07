@@ -41,14 +41,26 @@ function quotescollectionRefresh(args) {
 function quotescollectionDisplayFormat(quoteData, args) {
 	var display = "";
 	var attribution = "";
+	var author = "";
+	var source = "";
 
 	display += '<p>' + quoteData.quote + '</p>';
 	if( args.showAuthor && quoteData.author && quoteData.author != 'null' ) {
-		attribution = '<cite class=\"author\">' + quoteData.author + '</cite>';
+		if( quoteData.author_url ) {
+			author = '<a href=\"' + quoteData.author_url + '\">' + quoteData.author + '</a>';
+		} else {
+			author = quoteData.author;
+		}
+		attribution = '<cite class=\"author\">' + author + '</cite>';
 	}
 	if( args.showSource && quoteData.source && quoteData.source != 'null' ) {
 		if(attribution) attribution += ', ';
-		attribution += '<cite class=\"source title\">' + quoteData.source + '</cite>';
+		if( quoteData.source_url ) {
+			source = '<a href=\"' + quoteData.source_url + '\">' + quoteData.source + '</a>';
+		} else {
+			source = quoteData.source;
+		}
+		attribution += '<cite class=\"source title\">' + source + '</cite>';
 	}
 	if(attribution) {
 		display += args.beforeAttribution + attribution + args.afterAttribution;

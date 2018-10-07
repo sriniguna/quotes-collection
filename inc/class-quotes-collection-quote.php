@@ -8,7 +8,9 @@ class Quotes_Collection_Quote {
 	public $quote_id;
 	public $quote;
 	public $author;
+	public $author_url;
 	public $source;
+	public $source_url;
 	public $tags;
 	public $public;
 	public $time_added;
@@ -22,7 +24,9 @@ class Quotes_Collection_Quote {
 			$this->quote = $quote_data['quote'];
 		}
 		$this->author = isset($quote_data['author'])? $quote_data['author'] : '';
+		$this->author_url = isset($quote_data['author_url'])? $quote_data['author_url'] : '';
 		$this->source = isset($quote_data['source'])? $quote_data['source'] : '';
+		$this->source_url = isset($quote_data['source_url'])? $quote_data['source_url'] : '';
 		$this->tags = isset($quote_data['tags'])? $quote_data['tags'] : '';
 		$this->public = isset($quote_data['public'])? $quote_data['public'] : 'yes';
 		$this->time_added = isset($quote_data['time_added'])? $quote_data['time_added'] : '';
@@ -79,16 +83,18 @@ class Quotes_Collection_Quote {
 		if( !$text )
 			return;
 
-		$text = make_clickable($text); 
+		$text = make_clickable($text);
 		$text = wptexturize(str_replace(array("\r\n", "\r", "\n"), '', nl2br(trim($text))));
-		
-		return $text;	
+
+		return $text;
 	}
 
 	public function prepare_data() {
 		$this->quote = $this->text_format( $this->quote );
-		$this->author = $this->text_format( $this->author );
-		$this->source = $this->text_format( $this->source );
+		$this->author = trim( stripslashes( strip_tags( ( $this->author ) ) ) );
+		$this->author_url = esc_url($this->author_url);
+		$this->source = trim( stripslashes( strip_tags( ( $this->source ) ) ) );
+		$this->source_url = esc_url($this->source_url);
 	}
 
 	public function output_format( $options = array() ) {
@@ -116,12 +122,22 @@ class Quotes_Collection_Quote {
 		$attribution = "";
 
 		if( $options['show_author'] && $this->author ) {
-			$attribution = '<cite class="author">' . $this->author . '</cite>';
+			if( $this->author_url ) {
+				$author = '<a href="'.$this->author_url.'">'.$this->author.'</a>';
+			} else {
+				$author = $this->author;
+			}
+			$attribution .= '<cite class="author">' . $author . '</cite>';
 		}
 
 		if( $options['show_source'] && $this->source ) {
 			if($attribution) $attribution .= ", ";
-			$attribution .= '<cite class="title source">' . $this->source . '</cite>';
+			if( $this->source_url ) {
+				$source = '<a href="'.$this->source_url.'">'.$this->source.'</a>';
+			} else {
+				$source = $this->source;
+			}
+			$attribution .= '<cite class="source">' . $source . '</cite>';
 		}
 
 		if($attribution) {

@@ -57,7 +57,9 @@ class Quotes_Collection_DB {
 					'quote_id' => get_the_ID(),
 					'quote' => get_the_content(),
 					'author' => get_post_meta( get_the_ID(), Quotes_Collection_Post_Type_Quote::POST_META_AUTHOR, true ),
+					'author_url' => get_post_meta( get_the_ID(), Quotes_Collection_Post_Type_Quote::POST_META_AUTHOR_URL, true ),
 					'source' => get_post_meta( get_the_ID(), Quotes_Collection_Post_Type_Quote::POST_META_SOURCE, true ),
+					'source_url' => get_post_meta( get_the_ID(), Quotes_Collection_Post_Type_Quote::POST_META_SOURCE_URL, true ),
 					);
 
 				if( isset($args['splice']) && !empty($quotes_array) )
@@ -168,9 +170,18 @@ class Quotes_Collection_DB {
 			$meta_input[Quotes_Collection_Post_Type_Quote::POST_META_AUTHOR] = $quote_data['author'];
 		}
 
+		if( isset( $quote_data['author_url'] ) ) {
+			$meta_input[Quotes_Collection_Post_Type_Quote::POST_META_AUTHOR_URL] = $quote_data['author_url'];
+		}
+
 		if( isset( $quote_data['source'] ) ) {
 			$meta_input[Quotes_Collection_Post_Type_Quote::POST_META_SOURCE] = $quote_data['source'];
 		}
+
+		if( isset( $quote_data['source_url'] ) ) {
+			$meta_input[Quotes_Collection_Post_Type_Quote::POST_META_SOURCE_URL] = $quote_data['source_url'];
+		}
+
 
 		if( isset( $quote_data['tags'] ) ) {
 			$tags = explode(',', $quote_data['tags']);

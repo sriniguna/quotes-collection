@@ -9,16 +9,12 @@
 class Quotes_Collection {
 
 	/** Plugin version **/
-	const PLUGIN_VERSION = '3.0-alpha-2';
-
-	public $refresh_link_text;
-	public $auto_refresh_max;
+	const PLUGIN_VERSION = '3.0-alpha-3';
 
 	function __construct() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts_and_styles' ) );
 		add_action( 'wp_ajax_quotescollection', array( $this, 'ajax_response' ) );
 		add_action( 'wp_ajax_nopriv_quotescollection', array( $this, 'ajax_response' ) );
-		$this->initialize_options();
 	}
 
 
@@ -37,13 +33,19 @@ class Quotes_Collection {
 	/** Instantiate the plugin classes. Hooked to 'plugins_loaded' action **/
 	public static function load() {
 		global $quotescollection;
+		global $quotescollection_options;
 		global $quotescollection_post_type_quote;
 		global $quotescollection_db;
 		global $quotescollection_admin;
 		global $quotescollection_shortcode;
 
+
 		if( NULL === $quotescollection ) {
 			$quotescollection = new self();
+		}
+
+		if( NULL === $quotescollection_options ) {
+			$quotescollection_options = new Quotes_Collection_Options();
 		}
 
 		if( NULL === $quotescollection_post_type_quote ) {
@@ -66,6 +68,8 @@ class Quotes_Collection {
 	/** Load scripts and styles required at the front end **/
 	public function load_scripts_and_styles() {
 
+		global $quotescollection_options;
+
 		// Enqueue scripts required for the ajax refresh functionality
 		wp_enqueue_script(
 			'quotescollection', // handle
@@ -82,10 +86,10 @@ class Quotes_Collection {
 			// so that you can check it later when an AJAX request is sent
 			'nonce' => wp_create_nonce( 'quotescollection' ),
 
-			'nextQuote' => $this->refresh_link_text,
+			'nextQuote' => $quotescollection_options->get_option('refresh_link_text'),
 			'loading' => __('Loading...', 'quotes-collection'),
 			'error' => __('Error getting quote', 'quotes-collection'),
-			'autoRefreshMax' => $this->auto_refresh_max,
+			'autoRefreshMax' => $quotescollection_options->get_option('auto_refresh_max'),
 			'autoRefreshCount' => 0
 			)
 		);
@@ -103,27 +107,6 @@ class Quotes_Collection {
 
 	}
 
-	/** Initialize the plugin options **/
-	private function initialize_options() {
-		$this->refresh_link_text = __("Next quote &raquo;", 'quotes-collection');
-		$this->auto_refresh_max = 20;
-		if( $options = get_option( 'quotescollection' ) ) {
-			if( isset($options['refresh_link_text']) && $options['refresh_link_text'] ) {
-				$this->refresh_link_text = $options['refresh_link_text'];
-			}
-			if( isset($options['auto_refresh_max']) && $options['auto_refresh_max'] ) {
-				$this->auto_refresh_max = $options['auto_refresh_max'];
-			}
-		}
-		else {
-			$options = array(
-				'refresh_link_text' => $this->refresh_link_text,
-				'auto_refresh_max'     => $this->auto_refresh_max,
-				);
-
-			add_option( 'quotescollection', $options );
-		}
-	}
 
 
 	/** Ajax response **/
@@ -186,7 +169,7 @@ class Quotes_Collection {
 	 */
 	public function quote( $args = array() ) {
 
-		global $quotescollection_db;
+		global $quotescollection_db, $quotescollection_options;
 
 		$args_default = array(
 			'instance'       => '',
@@ -250,9 +233,7 @@ class Quotes_Collection {
 
 		$dynamic_fetch = 0;
 		if( 'random' == $orderby
-			&& ( $options = get_option('quotescollection') )
-			&& isset( $options['dynamic_fetch'] )
-			&& $options['dynamic_fetch'] == 'on'
+			&& $quotescollection_options->get_option('dynamic_fetch') == 'on'
 			&& $count > 1
 			) {
 			$dynamic_fetch = 1;
@@ -323,7 +304,7 @@ class Quotes_Collection {
 							.'<div class=\"navigation\">'
 								.'<div class=\"nav-next\">'
 									.'<a class=\"next-quote-link\" style=\"cursor:pointer;\" onclick=\"quotescollectionRefresh(args_'.$instance.')\">'
-										. html_entity_decode( $this->refresh_link_text )
+										. html_entity_decode( $quotescollection_options->get_option('refresh_link_text') )
 									.'</a>'
 								.'</div>'
 							.'</div>'

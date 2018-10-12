@@ -240,23 +240,12 @@ public function quotes_table_sorting($columns) {
 	 */
 	public function admin_page_options() {
 
-		global $quotescollection;
+		global $quotescollection, $quotescollection_options;
 
-		$options = get_option( 'quotescollection' );
+		$refresh_link_text = $quotescollection_options->get_option('refresh_link_text');
+		$auto_refresh_max = $quotescollection_options->get_option('auto_refresh_max');
 
-		$refresh_link_text =
-			( isset( $options['refresh_link_text'] ) && $options['refresh_link_text'] ) ?
-				$options['refresh_link_text']
-				: $quotescollection->refresh_link_text;
-
-			// $refresh_link_text = htmlentities( $refresh_link_text );
-
-		$auto_refresh_max =
-			( isset( $options['auto_refresh_max'] ) && $options['auto_refresh_max'] ) ?
-				$options['auto_refresh_max']
-				: $quotescollection->auto_refresh_max;
-
-		$dynamic_fetch_check = ( isset( $options['dynamic_fetch'] ) && 'on' == $options['dynamic_fetch'] )?' checked="checked"':'';
+		$dynamic_fetch_check = ( 'on' == $quotescollection_options->get_option('dynamic_fetch') )?' checked="checked"':'';
 
 		$role_select = array (
 			'edit_posts' => '',
@@ -265,13 +254,13 @@ public function quotes_table_sorting($columns) {
 			'manage_options' => '',
 		);
 
-		if ( isset( $options['user_level_manage_quotes'] )
+		if ( ( $user_level_manage_quotes = $quotescollection_options->get_option('user_level_manage_quotes') )
 			&& in_array(
-				$options['user_level_manage_quotes'],
+				$user_level_manage_quotes,
 				array( 'publish_posts', 'edit_others_posts', 'manage_options')
 			)
 		) {
-			$role_select[$options['user_level_manage_quotes']] = ' selected="selected"';
+			$role_select[$user_level_manage_quotes] = ' selected="selected"';
 		} else {
 			$role_select['edit_posts'] = ' selected="selected"';
 		}
@@ -644,40 +633,10 @@ public function quotes_table_sorting($columns) {
 
 
 	private function update_options() {
-		$options = $options_old = get_option('quotescollection');
 
-		if( !empty($_REQUEST['refresh_link_text']) ) {
-			$options['refresh_link_text'] = htmlentities( $_REQUEST['refresh_link_text'] );
-		}
+		global $quotescollection_options;
 
-		if( is_numeric($_REQUEST['auto_refresh_max'])
-			&& intval($_REQUEST['auto_refresh_max']) >= 5
-			&& intval($_REQUEST['auto_refresh_max']) <= 40 ) {
-			$options['auto_refresh_max'] = $_REQUEST['auto_refresh_max'];
-		}
-
-		if( isset($_REQUEST['dynamic_fetch']) && $_REQUEST['dynamic_fetch'] == 'on' ) {
-			$options['dynamic_fetch'] = 'on';
-		}
-		else if( isset($options['dynamic_fetch']) ) {
-			unset($options['dynamic_fetch']);
-		}
-
-		if( isset($_REQUEST['user_level_manage_quotes'])
-			&& in_array(
-				$_REQUEST['user_level_manage_quotes'],
-				array( 'edit_posts', 'publish_posts', 'edit_others_posts', 'manage_options')
-			)
-		) {
-			$options['user_level_manage_quotes'] = $_REQUEST['user_level_manage_quotes'];
-		}
-
-		if( $options === $options_old ) {
-			$this->notices = '<div class="updated"><p>' . __( 'No change in values. Options not updated.', 'quotes-collection') . '</p></div>';
-			return;
-		}
-
-		if( update_option('quotescollection', $options) ) {
+		if( $quotescollection_options->update_options($_REQUEST) ) {
 			$this->notices = '<div class="updated"><p>' . __( 'Options updated', 'quotes-collection') . '</p></div>';
 			return;
 		}

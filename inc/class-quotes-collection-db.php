@@ -147,32 +147,49 @@ class Quotes_Collection_DB {
 	}
 
 
+
+	public function put_quote($quote_data) {
+		if( is_object($quote_data) ) {
+			$quote_data = (array) $quote_data;
+		}
+		$postarr = $this->postarr_for_insert($quote_data);
+		return wp_insert_post($postarr);
+	}
+
+
 	public function put_quotes($quotes_data = array()) {
 		if(!$quotes_data) return 0;
 
 		$num_quotes_input = 0;
 
 		foreach($quotes_data as $quote_data) {
-			if( is_object($quote_data) ) {
-				$quote_data = (array) $quote_data;
-			}
-			$postarr = $this->postarr_for_insert($quote_data);
-			if( wp_insert_post($postarr) ) {
+			if( $this->put_quote($quote_data) ) {
 				$num_quotes_input++;
 			}
 		}
 		return $num_quotes_input;
 	}
 
+	public function update_quote( $quote_data = array() ) {
+		if( !$quote_data || !isset($quote_data['ID']) || !$quote_data['ID'] )
+			return false;
+		return $this->put_quote($quote_data);
+	}
+
 
 	private function postarr_for_insert( $quote_data = array() ) {
 		$postarr = array(
+			'ID' => 0,
 			'post_type' => Quotes_Collection_Post_Type_Quote::POST_TYPE,
 			'post_status' => 'publish',
 			'comment_status' => 'closed',
 			'ping_status' => 'closed',
 		);
 		$meta_input = array();
+
+		if( isset( $quote_data['ID'] ) && is_numeric($quote_data['ID']) ) {
+			$postarr['ID'] = $quote_data['ID'];
+		}
 
 		if( isset( $quote_data['quote_id'] ) ) {
 			$meta_input[Quotes_Collection_Post_Type_Quote::POST_META_QUOTE_ID_OLD] = $quote_data['quote_id'];
@@ -246,7 +263,7 @@ class Quotes_Collection_DB {
 	 * @param array $condition
 	 * @return int
 	 */
-	public function count($args)
+	public function count($args = array())
 	{
 		$quotes = $this->get_quotes_array($args);
 		return count($quotes);
@@ -264,6 +281,10 @@ class Quotes_Collection_DB {
 			'nopaging' => true,
 			'posts_per_page' => -1,
 		);
+
+		if( isset($args['ID']) && is_numeric($args['ID']) ) {
+			$args_validated['p'] = $args['ID'];
+		}
 
 		if( isset($args['quote_id']) && is_numeric($args['quote_id']) ) {
 			$args_validated['meta_key'] = Quotes_Collection_Post_Type_Quote::POST_META_QUOTE_ID_OLD;

@@ -44,7 +44,7 @@ class Quotes_Collection_Post_Type_Quote {
 				'has_archive' => false,
 				'menu_icon' => 'dashicons-testimonial',
 				'supports' => array( 'editor' ),
-				'show_ui' => true,
+				'show_ui' => false,
 				'show_in_menu' => true,
 				'register_meta_box_cb' => array($this, 'register_meta_boxes'),
 			)

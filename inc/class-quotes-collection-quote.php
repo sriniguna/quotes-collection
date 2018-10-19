@@ -5,7 +5,8 @@
  */
 
 class Quotes_Collection_Quote {
-	public $quote_id;
+	public $ID; 						// CPT ID
+	public $quote_id;				// CPT Post Meta quotcoll_quote_old_id
 	public $quote;
 	public $author;
 	public $author_url;
@@ -17,6 +18,9 @@ class Quotes_Collection_Quote {
 	public $time_updated;
 
 	public function __construct($quote_data) {
+		if( isset($quote_data['ID']) && is_numeric($quote_data['ID']) ) {
+			$this->ID = $quote_data['ID'];
+		}
 		if( isset($quote_data['quote_id']) && is_numeric($quote_data['quote_id']) ) {
 			$this->quote_id = $quote_data['quote_id'];
 		}
@@ -38,7 +42,11 @@ class Quotes_Collection_Quote {
 		return $quotescollection_db->get_quote($args);
 	}
 
-	public static function with_id( $quote_id ) {
+	public static function with_id( $ID ) {
+		return self::with_condition( array( 'ID' => $ID ) );
+	}
+
+	public static function with_quote_id( $quote_id ) {
 		return self::with_condition( array( 'quote_id' => $quote_id ) );
 	}
 

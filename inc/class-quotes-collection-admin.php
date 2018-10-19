@@ -32,6 +32,7 @@ class Quotes_Collection_Admin {
 	private $export_page_id;
 	private $options_page_id;
 	private $notices;
+	private $quotes_list_table;
 
 	/** Flags **/
 	private $quote_added = false;
@@ -52,61 +53,61 @@ class Quotes_Collection_Admin {
 			}
 		}
 
-		// add_filter( 'set-screen-option', array($this, 'set_screen_options'), 10, 3 );
+		add_filter( 'set-screen-option', array($this, 'set_screen_options'), 10, 3 );
 		add_action( 'current_screen', array($this, 'process_requests') );
 		add_action( 'admin_menu', array($this, 'admin_menus') );
 		add_action( 'admin_notices', array($this, 'display_notices'));
 		add_action( 'admin_enqueue_scripts', array( $this, 'load_scripts_and_styles' ) );
-		add_filter( 'manage_quotcoll_quote_posts_columns', array( $this, 'quotes_table_head' ) );
-		add_action( 'manage_quotcoll_quote_posts_custom_column', array( $this, 'quotes_table_content' ), 10, 2 );
-		add_filter( 'manage_edit-quotcoll_quote_sortable_columns', array( $this, 'quotes_table_sorting') );
+		// add_filter( 'manage_quotcoll_quote_posts_columns', array( $this, 'quotes_table_head' ) );
+		// add_action( 'manage_quotcoll_quote_posts_custom_column', array( $this, 'quotes_table_content' ), 10, 2 );
+		// add_filter( 'manage_edit-quotcoll_quote_sortable_columns', array( $this, 'quotes_table_sorting') );
 }
 
 
-public function quotes_table_head($defaults) {
-	unset($defaults['title']);
-	unset($defaults['date']);
-
-	$defaults['quotcoll_quote'] = __( 'Quote', 'quotes-collection' );
-	$defaults['quotcoll_quote_author'] = __( 'Author', 'quotes-collection' );
-	$defaults['quotcoll_quote_source'] = __( 'Source', 'quotes-collection' );
-	$defaults['quotcoll_quote_tags'] = __( 'Tags', 'quotes-collection' );
-	$defaults['date'] = __( 'Date', 'quotes-collection' );
-
-	return $defaults;
-}
-
-public function quotes_table_content($column_name, $post_id) {
-	$post = get_post($post_id);
-	if( 'quotcoll_quote' == $column_name ) {
-		echo $post->post_content;
-
-	}
-	if( 'quotcoll_quote_author' == $column_name ) {
-		$author = get_post_meta($post_id, 'quotcoll_quote_author', true);
-		echo $author;
-	}
-
-	if( 'quotcoll_quote_source' == $column_name ) {
-		$source = get_post_meta($post_id, 'quotcoll_quote_source', true);
-		echo '<i>'.$source.'</i>';
-	}
-	if( 'quotcoll_quote_tags' == $column_name ) {
-		$tags_array = wp_get_object_terms( $post_id, 'quotcoll_quote_tag' );
-		$tags_list = "";
-		foreach($tags_array as $tag) {
-			$tags_list .= '<li>'.$tag->name.'</li>';
-		}
-		if($tags_list) echo '<ul class="quotescollection-tags">'.$tags_list.'</ul>';
-	}
-}
-
-public function quotes_table_sorting($columns) {
-	$columns['quotcoll_quote'] = 'quotcoll_quote';
-	$columns['quotcoll_quote_author'] = 'quotcoll_quote';
-	$columns['quotcoll_quote_source'] = 'quotcoll_quote';
-	return $columns;
-}
+// public function quotes_table_head($defaults) {
+// 	unset($defaults['title']);
+// 	unset($defaults['date']);
+//
+// 	$defaults['quotcoll_quote'] = __( 'Quote', 'quotes-collection' );
+// 	$defaults['quotcoll_quote_author'] = __( 'Author', 'quotes-collection' );
+// 	$defaults['quotcoll_quote_source'] = __( 'Source', 'quotes-collection' );
+// 	$defaults['quotcoll_quote_tags'] = __( 'Tags', 'quotes-collection' );
+// 	$defaults['date'] = __( 'Date', 'quotes-collection' );
+//
+// 	return $defaults;
+// }
+//
+// public function quotes_table_content($column_name, $post_id) {
+// 	$post = get_post($post_id);
+// 	if( 'quotcoll_quote' == $column_name ) {
+// 		echo $post->post_content;
+//
+// 	}
+// 	if( 'quotcoll_quote_author' == $column_name ) {
+// 		$author = get_post_meta($post_id, 'quotcoll_quote_author', true);
+// 		echo $author;
+// 	}
+//
+// 	if( 'quotcoll_quote_source' == $column_name ) {
+// 		$source = get_post_meta($post_id, 'quotcoll_quote_source', true);
+// 		echo '<i>'.$source.'</i>';
+// 	}
+// 	if( 'quotcoll_quote_tags' == $column_name ) {
+// 		$tags_array = wp_get_object_terms( $post_id, 'quotcoll_quote_tag' );
+// 		$tags_list = "";
+// 		foreach($tags_array as $tag) {
+// 			$tags_list .= '<li>'.$tag->name.'</li>';
+// 		}
+// 		if($tags_list) echo '<ul class="quotescollection-tags">'.$tags_list.'</ul>';
+// 	}
+// }
+//
+// public function quotes_table_sorting($columns) {
+// 	$columns['quotcoll_quote'] = 'quotcoll_quote';
+// 	$columns['quotcoll_quote_author'] = 'quotcoll_quote';
+// 	$columns['quotcoll_quote_source'] = 'quotcoll_quote';
+// 	return $columns;
+// }
 
 
 
@@ -115,16 +116,34 @@ public function quotes_table_sorting($columns) {
 	 * Function that creates admin menu items for our admin pages
 	 */
 	public function admin_menus() {
-		$main_slug = 'edit.php?post_type=quotcoll_quote';
-		$add_new_slug = 'post-new.php?post_type=quotcoll_quote';
-		$tags_slug = 'edit-tags.php?taxonomy=quotcoll_quote_tag&post_type=quotcoll_quote';
+		$main_slug = 'quotes-collection';
+		$add_new_slug = 'quotes-collection-add-new';
+		// $tags_slug = 'edit-tags.php?taxonomy=quotcoll_quote_tag&post_type=quotcoll_quote';
 		$import_slug = 'quotes-collection-import';
 		$export_slug = 'quotes-collection-export';
 		$options_slug = 'quotes-collection-options';
 
-		$this->main_page_id = 'edit-'.Quotes_Collection_Post_Type_Quote::POST_TYPE;
-		$this->add_new_quote_page_id = Quotes_Collection_Post_Type_Quote::POST_TYPE;
-		// $this->$quote_tags_page_id =
+		// Top level menu item for the main admin page that holds the quotes list
+		$this->main_page_id =
+			add_menu_page(
+				'Quotes Collection',                    // page title
+				'Quotes Collection',                    // menu title
+				$this->user_level_manage_quotes,         // user level
+				$main_slug,                             // menu-slg
+				array($this, 'admin_page_main'),        // callback function
+				'dashicons-testimonial',                // icon
+				50										// position
+			);
+		// Sub-menu item for 'Add Quote' page
+		$this->add_new_quote_page_id =
+			add_submenu_page(
+				'quotes-collection',
+				_x('Add New Quote', 'heading', 'quotes-collection'),
+				_x('Add New', 'submenu item text', 'quotes-collection'),
+				$this->user_level_manage_quotes,
+				$add_new_slug,
+				array($this, 'admin_page_add_new')
+			);
 
 		// Sub-menu item for 'Import Quotes' page
 		$this->import_page_id =
@@ -159,18 +178,131 @@ public function quotes_table_sorting($columns) {
 				array($this, 'admin_page_options')
 			);
 
+		// Just to make the first sub-menu item distinct from the main menu item
+		global $submenu;
+		if( isset( $submenu[$main_slug] ) )
+			$submenu[$main_slug][0][0] = _x('All Quotes', 'submenu item text', 'quotes-collection');
 
 
 		// Updating the member variables that hold URLs of different admin pages
-		$this->admin_url = admin_url( $main_slug );
-		$this->admin_add_new_url = admin_url( $add_new_slug );
-		$this->admin_tags_url = admin_url( $tags_slug );
-		$this->admin_import_url = admin_url( $main_slug . '&page=' . $import_slug );
-		$this->admin_export_url = admin_url( $main_slug . '&page=' . $export_slug );
-		$this->admin_options_url = admin_url( $main_slug . '&page=' . $options_slug );
+		$this->admin_url = admin_url( 'admin.php?page=' . $main_slug );
+		$this->admin_add_new_url = admin_url( 'admin.php?page=' . $add_new_slug );
+		$this->admin_import_url = admin_url( 'admin.php?page=' . $import_slug );
+		$this->admin_export_url = admin_url( 'admin.php?page=' . $export_slug );
+		$this->admin_options_url = admin_url( 'admin.php?page=' . $options_slug );
+
 
 		//Hooking the function that adds screen options for the quotes list page
-		// add_action( "load-".$this->main_page_id, array($this, 'add_screen_options') );
+		add_action( "load-".$this->main_page_id, array($this, 'add_screen_options') );
+	}
+
+
+	/**
+	 * Renders the main admin page
+	 */
+	public function admin_page_main() {
+		global $quotescollection_db;
+		$quotes_list_table = $this->quotes_list_table;
+		$options = get_option('quotescollection');
+		$display = $msg = $quotes_list = $alternate = "";
+		// if($options['db_version'] != Quotes_Collection_DB::PLUGIN_DB_VERSION )
+		// 	$quotescollection_db->install_db();
+		/* If there is a call to 'Edit' a particular quote entry, we render the
+		   'Edit Quote' page after checking the necessary conditions */
+		if(
+			isset( $_REQUEST['action'] )
+			&& $_REQUEST['action'] == 'edit'
+			&& (
+				( isset( $_REQUEST['submit'] )
+					&& $_REQUEST['submit'] == _x( 'Save Changes', 'submit button text', 'quotes-collection') )
+				|| check_admin_referer( 'edit_quote_'.$_REQUEST['id'], 'quotescollection_nonce' )
+			)
+		) {
+			$this->admin_page_header( 'edit-quote' );
+			$this->pseudo_meta_box(
+				'edit-quote',
+				_x( 'Edit Quote', 'submenu item text', 'quotes-collection' ),
+				$this->editform($_REQUEST['id'])
+			);
+			$this->admin_page_footer();
+			return;
+		}
+		// Prepare the quotes list table
+		$quotes_list_table->prepare_items();
+		// List meta shows the number of quotes -- total/public/private/filtered
+		$total_public_items = $quotescollection_db->count(array( 'public' => 'yes'));
+		$total_private_items = $quotes_list_table->total_items - $total_public_items;
+		$all_quotes_class = $public_quotes_class = $private_quotes_class = '';
+		if( false === $quotes_list_table->filtered ) {
+			$all_quotes_class = ' class="current"';
+		}
+		else if ( isset( $_REQUEST['public'] ) && 'yes' == $_REQUEST['public'] ) {
+			$public_quotes_class = ' class="current"';
+		}
+		else if ( isset( $_REQUEST['public'] ) && 'no' == $_REQUEST['public'] ) {
+			$private_quotes_class = ' class="current"';
+		}
+		$list_meta = '<p class="list-meta">';
+		$list_meta .= '<span' . $all_quotes_class .'>'
+			. '<a href="' . $this->admin_url . '">'
+			. _x( 'All Quotes', 'list meta, above the quotes list table in the main admin page', 'quotes-collection' )
+			. ' <span class="count">(' . $quotes_list_table->total_items . ')</span>'
+			. '</a></span>';
+		$list_meta .= ' | <span' . $public_quotes_class .'>'
+			. '<a href="' . $this->admin_url . '&public=yes">'
+			. _x( 'Public', 'list meta, above the quotes list table in the main admin page', 'quotes-collection' )
+			. ' <span class="count">(' . $total_public_items . ')</span>'
+			. '</a></span>';
+		$list_meta .= ' | <span' . $private_quotes_class .'>'
+			. '<a href="' . $this->admin_url . '&public=no">'
+			. _x( 'Private', 'list meta, above the quotes list table in the main admin page', 'quotes-collection' )
+			. ' <span class="count">(' . $total_private_items . ')</span>'
+			. '</a></span>';
+		if( isset( $_REQUEST['s'] ) && !empty( $_REQUEST['s'] ) ) {
+			$search_query = stripslashes( strip_tags( $_REQUEST['s'] ) );
+			$list_meta .= ' | <span class="current">'
+				. sprintf(
+					_x(
+						/* translators: %s: search text */
+						'Search results for "%s"',
+						'list meta, above the quotes list table in the main admin page',
+						'quotes-collection'
+					),
+					$search_query
+				)
+				. ' <span class="count">(' . $quotes_list_table->total_list_items . ')</span>'
+				. '</span>';
+		}
+		$list_meta .= '</p>';
+		// Call to output the header
+		$this->admin_page_header('quotes-list');
+		// Display the quotes list table
+		?>
+		<form id="quotescollection" method="get">
+		<input type="hidden" name="page" value="<?php echo esc_attr( $_REQUEST['page'] ); ?>" />
+			<div class="list-header">
+				<?php echo $list_meta; ?>
+				<?php $quotes_list_table->search_box( __('Search', 'quotes-collection'), 'quotescollection'); ?>
+			</div>
+			<?php $quotes_list_table->display(); ?>
+		</form>
+		<div id="quotescollection-dialog"></div>
+		<?php
+		$this->admin_page_footer();
+	}
+
+
+	/**
+	 * Renders the add new page
+	 */
+	public function admin_page_add_new() {
+		$this->admin_page_header( 'add-new' );
+		$this->pseudo_meta_box(
+			'add-new-quote',
+			_x( 'Add New Quote', 'heading', 'quotes-collection' ),
+			$this->editform()
+		);
+		$this->admin_page_footer();
 	}
 
 
@@ -389,6 +521,93 @@ public function quotes_table_sorting($columns) {
 
 
 
+	private function editform( $ID = 0 )
+	{
+		$form_name = "quotescollection_addquote";
+		$action_url = $this->admin_add_new_url;
+		// If the new quote submitted is added to the database, leave the fields blank
+		if( !$ID && $this->quote_added ) {
+			$quote = $author = $source = $tags = "";
+			$public_selected = ' checked="checked"';
+		}
+		// Else check if there are any submitted values, and fill the fields with those
+		else {
+			$quote = ( isset($_REQUEST['quote']) && trim($_REQUEST['quote']) )? stripslashes(htmlspecialchars(trim($_REQUEST['quote']))): "";
+			$author = ( isset($_REQUEST['author']) && trim($_REQUEST['author']) )? stripslashes(htmlspecialchars(trim($_REQUEST['author']))): "";
+			$source = ( isset($_REQUEST['source']) && trim($_REQUEST['source']) )? stripslashes(htmlspecialchars(trim($_REQUEST['source']))): "";
+			$tags = ( isset($_REQUEST['tags']) && trim($_REQUEST['tags']) )? stripslashes(htmlspecialchars(trim($_REQUEST['tags']))): "";
+			$public_selected =( !isset($_REQUEST['public']) && ($quote || $author || $source || $tags) )? "": " checked=\"checked\"";
+		}
+		$submit_button = get_submit_button( _x('Add Quote', 'submit button text', 'quotes-collection'), 'primary large', 'submit', false);
+		$nonce_action_name = 'add_quote';
+		$hidden_input = "";
+		if( $ID && is_numeric( $ID) ) {
+			$form_name = "quotescollection_editquote";
+			if( !$quote && !$author && !$source && !$tags ) {
+				$quote_data = Quotes_Collection_Quote::with_id( $ID );
+				$quote = htmlspecialchars( $quote_data->quote );
+				$author = htmlspecialchars( $quote_data->author );
+				$source = htmlspecialchars( $quote_data->source );
+				$tags = implode( ', ', explode( ',', $quote_data->tags ) );
+				if( 'no' == $quote_data->public ) {
+					$public_selected = "";
+				}
+			}
+			$hidden_input = "<input type=\"hidden\" name=\"ID\" value=\"{$ID}\" />";
+			$submit_button = get_submit_button( _x('Save Changes', 'submit button text', 'quotes-collection'), 'primary large', 'submit', false);
+			$action_url =  $this->admin_url . '&action=edit&id=' . $ID;
+			$nonce_action_name = 'save_changes_'.$ID;
+		}
+		$hidden_input .= wp_nonce_field(
+			$nonce_action_name,            // Action name
+			'quotescollection_nonce',      // Nonce name
+			true,                          // Refered hidden field should be created?
+			false                          // Echo
+		);
+		$quote_label = __('Quote', 'quotes-collection');
+		$author_label = __('Author', 'quotes-collection');
+		$source_label = __('Source', 'quotes-collection');
+		$tags_label = __('Tags', 'quotes-collection');
+		$public_label = __('Public?', 'quotes-collection');
+		$optional_text = __('optional', 'quotes-collection');
+		$comma_separated_text = __('comma separated', 'quotes-collection');
+		$display =<<< EDITFORM
+		<div class="form-wrap">
+<form name="{$form_name}" method="post" action="{$action_url}">
+	{$hidden_input}
+		<div class="form-field form-required">
+			<label for="quotescollection_quote"><strong>{$quote_label}</strong></label>
+			<textarea id="quotescollection_quote" name="quote">{$quote}</textarea>
+		</div>
+		<div class="form-field">
+			<label for="quotescollection_author"><strong>{$author_label}</strong></label>
+			<input type="text" id="quotescollection_author" name="author" value="{$author}" />
+			<p>{$optional_text}</p>
+		</div>
+		<div class="form-field">
+			<label for="quotescollection_source"><strong>{$source_label}</strong></label>
+			<input type="text" id="quotescollection_source" name="source" value="{$source}" /><br />
+			<p>{$optional_text}</p>
+		</div>
+		<div class="form-field">
+			<label for="quotescollection_tags"><strong>{$tags_label}</strong></label>
+			<input type="text" id="quotescollection_tags" name="tags" value="{$tags}" /><br />
+			<p>{$optional_text}, {$comma_separated_text}</p>
+		</div>
+		<div class="form-field">
+			<label for="quotescollection_public"><strong>{$public_label}</strong>
+			<input type="checkbox" id="quotescollection_public" name="public"{$public_selected} />
+			</label>
+		</div>
+	<div class="form-field">{$submit_button}</div>
+</form>
+</div>
+EDITFORM;
+		return $display;
+	}
+
+
+
 	/**
 	 * To process requests to add/update/delete/import/export quote/s.
 	 *
@@ -437,7 +656,7 @@ public function quotes_table_sorting($columns) {
 			}
 			else if(
 				$_REQUEST['submit'] == _x('Save Changes', 'submit button text', 'quotes-collection')
-				&& check_admin_referer( 'save_changes_'.$_REQUEST['quote_id'], 'quotescollection_nonce' )
+				&& check_admin_referer( 'save_changes_'.$_REQUEST['ID'], 'quotescollection_nonce' )
 				) {
 				if( !isset( $_REQUEST['quote'] ) || false == trim( $_REQUEST['quote'] ) ) {
 					$this->notices = '<div class="error"><p>'.__("The quote field cannot be blank. Fill up the quote field and try again.", 'quotes-collection').'</p></div>';
@@ -716,6 +935,20 @@ public function quotes_table_sorting($columns) {
 	}
 
 
+	/** Screen options at the top-right of the plugin's main admin page **/
+	public function add_screen_options() {
+		$option = 'per_page';
+		$args = array (
+			'label' => __( 'Maximum items', 'quotes-collection' ),
+			'default' => 20,
+			'option' => 'quotescollection_items_per_page',
+			);
+		add_screen_option( $option, $args );
+		$this->quotes_list_table = new Quotes_Collection_Admin_List_Table();
+	}
+	public function set_screen_options( $status, $option, $value ) {
+		return $value;
+	}
 
 	public function load_scripts_and_styles() {
 		// Load the confirm box scripts and styles only if on the quotes list page.

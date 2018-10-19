@@ -314,6 +314,7 @@ public function quotes_table_sorting($columns) {
 
 
 	private function admin_page_header( $active_page = "quotes-list" ) {
+
 		?>
 		<div id="quotescollection-admin-page" class="wrap">
 		<header>
@@ -400,6 +401,9 @@ public function quotes_table_sorting($columns) {
 	 */
 	public function process_requests() {
 
+
+		echo "Inside process requests; ";
+
 		// Proceed only if the current screen is one of the plugin's admin pages
 		$screen = get_current_screen();
 		if(
@@ -462,9 +466,14 @@ public function quotes_table_sorting($columns) {
 				$_REQUEST['submit'] == _x('Update Options', 'submit button text', 'quotes-collection')
 				&& check_admin_referer( 'options', 'quotescollection_nonce' )
 				) {
+					echo "Now will ask to update options; ";
 				$this->update_options();
 			}
-
+			// else if(
+			// 	$_REQUEST['submit'] == _x('Update Database', 'submit button text', 'quotes-collection')
+			// 	&& check_admin_referer( 'update_quotes_database', 'quotescollection_nonce' )
+			// 	) {
+			// }
 		}
 		else if( isset( $_REQUEST['action'] ) || isset( $_REQUEST['action2'] ) ) {
 			if(
@@ -519,25 +528,11 @@ public function quotes_table_sorting($columns) {
 				else
 					$this->notices = '<div class="error"><p>'.__('Error. Privacy status not changed.', 'quotes-collection').'</p></div>';
 			}
-			else if( ( 'keep_private' == $_REQUEST['action'] || ( isset( $_REQUEST['action2'] ) && 'keep_private' == $_REQUEST['action2'] ) )
-				&& check_admin_referer('bulk-quote_entries') ) {
-				if( !isset( $_REQUEST['bulkcheck'] ) ) {
-					$this->notices = '<div class="error"><p>'.__('No item selected', 'quotes-collection').'</p></div>';
-				}
-				else if( $result = $quotescollection_db->change_visibility($_REQUEST['bulkcheck'], 'no') ) {
-					$this->notices = '<div class="updated"><p>'
-						. sprintf(
-							_n(
-								/* translators: $s: The number of quotes kept private */
-								'%s quote kept private',
-								'%s quotes kept private',
-								$result,
-								'quotes-collection'
-							), number_format_i18n($result) )
-						.'</p></div>';
-				}
-				else
-					$this->notices = '<div class="error"><p>'.__('Error. Privacy status not changed.', 'quotes-collection').'</p></div>';
+			else if( ( 'update_db' == $_REQUEST['action'] )
+				&& check_admin_referer( 'update_quotes_database', 'quotescollection_nonce' ) ) {
+					echo "Now will ask to update database; ";
+				$this->update_database();
+
 			}
 		}
 	}
@@ -579,6 +574,7 @@ public function quotes_table_sorting($columns) {
 			}
 
 			global $quotescollection_db;
+
 			$result = $quotescollection_db->put_quotes($quote_entries);
 
 			if(FALSE === $result){
@@ -635,6 +631,7 @@ public function quotes_table_sorting($columns) {
 	private function update_options() {
 
 		global $quotescollection_options;
+		echo "updating options";
 
 		if( $quotescollection_options->update_options($_REQUEST) ) {
 			$this->notices = '<div class="updated"><p>' . __( 'Options updated', 'quotes-collection') . '</p></div>';
@@ -645,9 +642,76 @@ public function quotes_table_sorting($columns) {
 	}
 
 
+	private function update_database() {
+
+		global $quotescollection_db;
+
+		echo "Inside update_database function; ";
+
+		if( $quote_entries = $quotescollection_db->get_quotes_array_old_db() ) {
+
+			echo "Quote entries are found; ";
+
+			$result = $quotescollection_db->put_quotes($quote_entries);
+
+			echo "number of quotes putted: ". $result . "; ";
+
+			if(FALSE === $result){
+				echo "updating notice for false; ";
+				$this->notices = '<div class="error notice is-dismissable"><p>' . __( "Database update failed. Please try again.", 'quotes-collection' ) . '</p></div>';
+				return;
+			}
+			else if( 0 === $result) {
+				echo "updating notice for 0 quotes; ";
+				$this->notices = '<div class="updated notice is-dismissable"><p>' . __( "Database updated. But no quotes were imported from the old database table.", 'quotes-collection' ) . '</p></div>';
+			}
+			else {
+				echo 'updating notice for '.$result. ' quotes; ';
+				$this->notices = '<div class="updated notice is-dismissable"><p>'
+					. sprintf( _n(
+						/* translators: $s: The number of quotes imported */
+						'Database updated. %s quote was imported from old database table.',
+						'Database updated. %s quotes were imported from old database table.',
+						$result,
+						'quotes-collection' ), number_format_i18n($result) )
+					. '</p></div>';
+			}
+		} else {
+			echo "updating notice for no quotes found. ";
+			$this->notices = '<div class="updated notice is-dismissable"><p>' . __( "Database updated. No quotes were found in the old database table, so nothing imported.", 'quotes-collection' ) . '</p></div>';
+		}
+
+		// $quotescollection_db->drop_table();
+		// $quotescollection_db->update_db_version();
+
+		return;
+
+
+	}
+
+
 
 	/** Outputs the admin notices **/
 	public function display_notices() {
+
+		global $quotescollection_db;
+
+		if($quotescollection_db->is_db_update_needed()) {
+
+			$action_url = wp_nonce_url($this->admin_url.'&action=update_db', 'update_quotes_database',	'quotescollection_nonce');
+			$button = '<div><a href="'. $action_url .'">'.get_submit_button( _x('Update Database', 'submit button text', 'quotes-collection'), 'primary large', 'submit', false).'</a></div>';
+
+			// $button = '<div class="form-wrap">'
+			// 				. '<form name="" method="post" action="">'
+			// 					. wp_nonce_field( 'update_quotes_database',	'quotescollection_nonce', true, false )
+			// 					. '<div class="form-field">'
+			// 						. get_submit_button( _x('Update Database', 'submit button text', 'quotes-collection'), 'primary large', 'submit', false)
+			// 					. '</div>'
+			// 				. '</form>'
+			// 			. '</div>';
+			$this->notices = '<div class="updated"><p><strong>Action needed:</strong> Thanks for updating the plugin to version 3.0. You have to import your old data to wp_post table. To do that, click here.</p>'.$button.'</div>' . $this->notices;
+		}
+
 		echo $this->notices;
 	}
 

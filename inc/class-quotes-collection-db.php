@@ -11,11 +11,39 @@ class Quotes_Collection_DB {
 	const PLUGIN_DB_VERSION = '3.0';
 
 	private $db, $table_name;
+	private $db_update_needed = false;
 
 	public function __construct() {
-		global $wpdb;
-		$this->db = $wpdb;
-		$this->table_name = "`". $this->db->prefix . "quotescollection`";
+
+		echo "Inside the db class construct";
+
+		global $quotescollection_options;
+
+		if( is_null( $db_version = $quotescollection_options->get_option('db_version') ) ) {
+			$this->update_db_version();
+			echo "db version is not stored in options";
+		} else {
+			echo "db version stored in options is ".$db_version;
+			if( $db_version != self::PLUGIN_DB_VERSION ) {
+				global $wpdb;
+				$this->db = $wpdb;
+				$this->table_name = "`". $this->db->prefix . "quotescollection`";
+				if( $this->is_table_found() ) {
+					echo "Table is found";
+					$this->db_update_needed = true;
+					echo "db update needed";
+				} else {
+					echo "table is not found.";
+					$this->update_db_version();
+				}
+			}
+		}
+	}
+
+
+	public function update_db_version() {
+		// global $quotescollection_options;
+		// $quotescollection_options->update_option('db_version', self::PLUGIN_DB_VERSION);
 	}
 
 
@@ -118,17 +146,6 @@ class Quotes_Collection_DB {
 		return $this->get_quote(array('quote_id' => $quote_id));
 	}
 
-	/**
-	 * Checks if our Quotes Collection table is found in the database
-	 *
-	 * @return bool true if found, false if not
-	 */
-	private function is_table_found() {
-	    if($this->db->get_var("SHOW TABLES LIKE '".$this->table_name."'") != $this->table_name)
-			return true;
-		else return false;
-
-	}
 
 	public function put_quotes($quotes_data = array()) {
 		if(!$quotes_data) return 0;
@@ -166,26 +183,38 @@ class Quotes_Collection_DB {
 		} else return;
 
 
-		if( isset( $quote_data['author'] ) ) {
-			$meta_input[Quotes_Collection_Post_Type_Quote::POST_META_AUTHOR] = $quote_data['author'];
+		if( isset( $quote_data['author'] ) && $quote_data['author'] ) {
+			$author = trim( strip_tags( $quote_data['author'] ) );
+			preg_match_all('#\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#', $quote_data['author'], $match);
+			if(isset($match[0][0])) {
+				$author_url = esc_url_raw($match[0][0]);
+				$meta_input[Quotes_Collection_Post_Type_Quote::POST_META_AUTHOR_URL] = $author_url;
+			}
+			$meta_input[Quotes_Collection_Post_Type_Quote::POST_META_AUTHOR] = $author;
 		}
 
-		if( isset( $quote_data['author_url'] ) ) {
+		if( isset( $quote_data['author_url'] ) && $quote_data['author_url'] ) {
 			$meta_input[Quotes_Collection_Post_Type_Quote::POST_META_AUTHOR_URL] = $quote_data['author_url'];
 		}
 
-		if( isset( $quote_data['source'] ) ) {
+		if( isset( $quote_data['source'] ) && $quote_data['source'] ) {
+			$source = trim( strip_tags( $quote_data['source'] ) );
+			preg_match_all('#\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#', $quote_data['source'], $match);
+			if(isset($match[0][0])) {
+				$source_url = esc_url_raw($match[0][0]);
+				$meta_input[Quotes_Collection_Post_Type_Quote::POST_META_SOURCE_URL] = $source_url;
+			}
 			$meta_input[Quotes_Collection_Post_Type_Quote::POST_META_SOURCE] = $quote_data['source'];
 		}
 
-		if( isset( $quote_data['source_url'] ) ) {
+		if( isset( $quote_data['source_url'] ) && $quote_data['source_url'] ) {
 			$meta_input[Quotes_Collection_Post_Type_Quote::POST_META_SOURCE_URL] = $quote_data['source_url'];
 		}
 
 
-		if( isset( $quote_data['tags'] ) ) {
+		if( isset( $quote_data['tags'] ) && $quote_data['tags'] ) {
 			$tags = explode(',', $quote_data['tags']);
-			$postarr['tax_input'] = array(	'quotcoll_quote_tag' => $tags );
+			$postarr['tax_input'] = array( Quotes_Collection_Post_Type_Quote::TAXONOMY_TAG => $tags );
 		}
 
 		if( isset( $quote_data['public'] ) && $quote_data['public'] == 'no' ) {
@@ -200,7 +229,8 @@ class Quotes_Collection_DB {
 			$postarr['post_modified'] = $quote_data['time_updated'];
 		}
 
-		$postarr['meta_input'] = $meta_input;
+		if($meta_input)
+			$postarr['meta_input'] = $meta_input;
 
 		return $postarr;
 
@@ -224,10 +254,6 @@ class Quotes_Collection_DB {
 
 
 
-	public static function uninstall_db() {
-		global $wpdb;
-		$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}quotescollection" );
-	}
 
 
 	private function validate_args( $args = array() ) {
@@ -358,6 +384,68 @@ class Quotes_Collection_DB {
 
 	}
 
+
+
+	/* Old db functions */
+
+
+	public function is_db_update_needed() {
+		return $this->db_update_needed;
+	}
+
+	public function update_db() {
+		if(!$this->db) return false;
+
+		$this->import_from_table();
+		$this->drop_table();
+		$this->update_db_version();
+		$this->db_update_needed = false;
+		return true;
+	}
+
+
+	private function import_from_table() {
+		if($quotes = $this->get_quotes_array_old_db()) {
+			$this->put_quotes($quotes);
+		}
+	}
+
+
+	/**
+	 * Checks if our Quotes Collection table is found in the database
+	 *
+	 * @return bool true if found, false if not
+	 */
+		public function is_table_found() {
+			if($this->db->get_var("SHOW TABLES LIKE '".$this->db->prefix."quotescollection'") == $this->db->prefix."quotescollection")
+				return true;
+			else return false;
+
+		}
+
+
+
+	/**
+	 * Fetches quote entries from the old database
+	 *
+	 * @param array $args = array()
+	 * @see $this->frame_condition() for arguments that can be passed
+	 * @return array of quote entries
+	 */
+		public function get_quotes_array_old_db() {
+			$sql = "SELECT `quote_id`, `quote`, `author`, `source`, `tags`, `public`, `time_added`, `time_updated`
+			FROM " . $this->table_name;
+			if($quotes = $this->db->get_results($sql, ARRAY_A))
+				return $quotes;
+			else
+				return array();
+		}
+
+
+		public static function drop_table() {
+			global $wpdb;
+			$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}quotescollection" );
+		}
 
 
 

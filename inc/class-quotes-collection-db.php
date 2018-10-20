@@ -463,9 +463,10 @@ class Quotes_Collection_DB {
 		}
 
 
-		public static function drop_table() {
+		public function drop_table() {
 			global $wpdb;
 			$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}quotescollection" );
+			$this->db_update_needed = false;
 		}
 
 

@@ -209,6 +209,26 @@ class Quotes_Collection_Admin {
 		// 	$quotescollection_db->install_db();
 		/* If there is a call to 'Edit' a particular quote entry, we render the
 		   'Edit Quote' page after checking the necessary conditions */
+
+
+		if( $quotescollection_db->is_db_update_needed() ) {
+			$button = '<div class="form-wrap">'
+							. '<form name="" method="post" action="">'
+								. wp_nonce_field( 'update_quotes_database',	'quotescollection_nonce', true, false )
+								. '<div class="form-field">'
+									. get_submit_button( _x('Update Database', 'submit button text', 'quotes-collection'), 'primary large', 'submit', false)
+								. '</div>'
+							. '</form>'
+						. '</div>';
+			$display = '<div"><p><strong>Action needed:</strong> Thanks for updating the plugin to version 3.0. You have to import your old data to wp_post table. To do that, click here.</p>'.$button.'</div>';
+
+			$this->admin_page_header('quotes-list');
+			echo $display;
+			$this->admin_page_footer();
+			return;
+
+		}
+
 		if(
 			isset( $_REQUEST['action'] )
 			&& $_REQUEST['action'] == 'edit'
@@ -688,11 +708,12 @@ EDITFORM;
 					echo "Now will ask to update options; ";
 				$this->update_options();
 			}
-			// else if(
-			// 	$_REQUEST['submit'] == _x('Update Database', 'submit button text', 'quotes-collection')
-			// 	&& check_admin_referer( 'update_quotes_database', 'quotescollection_nonce' )
-			// 	) {
-			// }
+			else if(
+				$_REQUEST['submit'] == _x('Update Database', 'submit button text', 'quotes-collection')
+				&& check_admin_referer( 'update_quotes_database', 'quotescollection_nonce' )
+				) {
+					$this->update_database();
+			}
 		}
 		else if( isset( $_REQUEST['action'] ) || isset( $_REQUEST['action2'] ) ) {
 			if(
@@ -746,12 +767,6 @@ EDITFORM;
 				}
 				else
 					$this->notices = '<div class="error"><p>'.__('Error. Privacy status not changed.', 'quotes-collection').'</p></div>';
-			}
-			else if( ( 'update_db' == $_REQUEST['action'] )
-				&& check_admin_referer( 'update_quotes_database', 'quotescollection_nonce' ) ) {
-					echo "Now will ask to update database; ";
-				$this->update_database();
-
 			}
 		}
 	}
@@ -900,8 +915,8 @@ EDITFORM;
 			$this->notices = '<div class="updated notice is-dismissable"><p>' . __( "Database updated. No quotes were found in the old database table, so nothing imported.", 'quotes-collection' ) . '</p></div>';
 		}
 
-		// $quotescollection_db->drop_table();
-		// $quotescollection_db->update_db_version();
+		$quotescollection_db->drop_table();
+		$quotescollection_db->update_db_version();
 
 		return;
 
@@ -913,23 +928,6 @@ EDITFORM;
 	/** Outputs the admin notices **/
 	public function display_notices() {
 
-		global $quotescollection_db;
-
-		if($quotescollection_db->is_db_update_needed()) {
-
-			$action_url = wp_nonce_url($this->admin_url.'&action=update_db', 'update_quotes_database',	'quotescollection_nonce');
-			$button = '<div><a href="'. $action_url .'">'.get_submit_button( _x('Update Database', 'submit button text', 'quotes-collection'), 'primary large', 'submit', false).'</a></div>';
-
-			// $button = '<div class="form-wrap">'
-			// 				. '<form name="" method="post" action="">'
-			// 					. wp_nonce_field( 'update_quotes_database',	'quotescollection_nonce', true, false )
-			// 					. '<div class="form-field">'
-			// 						. get_submit_button( _x('Update Database', 'submit button text', 'quotes-collection'), 'primary large', 'submit', false)
-			// 					. '</div>'
-			// 				. '</form>'
-			// 			. '</div>';
-			$this->notices = '<div class="updated"><p><strong>Action needed:</strong> Thanks for updating the plugin to version 3.0. You have to import your old data to wp_post table. To do that, click here.</p>'.$button.'</div>' . $this->notices;
-		}
 
 		echo $this->notices;
 	}

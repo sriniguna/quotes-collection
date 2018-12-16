@@ -68,11 +68,11 @@ function quotescollection_block_random_quote_init() {
 	 *
 	 * This happens _before_ our JavaScript runs, afterwards it's too late.
 	 */
-	wp_add_inline_script(
-		'quotescollection-block-random-quote-editor',
-		'wp.i18n.setLocaleData( ' . json_encode( gutenberg_get_jed_locale_data( 'quotes-collection' ) ) . ', "quotes-collection" );',
-		'before'
-	);
+	// wp_add_inline_script(
+	// 	'quotescollection-block-random-quote-editor',
+	// 	'wp.i18n.setLocaleData( ' . json_encode( gutenberg_get_jed_locale_data( 'quotes-collection' ) ) . ', "quotes-collection" );',
+	// 	'before'
+	// );
 }
 add_action( 'init', 'quotescollection_block_random_quote_init' );
 

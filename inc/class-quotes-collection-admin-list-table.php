@@ -73,15 +73,11 @@ class Quotes_Collection_Admin_List_Table extends WP_List_Table {
 
 	}
 
+
+
 	function column_source( $item ) {
 		$output = "";
-		if( $item['author'] ) {
-			$output = $item['author'];
-		}
 		if( $item['source'] ) {
-			if($output) {
-				$output .= ', ';
-			}
 			$output .= '<i>'.$item['source'].'</i>';
 		}
 		return $output;
@@ -89,15 +85,16 @@ class Quotes_Collection_Admin_List_Table extends WP_List_Table {
 
 	function column_tags( $item ) {
 		$tags = '';
-		if( $item['tags'] ) {
-			$tags_array = explode( ',', $item['tags'] );
+		if( $item['tags'] && is_array($item['tags']) ) {
 			$tags = '<ul class="quotescollection-tags">';
-			foreach( $tags_array as $key => $tag ) {
+			foreach( $item['tags'] as $key => $tag ) {
 				$tags .= '<li class="quotescollection-tag">';
-				$tags .= stripslashes( trim( $tag ) );
+				$tags .= $tag->name;
 				$tags .= '</li>';
 			}
 			$tags .= '</ul>';
+		} else {
+			$tags = "&mdash;";
 		}
 		return $tags;
 	}
@@ -107,8 +104,7 @@ class Quotes_Collection_Admin_List_Table extends WP_List_Table {
 		$abbr_title = date_format( $date, _x('Y/m/d h:i:s A', 'date and time format', 'quotes-collection') );
 		$date_display = date_format( $date, _x( 'Y/m/d', 'date format', 'quotes-collection') );
 		$display = '<div class="date"><abbr title="'.$abbr_title.'">'.$date_display.'</abbr></div>';
-		$public_display = ($item['public'] == 'no')?__('Private', 'quotes-collection'):__('Public', 'quotes-collection');
-		$display .= '<div class="public">'.$public_display.'</div>';
+		$display .= '<div class="status">'.$item['status'].'</div>';
 		return $display;
 	}
 
@@ -124,7 +120,8 @@ class Quotes_Collection_Admin_List_Table extends WP_List_Table {
 			'cb'         => '<input type="checkbox" />', //Render a checkbox instead of text
 			// 'quote_id'	 => __('ID', 'quotes-collection'),
 			'quote'      => __('Quote', 'quotes-collection'),
-			'source'     => __('Author', 'quotes-collection').', '.__('Source', 'quotes-collection'),
+			'author'     => __('Author', 'quotes-collection'),
+			'source'     => __('Source', 'quotes-collection'),
 			'tags'       => __('Tags', 'quotes-collection'),
 			'date'       => __('Date', 'quotes-collection')
 		);
@@ -262,6 +259,7 @@ class Quotes_Collection_Admin_List_Table extends WP_List_Table {
 		// Now, fetching the data from the database
 		$data = $quotescollection_db->get_quotes_array( $db_args );
 		$this->items = $this->output_format( $data, $db_args['search'] );
+		print_r($this->items);
 
 
 		// Register our pagination options & calculations.

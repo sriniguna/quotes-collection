@@ -13,7 +13,7 @@ class Quotes_Collection_Quote {
 	public $source;
 	public $source_url;
 	public $tags;
-	public $public;
+	public $status;
 	public $time_added;
 	public $time_updated;
 
@@ -32,7 +32,7 @@ class Quotes_Collection_Quote {
 		$this->source = isset($quote_data['source'])? $quote_data['source'] : '';
 		$this->source_url = isset($quote_data['source_url'])? $quote_data['source_url'] : '';
 		$this->tags = isset($quote_data['tags'])? $quote_data['tags'] : '';
-		$this->public = isset($quote_data['public'])? $quote_data['public'] : 'yes';
+		$this->status = isset($quote_data['status'])? $quote_data['status'] : '';
 		$this->time_added = isset($quote_data['time_added'])? $quote_data['time_added'] : '';
 		$this->time_updated = isset($quote_data['time_updated'])? $quote_data['time_updated'] : '';
 	}

@@ -82,12 +82,16 @@ class Quotes_Collection_DB {
 					continue;
 
 				$quotes_array[] = array(
-					'quote_id' => get_the_ID(),
+					'ID' => get_the_ID(),
 					'quote' => get_the_content(),
 					'author' => get_post_meta( get_the_ID(), Quotes_Collection_Post_Type_Quote::POST_META_AUTHOR, true ),
 					'author_url' => get_post_meta( get_the_ID(), Quotes_Collection_Post_Type_Quote::POST_META_AUTHOR_URL, true ),
 					'source' => get_post_meta( get_the_ID(), Quotes_Collection_Post_Type_Quote::POST_META_SOURCE, true ),
 					'source_url' => get_post_meta( get_the_ID(), Quotes_Collection_Post_Type_Quote::POST_META_SOURCE_URL, true ),
+					'time_added' => get_the_date().' '. get_the_time(),
+					'time_updated' => get_the_modified_date().' '.get_the_modified_time(),
+					'status' => get_post_status(),
+					'tags' => get_the_terms( get_the_ID(), Quotes_Collection_Post_Type_Quote::TAXONOMY_TAG ),
 					);
 
 				if( isset($args['splice']) && !empty($quotes_array) )

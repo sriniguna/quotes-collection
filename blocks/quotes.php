@@ -28,6 +28,8 @@ function quotescollection_block_quotes_init() {
 			'wp-blocks',
 			'wp-i18n',
 			'wp-element',
+			'wp-components',
+			'wp-editor',
 		),
 		filemtime( "$dir/$index_js" )
 	);
@@ -87,7 +89,7 @@ function quotescollection_block_quotes_render( $atts = array() ) {
 
 	$quotcoll_shortcode = new Quotes_Collection_Shortcode();
 	$block_class = 'wp-block-quotes-collection-quotes';
-	$block_class .= $atts['className'] ? ' '.$atts['className'] : '';
+	$block_class .= isset( $atts['className'] ) && $atts['className'] ? ' '.$atts['className'] : '';
 	$block_style = "";
 	$blockquote_style = "";
 

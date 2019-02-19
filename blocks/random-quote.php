@@ -28,6 +28,8 @@ function quotescollection_block_random_quote_init() {
 			'wp-blocks',
 			'wp-i18n',
 			'wp-element',
+			'wp-components',
+			'wp-editor',
 		),
 		filemtime( "$dir/$index_js" )
 	);
@@ -83,7 +85,7 @@ add_action( 'init', 'quotescollection_block_random_quote_init' );
  */
 function quotescollection_block_random_quote_render( $atts = array() ) {
 	$block_class = 'wp-block-quotes-collection-random-quote';
-	$block_class .= $atts['className'] ? ' '.$atts['className'] : '';
+	$block_class .= isset( $atts['className'] ) && $atts['className'] ? ' '.$atts['className'] : '';
 	$block_style = "";
 	$blockquote_style = "";
 	$attribution_style = "";

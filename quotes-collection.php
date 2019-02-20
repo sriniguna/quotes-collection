@@ -41,8 +41,7 @@ if( is_admin() ) {
 	require_once( 'inc/class-quotes-collection-admin.php' );
 }
 if ( function_exists( 'register_block_type' ) ) {
-	include_once( 'blocks/quotes.php' );
-	include_once( 'blocks/random-quote.php' );
+	include_once( 'blocks/blocks.php' );
 }
 
 register_activation_hook( __FILE__, array( 'Quotes_Collection', 'activate' ) );

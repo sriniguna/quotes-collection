@@ -35,9 +35,9 @@
 	 * @see https://wordpress.org/gutenberg/handbook/block-api/
 	 */
 	registerBlockType( 'quotes-collection/quotes', {
-		title: __( 'Quotes Collection', 'quotes-collection' ),
+		title: __( 'Quotes', 'quotes-collection' ),
 		icon: 'testimonial',
-		category: 'widgets',
+		category: 'quotes-collection',
 
 		transforms: {
 			from: [

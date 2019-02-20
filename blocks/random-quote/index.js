@@ -33,9 +33,9 @@
 	 * @see https://wordpress.org/gutenberg/handbook/block-api/
 	 */
 	registerBlockType( 'quotes-collection/random-quote', {
-		title: __( 'Quotes Collection :: Random Quote', 'quotes-collection' ),
+		title: __( 'Random Quote', 'quotes-collection' ),
 		icon: 'testimonial',
-		category: 'widgets',
+		category: 'quotes-collection',
 
 		/**
 		 * The edit function describes the structure of your block in the context of the editor.

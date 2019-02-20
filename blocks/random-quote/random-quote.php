@@ -20,7 +20,7 @@ function quotescollection_block_random_quote_init() {
 	}
 	$dir = dirname( __FILE__ );
 
-	$index_js = 'random-quote/index.js';
+	$index_js = 'index.js';
 	wp_register_script(
 		'quotescollection-block-random-quote-editor',
 		plugins_url( $index_js, __FILE__ ),
@@ -34,7 +34,7 @@ function quotescollection_block_random_quote_init() {
 		filemtime( "$dir/$index_js" )
 	);
 
-	$style_css = 'random-quote/style.css';
+	$style_css = 'style.css';
 	wp_register_style(
 		'quotescollection-block-random-quote',
 		plugins_url( $style_css, __FILE__ ),

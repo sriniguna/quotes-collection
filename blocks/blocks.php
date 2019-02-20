@@ -19,8 +19,8 @@ function quotescollection_block_category( $categories, $post ) {
 
 add_filter( 'block_categories', 'quotescollection_block_category', 5, 2 );
 
-include_once( 'quotes.php' );
-include_once( 'random-quote.php' );
+include_once( 'quotes/quotes.php' );
+include_once( 'random-quote/random-quote.php' );
 
 
 ?>

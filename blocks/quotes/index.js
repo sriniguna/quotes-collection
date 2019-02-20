@@ -230,7 +230,7 @@
 						} ),
 						el( TextControl, {
 							label: __('Limit', 'quotes-collection'),
-							help: __('The maximum number of quotes to be displayed on a single page. Ignored when paging is on. A value of \"0\" implies no limits.', 'quotes-collection'),
+							help: __('The maximum number of quotes to be displayed. Ignored when paging is on. A value of \"0\" implies no limits.', 'quotes-collection'),
 							type: 'number',
 							min: 0,
 							max: 100,

@@ -203,15 +203,15 @@ class Quotes_Collection {
 		$args = array_merge( $args_default, $args );
 
 		$instance = ( is_string( $args['instance'] ) )? $args['instance'] : '';
-		$show_author = ( false == $args['show_author'] )? 0 : 1;
-		$show_source = ( true == $args['show_source'] )? 1 : 0;
-		$ajax_refresh = ( false == $args['ajax_refresh'] )? 0 : 1;
+		$show_author = ( false == $args['show_author'] || 'false' === $args['show_author'] )? 0 : 1;
+		$show_source = ( true == $args['show_source'] && 'false' !== $args['show_source'] )? 1 : 0;
+		$ajax_refresh = ( false == $args['ajax_refresh'] || 'false' === $args['ajax_refresh'] )? 0 : 1;
 		$auto_refresh = 0;
 		if( $args['auto_refresh'] ) {
 			if( is_numeric( $args['auto_refresh'] ) ) {
 				$auto_refresh = $args['auto_refresh'];
 			}
-			else if( true === $args['auto_refresh'] ) {
+			else if( true === $args['auto_refresh'] || 'true' === $args['auto_refresh'] ) {
 				$auto_refresh = 5;
 			}
 		}

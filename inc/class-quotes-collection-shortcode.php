@@ -39,7 +39,7 @@ class Quotes_Collection_Shortcode {
 		), $atts );
 		extract($atts);
 
-		if( $ajax_refresh ) {
+		if( $ajax_refresh && $ajax_refresh !== 'false' ) {
 				$atts['echo'] = 0;
 				return quotescollection_quote($atts);
 		}

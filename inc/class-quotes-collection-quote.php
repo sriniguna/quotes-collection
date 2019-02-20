@@ -79,10 +79,10 @@ class Quotes_Collection_Quote {
 		if( !$text )
 			return;
 
-		$text = make_clickable($text); 
+		$text = make_clickable($text);
 		$text = wptexturize(str_replace(array("\r\n", "\r", "\n"), '', nl2br(trim($text))));
-		
-		return $text;	
+
+		return $text;
 	}
 
 	public function prepare_data() {
@@ -115,11 +115,11 @@ class Quotes_Collection_Quote {
 
 		$attribution = "";
 
-		if( $options['show_author'] && $this->author ) {
+		if( $options['show_author'] && $options['show_author'] !== 'false' && $this->author ) {
 			$attribution = '<cite class="author">' . $this->author . '</cite>';
 		}
 
-		if( $options['show_source'] && $this->source ) {
+		if( $options['show_source'] && $options['show_source'] !== 'false' && $this->source ) {
 			if($attribution) $attribution .= ", ";
 			$attribution .= '<cite class="title source">' . $this->source . '</cite>';
 		}

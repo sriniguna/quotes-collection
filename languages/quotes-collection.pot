@@ -1,4 +1,4 @@
-# Copyright (C) 2018 Srini G
+# Copyright (C) 2019 Srini G
 # This file is distributed under the same license as the Quotes Collection plugin.
 msgid ""
 msgstr ""
@@ -9,13 +9,15 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2018-09-27T17:12:31+05:30\n"
-"PO-Revision-Date: 2018-09-27T17:12:31+05:30\n"
+"POT-Creation-Date: 2019-02-21T09:46:36+05:30\n"
+"PO-Revision-Date: 2019-02-21T09:46:36+05:30\n"
 "X-Generator: WP-CLI 2.0.1\n"
 "X-Domain: quotes-collection\n"
 
 #. Plugin Name of the plugin
-#: blocks/quotes/index.js:38
+#: inc/class-quotes-collection-admin.php:76
+#: inc/class-quotes-collection-admin.php:77
+#: blocks/blocks.php:14
 msgid "Quotes Collection"
 msgstr ""
 
@@ -48,6 +50,7 @@ msgstr ""
 #: inc/class-quotes-collection-widget.php:41
 #: inc/class-quotes-collection-widget.php:83
 #: inc/class-quotes-collection-widget.php:213
+#: blocks/random-quote/index.js:36
 msgid "Random Quote"
 msgstr ""
 
@@ -116,7 +119,7 @@ msgid "Error getting quote"
 msgstr ""
 
 #: inc/class-quotes-collection.php:103
-#: blocks/random-quote.php:105
+#: blocks/random-quote/random-quote.php:108
 msgid "Next quote &raquo;"
 msgstr ""
 
@@ -510,6 +513,10 @@ msgstr ""
 msgid "Keep private"
 msgstr ""
 
+#: blocks/quotes/index.js:38
+msgid "Quotes"
+msgstr ""
+
 #: blocks/quotes/index.js:169
 #: blocks/random-quote/index.js:69
 msgid "Presentation"
@@ -566,7 +573,7 @@ msgid "Limit"
 msgstr ""
 
 #: blocks/quotes/index.js:233
-msgid "The maximum number of quotes to be displayed on a single page. Ignored when paging is on. A value of \"0\" implies no limits."
+msgid "The maximum number of quotes to be displayed. Ignored when paging is on. A value of \"0\" implies no limits."
 msgstr ""
 
 #: blocks/quotes/index.js:248
@@ -612,10 +619,6 @@ msgstr ""
 
 #: blocks/quotes/index.js:280
 msgid "The maximum number of quotes to be displayed per page. Ignored when paging is off."
-msgstr ""
-
-#: blocks/random-quote/index.js:36
-msgid "Quotes Collection :: Random Quote"
 msgstr ""
 
 #: blocks/random-quote/index.js:106

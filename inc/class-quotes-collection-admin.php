@@ -73,8 +73,8 @@ class Quotes_Collection_Admin {
 		// Top level menu item for the main admin page that holds the quotes list
 		$this->main_page_id =
 			add_menu_page(
-				'Quotes Collection',                    // page title
-				'Quotes Collection',                    // menu title
+				__('Quotes Collection', 'quotes-collection'), // page title
+				__('Quotes Collection', 'quotes-collection'), // menu title
 				$this->user_level_manage_quotes,         // user level
 				$main_slug,                             // menu-slg
 				array($this, 'admin_page_main'),        // callback function

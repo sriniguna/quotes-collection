@@ -33,6 +33,7 @@ function quotescollection_block_quotes_init() {
 		),
 		filemtime( "$dir/$index_js" )
 	);
+	wp_set_script_translations('quotescollection-block-quotes-editor', 'quotes-collection');
 
 	$style_css = 'style.css';
 	wp_register_style(
@@ -64,17 +65,6 @@ function quotescollection_block_quotes_init() {
 													'className' => array( 'type' => 'string' ),
 												),
 	) );
-
-	/*
-	 * Pass already loaded translations to our JavaScript.
-	 *
-	 * This happens _before_ our JavaScript runs, afterwards it's too late.
-	 */
-	// wp_add_inline_script(
-	// 	'quotescollection-block-quotes-editor',
-	// 	'wp.i18n.setLocaleData( ' . json_encode( gutenberg_get_jed_locale_data( 'quotes-collection' ) ) . ', "quotes-collection" );',
-	// 	'before'
-	// );
 
 }
 add_action( 'init', 'quotescollection_block_quotes_init' );

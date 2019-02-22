@@ -108,7 +108,7 @@ function quotescollection_block_random_quote_render( $atts = array() ) {
 			$refresh_link_text = __("Next quote &raquo;", 'quotes-collection');
 			if( $options = get_option( 'quotescollection' ) ) {
 				if( isset($options['refresh_link_text']) && $options['refresh_link_text'] ) {
-					$refresh_link_text = $options['refresh_link_text'];
+					$refresh_link_text = html_entity_decode( $options['refresh_link_text'] );
 				}
 			}
 			$nav_next = '<div class="navigation"><div class="nav-next"><a class="next-quote-link" style="cursor:pointer;">' . $refresh_link_text . '</a></div></div>';

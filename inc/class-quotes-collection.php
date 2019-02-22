@@ -244,7 +244,8 @@ class Quotes_Collection {
 		}
 
 		$dynamic_fetch = 0;
-		if( 'random' == $orderby
+		if( !( isset( $args['editor_render'] ) && $args['editor_render'] )
+			&& 'random' == $orderby
 			&& ( $options = get_option('quotescollection') )
 			&& isset( $options['dynamic_fetch'] )
 			&& $options['dynamic_fetch'] == 'on'

@@ -83,6 +83,7 @@ Yes, pagination is supporterd in versions 1.5 and greater. `paging` and `limit_p
 2. 'Random Quote' widget options
 3. A random quote in the sidebar
 4. 'Quotes' block editor interface
+5. 'Random Quote' block editor interface, customized with block controls
 
 
 == The [quotcoll] shortcode ==

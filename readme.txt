@@ -3,7 +3,8 @@ Contributors: SriniG
 Donate link: https://www.paypal.me/srinigcom/20
 Tags: quotes, quotations, random quote, widget, gutenberg blocks, quote rotator
 Requires at least: 4.6
-Tested up to: 5.0-alpha-43661
+Tested up to: 5.1
+Requires PHP: 7.3
 Stable tag: trunk
 License: GNU General Public License
 
@@ -16,42 +17,19 @@ Quotes Collection plugin helps you collect, manage and display your favourite qu
 
 **Features**
 
-* **Sidebar widget**: The Random Quote widget displays a random quote from your collection, with a 'Next Quote' link to refresh the widget with another quote. Includes options to refresh the quote manually or automatically, randomly or sequentially.
-* **Gutenberg blocks**: The plugin includes two blocks that can be added in pages and posts. ***(NEW in v2.5)***
-	* 'Random Quote' block that functions similarly to the Random Quote widget, with additional presentation options.
-	* 'Quotes' block to display all the quotes or a set of quotes, with presentation, filtering, paging and other options.
-* **Shortcode**: All quotes or a set of quotes can be displayed on a WordPress page by placing a `[quotcoll]`shortcode. Few examples are provided below. For more examples and the full list of arguments, scroll down and check out the 'The [quotcoll] shortcode' section.
+* **Admin interface**: A robust admin interface to add, edit, import, export and generally manage the collection of quotes.
+* **Sidebar widget**: A random quote from your collection can be displayed in any widget area using the ‘Random Quote’ widget. Includes options to refresh the quote displayed in the widget manually or automatically, randomly or sequentially.
+* **Gutenberg blocks**: The plugin includes two blocks that can be added in pages and posts. ***(NEW in version 2.5)***
+	* ‘Quotes’ block to display all the quotes or a set of quotes, with presentation, filtering, paging and other options.
+	* ‘Random Quote’ block that functions similarly to the Random Quote widget, with additional presentation options.
+* **Shortcode**: All quotes or a set of quotes can be displayed on a WordPress page by placing a `[quotcoll]`shortcode. Few examples are provided below. For more examples and the full list of arguments, visit the [Plugin Home Page](http://srinig.com/wordpress/plugins/quotes-collection/).
 	* Placing `[quotcoll]` in the page displays all quotes.
 	* `[quotcoll author="Somebody"]` displays quotes authored by Somebody.
 	* `[quotcoll tags="tag1,tag2,tag3"]` displays quotes tagged tag1 or tag2 or tag3, one or more or all of these
 	* `[quotcoll orderby="random" limit=1]` displays a random quote
-* **The template function**: To code the random quote functionality directly into a template file, the template function `quotescollection_quote()` can be used. Please refer the plugin homepage or 'other notes' for details.
-* **Admin interface**: A robust admin interface to add, edit, import, export and generally manage the collection of quotes.
-
-
-== Installation ==
-
-**Method 1**
-
-1. Go to *Plugins -> Add New* in your WordPress admin area
-1. Type 'quotes collection' in the search box available and hit the 'Enter' key
-1. Locate the 'Quotes Collection' plugin authored by Srini G, and click 'Install Now'
-
-**Method 2**
-
-1. Download the latest version of the plugin from WordPress plugin directory
-1. Go to *Plugins -> Add New* in your WordPress admin area
-1. Click on the 'Upload Plugin' button at the top, near 'Add Plugins'
-1. Browse and select the zip file you just downloaded, and click 'Install Now'
-
-**Method 3**
-
-1. Download the latest version of the plugin from WordPress plugin directory
-1. Extract the zip file
-1. Using a FTP client or something similar, upload the `quotes-collection` directory to the `~/wp-content/plugins/` directory of your WordPress installation.
-
-After installation, the plugin can be activated from *Plugins -> Installed Plugins* in your WordPress admin area. Once activated, the *Quotes Collection* menu will be visible in your admin menu.
-
+	* `[quotcoll ajax_refresh=true]` displays a random quote that will automatically refreshed every 5 seconds.
+* **The template function**: To code the random quote functionality directly into a template file, the template function `quotescollection_quote()` can be used. Please visit the [Plugin Home Page](http://srinig.com/wordpress/plugins/quotes-collection/) for details.
+* **Import/Export** your collection of quotes in JSON format.
 
 == Frequently Asked Questions ==
 
@@ -85,121 +63,13 @@ Yes, pagination is supporterd in versions 1.5 and greater. `paging` and `limit_p
 4. 'Quotes' block editor interface
 5. 'Random Quote' block editor interface, customized with block controls
 
-
-== The [quotcoll] shortcode ==
-Quotes can be displayed in a page by placing the shortcode `[quotcoll]`. This will display all the public quotes ordered by the quote id.
-
-Different attributes can be specified to customize the way the quotes are displayed. Here's the list of attributes:
-
-* **id** *(integer)*
-	* For example, `[quotcoll id=3]` displays a single quote, the id of which is 3. If there is no quote with the id 3, nothing is displayed.
-	* This overrides all other attributes. That is, if id attribute is specified, any other attribute specified is ignored.
-
-* **author** *(string)*
-	* `[quotcoll author="Somebody"]` displays all quotes authored by 'Somebody'.
-
-* **source** *(string)*
-	* `[quotcoll source="Something"]` displays all quotes from the source 'Something'.
-
-* **tags** *(string, comma separated)*
-	* `[quotcoll tags="tag1"]` displays all quotes tagged 'tag1'.
-	* `[quotcoll tags="tag1, tag2, tag3"]` displays quotes tagged 'tag1' or 'tag2' or 'tag3', one or more or all of these.
-	* `[quotcoll author="Somebody" tags="tag1"]` displays quotes authored by 'Somebody' AND tagged 'tag1'.
-
-* **orderby** *(string)*
-	* When multiple quotes are displayed, the quotes or ordered based on this value. The value can be either of these:
-		* 'quote_id' (default)
-		* 'author'
-		* 'source'
-		* 'time_added'
-		* 'random'
-
-* **order** *(string)*
-	* The value can be either 'ASC' (default) or 'DESC', for ascending and descending order respectively.
-	* For example, `[quotcoll orderby="time_added" order="DESC"]` will display all the quotes in the order of date added, latest first and the earliest last.
-
-* **paging** *(boolean)*
-	* The values can be:
-		* false (or 0) (default)
-		* true (or 1) -- introduces paging. This is used in conjunction with `limit_per_page` (see below).
-	* For example, `[quotcoll paging=true limit_per_page=30]` will introduce paging with maximum of 30 quotes per page.
-	* Note: if `orderby="random"` is used, paging is ignored.
-
-* **limit_per_page** *(integer)*
-	* The maximum number of quotes to be displayed in a page when paging is introduced, as described above.
-	* The default value is 10. For example, `[quotcoll paging=true]` will introduce paging with maximum of 10 quotes per page.
-
-* **limit** *(integer)*
-	* The maximum number of quotes to be displayed in a single page ie., when paging is 'false'.
-	* This can be used, for example, to display just a random quote. `[quotcoll orderby="random" limit=1]`
-
-== The quotescollection_quote() template function ==
-
-The quotescollection_quote() template function can be used to display a random quote in places other than sidebar.
-
-Usage: `<?php quotescollection_quote($arguments); ?>`
-
-The list of parameters (arguments) that can be passed on to this function:
-
-* **show_author** *(boolean)*
-	* To show/hide the author name
-		* `true` - shows the author name (default)
-		* `false` - hides the author name
-
-* **show_source** *(boolean)*
-	* To show/hide the source field
-		* `true` - shows the source
-		* `false` - hides the source (default)
-
-* **ajax_refresh** *(boolean)*
-	* To show/hide the 'Next quote' refresh link
-		* `true` - shows the refresh link (default)
-		* `false` - hides the hides the refresh link
-
-* **random** *(boolean)*
-	* Refresh the quote in random or sequential order
-		* `true` - random refresh (default)
-		* `false` - sequential, with the latest quote first
-
-* **auto_refresh** *(boolean/integer)*
-	* To refresh the quote automatically
-		* `true` - auto refresh every 5 seconds
-		* `false` - auto refresh is off (default)
-		* `integer` - auto refresh is on, and the number provided will be the refresh interval, in seconds.
-			* For example, `<?php quotescollection_quote( array( 'auto_refresh' => 3 ) ); ?>` will refresh the quote every 3 seconds.
-
-* **tags** *(string)*
-	* Comma separated list of tags. Only quotes with one or more of these tags will be shown.
-
-* **char_limit** *(integer)*
-	* Quotes with number of characters more than this value will be filtered out. This is useful if you don't want to display long quotes using this function. The default value is 500.
-
-* **echo** *(boolean)*
-	* To `echo` or `return` the quote
-		* `true` - the quote is echoed, ie., printed out
-		* `false` - the quote block is returned as a string, the user can catch the string in a variable and output it wherever they please.
-
-**Example usage:**
-
-* `<?php quotescollection_quote(); ?>`
-
-	* Uses the default values for the parameters. Shows author, hides source, shows the 'Next quote' link, no tags filtering, no character limit, displays the quote.
-
-* `<?php quotescollection_quote( array( 'show_author' => false, 'show_source' => true, 'tags' => 'fun,fav' ) ); ?>`
-
-	* Hides author, shows source, only quotes tagged with 'fun' or 'fav' or both are shown. 'Next quote' link is shown (default) and no character limit (default).
-
-* `<?php quotescollection_quote( array( 'ajax_refresh' => false, 'char_limit' => 300 ) ); ?>`
-
-	* The 'Next quote' link is not shown, quotes with number of characters greater that 300 are left out.
-
 == Localization ==
 
 You can translate the plugin in your language at [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/quotes-collection).
 
 ==Changelog==
 
-* **2018-XX-XX: Version 2.5**
+* **2019-02-23: Version 2.5**
 	* Gutenberg blocks included. *Note: to make use of these blocks, you should have WP 5.0 or above, or have the [Gutenberg plugin](https://wordpress.org/plugins/gutenberg/) installed and activated.*
 		* 'Random Quote' block that functions similarly to the widget, with additional presentation options.
 		* 'Quotes' block to display all the quotes or a set of quotes. With presentation, filtering, paging and other options.
@@ -450,6 +320,9 @@ You can translate the plugin in your language at [translate.wordpress.org](https
 
 
 == Upgrade Notice ==
+
+= 2.5 =
+Major update. Gutenberg blocks included, refresh options for shortcode added, other improvements and fixes.
 
 = 2.0.10 =
 Do upgrade if you get a "Warning: Missing argument 2 for WC_Template_Loader::unsupported_theme_title_filter() in ..." message.

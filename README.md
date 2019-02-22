@@ -7,7 +7,7 @@ Quotes Collection Plugin for [WordPress](https://wordpress.org/) helps you colle
 Features and Notes
 ------------------
 
-* **Admin interface**: An admin interface to add, edit, import, export and generally manage the collection of quotes. 
+* **Admin interface**: A robust admin interface to add, edit, import, export and generally manage the collection of quotes.
 * **Sidebar widget**: The Random Quote sidebar widget that will display a random quote from your collection and a refresh link at the bottom. As many number of instances of the widget can be added. Following is the list of options in the widget control panel:
 	* Widget title
 	* Option to show/hide quote author
@@ -17,14 +17,17 @@ Features and Notes
 	* Option to refresh the quote automatically
 	* Show only quotes with certain tags
 	* Specify a character limit and filter out bigger quotes
+* **Gutenberg blocks**: The plugin includes two blocks that can be added in pages and posts. ***(New in version 2.5)***
+	* ‘Quotes’ block to display all the quotes or a set of quotes, with presentation, filtering, paging and other options.
+	* ‘Random Quote’ block that functions similarly to the Random Quote widget, with additional presentation options.
 * **Shortcode**: Quotes can be displayed in a WordPress page by placing a `[quotcoll]`shortcode. Few examples are provided below. For more examples and the full list of arguments, please refer the [plugin homepage](http://srinig.com/wordpress/plugins/quotes-collection/).
 	* Placing `[quotcoll]` in the page displays all quotes.
 	* `[quotcoll author="Somebody"]` displays quotes authored by Somebody.
 	* `[quotcoll tags="tag1,tag2,tag3"]` displays quotes tagged tag1 or tag2 or tag3, one or more or all of these
 	* `[quotcoll orderby="random" limit=1]` displays a random quote
+	* `[quotcoll ajax_refresh=true]` displays a random quote that will automatically refreshed every 5 seconds
 * **The template function**: To code the random quote functionality directly into a template file, the template function `quotescollection_quote()` can be used. Please refer the plugin homepage for details.
-* **Import/Export** your collection of quotes in JSON format *(new in 2.0)*.
-* The plugin suppports localization. Refer the plugin page or readme.txt for the full list of available languages and the respective translators. 
+* **Import/Export** your collection of quotes in JSON format.
 
 For more information, visit the [plugin homepage](http://srinig.com/wordpress/plugins/quotes-collection/).
 
@@ -32,7 +35,7 @@ For more information, visit the [plugin homepage](http://srinig.com/wordpress/pl
 Installation
 ------------
 
-*Note:* The stable version of the plugin can be downloaded from the [WordPress plugin directory](https://wordpress.org/plugins/quotes-collection/). The latest development version can be downloaded from GitHub, but it may not be stable. 
+*Note:* The stable version of the plugin can be downloaded from the [WordPress plugin directory](https://wordpress.org/plugins/quotes-collection/). The latest development version can be downloaded from GitHub, but it may not be stable.
 
 ### Method 1 ###
 
@@ -63,4 +66,3 @@ Links
 * [Plugin at the WordPress plugin directory](https//wordpress.org/plugins/quotes-collection/)
 * [Support at the WordPress support forums](https://wordpress.org/support/plugin/quotes-collection)
 * [Development at GitHub](https://github.com/sriniguna/quotes-collection/)
-

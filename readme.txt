@@ -79,9 +79,10 @@ Yes, pagination is supporterd in versions 1.5 and greater. `paging` and `limit_p
 
 == Screenshots ==
 
-1. Admin interface (in WordPress 4.2)
-2. 'Random Quote' widget options (WordPress 4.2)
+1. Admin interface
+2. 'Random Quote' widget options
 3. A random quote in the sidebar
+4. 'Quotes' block editor interface
 
 
 == The [quotcoll] shortcode ==

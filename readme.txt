@@ -34,7 +34,7 @@ Quotes Collection plugin helps you collect, manage and display your favourite qu
 == Frequently Asked Questions ==
 
 
-= How to hide the 'Next quote »' link? =
+= How to hide the 'Next quote »' link in the widget? =
 
 You can do this by turning off the 'Ajax Refresh' feature in widget options.
 
@@ -53,6 +53,10 @@ If you want all of the quotes to display, make sure all all the quotes fall with
 = I have a long list of quotes, and the `[quotcoll]` shortcode puts all of the quotes in a single page. Is there a way to introduce pagination and break the long list of quotes into different pages? =
 
 Yes, pagination is supporterd in versions 1.5 and greater. `paging` and `limit_per_page` attributes can be used to achieve this. For example, `[quotcoll paging=true limit_per_page=30]` will introduce pagination with a maximum of 30 quotes per page.
+
+= Can an existing shortcode be converted to a Gutenberg block? =
+
+Yes, the existing shortcode will appear as 'Classic' block in the block editor interface. All you need to do is click on the 'More options' (three vertical dots on the top right corner) and click 'Convert to Blocks' in order to convert the shortcode into a 'Quotes' block.
 
 
 == Screenshots ==

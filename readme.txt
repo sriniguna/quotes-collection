@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/srinigcom/20
 Tags: quotes, quotations, random quote, widget, gutenberg blocks, quote rotator
 Requires at least: 4.6
 Tested up to: 5.1
-Requires PHP: 7.3
+Requires PHP: 5.6
 Stable tag: trunk
 License: GNU General Public License
 

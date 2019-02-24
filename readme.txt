@@ -1,7 +1,7 @@
 === Quotes Collection ===
 Contributors: SriniG
 Donate link: https://www.paypal.me/srinigcom/20
-Tags: quotes, quotations, random quote, widget, gutenberg blocks, quote rotator
+Tags: quotes, quotations, random quote, widget, gutenberg, quote rotator
 Requires at least: 4.6
 Tested up to: 5.1
 Requires PHP: 5.6

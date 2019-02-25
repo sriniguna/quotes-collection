@@ -78,7 +78,7 @@ You can translate the plugin in your language at [translate.wordpress.org](https
 		* 'Random Quote' block that functions similarly to the widget, with additional presentation options.
 		* 'Quotes' block to display all the quotes or a set of quotes. With presentation, filtering, paging and other options.
 		* Existing shortcodes can be transformed into the 'Quotes' block, with all the attributes intact.
-	* The shortcode now includes refresh options.
+	* The shortcode now includes refresh options and options to hide author and/or source.
 	* Option to specify the minimum user level required to add and manage quotes. Previously, anyone with 'Editor' or greater credentials could add and manage quotes.
 	* Fixed the bug that included a dummy 'Quotes Collection' menu in admin menus for unauthorized users.
 	* Localization is now entirely handled at [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/quotes-collection).

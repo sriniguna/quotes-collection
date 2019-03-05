@@ -9,7 +9,7 @@
 class Quotes_Collection {
 
 	/** Plugin version **/
-	const PLUGIN_VERSION = '2.5';
+	const PLUGIN_VERSION = '2.5.1';
 
 	public $refresh_link_text;
 	public $auto_refresh_max;
@@ -301,10 +301,10 @@ class Quotes_Collection {
 					.'"ajaxRefresh":'.$ajax_refresh.', '
 					.'"autoRefresh":'.$auto_refresh.', '
 					.'"dynamicFetch":'.$dynamic_fetch.', '
-					.'"before":"'.addslashes($before).'", '
-					.'"after":"'.addslashes($after).'", '
-					.'"beforeAttribution":"'.addslashes($before_attribution).'", '
-					.'"afterAttribution":"'.addslashes($after_attribution).'", '
+					.'"before":"'.htmlentities(addslashes($before)).'", '
+					.'"after":"'.htmlentities(addslashes($after)).'", '
+					.'"beforeAttribution":"'.htmlentities(addslashes($before_attribution)).'", '
+					.'"afterAttribution":"'.htmlentities(addslashes($after_attribution)).'", '
 				.'};';
 
 				if( $dynamic_fetch ) {

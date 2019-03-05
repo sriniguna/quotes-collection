@@ -73,6 +73,9 @@ You can translate the plugin in your language at [translate.wordpress.org](https
 
 ==Changelog==
 
+* **2019-03-05: Version 2.5.1**
+	* Fix for an issue where JS arguments break HTML loop when widget is used inside certain page builders.
+
 * **2019-02-23: Version 2.5**
 	* Gutenberg blocks included. *Note: to make use of these blocks, you should have WP 5.0 or above, or have the [Gutenberg plugin](https://wordpress.org/plugins/gutenberg/) installed and activated.*
 		* 'Random Quote' block that functions similarly to the widget, with additional presentation options.
@@ -324,6 +327,9 @@ You can translate the plugin in your language at [translate.wordpress.org](https
 
 
 == Upgrade Notice ==
+
+= 2.5.1 =
+Comes with a fix for an issue where widget breaks HTML loop in some cases. Upgrade recommended.
 
 = 2.5 =
 Major update. Gutenberg blocks included, refresh options for shortcode added, other improvements and fixes.

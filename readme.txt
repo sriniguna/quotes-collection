@@ -73,6 +73,9 @@ You can translate the plugin in your language at [translate.wordpress.org](https
 
 ==Changelog==
 
+* **2019-03-06: Version 2.5.2**
+	* Fixed issues with auto_refresh in shortcode.
+
 * **2019-03-05: Version 2.5.1**
 	* Fix for an issue where JS arguments break HTML loop when widget is used inside certain page builders.
 
@@ -327,6 +330,9 @@ You can translate the plugin in your language at [translate.wordpress.org](https
 
 
 == Upgrade Notice ==
+
+= 2.5.2 =
+Fixed issues with auto_refresh in shortcode.
 
 = 2.5.1 =
 Comes with a fix for an issue where widget breaks HTML loop in some cases. Upgrade recommended.

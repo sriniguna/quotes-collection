@@ -38,9 +38,17 @@ class Quotes_Collection_Shortcode {
 			'after_attribution' => '</footer>',
 		), $atts );
 		extract($atts);
-
+		
 		if( $ajax_refresh && $ajax_refresh !== 'false' ) {
 				$atts['echo'] = 0;
+				if(
+					($auto_refresh == 1 || $auto_refresh === true || $auto_refresh == 'true')
+					&& is_numeric($refresh_interval)
+				) {
+					$atts['auto_refresh'] = $refresh_interval;
+				} else if($auto_refresh === false || $auto_refresh == 'false') {
+					$atts['auto_refresh'] = 0;
+				}
 				return quotescollection_quote($atts);
 		}
 

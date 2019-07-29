@@ -69,6 +69,20 @@ class Quotes_Collection_DB {
 		else return false;
 	}
 
+	/** Fetches a single quote from the database, one per day **/
+	public function get_todays_quote($args = array()) {
+		$args['orderby'] = 'quote_id';
+		if($quote_array = $this->get_quotes($args)) {
+			return $quote_array[$this->today_val()%sizeof($quote_array)];
+		} else {
+			return false;
+		}
+	}
+
+	/** Determines a serial value for today, based on time() **/
+	public function today_val() {
+		return floor(time() / (60 * 60 * 24));
+	}
 	/** 
 	 * Fetches quote entry with a specific ID 
 	 *

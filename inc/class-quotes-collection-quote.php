@@ -34,6 +34,11 @@ class Quotes_Collection_Quote {
 		return $quotescollection_db->get_quote($args);
 	}
 
+	public static function todays_quote( $args ) {
+		global $quotescollection_db;
+		return $quotescollection_db->get_todays_quote($args);
+	}
+
 	public static function with_id( $quote_id ) {
 		return self::with_condition( array( 'quote_id' => $quote_id ) );
 	}

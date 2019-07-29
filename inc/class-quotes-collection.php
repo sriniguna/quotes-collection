@@ -197,6 +197,7 @@ class Quotes_Collection {
 			'before_attribution' => '<div class="attribution">&mdash;&nbsp;',
 			'after_attribution' => '</div>',
 			'echo'           => 1,
+			'todays_quote'	=> 0,
 		);
 
 		// Merge with default values
@@ -207,6 +208,7 @@ class Quotes_Collection {
 		$show_source = ( true == $args['show_source'] && 'false' !== $args['show_source'] )? 1 : 0;
 		$ajax_refresh = ( false == $args['ajax_refresh'] || 'false' === $args['ajax_refresh'] )? 0 : 1;
 		$auto_refresh = 0;
+		$todays_quote = ( false == $args['todays_quote'] || 'false' === $args['todays_quote'] )? 0 : 1;
 		if( $args['auto_refresh'] ) {
 			if( is_numeric( $args['auto_refresh'] ) ) {
 				$auto_refresh = $args['auto_refresh'];
@@ -262,7 +264,12 @@ class Quotes_Collection {
 
 		// And fetch the quote, only if dynamic fetch is off
 		if( !$dynamic_fetch ) {
-			if ( $quote = Quotes_Collection_Quote::with_condition( $condition ) ) {
+			if($todays_quote) {
+				$quote = Quotes_Collection_Quote::todays_quote( $condition );
+			} else {
+				$quote = Quotes_Collection_Quote::with_condition( $condition );
+			}
+			if ( $quote ) {
 				$curr_quote_id = $quote->quote_id;
 				$display = $quote->output_format(
 					array(

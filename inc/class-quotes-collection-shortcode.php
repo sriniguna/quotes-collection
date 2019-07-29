@@ -36,10 +36,11 @@ class Quotes_Collection_Shortcode {
 			'after' => '</blockquote>',
 			'before_attribution' => '<footer class="attribution">&mdash;&nbsp;',
 			'after_attribution' => '</footer>',
+			'todays_quote' => false,
 		), $atts );
 		extract($atts);
 		
-		if( $ajax_refresh && $ajax_refresh !== 'false' ) {
+		if( ($ajax_refresh && $ajax_refresh !== 'false') || ($todays_quote && $todays_quote !== 'false') ) {
 				$atts['echo'] = 0;
 				if(
 					($auto_refresh == 1 || $auto_refresh === true || $auto_refresh == 'true')
